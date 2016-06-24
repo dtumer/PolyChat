@@ -12,7 +12,7 @@ import Firebase
 /*
  * This class will contain methods for authenticating users through Firebase
 */
-class FirebaseAuthServices: AuthServiceDelegate {
+class FirebaseAuthService: AuthServiceDelegate {
     
     func signUpUser(email: String, passHash: String) {
         FIRAuth.auth()?.createUserWithEmail(email, password: passHash) { (user, error) in
@@ -20,7 +20,7 @@ class FirebaseAuthServices: AuthServiceDelegate {
                 print(error.localizedDescription)
                 return
             }
-            self.setDisplayName(user!)
+            //self.setDisplayName(user!)
         }
     }
     

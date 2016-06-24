@@ -9,13 +9,14 @@
 import Foundation
 
 class AuthServiceFactory {
-    func getAuthService(serviceKey: String) -> AuthServiceProtocol {
+    func getAuthService(serviceKey: String) -> AuthServiceDelegate? {
         switch serviceKey {
             case Constants.FIREBASE_SERVICE_KEY:
-                return FirebaseAuthServices()
-                break
+                return FirebaseAuthService()
             default:
                 break
         }
+        
+        return nil
     }
 }
