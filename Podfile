@@ -7,6 +7,7 @@ target 'PolyChat' do
 
   # Pods for PolyChat
   pod 'Firebase'
+  pod 'JSQMessagesViewController'
 
   target 'PolyChatTests' do
     inherit! :search_paths
