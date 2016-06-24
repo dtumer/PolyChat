@@ -23,7 +23,9 @@ class MainViewController: UIViewController {
     
     // MARK: Actions
     @IBAction func signUp(sender: UIButton) {
+        let signUpViewController:SignUpViewController = SignUpViewController()
         
+        self.presentViewController(signUpViewController, animated: true, completion: nil)
     }
     
 
