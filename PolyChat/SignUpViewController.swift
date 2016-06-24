@@ -39,7 +39,7 @@ class SignUpViewController: UIViewController {
     
     // MARK: Actions
     @IBAction func signUp(sender: UIButton) {
-        let authService = AuthServiceFactory.getAuthService(Constants.FIREBASE_SERVICE_KEY)
+        let authService = AuthServiceFactory.getAuthService(Constants.CURRENT_SERVICE_KEY)
         authService?.signUpUser(emailTextField.text!, passHash: passwordTextField.text!)
     }
     

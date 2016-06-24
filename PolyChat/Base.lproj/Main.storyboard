@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Main View Controller-->
@@ -18,24 +17,31 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ach-4L-P5j">
-                                <rect key="frame" x="220" y="220" width="160" height="30"/>
+                                <rect key="frame" x="248.5" y="285" width="103" height="30"/>
                                 <state key="normal" title="Sign Up Nigga!"/>
                                 <connections>
-                                    <action selector="signUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hr5-N4-51E"/>
+                                    <segue destination="sqg-Xb-StF" kind="show" id="oOO-cW-gdM"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ach-4L-P5j" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="200" id="VcC-dP-r6Z"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="ach-4L-P5j" secondAttribute="trailing" constant="200" id="i7s-s4-3ec"/>
-                            <constraint firstItem="ach-4L-P5j" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="200" id="jut-JX-Ydc"/>
+                            <constraint firstItem="ach-4L-P5j" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="byu-nh-JGQ"/>
+                            <constraint firstItem="ach-4L-P5j" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="zNh-eu-BJP"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="325" y="399"/>
+        </scene>
+        <!--SignUp-->
+        <scene sceneID="LeH-bx-2zZ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SignUp" id="sqg-Xb-StF" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zTo-ke-AzU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="814" y="399"/>
         </scene>
     </scenes>
 </document>

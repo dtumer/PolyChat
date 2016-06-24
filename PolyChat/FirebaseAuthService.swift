@@ -20,7 +20,7 @@ class FirebaseAuthService: AuthServiceDelegate {
                 print(error.localizedDescription)
                 return
             }
-            //self.setDisplayName(user!)
+            print("Added " + user!.uid)
         }
     }
     

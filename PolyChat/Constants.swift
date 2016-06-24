@@ -11,6 +11,7 @@
 */
 struct Constants {
     //service keys for which server/database services to use in-app
+    static let CURRENT_SERVICE_KEY: String = Constants.FIREBASE_SERVICE_KEY
     static let FIREBASE_SERVICE_KEY: String = "firebase"
     
     
