@@ -39,7 +39,8 @@ class SignUpViewController: UIViewController {
     
     // MARK: Actions
     @IBAction func signUp(sender: UIButton) {
-        //AuthServices.firebaseAuthServices.createUserAccount(emailTextField.text, password: passwordTextField.text)
+        let authService = AuthServiceFactory.getAuthService(Constants.FIREBASE_SERVICE_KEY)
+        authService?.signUpUser(emailTextField.text!, passHash: passwordTextField.text!)
     }
     
 
