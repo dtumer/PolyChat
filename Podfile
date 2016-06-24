@@ -7,6 +7,9 @@ target 'PolyChat' do
 
   # Pods for PolyChat
   pod 'Firebase'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Storage'
+  pod 'Firebase/Database'
   pod 'JSQMessagesViewController'
 
   target 'PolyChatTests' do
