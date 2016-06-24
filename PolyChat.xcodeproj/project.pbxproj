@@ -21,15 +21,27 @@
 		0F960B031D1CD69500E0D902 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F960B021D1CD69500E0D902 /* Constants.swift */; };
 		0F960B041D1CD69500E0D902 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F960B021D1CD69500E0D902 /* Constants.swift */; };
 		0F960B051D1CD69500E0D902 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F960B021D1CD69500E0D902 /* Constants.swift */; };
-		0F960B071D1CD70900E0D902 /* AuthServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F960B061D1CD70900E0D902 /* AuthServices.swift */; };
-		0F960B081D1CD70900E0D902 /* AuthServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F960B061D1CD70900E0D902 /* AuthServices.swift */; };
-		0F960B091D1CD70900E0D902 /* AuthServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F960B061D1CD70900E0D902 /* AuthServices.swift */; };
-		0F960B211D1CF4DA00E0D902 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F960B201D1CF4DA00E0D902 /* SWRevealViewController.m */; };
-		0F960B221D1CF4DA00E0D902 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F960B201D1CF4DA00E0D902 /* SWRevealViewController.m */; };
-		0F960B231D1CF4DA00E0D902 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F960B201D1CF4DA00E0D902 /* SWRevealViewController.m */; };
+		0F960B071D1CD70900E0D902 /* FirebaseAuthServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F960B061D1CD70900E0D902 /* FirebaseAuthServices.swift */; };
+		0F960B081D1CD70900E0D902 /* FirebaseAuthServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F960B061D1CD70900E0D902 /* FirebaseAuthServices.swift */; };
+		0F960B091D1CD70900E0D902 /* FirebaseAuthServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F960B061D1CD70900E0D902 /* FirebaseAuthServices.swift */; };
 		13A36AC5950293ECF654AEB2 /* Pods_PolyChatUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1F78191A67A36E6E62E6352 /* Pods_PolyChatUITests.framework */; };
 		AE6BDDC5A92BA00DC6D1DF4E /* Pods_PolyChatTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F192C361E3F1DC4C0166D138 /* Pods_PolyChatTests.framework */; };
 		B451FD7B451FDE28202166C4 /* Pods_PolyChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 435BAAAC375EEC888B720DFF /* Pods_PolyChat.framework */; };
+		D88294EB1D1D0B7E00C18413 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D88294EA1D1D0B7E00C18413 /* SWRevealViewController.m */; };
+		D88294EC1D1D0B7E00C18413 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D88294EA1D1D0B7E00C18413 /* SWRevealViewController.m */; };
+		D88294ED1D1D0B7E00C18413 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D88294EA1D1D0B7E00C18413 /* SWRevealViewController.m */; };
+		D8EAFB0E1D1CF675000638CF /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8EAFB0D1D1CF675000638CF /* SignUp.storyboard */; };
+		D8EAFB101D1CF8D1000638CF /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EAFB0F1D1CF8D1000638CF /* SignUpViewController.swift */; };
+		D8EAFB141D1CFBFB000638CF /* AuthServicesDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EAFB131D1CFBFB000638CF /* AuthServicesDelegate.swift */; };
+		D8EAFB151D1CFBFB000638CF /* AuthServicesDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EAFB131D1CFBFB000638CF /* AuthServicesDelegate.swift */; };
+		D8EAFB161D1CFBFB000638CF /* AuthServicesDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EAFB131D1CFBFB000638CF /* AuthServicesDelegate.swift */; };
+		D8EAFB171D1CFC02000638CF /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EAFB0F1D1CF8D1000638CF /* SignUpViewController.swift */; };
+		D8EAFB181D1CFC03000638CF /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EAFB0F1D1CF8D1000638CF /* SignUpViewController.swift */; };
+		D8EAFB191D1CFC0C000638CF /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8EAFB0D1D1CF675000638CF /* SignUp.storyboard */; };
+		D8EAFB1A1D1CFC0C000638CF /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8EAFB0D1D1CF675000638CF /* SignUp.storyboard */; };
+		D8EAFB1C1D1D01FC000638CF /* AuthServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EAFB1B1D1D01FC000638CF /* AuthServiceFactory.swift */; };
+		D8EAFB1D1D1D01FC000638CF /* AuthServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EAFB1B1D1D01FC000638CF /* AuthServiceFactory.swift */; };
+		D8EAFB1E1D1D01FC000638CF /* AuthServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EAFB1B1D1D01FC000638CF /* AuthServiceFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,17 +79,21 @@
 		0F4159EA1D1A492700EE4E58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F960AFC1D1A49CB00E0D902 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0F960B021D1CD69500E0D902 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		0F960B061D1CD70900E0D902 /* AuthServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthServices.swift; sourceTree = "<group>"; };
+		0F960B061D1CD70900E0D902 /* FirebaseAuthServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseAuthServices.swift; sourceTree = "<group>"; };
 		0F960B1C1D1CF4DA00E0D902 /* PolyChat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PolyChat-Bridging-Header.h"; sourceTree = "<group>"; };
 		0F960B1D1D1CF4DA00E0D902 /* PolyChatTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PolyChatTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		0F960B1E1D1CF4DA00E0D902 /* PolyChatUITests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PolyChatUITests-Bridging-Header.h"; sourceTree = "<group>"; };
-		0F960B1F1D1CF4DA00E0D902 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWRevealViewController.h; path = "../../../../Downloads/SWRevealViewController-master/SWRevealViewController/SWRevealViewController.h"; sourceTree = "<group>"; };
-		0F960B201D1CF4DA00E0D902 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWRevealViewController.m; path = "../../../../Downloads/SWRevealViewController-master/SWRevealViewController/SWRevealViewController.m"; sourceTree = "<group>"; };
 		237B9F05A1314D8AC14F5169 /* Pods-PolyChatUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PolyChatUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PolyChatUITests/Pods-PolyChatUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		435BAAAC375EEC888B720DFF /* Pods_PolyChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PolyChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		47E8AFE8831B888359655AF6 /* Pods-PolyChatUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PolyChatUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PolyChatUITests/Pods-PolyChatUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B1F78191A67A36E6E62E6352 /* Pods_PolyChatUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PolyChatUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2D4FD39431F2C7B2E5BA8ED /* Pods-PolyChatTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PolyChatTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PolyChatTests/Pods-PolyChatTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D88294E91D1D0B6600C18413 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		D88294EA1D1D0B7E00C18413 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		D8EAFB0D1D1CF675000638CF /* SignUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
+		D8EAFB0F1D1CF8D1000638CF /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		D8EAFB131D1CFBFB000638CF /* AuthServicesDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthServicesDelegate.swift; sourceTree = "<group>"; };
+		D8EAFB1B1D1D01FC000638CF /* AuthServiceFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthServiceFactory.swift; sourceTree = "<group>"; };
 		DAA2236EA50E536BC28A1DC9 /* Pods-PolyChatTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PolyChatTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PolyChatTests/Pods-PolyChatTests.release.xcconfig"; sourceTree = "<group>"; };
 		E9D556AAAAEAB5A1844F8485 /* Pods-PolyChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PolyChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-PolyChat/Pods-PolyChat.release.xcconfig"; sourceTree = "<group>"; };
 		F192C361E3F1DC4C0166D138 /* Pods_PolyChatTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PolyChatTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -172,7 +188,9 @@
 		0F960B001D1CD66C00E0D902 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				0F960B061D1CD70900E0D902 /* AuthServices.swift */,
+				D8EAFB121D1CFB61000638CF /* Firebase */,
+				D8EAFB111D1CFB44000638CF /* Protocols */,
+				D8EAFB1B1D1D01FC000638CF /* AuthServiceFactory.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -207,6 +225,8 @@
 		0F960B0F1D1CF2B900E0D902 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
+				D8EAFB0D1D1CF675000638CF /* SignUp.storyboard */,
+				D8EAFB0F1D1CF8D1000638CF /* SignUpViewController.swift */,
 			);
 			name = SignUp;
 			sourceTree = "<group>";
@@ -239,8 +259,8 @@
 		0F960B151D1CF36500E0D902 /* SideMenu */ = {
 			isa = PBXGroup;
 			children = (
-				0F960B1F1D1CF4DA00E0D902 /* SWRevealViewController.h */,
-				0F960B201D1CF4DA00E0D902 /* SWRevealViewController.m */,
+				D88294E91D1D0B6600C18413 /* SWRevealViewController.h */,
+				D88294EA1D1D0B7E00C18413 /* SWRevealViewController.m */,
 				0F960B1C1D1CF4DA00E0D902 /* PolyChat-Bridging-Header.h */,
 				0F960B1D1D1CF4DA00E0D902 /* PolyChatTests-Bridging-Header.h */,
 				0F960B1E1D1CF4DA00E0D902 /* PolyChatUITests-Bridging-Header.h */,
@@ -290,6 +310,22 @@
 				47E8AFE8831B888359655AF6 /* Pods-PolyChatUITests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		D8EAFB111D1CFB44000638CF /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				D8EAFB131D1CFBFB000638CF /* AuthServicesDelegate.swift */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
+		D8EAFB121D1CFB61000638CF /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				0F960B061D1CD70900E0D902 /* FirebaseAuthServices.swift */,
+			);
+			name = Firebase;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -408,6 +444,7 @@
 				0F960AFD1D1A49CB00E0D902 /* GoogleService-Info.plist in Resources */,
 				0F4159D01D1A492700EE4E58 /* Assets.xcassets in Resources */,
 				0F4159CB1D1A492700EE4E58 /* Main.storyboard in Resources */,
+				D8EAFB0E1D1CF675000638CF /* SignUp.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,6 +452,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8EAFB191D1CFC0C000638CF /* SignUp.storyboard in Resources */,
 				0F960AFE1D1A49CB00E0D902 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -423,6 +461,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8EAFB1A1D1CFC0C000638CF /* SignUp.storyboard in Resources */,
 				0F960AFF1D1A49CB00E0D902 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -557,12 +596,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F960B071D1CD70900E0D902 /* AuthServices.swift in Sources */,
+				0F960B071D1CD70900E0D902 /* FirebaseAuthServices.swift in Sources */,
+				D8EAFB101D1CF8D1000638CF /* SignUpViewController.swift in Sources */,
 				0F4159C81D1A492700EE4E58 /* MainViewController.swift in Sources */,
+				D8EAFB141D1CFBFB000638CF /* AuthServicesDelegate.swift in Sources */,
 				0F4159CE1D1A492700EE4E58 /* PolyChat.xcdatamodeld in Sources */,
 				0F4159C61D1A492700EE4E58 /* AppDelegate.swift in Sources */,
 				0F960B031D1CD69500E0D902 /* Constants.swift in Sources */,
-				0F960B211D1CF4DA00E0D902 /* SWRevealViewController.m in Sources */,
+				D88294EB1D1D0B7E00C18413 /* SWRevealViewController.m in Sources */,
+				D8EAFB1C1D1D01FC000638CF /* AuthServiceFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -570,10 +612,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F960B081D1CD70900E0D902 /* AuthServices.swift in Sources */,
+				D8EAFB171D1CFC02000638CF /* SignUpViewController.swift in Sources */,
+				D8EAFB151D1CFBFB000638CF /* AuthServicesDelegate.swift in Sources */,
+				0F960B081D1CD70900E0D902 /* FirebaseAuthServices.swift in Sources */,
+				D88294EC1D1D0B7E00C18413 /* SWRevealViewController.m in Sources */,
+				D8EAFB1D1D1D01FC000638CF /* AuthServiceFactory.swift in Sources */,
 				0F4159DE1D1A492700EE4E58 /* PolyChatTests.swift in Sources */,
 				0F960B041D1CD69500E0D902 /* Constants.swift in Sources */,
-				0F960B221D1CF4DA00E0D902 /* SWRevealViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -581,10 +626,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F960B091D1CD70900E0D902 /* AuthServices.swift in Sources */,
+				D8EAFB181D1CFC03000638CF /* SignUpViewController.swift in Sources */,
+				D8EAFB161D1CFBFB000638CF /* AuthServicesDelegate.swift in Sources */,
+				0F960B091D1CD70900E0D902 /* FirebaseAuthServices.swift in Sources */,
+				D88294ED1D1D0B7E00C18413 /* SWRevealViewController.m in Sources */,
+				D8EAFB1E1D1D01FC000638CF /* AuthServiceFactory.swift in Sources */,
 				0F4159E91D1A492700EE4E58 /* PolyChatUITests.swift in Sources */,
 				0F960B051D1CD69500E0D902 /* Constants.swift in Sources */,
-				0F960B231D1CF4DA00E0D902 /* SWRevealViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

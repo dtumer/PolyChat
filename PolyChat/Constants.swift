@@ -7,8 +7,14 @@
 //
 
 /*
- * This class contains constants that are to be used in other areas of the application.
+ * This struct contains constants that are to be used in other areas of the application.
 */
-class Constants {
+struct Constants {
+    //service keys for which server/database services to use in-app
+    static let FIREBASE_SERVICE_KEY: String = "firebase"
+    
+    
+    //colors
+    
     
 }
