@@ -17,16 +17,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ach-4L-P5j">
-                                <rect key="frame" x="248.5" y="285" width="103" height="30"/>
-                                <state key="normal" title="Sign Up Nigga!"/>
+                                <rect key="frame" x="272.5" y="285" width="55" height="30"/>
+                                <state key="normal" title="Sign Up"/>
                                 <connections>
                                     <segue destination="sqg-Xb-StF" kind="show" id="oOO-cW-gdM"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h4J-zg-kqi">
+                                <rect key="frame" x="261" y="323" width="78" height="30"/>
+                                <state key="normal" title="MyCourses"/>
+                                <connections>
+                                    <segue destination="xDy-7f-At6" kind="show" id="y6t-yf-p3W"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="h4J-zg-kqi" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="6wS-p7-4AV"/>
                             <constraint firstItem="ach-4L-P5j" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="byu-nh-JGQ"/>
+                            <constraint firstItem="h4J-zg-kqi" firstAttribute="top" secondItem="ach-4L-P5j" secondAttribute="bottom" constant="8" id="y06-YT-xrc"/>
                             <constraint firstItem="ach-4L-P5j" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="zNh-eu-BJP"/>
                         </constraints>
                     </view>
@@ -42,6 +51,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zTo-ke-AzU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="814" y="399"/>
+        </scene>
+        <!--MyCourses-->
+        <scene sceneID="pNG-XV-jdc">
+            <objects>
+                <viewControllerPlaceholder storyboardName="MyCourses" id="xDy-7f-At6" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hXC-38-seL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="783.5" y="519"/>
         </scene>
     </scenes>
 </document>

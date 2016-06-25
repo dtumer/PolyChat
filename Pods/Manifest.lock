@@ -23,9 +23,6 @@ PODS:
   - Firebase/DynamicLinks (3.2.1):
     - Firebase/Analytics (= 3.2.1)
     - FirebaseDynamicLinks (= 1.0.3)
-  - Firebase/Invites (3.2.1):
-    - Firebase/Analytics (= 3.2.1)
-    - FirebaseInvites (= 1.0.4)
   - Firebase/Messaging (3.2.1):
     - Firebase/Analytics (= 3.2.1)
     - FirebaseMessaging (= 1.1.0)
@@ -64,9 +61,6 @@ PODS:
     - GoogleSignIn (~> 4.0)
     - GoogleUtilities (~> 1.3)
   - FirebaseInstanceID (1.0.6)
-  - FirebaseInvites (1.0.4):
-    - FirebaseAnalytics (~> 3.2)
-    - FirebaseDynamicLinks (~> 1.0)
   - FirebaseMessaging (1.1.0):
     - FirebaseAnalytics (~> 3.2)
     - GoogleInterchangeUtilities (~> 1.2)
@@ -122,7 +116,6 @@ DEPENDENCIES:
   - Firebase/Crash
   - Firebase/Database
   - Firebase/DynamicLinks
-  - Firebase/Invites
   - Firebase/Messaging
   - Firebase/RemoteConfig
   - Firebase/Storage
@@ -137,7 +130,6 @@ SPEC CHECKSUMS:
   FirebaseDatabase: 34301d11621a83546f39f670d256477ba6f7fcea
   FirebaseDynamicLinks: e7ce861fd1cd501483f4b32861380cc494b79013
   FirebaseInstanceID: d014d574053a2fe84478f12f7bae96979e7051bb
-  FirebaseInvites: 17f86fd33f45f789abb40ebf289865c1a5e2aa8c
   FirebaseMessaging: 8a92e9ea70673605aa7d1803d2d5aa3eb946009c
   FirebaseRemoteConfig: 3260ced812d2adcbb9bcefe0dc78fdce7b8090e6
   FirebaseStorage: e9c32a8d246c07eeefd78180c22736aa1b81e81b
@@ -155,6 +147,6 @@ SPEC CHECKSUMS:
   JSQMessagesViewController: bf14e4d644e1c59476f47f2f8410c34c6c0294f3
   JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
 
-PODFILE CHECKSUM: 8e4c5a407e95fb20a555f279ad07b80246a9fdff
+PODFILE CHECKSUM: 874c63d12a516f7a8b0ac17dd5eafeca6b430a69
 
 COCOAPODS: 1.0.1

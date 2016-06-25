@@ -40,7 +40,13 @@ class SignUpViewController: UIViewController {
     @IBAction func signUp(sender: UIButton) {
         let authService = AuthServiceFactory.getAuthService(Constants.CURRENT_SERVICE_KEY)
         authService?.signUpUser(emailTextField.text!, passHash: passwordTextField.text!)
+        
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    //dismisses sign up view controller
+    @IBAction func cancelSignUp(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
 
 }

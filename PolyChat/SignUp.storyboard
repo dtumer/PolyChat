@@ -8,7 +8,7 @@
         <!--Sign Up View Controller-->
         <scene sceneID="gNf-72-spF">
             <objects>
-                <viewController id="1YP-XI-sKl" customClass="SignUpViewController" customModule="PolyChat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignUp" id="1YP-XI-sKl" customClass="SignUpViewController" customModule="PolyChat" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="YHX-Uw-Fxs"/>
                         <viewControllerLayoutGuide type="bottom" id="2Mw-6A-8Rv"/>
@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="GFX-6J-5tN">
-                                <rect key="frame" x="20" y="70" width="560" height="190"/>
+                                <rect key="frame" x="20" y="70" width="560" height="270"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2QI-Fu-yU5">
                                         <rect key="frame" x="8" y="0.0" width="544" height="30"/>
@@ -31,10 +31,17 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bRn-6N-LZp">
-                                        <rect key="frame" x="252.5" y="160" width="55" height="30"/>
+                                        <rect key="frame" x="253" y="160" width="55" height="30"/>
                                         <state key="normal" title="Sign Up"/>
                                         <connections>
                                             <action selector="signUp:" destination="1YP-XI-sKl" eventType="touchUpInside" id="vy3-uS-INs"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f5i-cM-n0x">
+                                        <rect key="frame" x="256" y="240" width="48" height="30"/>
+                                        <state key="normal" title="Cancel"/>
+                                        <connections>
+                                            <action selector="cancelSignUp:" destination="1YP-XI-sKl" eventType="touchUpInside" id="XbO-VL-DoH"/>
                                         </connections>
                                     </button>
                                 </subviews>
