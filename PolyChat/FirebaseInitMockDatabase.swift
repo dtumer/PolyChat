@@ -42,10 +42,10 @@ class FirebaseInitMockDatabase {
     
     //initializes mock database with initial user values and classes
     func initMockDB() {
-        let dataService = DataServiceFactory.getDataService(Constants.CURRENT_SERVICE_KEY)
+//        let dataService = DataServiceFactory.getDataService(Constants.CURRENT_SERVICE_KEY)
         
         //for each student create a student object
-        for student in students {
+        for _ in students {
             //insert students into the users menu
             //dataService.insertData(Constants.usersDBKey, id: nil, data: createStudent(student))
         }

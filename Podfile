@@ -1,6 +1,14 @@
 # Uncomment this line to define a global platform for your project
 # platform :ios, '9.0'
 
+use_frameworks!
+
+#pod definitions
+def pods
+    firebase
+    
+    pod 'JSQMessagesViewController'
+end
 #loads all firebase pods
 def firebase
     pod 'Firebase'
@@ -18,24 +26,13 @@ def firebase
 end
 
 target 'PolyChat' do
-  # Comment this line if you're not using Swift and don't want to use dynamic frameworks
-  use_frameworks!
+    pods
+end
 
-  # Pods for PolyChat
-  
-  #load all firebase pods
-  firebase
-  
-  pod 'JSQMessagesViewController'
+target 'PolyChatTests' do
+    pods
+end
 
-  target 'PolyChatTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
-  target 'PolyChatUITests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
+target 'PolyChatUITests' do
+   pods
 end

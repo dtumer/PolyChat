@@ -16,5 +16,9 @@ protocol AuthServiceProtocol {
     // function for logging in an anonymous user to the PolyChat service
     func loginAnonymousUser()
     
+    //checks whether or not a user is logged in
     func hasOpenSession() -> Bool
+    
+    //grabs user data of the user that is logged in
+    func getUserData() -> NSDictionary?
 }

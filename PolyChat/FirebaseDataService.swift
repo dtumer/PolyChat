@@ -56,6 +56,6 @@ class FirebaseDataService: DataServiceProtocol {
     
     //gets autoid keyvalue
     func getNextAutoIdKeyValue(tableName: String) -> String {
-        return self.dataRef.child(tableName).childByAutoId().key
+        return ""
     }
 }

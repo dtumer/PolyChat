@@ -13,7 +13,7 @@ import Firebase
  * This class will contain methods for authenticating users through Firebase
 */
 class FirebaseAuthService: AuthServiceProtocol {
-    let dataService = DataServiceFactory.getDataService(Constants.CURRENT_SERVICE_KEY)
+    let userService = UserServiceFactory.getUserService(Constants.CURRENT_SERVICE_KEY)
     
     func signUpUser(email: String, passHash: String) {
         FIRAuth.auth()?.createUserWithEmail(email, password: passHash) { (user, error) in
@@ -21,7 +21,6 @@ class FirebaseAuthService: AuthServiceProtocol {
                 print("ERROR: \(error.localizedDescription))")
                 return
             }
-            
             
             //create user object to add to users table
             let userObj = [
@@ -36,7 +35,11 @@ class FirebaseAuthService: AuthServiceProtocol {
                 ],
             ]
             
-            self.dataService.insertData(Constants.usersDBKey, id: user!.uid, data: userObj)
+            self.userService.putUser(user!.uid, user: User(dictionary: userObj), callback: { error in
+                if let error = error {
+                    print("ERROR: \(error.localizedDescription)")
+                }
+            })
         }
     }
     
@@ -57,19 +60,24 @@ class FirebaseAuthService: AuthServiceProtocol {
         })
     }
     
+    //logs a user in anonymously
     func loginAnonymousUser() {
-        
+        //none
     }
     
+    //checks if a user is logged in
     func hasOpenSession() -> Bool {
-        //check if use is logged in
-        if let _ = FIRAuth.auth()?.currentUser {
-            print("User not logged in!")
-            return false
+        return FIRAuth.auth()?.currentUser == nil
+    }
+    
+    func getUserData() -> NSDictionary? {
+        var retUser: [String:AnyObject]? = [:]
+        
+        if let user = FIRAuth.auth()?.currentUser {
+            retUser!["uid"] = user.uid
+            retUser!["email"] = user.email
         }
-        else {
-            print("User logged in!")
-            return true
-        }
+        
+        return retUser
     }
 }

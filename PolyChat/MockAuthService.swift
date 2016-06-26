@@ -22,4 +22,8 @@ class MockAuthService: AuthServiceProtocol {
     func hasOpenSession() -> Bool {
         return false
     }
+    
+    func getUserData() -> NSDictionary? {
+        return nil
+    }
 }

@@ -35,6 +35,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="courseNameLabel" destination="hXU-ko-p0L" id="z8k-vB-fFn"/>
+                                    <segue destination="DYI-mf-xSh" kind="show" identifier="CourseDetailSegue" id="lmk-CA-Xzt"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -66,6 +67,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aTn-mD-J9k" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="512" y="306"/>
+        </scene>
+        <!--Course-->
+        <scene sceneID="50W-xe-FNo">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Course" id="DYI-mf-xSh" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NWC-jV-ybG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1789.5" y="145"/>
         </scene>
     </scenes>
 </document>
