@@ -20,7 +20,6 @@ class MyCoursesTableViewController: UITableViewController {
     //instance variables for UI
     var user: NSDictionary!
     var courses = [Course]()
-    var selectedCourse: Course!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,10 +52,13 @@ class MyCoursesTableViewController: UITableViewController {
     
     //loads the courses from the database
     func loadCourses(uid: String) {
-        self.myCoursesService.getEnrolledCourses(uid, callback: { courses in
+        self.myCoursesService.getEnrolledCourses(uid, callback: { (courses, error) in
             if let courses = courses {
                 self.courses = courses
                 self.tableView.reloadData()
+            }
+            else {
+                print("ERROR: \(error?.localizedDescription)")
             }
         })
     }
@@ -84,17 +86,12 @@ class MyCoursesTableViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let cell = tableView.dequeueReusableCellWithIdentifier(Constants.coursesReuseId, forIndexPath: indexPath) as! MyCoursesTableViewCell
-        
-        self.selectedCourse = cell.course
-    }
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "CourseDetailSegue" {
-            let toVC = segue.destinationViewController as! CourseTableViewController
-            
-            toVC.course = self.selectedCourse
+            if let cell = sender as? MyCoursesTableViewCell {
+                let toVC = segue.destinationViewController as! CourseTableViewController
+                toVC.course = cell.course
+            }
         }
     }
 }

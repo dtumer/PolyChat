@@ -7,7 +7,7 @@
 //
 
 class MockUserService: UserServiceProtocol {
-    func getUser(uid: String, callback: (User?) -> ()) {
+    func getUser(uid: String, callback: (User?, NSError?) -> ()) {
         
     }
     

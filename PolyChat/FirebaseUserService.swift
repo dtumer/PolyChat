@@ -11,34 +11,43 @@ import Firebase
 class FirebaseUserService: UserServiceProtocol {
     let userRef = FIRDatabase.database().reference()
     
-    func getUser(uid: String, callback: (User?) -> ()) {
+    // Gets a user from the database given their UID. Passes an NSError with code 0 if user is not found
+    func getUser(uid: String, callback: (User?, NSError?) -> ()) {
         userRef.child(Constants.usersDBKey).child(uid).observeSingleEventOfType(.Value, withBlock: { snapshot in
             if let value = snapshot.value {
-                callback(User(dictionary: value as! NSDictionary))
-            }
-            
-            callback(nil)
-        })
-    }
-    
-    func putUser(uid: String?, user: User, callback: (NSError?) -> ()) {
-        let key: String = String(getNextAutoIdKeyValue(Constants.usersDBKey))
-        let childVals = [
-            "\(Constants.usersDBKey)/\(key)": user.toDictionary(),
-        ]
-        
-        self.userRef.updateChildValues(childVals, withCompletionBlock: { (error, ref) in
-            if let error = error {
-                print("ERROR: \(error.localizedDescription)")
+                if value is NSNull {
+                    return
+                }
                 
+                callback(User(dictionary: value as! NSDictionary), nil)
                 return
             }
             
-            print("Successfully inserted data!")
+            callback(nil, NSError(domain: "FirebaseUserServices", code: 0, description: "No user with that UID found"))
+            return
         })
     }
     
-    private func getNextAutoIdKeyValue(tableName: String) -> String {
-        return self.userRef.child(tableName).childByAutoId().key
+    // Inserts a user into the database with the given UID
+    func putUser(uid: String?, user: User, callback: (NSError?) -> ()) {
+        if let userId = uid {
+            let childVals = [
+                "\(Constants.usersDBKey)/\(userId)": user.toDictionary(),
+            ]
+            
+            //insert user into the database
+            self.userRef.updateChildValues(childVals, withCompletionBlock: { (error, ref) in
+                if let error = error {
+                    callback(error)
+                    return
+                }
+                
+                callback(nil)
+                return
+            })
+        }
+        
+        callback(NSError(domain: "FirebaseUserService", code: 1, description: "No UID provided"))
+        return
     }
 }

@@ -81,6 +81,9 @@
 		0F65FC6B1D1F967600470498 /* CourseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F65FC6A1D1F967600470498 /* CourseTableViewController.swift */; };
 		0F65FC6C1D1F967600470498 /* CourseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F65FC6A1D1F967600470498 /* CourseTableViewController.swift */; };
 		0F65FC6D1D1F967600470498 /* CourseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F65FC6A1D1F967600470498 /* CourseTableViewController.swift */; };
+		0F65FC6F1D22031400470498 /* NSErrorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F65FC6E1D22031400470498 /* NSErrorExtension.swift */; };
+		0F65FC701D22031400470498 /* NSErrorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F65FC6E1D22031400470498 /* NSErrorExtension.swift */; };
+		0F65FC711D22031400470498 /* NSErrorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F65FC6E1D22031400470498 /* NSErrorExtension.swift */; };
 		0F960B031D1CD69500E0D902 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F960B021D1CD69500E0D902 /* Constants.swift */; };
 		0F960B041D1CD69500E0D902 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F960B021D1CD69500E0D902 /* Constants.swift */; };
 		0F960B051D1CD69500E0D902 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F960B021D1CD69500E0D902 /* Constants.swift */; };
@@ -162,6 +165,7 @@
 		0F65FC5F1D1E427800470498 /* UserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTests.swift; sourceTree = "<group>"; };
 		0F65FC661D1F965D00470498 /* Course.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Course.storyboard; sourceTree = "<group>"; };
 		0F65FC6A1D1F967600470498 /* CourseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseTableViewController.swift; sourceTree = "<group>"; };
+		0F65FC6E1D22031400470498 /* NSErrorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSErrorExtension.swift; sourceTree = "<group>"; };
 		0F960B021D1CD69500E0D902 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		0F960B061D1CD70900E0D902 /* FirebaseAuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseAuthService.swift; sourceTree = "<group>"; };
 		0F960B1C1D1CF4DA00E0D902 /* PolyChat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PolyChat-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -308,6 +312,7 @@
 			children = (
 				0F4AFF7D1D1E0D3D0030C3BD /* Course.swift */,
 				0F65FC471D1E270E00470498 /* User.swift */,
+				0F65FC6E1D22031400470498 /* NSErrorExtension.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -762,6 +767,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F65FC6F1D22031400470498 /* NSErrorExtension.swift in Sources */,
 				0F4AFF821D1E10090030C3BD /* MyCoursesTableViewCell.swift in Sources */,
 				0F4AFF7E1D1E0D3D0030C3BD /* Course.swift in Sources */,
 				0F4AFF621D1DDA5C0030C3BD /* MockAuthService.swift in Sources */,
@@ -822,6 +828,7 @@
 				0F65FC551D1E286600470498 /* FirebaseMyCoursesService.swift in Sources */,
 				0F65FC421D1E26AE00470498 /* UserServiceProtocol.swift in Sources */,
 				0F4AFF561D1DD8EA0030C3BD /* UserServiceFactory.swift in Sources */,
+				0F65FC701D22031400470498 /* NSErrorExtension.swift in Sources */,
 				0F4AFF831D1E10090030C3BD /* MyCoursesTableViewCell.swift in Sources */,
 				0F960B041D1CD69500E0D902 /* Constants.swift in Sources */,
 			);
@@ -845,6 +852,7 @@
 				0F65FC5A1D1E289600470498 /* MockMyCoursesService.swift in Sources */,
 				0F4AFF801D1E0D3D0030C3BD /* Course.swift in Sources */,
 				0F4AFF701D1DE3670030C3BD /* MyCoursesTableViewController.swift in Sources */,
+				0F65FC711D22031400470498 /* NSErrorExtension.swift in Sources */,
 				0F65FC521D1E27FE00470498 /* MockUserService.swift in Sources */,
 				D8EAFB1E1D1D01FC000638CF /* AuthServiceFactory.swift in Sources */,
 				0F4AFF5F1D1DDA040030C3BD /* FirebaseDataService.swift in Sources */,

@@ -7,5 +7,5 @@
 //
 
 protocol MyCoursesServiceProtocol {
-    func getEnrolledCourses(uid: String, callback: ([Course]?) -> ())
+    func getEnrolledCourses(uid: String, callback: ([Course]?, NSError?) -> ())
 }

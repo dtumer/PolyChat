@@ -26,7 +26,7 @@ class FirebaseAuthService: AuthServiceProtocol {
             let userObj = [
                 "email": email,
                 
-                //get rid of this eventually
+                //TODO: get rid of this eventually
                 "courses": [
                     "CPE-141-01",
                     "CPE-141-02",
@@ -45,18 +45,28 @@ class FirebaseAuthService: AuthServiceProtocol {
     
     //function for logging a user in given an email address and password hash
     func loginUser(email: String, passHash: String, callback: (NSError?) -> ()) {
-        var retErr: NSError? = nil
-        
         FIRAuth.auth()?.signInWithEmail(email, password: passHash, completion: { (user, error) in
             if let error = error {
                 print("ERROR: " + error.localizedDescription)
-                retErr = NSError(domain: error.localizedDescription, code: 0, userInfo: nil)
-            }
-            else {
-                print("Signed in user " + user!.uid + " successfully!")
+                //let errrr = NSError(domain: error.localizedDescription, code: 0, userInfo: nil)
+                
+                callback(error)
+                return
             }
             
-            callback(retErr)
+            print("Signed in user " + user!.uid + " successfully!")
+            
+            //check if user is in USERS DB. If not add user
+            self.userService.getUser(user!.uid, callback: { (user, error) in
+                if let user = user {
+                    callback(nil)
+                    return
+                }
+                
+                //TODO THERE COULD BE AN ISSUE HERE WHERE A USER COULD BE SIGNED UP BUT NOT ADDED TO THE DB
+                callback(error)
+                return
+            })
         })
     }
     

@@ -7,6 +7,6 @@
 //
 
 protocol UserServiceProtocol {
-    func getUser(uid: String, callback: (User?) -> ())
+    func getUser(uid: String, callback: (User?, NSError?) -> ())
     func putUser(uid: String?, user: User, callback: (NSError?) -> ())
 }

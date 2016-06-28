@@ -9,13 +9,14 @@
 class FirebaseMyCoursesService: MyCoursesServiceProtocol {
     let userService = UserServiceFactory.getUserService(Constants.CURRENT_SERVICE_KEY)
     
-    func getEnrolledCourses(uid: String, callback: ([Course]?) -> ()) {
-        userService.getUser(uid, callback: { user in
+    //gets all courses that a user is enrolled in
+    func getEnrolledCourses(uid: String, callback: ([Course]?, NSError?) -> ()) {
+        userService.getUser(uid, callback: { (user, error) in
             if let user = user {
-                callback(user.courses)
+                callback(user.courses, nil)
             }
             
-            callback(nil)
+            callback(nil, error)
         })
     }
 }

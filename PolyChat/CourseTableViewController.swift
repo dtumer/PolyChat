@@ -9,18 +9,19 @@
 import UIKit
 
 class CourseTableViewController: UITableViewController {
-    var course: Course!
+    var course: Course! {
+        didSet {
+            self.title = course.name
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //self.title = course.name
     }
 
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
