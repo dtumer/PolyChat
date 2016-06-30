@@ -27,4 +27,5 @@ struct Constants {
     
     //TableViewController Reuse Identifiers
     static let coursesReuseId = "CourseCell"
+    static let menuReuseId = "MenuCell"
 }

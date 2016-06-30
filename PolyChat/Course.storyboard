@@ -1,37 +1,67 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="es6-a8-47L">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="0EZ-He-eOU">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Course Table View Controller-->
-        <scene sceneID="7f7-fv-4Ob">
+        <!--Course View Controller-->
+        <scene sceneID="eiH-zk-1VZ">
             <objects>
-                <tableViewController id="es6-a8-47L" customClass="CourseTableViewController" customModule="PolyChat" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="gcf-UI-gZp">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                <viewController id="0EZ-He-eOU" customClass="CourseViewController" customModule="PolyChat" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bRQ-KB-yfq"/>
+                        <viewControllerLayoutGuide type="bottom" id="1W3-nG-5IH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="U8f-7N-3ft">
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="25J-Wl-R3b">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
+                                <subviews>
+                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J2u-hj-0kS">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <segue destination="Efm-HC-Hnh" kind="embed" id="PUf-9N-q55"/>
+                                        </connections>
+                                    </containerView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="07o-QV-tsD"/>
+                                    <constraint firstItem="J2u-hj-0kS" firstAttribute="centerY" secondItem="25J-Wl-R3b" secondAttribute="centerY" id="7g8-2d-fVc"/>
+                                    <constraint firstItem="J2u-hj-0kS" firstAttribute="top" secondItem="25J-Wl-R3b" secondAttribute="top" id="8Rh-uj-3mk"/>
+                                    <constraint firstItem="J2u-hj-0kS" firstAttribute="leading" secondItem="25J-Wl-R3b" secondAttribute="leading" id="GLJ-4m-LDM"/>
+                                    <constraint firstItem="J2u-hj-0kS" firstAttribute="centerX" secondItem="25J-Wl-R3b" secondAttribute="centerX" id="RkX-J4-RXe"/>
+                                    <constraint firstAttribute="bottom" secondItem="J2u-hj-0kS" secondAttribute="bottom" id="Y2F-0K-NeW"/>
+                                    <constraint firstAttribute="trailing" secondItem="J2u-hj-0kS" secondAttribute="trailing" id="zUt-8D-MIf"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="TPj-H7-Ru7">
-                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TPj-H7-Ru7" id="d8H-yT-xrK">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="es6-a8-47L" id="XVm-QP-oBF"/>
-                            <outlet property="delegate" destination="es6-a8-47L" id="wtR-NW-KDp"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="qQa-Lb-gTn"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="riy-rA-H1V" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <constraints>
+                            <constraint firstItem="25J-Wl-R3b" firstAttribute="centerX" secondItem="U8f-7N-3ft" secondAttribute="centerX" id="BXr-ek-YuG"/>
+                            <constraint firstItem="25J-Wl-R3b" firstAttribute="leading" secondItem="U8f-7N-3ft" secondAttribute="leadingMargin" constant="-20" id="JKe-kf-2cF"/>
+                            <constraint firstItem="25J-Wl-R3b" firstAttribute="top" secondItem="bRQ-KB-yfq" secondAttribute="bottom" id="svW-RS-P5e"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="25J-Wl-R3b" secondAttribute="trailing" constant="-20" id="uYn-Oo-PJb"/>
+                        </constraints>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BpT-bK-28A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1422" y="140"/>
+            <point key="canvasLocation" x="3436" y="10"/>
+        </scene>
+        <!--Menu-->
+        <scene sceneID="GIo-eX-SOT">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Menu" id="Efm-HC-Hnh" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ov5-on-SbQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3870" y="10"/>
         </scene>
     </scenes>
 </document>

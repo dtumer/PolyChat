@@ -5,6 +5,7 @@
 //  Created by Bonilla, Stefan on 6/23/16.
 //  Copyright © 2016 DenFan. All rights reserved.
 //
+import Foundation
 
 protocol AuthServiceProtocol {
     // function for signing up a user for the PolyChat service

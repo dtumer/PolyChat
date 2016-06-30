@@ -6,6 +6,8 @@
 //  Copyright © 2016 DenFan. All rights reserved.
 //
 
+import Foundation
+
 // NSError extension that creates an NSError given a description about the error.
 extension NSError {
     convenience init(domain: String, code: Int, description: String) {

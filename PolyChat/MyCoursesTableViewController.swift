@@ -12,6 +12,7 @@ import UIKit
 import Firebase
 
 class MyCoursesTableViewController: UITableViewController {
+    @IBOutlet weak var menuButton: UIBarButtonItem!
     
     //services variables
     var authService: AuthServiceProtocol!
@@ -25,6 +26,14 @@ class MyCoursesTableViewController: UITableViewController {
         super.viewDidLoad()
         
         //initMockData()
+        
+        //setup the menu button
+//        if self.revealViewController() != nil {
+//            self.menuButton.target = self.revealViewController()
+//            self.menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
+//            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+//            self.revealViewController().delegate = self
+//        }
         
         //retrieve services we will need
         self.authService = AuthServiceFactory.getAuthService(Constants.CURRENT_SERVICE_KEY)
@@ -89,7 +98,7 @@ class MyCoursesTableViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "CourseDetailSegue" {
             if let cell = sender as? MyCoursesTableViewCell {
-                let toVC = segue.destinationViewController as! CourseTableViewController
+                let toVC = segue.destinationViewController as! CourseViewController
                 toVC.course = cell.course
             }
         }
