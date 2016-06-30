@@ -33,13 +33,19 @@ class MyCoursesTableViewController: UITableViewController {
         //check if a user is logged in
         if !authService.hasOpenSession() {
             //change this to go to login screen
+            /*
             self.authService.loginUser("dtumer@calpoly.edu", passHash: "17381738", callback: { error in
                 if let _ = error {
                     let sb = UIStoryboard(name: "SignUp", bundle: nil)
                     let vc = sb.instantiateViewControllerWithIdentifier("SignUp") as! SignUpViewController
                     self.presentViewController(vc, animated: true, completion: nil)
                 }
-            })
+            })*/
+            
+            //Go to login screen
+            let sb = UIStoryboard(name: "Login", bundle: nil)
+            let vc = sb.instantiateViewControllerWithIdentifier("loginStoryboard") as! LoginViewController
+            self.presentViewController(vc, animated: true, completion: nil)
         }
         
         //get logged in user information
