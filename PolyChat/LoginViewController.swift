@@ -34,11 +34,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func loginPressed(sender: UIButton) {
         authService?.loginUser(emailTextField.text!, passHash: passwordTextField.text!, callback: { (error) in
-            if let error = error {
-                print("THERE WAS AN ERROR LOGING IN THE USER")
+            if let error = error { //error when logging in user
+                print("THERE WAS AN ERROR LOGGING IN THE USER")
                 return
             }
             
+            // user logged in successfully, segue to MyCourses
             let sb = UIStoryboard(name: "MyCourses", bundle: nil)
             let vc = sb.instantiateViewControllerWithIdentifier("MyCoursesStoryboard") as! MyCoursesTableViewController
             self.presentViewController(vc, animated: true, completion: nil)

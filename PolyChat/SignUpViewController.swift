@@ -39,9 +39,17 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     // MARK: Actions
     @IBAction func signUp(sender: UIButton) {
         let authService = AuthServiceFactory.getAuthService(Constants.CURRENT_SERVICE_KEY)
-        authService?.signUpUser(emailTextField.text!, passHash: passwordTextField.text!)
         
-        self.dismissViewControllerAnimated(true, completion: nil)
+        // Validate Email
+        if ValidationService.isValidEmail(emailTextField.text!) {
+            // Email is valid
+            authService?.signUpUser(emailTextField.text!, passHash: passwordTextField.text!)
+            self.dismissViewControllerAnimated(true, completion: nil)
+            return
+        }
+        
+        // invalid email
+        print("INVALID EMAIL")
     }
     
     //dismisses sign up view controller
