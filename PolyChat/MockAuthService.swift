@@ -27,4 +27,8 @@ class MockAuthService: AuthServiceProtocol {
     func getUserData() -> NSDictionary? {
         return nil
     }
+    
+    func logout() -> Bool {
+        return true
+    }
 }

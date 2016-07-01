@@ -22,4 +22,7 @@ protocol AuthServiceProtocol {
     
     //grabs user data of the user that is logged in
     func getUserData() -> NSDictionary?
+    
+    //logs out a user
+    func logout() -> Bool
 }

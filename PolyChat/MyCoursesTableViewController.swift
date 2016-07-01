@@ -8,9 +8,6 @@
 
 import UIKit
 
-//for testing
-import Firebase
-
 class MyCoursesTableViewController: UITableViewController {
     @IBOutlet weak var menuButton: UIBarButtonItem!
     
@@ -22,18 +19,11 @@ class MyCoursesTableViewController: UITableViewController {
     var user: NSDictionary!
     var courses = [Course]()
     
+    //on view did load
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //initMockData()
-        
-        //setup the menu button
-//        if self.revealViewController() != nil {
-//            self.menuButton.target = self.revealViewController()
-//            self.menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
-//            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-//            self.revealViewController().delegate = self
-//        }
         
         //retrieve services we will need
         self.authService = AuthServiceFactory.getAuthService(Constants.CURRENT_SERVICE_KEY)
@@ -41,22 +31,43 @@ class MyCoursesTableViewController: UITableViewController {
         
         //check if a user is logged in
         if !authService.hasOpenSession() {
-            //change this to go to login screen
-            self.authService.loginUser("dtumer@calpoly.edu", passHash: "17381738", callback: { error in
-                if let _ = error {
-                    let sb = UIStoryboard(name: "SignUp", bundle: nil)
-                    let vc = sb.instantiateViewControllerWithIdentifier("SignUp") as! SignUpViewController
-                    self.presentViewController(vc, animated: true, completion: nil)
-                }
-            })
+            self.performSegueWithIdentifier(Constants.loginSegueId, sender: self)
+        }
+        else {
+            //get logged in user information
+            if let user = self.authService.getUserData() {
+                self.user = user
+                loadCourses(user[Constants.uidKey] as! String)
+            }
+        }
+    }
+    
+    //on view did appear
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if !authService.hasOpenSession() {
+            self.performSegueWithIdentifier(Constants.loginSegueId, sender: self)
+        }
+        else {
+            if let user = self.authService.getUserData() {
+                self.user = user
+                loadCourses(user[Constants.uidKey] as! String)
+            }
+        }
+    }
+    
+    private func performAuthentication(completion: () -> ()) {
+        if !authService.hasOpenSession() {
+            self.performSegueWithIdentifier(Constants.loginSegueId, sender: self)
+            return
         }
         
-        //get logged in user information
         if let user = self.authService.getUserData() {
             self.user = user
-            loadCourses(user["uid"] as! String)
+            loadCourses(user[Constants.uidKey] as! String)
+            completion()
         }
-        
     }
     
     //loads the courses from the database
@@ -78,7 +89,17 @@ class MyCoursesTableViewController: UITableViewController {
     
         mockInit.initMockDB()
     }
+    
+    @IBAction func signOutPressed(sender: AnyObject) {
+        if self.authService.logout() {
+            self.performSegueWithIdentifier("LoginSegue", sender: self)
+        }
+        
+        //print error?
+    }
+}
 
+extension MyCoursesTableViewController {
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -88,7 +109,7 @@ class MyCoursesTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(Constants.coursesReuseId, forIndexPath: indexPath) as! MyCoursesTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(Constants.myCoursesReuseId, forIndexPath: indexPath) as! MyCoursesTableViewCell
         
         cell.course = courses[indexPath.row]
 

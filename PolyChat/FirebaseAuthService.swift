@@ -77,7 +77,18 @@ class FirebaseAuthService: AuthServiceProtocol {
     
     //checks if a user is logged in
     func hasOpenSession() -> Bool {
-        return FIRAuth.auth()?.currentUser == nil
+        return FIRAuth.auth()?.currentUser != nil
+    }
+    
+    func logout() -> Bool {
+        do {
+            try FIRAuth.auth()?.signOut()
+            return true
+        }
+        catch {
+            print("ERROR: User could not be logged out")
+            return false
+        }
     }
     
     func getUserData() -> NSDictionary? {

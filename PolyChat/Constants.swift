@@ -26,6 +26,14 @@ struct Constants {
     static let chatsDBKey = "CHATS" //specifies objects in database that contain CHAT information
     
     //TableViewController Reuse Identifiers
+    static let myCoursesReuseId = "MyCourseCell"
     static let coursesReuseId = "CourseCell"
     static let menuReuseId = "MenuCell"
+    
+    //Segue Identifiers
+    static let loginSegueId = "LoginSegue"
+    
+    /* Model Constants */
+    //User
+    static let uidKey = "uid"
 }
