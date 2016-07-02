@@ -8,7 +8,7 @@
 import Foundation
 
 class FirebaseMyCoursesService: MyCoursesServiceProtocol {
-    let userService = UserServiceFactory.getUserService(Constants.CURRENT_SERVICE_KEY)
+    let userService = UserServiceFactory.getUserService(Constants.FIREBASE_SERVICE_KEY)
     
     //gets all courses that a user is enrolled in
     func getEnrolledCourses(uid: String, callback: ([Course]?, NSError?) -> ()) {
