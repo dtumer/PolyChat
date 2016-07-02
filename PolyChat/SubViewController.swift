@@ -47,7 +47,7 @@ class SubViewController: UIViewController {
         if isSwap {
             fromVC!.willMoveToParentViewController(nil)
             self.addChildViewController(toVC)
-            self.transitionFromViewController(fromVC!, toViewController: toVC, duration: 1.0, options: .TransitionCrossDissolve, animations: nil, completion: { (finished) in
+            self.transitionFromViewController(fromVC!, toViewController: toVC, duration: 0.25, options: .TransitionCrossDissolve, animations: nil, completion: { (finished) in
                 fromVC!.removeFromParentViewController()
                 toVC.didMoveToParentViewController(self)
             })

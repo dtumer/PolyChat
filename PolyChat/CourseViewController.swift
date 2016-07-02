@@ -12,6 +12,7 @@ class CourseViewController: UIViewController, UICollectionViewDelegate, UICollec
     //move this to constants
     static let subViewEmbedSegueId = "SubViewEmbedSegue"
     
+    //sub view manager
     var subViewController: SubViewController!
     
     //the current course
@@ -22,6 +23,8 @@ class CourseViewController: UIViewController, UICollectionViewDelegate, UICollec
     }
     
     /* CollectionView variables */
+    @IBOutlet weak var menuCollectionView: UICollectionView!
+    
     var menuItems = [
         "Chat",
         "Groups",
@@ -35,6 +38,8 @@ class CourseViewController: UIViewController, UICollectionViewDelegate, UICollec
         
         //create navigation button
         setupNavBar()
+        
+        self.menuCollectionView.selectItemAtIndexPath(NSIndexPath(forRow: 0, inSection: 0), animated: true, scrollPosition: .Left)
     }
     
     //sets up the navigation bar
@@ -74,6 +79,8 @@ extension CourseViewController {
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Constants.menuReuseId, forIndexPath: indexPath) as! MenuCollectionViewCell
+        
         self.subViewController.changeSubView(self.menuItems[indexPath.row])
     }
 }
@@ -81,6 +88,12 @@ extension CourseViewController {
 //cell class for the menu bar
 class MenuCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var itemTitleLabel: UILabel!
+    
+    override var selected: Bool {
+        didSet {
+            self.contentView.backgroundColor = selected ? UIColor.blueColor(): nil
+        }
+    }
 }
 
 //extension CourseViewController {

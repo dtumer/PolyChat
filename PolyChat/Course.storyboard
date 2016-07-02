@@ -17,9 +17,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XKn-gP-Whl">
+                                <rect key="frame" x="0.0" y="100" width="600" height="500"/>
+                                <connections>
+                                    <segue destination="NjN-uH-TBI" kind="embed" identifier="SubViewEmbedSegue" id="0Rj-EQ-smq"/>
+                                </connections>
+                            </containerView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4Fw-Se-VOW">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
-                                <color key="backgroundColor" red="0.97647058819999999" green="0.30613845159999997" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="b33-wa-0oR"/>
                                 </constraints>
@@ -46,6 +52,7 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <color key="backgroundColor" red="0.97647058819999999" green="0.30613845159999997" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="Mkb-y6-fbF" firstAttribute="centerX" secondItem="Vmc-D1-acZ" secondAttribute="centerX" id="AGv-Vb-y53"/>
                                             <constraint firstItem="Mkb-y6-fbF" firstAttribute="leading" secondItem="Vmc-D1-acZ" secondAttribute="leadingMargin" constant="14" id="CN3-Rp-7mL"/>
@@ -63,12 +70,6 @@
                                     <outlet property="delegate" destination="0EZ-He-eOU" id="E3D-sd-rfs"/>
                                 </connections>
                             </collectionView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XKn-gP-Whl">
-                                <rect key="frame" x="0.0" y="100" width="600" height="500"/>
-                                <connections>
-                                    <segue destination="NjN-uH-TBI" kind="embed" identifier="SubViewEmbedSegue" id="0Rj-EQ-smq"/>
-                                </connections>
-                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -95,6 +96,9 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Iuh-6D-20j"/>
                     <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="menuCollectionView" destination="4Fw-Se-VOW" id="nsG-xw-O3I"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BpT-bK-28A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
