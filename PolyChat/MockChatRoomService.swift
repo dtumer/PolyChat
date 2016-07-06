@@ -9,5 +9,7 @@
 import Foundation
 
 class MockChatRoomService: ChatRoomServiceProtocol {
-    
+    func getRoomsWithUser(uid: String, completion: (NSArray?, NSError?) -> ()) {
+        
+    }
 }

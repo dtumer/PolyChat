@@ -12,9 +12,9 @@ class ChatRoomServiceFactory {
     class func getChatRoomService(serviceKey: String) -> ChatRoomServiceProtocol {
         switch serviceKey {
         case Constants.FIREBASE_SERVICE_KEY:
-            return FirebaseChatService()
+            return FirebaseChatRoomService()
         default:
-            return MockChatService()
+            return MockChatRoomService()
         }
     }
 }
