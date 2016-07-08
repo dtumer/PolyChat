@@ -106,6 +106,7 @@ PODS:
   - JSQMessagesViewController (7.3.2):
     - JSQSystemSoundPlayer (~> 2.0.1)
   - JSQSystemSoundPlayer (2.0.1)
+  - XCGLogger (3.3)
 
 DEPENDENCIES:
   - Firebase
@@ -120,6 +121,7 @@ DEPENDENCIES:
   - Firebase/RemoteConfig
   - Firebase/Storage
   - JSQMessagesViewController
+  - XCGLogger (~> 3.3)
 
 SPEC CHECKSUMS:
   Firebase: 6c80ac28d59d06bfd9152a7b6ea17625ca93183d
@@ -146,7 +148,8 @@ SPEC CHECKSUMS:
   GoogleUtilities: 56c5ac05b7aa5dc417a1bb85221a9516e04d7032
   JSQMessagesViewController: bf14e4d644e1c59476f47f2f8410c34c6c0294f3
   JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
+  XCGLogger: d6e196e78940ff6daab17d6917107876f973fa31
 
-PODFILE CHECKSUM: de0e8ed654a3b6b44a5603ec50add619ea76d79e
+PODFILE CHECKSUM: 371d7264a678f5156ede2bbf2a1173a88e1e0ec2
 
 COCOAPODS: 1.0.1

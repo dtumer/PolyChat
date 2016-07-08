@@ -8,6 +8,7 @@ def pods
     firebase
     
     pod 'JSQMessagesViewController'
+    pod 'XCGLogger', '~> 3.3'
 end
 #loads all firebase pods
 def firebase
