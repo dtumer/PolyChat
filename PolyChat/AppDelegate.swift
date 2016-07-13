@@ -9,16 +9,26 @@
 import UIKit
 import CoreData
 import Firebase
+import XCGLogger
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    //logger
+    let log = XCGLogger.defaultInstance()
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
-        FIRApp.configure()
+        
+        //configure firebase
+        if Constants.CURRENT_SERVICE_KEY == Constants.FIREBASE_SERVICE_KEY {
+            FIRApp.configure()
+        }
+        
+        //configure logger (will output to console)
+        log.setup(.Debug, showLogIdentifier: true, showFunctionName: true, showThreadName: true, showLogLevel: true, showFileNames: true, showLineNumbers: true, showDate: true, writeToFile: nil, fileLogLevel: .Debug)
+        
         return true
     }
 
