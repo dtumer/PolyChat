@@ -8,12 +8,12 @@
 
 import UIKit
 
-class AppSettingsTableViewController: UITableViewController {
+class AdminSettingsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupNavBar()
+        //setupNavBar()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -30,24 +30,7 @@ class AppSettingsTableViewController: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
-    }
-    
-    private func setupNavBar() {
-        let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(AppSettingsTableViewController.addButtonPressed))
-        self.navigationItem.rightBarButtonItem = addButton
-    }
-    
-    func addButtonPressed() {
-        let storyboard = UIStoryboard(name: "AddCourse", bundle: nil)
-        let vc = storyboard.instantiateViewControllerWithIdentifier("addCourseViewController")
-        let navController = UINavigationController.init(rootViewController:vc)
-        self.presentViewController(navController, animated: true, completion: nil)
+        return 1
     }
 
     /*

@@ -144,18 +144,36 @@
 		D83FC3A81D24C85300DDCF25 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83FC3A71D24C85300DDCF25 /* LoginViewController.swift */; };
 		D83FC3A91D24C85300DDCF25 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83FC3A71D24C85300DDCF25 /* LoginViewController.swift */; };
 		D83FC3AA1D24C85300DDCF25 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83FC3A71D24C85300DDCF25 /* LoginViewController.swift */; };
-		D89D279B1D37444F006542DF /* AppSettings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D89D279A1D37444F006542DF /* AppSettings.storyboard */; };
-		D89D279C1D37444F006542DF /* AppSettings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D89D279A1D37444F006542DF /* AppSettings.storyboard */; };
-		D89D279D1D37444F006542DF /* AppSettings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D89D279A1D37444F006542DF /* AppSettings.storyboard */; };
-		D89D279F1D374824006542DF /* AppSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89D279E1D374824006542DF /* AppSettingsTableViewController.swift */; };
-		D89D27A01D374824006542DF /* AppSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89D279E1D374824006542DF /* AppSettingsTableViewController.swift */; };
-		D89D27A11D374824006542DF /* AppSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89D279E1D374824006542DF /* AppSettingsTableViewController.swift */; };
+		D89D279B1D37444F006542DF /* AdminSettings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D89D279A1D37444F006542DF /* AdminSettings.storyboard */; };
+		D89D279C1D37444F006542DF /* AdminSettings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D89D279A1D37444F006542DF /* AdminSettings.storyboard */; };
+		D89D279D1D37444F006542DF /* AdminSettings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D89D279A1D37444F006542DF /* AdminSettings.storyboard */; };
+		D89D279F1D374824006542DF /* AdminSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89D279E1D374824006542DF /* AdminSettingsTableViewController.swift */; };
+		D89D27A01D374824006542DF /* AdminSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89D279E1D374824006542DF /* AdminSettingsTableViewController.swift */; };
+		D89D27A11D374824006542DF /* AdminSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89D279E1D374824006542DF /* AdminSettingsTableViewController.swift */; };
 		D89D27A41D374986006542DF /* AddCourse.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D89D27A31D374986006542DF /* AddCourse.storyboard */; };
 		D89D27A51D374986006542DF /* AddCourse.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D89D27A31D374986006542DF /* AddCourse.storyboard */; };
 		D89D27A61D374986006542DF /* AddCourse.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D89D27A31D374986006542DF /* AddCourse.storyboard */; };
 		D89D27A81D3749C2006542DF /* AddCourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89D27A71D3749C2006542DF /* AddCourseViewController.swift */; };
 		D89D27A91D3749C2006542DF /* AddCourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89D27A71D3749C2006542DF /* AddCourseViewController.swift */; };
 		D89D27AA1D3749C2006542DF /* AddCourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89D27A71D3749C2006542DF /* AddCourseViewController.swift */; };
+		D89D27AC1D375503006542DF /* CourseServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89D27AB1D375503006542DF /* CourseServiceFactory.swift */; };
+		D89D27AD1D375503006542DF /* CourseServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89D27AB1D375503006542DF /* CourseServiceFactory.swift */; };
+		D89D27AE1D375503006542DF /* CourseServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89D27AB1D375503006542DF /* CourseServiceFactory.swift */; };
+		D89D27B01D375570006542DF /* CourseServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89D27AF1D375570006542DF /* CourseServiceProtocol.swift */; };
+		D89D27B11D375570006542DF /* CourseServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89D27AF1D375570006542DF /* CourseServiceProtocol.swift */; };
+		D89D27B21D375570006542DF /* CourseServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89D27AF1D375570006542DF /* CourseServiceProtocol.swift */; };
+		D89D27B41D3755B4006542DF /* FirebaseCourseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89D27B31D3755B4006542DF /* FirebaseCourseService.swift */; };
+		D89D27B51D3755B4006542DF /* FirebaseCourseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89D27B31D3755B4006542DF /* FirebaseCourseService.swift */; };
+		D89D27B61D3755B4006542DF /* FirebaseCourseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89D27B31D3755B4006542DF /* FirebaseCourseService.swift */; };
+		D89D27B81D375617006542DF /* MockCourseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89D27B71D375617006542DF /* MockCourseService.swift */; };
+		D89D27B91D375617006542DF /* MockCourseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89D27B71D375617006542DF /* MockCourseService.swift */; };
+		D89D27BA1D375617006542DF /* MockCourseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89D27B71D375617006542DF /* MockCourseService.swift */; };
+		D89D27BD1D375EFB006542DF /* CoursesAdmin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D89D27BC1D375EFB006542DF /* CoursesAdmin.storyboard */; };
+		D89D27BE1D375EFB006542DF /* CoursesAdmin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D89D27BC1D375EFB006542DF /* CoursesAdmin.storyboard */; };
+		D89D27BF1D375EFB006542DF /* CoursesAdmin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D89D27BC1D375EFB006542DF /* CoursesAdmin.storyboard */; };
+		D89D27C11D375F27006542DF /* CoursesAdminTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89D27C01D375F27006542DF /* CoursesAdminTableViewController.swift */; };
+		D89D27C21D375F27006542DF /* CoursesAdminTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89D27C01D375F27006542DF /* CoursesAdminTableViewController.swift */; };
+		D89D27C31D375F27006542DF /* CoursesAdminTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89D27C01D375F27006542DF /* CoursesAdminTableViewController.swift */; };
 		D8EAFB0E1D1CF675000638CF /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8EAFB0D1D1CF675000638CF /* SignUp.storyboard */; };
 		D8EAFB101D1CF8D1000638CF /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EAFB0F1D1CF8D1000638CF /* SignUpViewController.swift */; };
 		D8EAFB141D1CFBFB000638CF /* AuthServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EAFB131D1CFBFB000638CF /* AuthServiceProtocol.swift */; };
@@ -252,10 +270,16 @@
 		B2D4FD39431F2C7B2E5BA8ED /* Pods-PolyChatTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PolyChatTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PolyChatTests/Pods-PolyChatTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D83FC3A31D24C82F00DDCF25 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		D83FC3A71D24C85300DDCF25 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		D89D279A1D37444F006542DF /* AppSettings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AppSettings.storyboard; sourceTree = "<group>"; };
-		D89D279E1D374824006542DF /* AppSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSettingsTableViewController.swift; sourceTree = "<group>"; };
+		D89D279A1D37444F006542DF /* AdminSettings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AdminSettings.storyboard; sourceTree = "<group>"; };
+		D89D279E1D374824006542DF /* AdminSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminSettingsTableViewController.swift; sourceTree = "<group>"; };
 		D89D27A31D374986006542DF /* AddCourse.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddCourse.storyboard; sourceTree = "<group>"; };
 		D89D27A71D3749C2006542DF /* AddCourseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCourseViewController.swift; sourceTree = "<group>"; };
+		D89D27AB1D375503006542DF /* CourseServiceFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseServiceFactory.swift; sourceTree = "<group>"; };
+		D89D27AF1D375570006542DF /* CourseServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseServiceProtocol.swift; sourceTree = "<group>"; };
+		D89D27B31D3755B4006542DF /* FirebaseCourseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseCourseService.swift; sourceTree = "<group>"; };
+		D89D27B71D375617006542DF /* MockCourseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockCourseService.swift; sourceTree = "<group>"; };
+		D89D27BC1D375EFB006542DF /* CoursesAdmin.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CoursesAdmin.storyboard; sourceTree = "<group>"; };
+		D89D27C01D375F27006542DF /* CoursesAdminTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoursesAdminTableViewController.swift; sourceTree = "<group>"; };
 		D8EAFB0D1D1CF675000638CF /* SignUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		D8EAFB0F1D1CF8D1000638CF /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		D8EAFB131D1CFBFB000638CF /* AuthServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthServiceProtocol.swift; sourceTree = "<group>"; };
@@ -370,6 +394,7 @@
 				0F65FC571D1E289600470498 /* MockMyCoursesService.swift */,
 				0F34D8701D2743F3002584FB /* MockChatService.swift */,
 				0F34D87C1D27446C002584FB /* MockChatRoomService.swift */,
+				D89D27B71D375617006542DF /* MockCourseService.swift */,
 			);
 			name = Mock;
 			sourceTree = "<group>";
@@ -381,6 +406,7 @@
 				0F65FC3C1D1E262800470498 /* MyCoursesServiceFactory.swift */,
 				D8EAFB1B1D1D01FC000638CF /* AuthServiceFactory.swift */,
 				0F4AFF541D1DD8E60030C3BD /* UserServiceFactory.swift */,
+				D89D27AB1D375503006542DF /* CourseServiceFactory.swift */,
 				D8EAFB111D1CFB44000638CF /* Protocols */,
 				D8EAFB121D1CFB61000638CF /* Firebase */,
 				0F4AFF601D1DDA480030C3BD /* Mock */,
@@ -453,7 +479,7 @@
 		0F960B0D1D1CF29600E0D902 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				D89D27991D374411006542DF /* AppSettings */,
+				D89D27991D374411006542DF /* AdminSettings */,
 				0F65FC461D1E270400470498 /* Models */,
 				0F960B131D1CF35300E0D902 /* Course */,
 				0F960B101D1CF2CD00E0D902 /* MyCourses */,
@@ -552,14 +578,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		D89D27991D374411006542DF /* AppSettings */ = {
+		D89D27991D374411006542DF /* AdminSettings */ = {
 			isa = PBXGroup;
 			children = (
-				D89D27A21D374962006542DF /* AddCourse */,
-				D89D279A1D37444F006542DF /* AppSettings.storyboard */,
-				D89D279E1D374824006542DF /* AppSettingsTableViewController.swift */,
+				D89D27BB1D375DEA006542DF /* CoursesAdmin */,
+				D89D279A1D37444F006542DF /* AdminSettings.storyboard */,
+				D89D279E1D374824006542DF /* AdminSettingsTableViewController.swift */,
 			);
-			name = AppSettings;
+			name = AdminSettings;
 			sourceTree = "<group>";
 		};
 		D89D27A21D374962006542DF /* AddCourse */ = {
@@ -571,6 +597,16 @@
 			name = AddCourse;
 			sourceTree = "<group>";
 		};
+		D89D27BB1D375DEA006542DF /* CoursesAdmin */ = {
+			isa = PBXGroup;
+			children = (
+				D89D27A21D374962006542DF /* AddCourse */,
+				D89D27BC1D375EFB006542DF /* CoursesAdmin.storyboard */,
+				D89D27C01D375F27006542DF /* CoursesAdminTableViewController.swift */,
+			);
+			name = CoursesAdmin;
+			sourceTree = "<group>";
+		};
 		D8EAFB111D1CFB44000638CF /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -580,6 +616,7 @@
 				0F65FC401D1E26AE00470498 /* UserServiceProtocol.swift */,
 				0F34D8681D2743BB002584FB /* ChatServiceProtocol.swift */,
 				0F34D8741D274444002584FB /* ChatRoomServiceProtocol.swift */,
+				D89D27AF1D375570006542DF /* CourseServiceProtocol.swift */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -594,6 +631,7 @@
 				0F65FC531D1E286600470498 /* FirebaseMyCoursesService.swift */,
 				0F34D86C1D2743D3002584FB /* FirebaseChatService.swift */,
 				0F34D8781D274456002584FB /* FirebaseChatRoomService.swift */,
+				D89D27B31D3755B4006542DF /* FirebaseCourseService.swift */,
 			);
 			name = Firebase;
 			sourceTree = "<group>";
@@ -710,13 +748,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D89D279B1D37444F006542DF /* AppSettings.storyboard in Resources */,
+				D89D279B1D37444F006542DF /* AdminSettings.storyboard in Resources */,
 				D89D27A41D374986006542DF /* AddCourse.storyboard in Resources */,
 				0F34D8551D262D39002584FB /* Chat.storyboard in Resources */,
 				D83FC3A41D24C82F00DDCF25 /* Login.storyboard in Resources */,
 				0F4159D31D1A492700EE4E58 /* LaunchScreen.storyboard in Resources */,
 				0F65FC671D1F965D00470498 /* Course.storyboard in Resources */,
 				0F34D8611D262DB6002584FB /* Members.storyboard in Resources */,
+				D89D27BD1D375EFB006542DF /* CoursesAdmin.storyboard in Resources */,
 				0F4AFF721D1DE3770030C3BD /* MyCourses.storyboard in Resources */,
 				0F20AD8E1D1D100700F0E223 /* GoogleService-Info.plist in Resources */,
 				0F4159D01D1A492700EE4E58 /* Assets.xcassets in Resources */,
@@ -731,9 +770,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D89D27BE1D375EFB006542DF /* CoursesAdmin.storyboard in Resources */,
 				D83FC3A51D24C82F00DDCF25 /* Login.storyboard in Resources */,
 				D8EAFB191D1CFC0C000638CF /* SignUp.storyboard in Resources */,
-				D89D279C1D37444F006542DF /* AppSettings.storyboard in Resources */,
+				D89D279C1D37444F006542DF /* AdminSettings.storyboard in Resources */,
 				0F4AFF731D1DE3770030C3BD /* MyCourses.storyboard in Resources */,
 				0F34D85A1D262D58002584FB /* Settings.storyboard in Resources */,
 				D89D27A51D374986006542DF /* AddCourse.storyboard in Resources */,
@@ -748,9 +788,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D89D27BF1D375EFB006542DF /* CoursesAdmin.storyboard in Resources */,
 				D83FC3A61D24C82F00DDCF25 /* Login.storyboard in Resources */,
 				D8EAFB1A1D1CFC0C000638CF /* SignUp.storyboard in Resources */,
-				D89D279D1D37444F006542DF /* AppSettings.storyboard in Resources */,
+				D89D279D1D37444F006542DF /* AdminSettings.storyboard in Resources */,
 				0F4AFF741D1DE3770030C3BD /* MyCourses.storyboard in Resources */,
 				0F34D85B1D262D58002584FB /* Settings.storyboard in Resources */,
 				D89D27A61D374986006542DF /* AddCourse.storyboard in Resources */,
@@ -895,7 +936,9 @@
 				0F064EFB1D2586CF008B7DA1 /* MyCoursesTableViewController.swift in Sources */,
 				0F65FC6F1D22031400470498 /* NSErrorExtension.swift in Sources */,
 				0F4AFF821D1E10090030C3BD /* MyCoursesTableViewCell.swift in Sources */,
+				D89D27C11D375F27006542DF /* CoursesAdminTableViewController.swift in Sources */,
 				0F4AFF7E1D1E0D3D0030C3BD /* Course.swift in Sources */,
+				D89D27AC1D375503006542DF /* CourseServiceFactory.swift in Sources */,
 				0F4AFF621D1DDA5C0030C3BD /* MockAuthService.swift in Sources */,
 				0F960B071D1CD70900E0D902 /* FirebaseAuthService.swift in Sources */,
 				D8EAFB101D1CF8D1000638CF /* SignUpViewController.swift in Sources */,
@@ -917,8 +960,9 @@
 				0F34D8791D274456002584FB /* FirebaseChatRoomService.swift in Sources */,
 				0F34D86D1D2743D3002584FB /* FirebaseChatService.swift in Sources */,
 				0F65FC3D1D1E262800470498 /* MyCoursesServiceFactory.swift in Sources */,
+				D89D27B81D375617006542DF /* MockCourseService.swift in Sources */,
 				0F65FC6B1D1F967600470498 /* CourseViewController.swift in Sources */,
-				D89D279F1D374824006542DF /* AppSettingsTableViewController.swift in Sources */,
+				D89D279F1D374824006542DF /* AdminSettingsTableViewController.swift in Sources */,
 				0F65FC3F1D1E265800470498 /* MyCoursesServiceProtocol.swift in Sources */,
 				0F4AFF5D1D1DDA040030C3BD /* FirebaseDataService.swift in Sources */,
 				0F65FC411D1E26AE00470498 /* UserServiceProtocol.swift in Sources */,
@@ -926,12 +970,14 @@
 				0F4AFF551D1DD8E60030C3BD /* UserServiceFactory.swift in Sources */,
 				0F34D84C1D26148B002584FB /* SubViewController.swift in Sources */,
 				0F65FC4C1D1E27B000470498 /* FirebaseUserService.swift in Sources */,
+				D89D27B41D3755B4006542DF /* FirebaseCourseService.swift in Sources */,
 				D8EAFB1C1D1D01FC000638CF /* AuthServiceFactory.swift in Sources */,
 				0F34D8711D2743F3002584FB /* MockChatService.swift in Sources */,
 				0F34D8651D274348002584FB /* ChatRoomServiceFactory.swift in Sources */,
 				0F65FC581D1E289600470498 /* MockMyCoursesService.swift in Sources */,
 				0F65FC481D1E270E00470498 /* User.swift in Sources */,
 				0F34D87D1D27446C002584FB /* MockChatRoomService.swift in Sources */,
+				D89D27B01D375570006542DF /* CourseServiceProtocol.swift in Sources */,
 				0F34D8691D2743BB002584FB /* ChatServiceProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -940,15 +986,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D89D27A01D374824006542DF /* AppSettingsTableViewController.swift in Sources */,
+				D89D27A01D374824006542DF /* AdminSettingsTableViewController.swift in Sources */,
 				0F4AFF6B1D1DDF140030C3BD /* FirebaseInitMockDatabase.swift in Sources */,
 				0F65FC6C1D1F967600470498 /* CourseViewController.swift in Sources */,
 				0F65FC441D1E26B300470498 /* MyCoursesServiceProtocol.swift in Sources */,
 				0F65FC611D1E427800470498 /* UserTests.swift in Sources */,
 				0F34D8761D274444002584FB /* ChatRoomServiceProtocol.swift in Sources */,
+				D89D27B91D375617006542DF /* MockCourseService.swift in Sources */,
 				D8EAFB171D1CFC02000638CF /* SignUpViewController.swift in Sources */,
+				D89D27AD1D375503006542DF /* CourseServiceFactory.swift in Sources */,
 				D83FC3A91D24C85300DDCF25 /* LoginViewController.swift in Sources */,
 				0F34D86E1D2743D3002584FB /* FirebaseChatService.swift in Sources */,
+				D89D27B11D375570006542DF /* CourseServiceProtocol.swift in Sources */,
 				D8EAFB151D1CFBFB000638CF /* AuthServiceProtocol.swift in Sources */,
 				0F4AFF5A1D1DD9AC0030C3BD /* DataServiceProtocol.swift in Sources */,
 				0F960B081D1CD70900E0D902 /* FirebaseAuthService.swift in Sources */,
@@ -961,11 +1010,13 @@
 				0F4AFF7F1D1E0D3D0030C3BD /* Course.swift in Sources */,
 				0F65FC641D1F876E00470498 /* MyCoursesServiceFactory.swift in Sources */,
 				0F4AFF6F1D1DE3670030C3BD /* MyCoursesTableViewController.swift in Sources */,
+				D89D27C21D375F27006542DF /* CoursesAdminTableViewController.swift in Sources */,
 				0F65FC511D1E27FE00470498 /* MockUserService.swift in Sources */,
 				D89D27A91D3749C2006542DF /* AddCourseViewController.swift in Sources */,
 				D8EAFB1D1D1D01FC000638CF /* AuthServiceFactory.swift in Sources */,
 				0F4AFF5E1D1DDA040030C3BD /* FirebaseDataService.swift in Sources */,
 				0F971FBC1D3745B200560B93 /* GlobalUtilities.swift in Sources */,
+				D89D27B51D3755B4006542DF /* FirebaseCourseService.swift in Sources */,
 				0F34D87A1D274456002584FB /* FirebaseChatRoomService.swift in Sources */,
 				0F971FC41D37549200560B93 /* UserCourseManagerTests.swift in Sources */,
 				0F4AFF771D1E04610030C3BD /* ValidationService.swift in Sources */,
@@ -997,9 +1048,11 @@
 				D8EAFB161D1CFBFB000638CF /* AuthServiceProtocol.swift in Sources */,
 				0F4AFF5B1D1DD9AC0030C3BD /* DataServiceProtocol.swift in Sources */,
 				0F34D86F1D2743D3002584FB /* FirebaseChatService.swift in Sources */,
+				D89D27C31D375F27006542DF /* CoursesAdminTableViewController.swift in Sources */,
 				0F65FC651D1F876E00470498 /* MyCoursesServiceFactory.swift in Sources */,
 				0F34D87F1D27446C002584FB /* MockChatRoomService.swift in Sources */,
 				0F65FC6D1D1F967600470498 /* CourseViewController.swift in Sources */,
+				D89D27B21D375570006542DF /* CourseServiceProtocol.swift in Sources */,
 				0F34D8521D2615C4002584FB /* SubViewSegue.swift in Sources */,
 				0F4AFF641D1DDA5C0030C3BD /* MockAuthService.swift in Sources */,
 				0F4AFF681D1DDA8B0030C3BD /* MockDataService.swift in Sources */,
@@ -1010,6 +1063,7 @@
 				0F65FC711D22031400470498 /* NSErrorExtension.swift in Sources */,
 				0F65FC521D1E27FE00470498 /* MockUserService.swift in Sources */,
 				0F34D86B1D2743BB002584FB /* ChatServiceProtocol.swift in Sources */,
+				D89D27B61D3755B4006542DF /* FirebaseCourseService.swift in Sources */,
 				D8EAFB1E1D1D01FC000638CF /* AuthServiceFactory.swift in Sources */,
 				0F34D8771D274444002584FB /* ChatRoomServiceProtocol.swift in Sources */,
 				0F4AFF5F1D1DDA040030C3BD /* FirebaseDataService.swift in Sources */,
@@ -1022,12 +1076,14 @@
 				0F65FC561D1E286600470498 /* FirebaseMyCoursesService.swift in Sources */,
 				0F65FC431D1E26AE00470498 /* UserServiceProtocol.swift in Sources */,
 				0F4AFF571D1DD8EA0030C3BD /* UserServiceFactory.swift in Sources */,
+				D89D27AE1D375503006542DF /* CourseServiceFactory.swift in Sources */,
 				0F4AFF841D1E10090030C3BD /* MyCoursesTableViewCell.swift in Sources */,
 				0F971FC11D37522300560B93 /* UserCourseManager.swift in Sources */,
+				D89D27BA1D375617006542DF /* MockCourseService.swift in Sources */,
 				0F34D84E1D26148B002584FB /* SubViewController.swift in Sources */,
 				0F34D87B1D274456002584FB /* FirebaseChatRoomService.swift in Sources */,
 				0F34D8731D2743F3002584FB /* MockChatService.swift in Sources */,
-				D89D27A11D374824006542DF /* AppSettingsTableViewController.swift in Sources */,
+				D89D27A11D374824006542DF /* AdminSettingsTableViewController.swift in Sources */,
 				0F960B051D1CD69500E0D902 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -46,7 +46,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="My Courses" id="pcR-nT-OPD">
                         <barButtonItem key="leftBarButtonItem" image="MenuIcon" id="xtp-rF-uUg"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="rAS-uw-gmD">
+                        <barButtonItem key="rightBarButtonItem" title="Admin" id="rAS-uw-gmD">
                             <connections>
                                 <segue destination="BEv-0e-ANx" kind="show" id="ELx-Pg-q1M"/>
                             </connections>
@@ -61,10 +61,10 @@
             </objects>
             <point key="canvasLocation" x="3570" y="256"/>
         </scene>
-        <!--AppSettings-->
+        <!--AdminSettings-->
         <scene sceneID="k6q-bb-iIi">
             <objects>
-                <viewControllerPlaceholder storyboardName="AppSettings" id="BEv-0e-ANx" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="AdminSettings" id="BEv-0e-ANx" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iJJ-9m-Pld" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4162" y="77"/>

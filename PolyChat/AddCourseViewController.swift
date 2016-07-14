@@ -37,6 +37,10 @@ class AddCourseViewController: UIViewController, UITextFieldDelegate {
     @IBAction func donePressed(sender: UIBarButtonItem) {
         let courseName = courseNameTextField.text!
         print(courseName)
+        
+        // TODO: Load course into Firebase
+        
+        
         dismissViewControllerAnimated(true, completion: nil)
     }
     
