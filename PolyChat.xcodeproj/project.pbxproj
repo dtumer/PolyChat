@@ -128,8 +128,6 @@
 		0F960B051D1CD69500E0D902 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F960B021D1CD69500E0D902 /* Constants.swift */; };
 		0F960B071D1CD70900E0D902 /* FirebaseAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F960B061D1CD70900E0D902 /* FirebaseAuthService.swift */; };
 		0F960B081D1CD70900E0D902 /* FirebaseAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F960B061D1CD70900E0D902 /* FirebaseAuthService.swift */; };
-		0F971FB71D2F614900560B93 /* XCGLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F971FB61D2F614900560B93 /* XCGLogger.framework */; };
-		0F971FB81D2F614900560B93 /* XCGLogger.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0F971FB61D2F614900560B93 /* XCGLogger.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0F971FBB1D3745B200560B93 /* GlobalUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F971FBA1D3745B200560B93 /* GlobalUtilities.swift */; };
 		0F971FBC1D3745B200560B93 /* GlobalUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F971FBA1D3745B200560B93 /* GlobalUtilities.swift */; };
 		0F971FBD1D3745B200560B93 /* GlobalUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F971FBA1D3745B200560B93 /* GlobalUtilities.swift */; };
@@ -146,6 +144,18 @@
 		D83FC3A81D24C85300DDCF25 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83FC3A71D24C85300DDCF25 /* LoginViewController.swift */; };
 		D83FC3A91D24C85300DDCF25 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83FC3A71D24C85300DDCF25 /* LoginViewController.swift */; };
 		D83FC3AA1D24C85300DDCF25 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83FC3A71D24C85300DDCF25 /* LoginViewController.swift */; };
+		D89D279B1D37444F006542DF /* AppSettings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D89D279A1D37444F006542DF /* AppSettings.storyboard */; };
+		D89D279C1D37444F006542DF /* AppSettings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D89D279A1D37444F006542DF /* AppSettings.storyboard */; };
+		D89D279D1D37444F006542DF /* AppSettings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D89D279A1D37444F006542DF /* AppSettings.storyboard */; };
+		D89D279F1D374824006542DF /* AppSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89D279E1D374824006542DF /* AppSettingsTableViewController.swift */; };
+		D89D27A01D374824006542DF /* AppSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89D279E1D374824006542DF /* AppSettingsTableViewController.swift */; };
+		D89D27A11D374824006542DF /* AppSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89D279E1D374824006542DF /* AppSettingsTableViewController.swift */; };
+		D89D27A41D374986006542DF /* AddCourse.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D89D27A31D374986006542DF /* AddCourse.storyboard */; };
+		D89D27A51D374986006542DF /* AddCourse.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D89D27A31D374986006542DF /* AddCourse.storyboard */; };
+		D89D27A61D374986006542DF /* AddCourse.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D89D27A31D374986006542DF /* AddCourse.storyboard */; };
+		D89D27A81D3749C2006542DF /* AddCourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89D27A71D3749C2006542DF /* AddCourseViewController.swift */; };
+		D89D27A91D3749C2006542DF /* AddCourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89D27A71D3749C2006542DF /* AddCourseViewController.swift */; };
+		D89D27AA1D3749C2006542DF /* AddCourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89D27A71D3749C2006542DF /* AddCourseViewController.swift */; };
 		D8EAFB0E1D1CF675000638CF /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8EAFB0D1D1CF675000638CF /* SignUp.storyboard */; };
 		D8EAFB101D1CF8D1000638CF /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EAFB0F1D1CF8D1000638CF /* SignUpViewController.swift */; };
 		D8EAFB141D1CFBFB000638CF /* AuthServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EAFB131D1CFBFB000638CF /* AuthServiceProtocol.swift */; };
@@ -176,20 +186,6 @@
 			remoteInfo = PolyChat;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		0F971FB91D2F614900560B93 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				0F971FB81D2F614900560B93 /* XCGLogger.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		04D109EDA3FBD64B324F12B2 /* Pods-PolyChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PolyChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PolyChat/Pods-PolyChat.debug.xcconfig"; sourceTree = "<group>"; };
@@ -246,7 +242,6 @@
 		0F65FC6E1D22031400470498 /* NSErrorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSErrorExtension.swift; sourceTree = "<group>"; };
 		0F960B021D1CD69500E0D902 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		0F960B061D1CD70900E0D902 /* FirebaseAuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseAuthService.swift; sourceTree = "<group>"; };
-		0F971FB61D2F614900560B93 /* XCGLogger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = XCGLogger.framework; path = "/Users/dad/Library/Developer/Xcode/DerivedData/PolyChat-gmuwtpdmoxrigbbrrjbydfrrpfrs/Build/Products/Debug-iphonesimulator/XCGLogger/XCGLogger.framework"; sourceTree = "<absolute>"; };
 		0F971FBA1D3745B200560B93 /* GlobalUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalUtilities.swift; sourceTree = "<group>"; };
 		0F971FBE1D37522300560B93 /* UserCourseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCourseManager.swift; sourceTree = "<group>"; };
 		0F971FC21D37549200560B93 /* UserCourseManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCourseManagerTests.swift; sourceTree = "<group>"; };
@@ -257,6 +252,10 @@
 		B2D4FD39431F2C7B2E5BA8ED /* Pods-PolyChatTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PolyChatTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PolyChatTests/Pods-PolyChatTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D83FC3A31D24C82F00DDCF25 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		D83FC3A71D24C85300DDCF25 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		D89D279A1D37444F006542DF /* AppSettings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AppSettings.storyboard; sourceTree = "<group>"; };
+		D89D279E1D374824006542DF /* AppSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSettingsTableViewController.swift; sourceTree = "<group>"; };
+		D89D27A31D374986006542DF /* AddCourse.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddCourse.storyboard; sourceTree = "<group>"; };
+		D89D27A71D3749C2006542DF /* AddCourseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCourseViewController.swift; sourceTree = "<group>"; };
 		D8EAFB0D1D1CF675000638CF /* SignUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		D8EAFB0F1D1CF8D1000638CF /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		D8EAFB131D1CFBFB000638CF /* AuthServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthServiceProtocol.swift; sourceTree = "<group>"; };
@@ -272,7 +271,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B451FD7B451FDE28202166C4 /* Pods_PolyChat.framework in Frameworks */,
-				0F971FB71D2F614900560B93 /* XCGLogger.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,7 +304,6 @@
 		0F4159B91D1A492700EE4E58 = {
 			isa = PBXGroup;
 			children = (
-				0F971FB61D2F614900560B93 /* XCGLogger.framework */,
 				0F4159C41D1A492700EE4E58 /* PolyChat */,
 				0F4159DC1D1A492700EE4E58 /* PolyChatTests */,
 				0F4159E71D1A492700EE4E58 /* PolyChatUITests */,
@@ -456,6 +453,7 @@
 		0F960B0D1D1CF29600E0D902 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				D89D27991D374411006542DF /* AppSettings */,
 				0F65FC461D1E270400470498 /* Models */,
 				0F960B131D1CF35300E0D902 /* Course */,
 				0F960B101D1CF2CD00E0D902 /* MyCourses */,
@@ -496,8 +494,8 @@
 		0F960B131D1CF35300E0D902 /* Course */ = {
 			isa = PBXGroup;
 			children = (
-				0F34D8531D262D22002584FB /* Chat */,
 				0F960B1A1D1CF40700E0D902 /* Settings */,
+				0F34D8531D262D22002584FB /* Chat */,
 				0F960B191D1CF40000E0D902 /* Groups */,
 				0F960B181D1CF3FA00E0D902 /* Members */,
 				0F65FC661D1F965D00470498 /* Course.storyboard */,
@@ -554,6 +552,25 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		D89D27991D374411006542DF /* AppSettings */ = {
+			isa = PBXGroup;
+			children = (
+				D89D27A21D374962006542DF /* AddCourse */,
+				D89D279A1D37444F006542DF /* AppSettings.storyboard */,
+				D89D279E1D374824006542DF /* AppSettingsTableViewController.swift */,
+			);
+			name = AppSettings;
+			sourceTree = "<group>";
+		};
+		D89D27A21D374962006542DF /* AddCourse */ = {
+			isa = PBXGroup;
+			children = (
+				D89D27A31D374986006542DF /* AddCourse.storyboard */,
+				D89D27A71D3749C2006542DF /* AddCourseViewController.swift */,
+			);
+			name = AddCourse;
+			sourceTree = "<group>";
+		};
 		D8EAFB111D1CFB44000638CF /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -594,7 +611,6 @@
 				0F4159C01D1A492700EE4E58 /* Resources */,
 				0ACE26C4C020B4A7E589998A /* [CP] Embed Pods Frameworks */,
 				25944FCCED58F23D9261615E /* [CP] Copy Pods Resources */,
-				0F971FB91D2F614900560B93 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -694,6 +710,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D89D279B1D37444F006542DF /* AppSettings.storyboard in Resources */,
+				D89D27A41D374986006542DF /* AddCourse.storyboard in Resources */,
 				0F34D8551D262D39002584FB /* Chat.storyboard in Resources */,
 				D83FC3A41D24C82F00DDCF25 /* Login.storyboard in Resources */,
 				0F4159D31D1A492700EE4E58 /* LaunchScreen.storyboard in Resources */,
@@ -715,8 +733,10 @@
 			files = (
 				D83FC3A51D24C82F00DDCF25 /* Login.storyboard in Resources */,
 				D8EAFB191D1CFC0C000638CF /* SignUp.storyboard in Resources */,
+				D89D279C1D37444F006542DF /* AppSettings.storyboard in Resources */,
 				0F4AFF731D1DE3770030C3BD /* MyCourses.storyboard in Resources */,
 				0F34D85A1D262D58002584FB /* Settings.storyboard in Resources */,
+				D89D27A51D374986006542DF /* AddCourse.storyboard in Resources */,
 				0F34D8621D262DB6002584FB /* Members.storyboard in Resources */,
 				0F34D8561D262D39002584FB /* Chat.storyboard in Resources */,
 				0F65FC681D1F965D00470498 /* Course.storyboard in Resources */,
@@ -730,8 +750,10 @@
 			files = (
 				D83FC3A61D24C82F00DDCF25 /* Login.storyboard in Resources */,
 				D8EAFB1A1D1CFC0C000638CF /* SignUp.storyboard in Resources */,
+				D89D279D1D37444F006542DF /* AppSettings.storyboard in Resources */,
 				0F4AFF741D1DE3770030C3BD /* MyCourses.storyboard in Resources */,
 				0F34D85B1D262D58002584FB /* Settings.storyboard in Resources */,
+				D89D27A61D374986006542DF /* AddCourse.storyboard in Resources */,
 				0F34D8631D262DB6002584FB /* Members.storyboard in Resources */,
 				0F34D8571D262D39002584FB /* Chat.storyboard in Resources */,
 				0F65FC691D1F965D00470498 /* Course.storyboard in Resources */,
@@ -887,6 +909,7 @@
 				0F4AFF761D1E04610030C3BD /* ValidationService.swift in Sources */,
 				D8EAFB141D1CFBFB000638CF /* AuthServiceProtocol.swift in Sources */,
 				0F4159CE1D1A492700EE4E58 /* PolyChat.xcdatamodeld in Sources */,
+				D89D27A81D3749C2006542DF /* AddCourseViewController.swift in Sources */,
 				0F4159C61D1A492700EE4E58 /* AppDelegate.swift in Sources */,
 				0F960B031D1CD69500E0D902 /* Constants.swift in Sources */,
 				0F34D8501D2615C4002584FB /* SubViewSegue.swift in Sources */,
@@ -895,6 +918,7 @@
 				0F34D86D1D2743D3002584FB /* FirebaseChatService.swift in Sources */,
 				0F65FC3D1D1E262800470498 /* MyCoursesServiceFactory.swift in Sources */,
 				0F65FC6B1D1F967600470498 /* CourseViewController.swift in Sources */,
+				D89D279F1D374824006542DF /* AppSettingsTableViewController.swift in Sources */,
 				0F65FC3F1D1E265800470498 /* MyCoursesServiceProtocol.swift in Sources */,
 				0F4AFF5D1D1DDA040030C3BD /* FirebaseDataService.swift in Sources */,
 				0F65FC411D1E26AE00470498 /* UserServiceProtocol.swift in Sources */,
@@ -916,6 +940,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D89D27A01D374824006542DF /* AppSettingsTableViewController.swift in Sources */,
 				0F4AFF6B1D1DDF140030C3BD /* FirebaseInitMockDatabase.swift in Sources */,
 				0F65FC6C1D1F967600470498 /* CourseViewController.swift in Sources */,
 				0F65FC441D1E26B300470498 /* MyCoursesServiceProtocol.swift in Sources */,
@@ -937,6 +962,7 @@
 				0F65FC641D1F876E00470498 /* MyCoursesServiceFactory.swift in Sources */,
 				0F4AFF6F1D1DE3670030C3BD /* MyCoursesTableViewController.swift in Sources */,
 				0F65FC511D1E27FE00470498 /* MockUserService.swift in Sources */,
+				D89D27A91D3749C2006542DF /* AddCourseViewController.swift in Sources */,
 				D8EAFB1D1D1D01FC000638CF /* AuthServiceFactory.swift in Sources */,
 				0F4AFF5E1D1DDA040030C3BD /* FirebaseDataService.swift in Sources */,
 				0F971FBC1D3745B200560B93 /* GlobalUtilities.swift in Sources */,
@@ -991,6 +1017,7 @@
 				0F65FC631D1F875D00470498 /* FirebaseAuthService.swift in Sources */,
 				0F65FC4E1D1E27B000470498 /* FirebaseUserService.swift in Sources */,
 				0F4159E91D1A492700EE4E58 /* PolyChatUITests.swift in Sources */,
+				D89D27AA1D3749C2006542DF /* AddCourseViewController.swift in Sources */,
 				0F34D8671D274348002584FB /* ChatRoomServiceFactory.swift in Sources */,
 				0F65FC561D1E286600470498 /* FirebaseMyCoursesService.swift in Sources */,
 				0F65FC431D1E26AE00470498 /* UserServiceProtocol.swift in Sources */,
@@ -1000,6 +1027,7 @@
 				0F34D84E1D26148B002584FB /* SubViewController.swift in Sources */,
 				0F34D87B1D274456002584FB /* FirebaseChatRoomService.swift in Sources */,
 				0F34D8731D2743F3002584FB /* MockChatService.swift in Sources */,
+				D89D27A11D374824006542DF /* AppSettingsTableViewController.swift in Sources */,
 				0F960B051D1CD69500E0D902 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
