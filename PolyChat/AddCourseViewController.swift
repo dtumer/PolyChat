@@ -8,8 +8,10 @@
 
 import UIKit
 
-class AddCourseViewController: UIViewController {
+class AddCourseViewController: UIViewController, UITextFieldDelegate {
 
+    @IBOutlet weak var courseNameTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -31,5 +33,15 @@ class AddCourseViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    @IBAction func donePressed(sender: UIBarButtonItem) {
+        let courseName = courseNameTextField.text!
+        print(courseName)
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    @IBAction func cancelPressed(sender: UIBarButtonItem) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
 
 }

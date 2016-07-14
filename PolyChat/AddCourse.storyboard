@@ -1,7 +1,85 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="gFS-tY-aZb">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
-    <scenes/>
+    <scenes>
+        <!--Add Course-->
+        <scene sceneID="XUK-sy-F0U">
+            <objects>
+                <viewController storyboardIdentifier="addCourseViewController" id="toq-v3-qku" customClass="AddCourseViewController" customModule="PolyChat" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="e8P-x0-DDm"/>
+                        <viewControllerLayoutGuide type="bottom" id="9BS-sU-qHq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="skm-A0-eey">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Course Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LM6-C0-yBv">
+                                <rect key="frame" x="20" y="72" width="109" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="C3U-Sa-tIe">
+                                <rect key="frame" x="20" y="101" width="200" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="pQG-0s-N2C"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="toq-v3-qku" id="XwL-u1-SpX"/>
+                                </connections>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="LM6-C0-yBv" firstAttribute="leading" secondItem="skm-A0-eey" secondAttribute="leadingMargin" id="0Fh-WK-aOK"/>
+                            <constraint firstItem="C3U-Sa-tIe" firstAttribute="top" secondItem="LM6-C0-yBv" secondAttribute="bottom" constant="8" id="DAa-wK-Ub8"/>
+                            <constraint firstItem="LM6-C0-yBv" firstAttribute="top" secondItem="e8P-x0-DDm" secondAttribute="bottom" constant="8" id="VUx-j5-44D"/>
+                            <constraint firstItem="C3U-Sa-tIe" firstAttribute="leading" secondItem="skm-A0-eey" secondAttribute="leadingMargin" id="qsl-uL-FYA"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add Course" id="u7f-jp-2c9">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="uVk-Ke-522">
+                            <connections>
+                                <action selector="cancelPressed:" destination="toq-v3-qku" id="D5V-d5-0QI"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="9VA-uM-zN1">
+                            <connections>
+                                <action selector="donePressed:" destination="toq-v3-qku" id="HtZ-Kk-AY0"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="courseNameTextField" destination="C3U-Sa-tIe" id="FYc-th-rVH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aGm-br-RHg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1072" y="363"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="gHE-xE-48f">
+            <objects>
+                <navigationController storyboardIdentifier="addCourseNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="gFS-tY-aZb" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="War-5N-PwU">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="toq-v3-qku" kind="relationship" relationship="rootViewController" id="AhG-Vh-LCA"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0FI-lc-wXD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="260" y="363"/>
+        </scene>
+    </scenes>
 </document>
