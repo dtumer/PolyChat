@@ -18,25 +18,25 @@ class FirebaseAuthService: AuthServiceProtocol {
     func signUpUser(email: String, passHash: String) {
         FIRAuth.auth()?.createUserWithEmail(email, password: passHash) { (user, error) in
             if let error = error {
+                //change to logger
                 print("ERROR: \(error.localizedDescription))")
                 return
             }
             
             //create user object to add to users table
             let userObj = [
+                "name": GlobalUtilities.getNameFromEmail(email),
                 "email": email,
-                
-                //TODO: get rid of this eventually
-                "courses": [
-                    "CPE-141-01",
-                    "CPE-141-02",
-                    "ENGL-134-05",
-                    "PSY-202-01",
-                ],
+                //"user_img_link": "", //change this to a default image in the future
+                "receives_notifs": true, //change this to grab the notifications from the app delegate in the future
+                "courses": [:]
             ]
+            
+            print(user!.uid)
             
             self.userService.putUser(user!.uid, user: User(dictionary: userObj), callback: { error in
                 if let error = error {
+                    //change to logger
                     print("ERROR: \(error.localizedDescription)")
                 }
             })

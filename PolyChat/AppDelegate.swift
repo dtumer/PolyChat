@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         //configure logger (will output to console)
-        log.setup(.Debug, showLogIdentifier: true, showFunctionName: true, showThreadName: true, showLogLevel: true, showFileNames: true, showLineNumbers: true, showDate: true, writeToFile: nil, fileLogLevel: .Debug)
+        log.setup(Constants.APP_MODE, showLogIdentifier: true, showFunctionName: true, showThreadName: true, showLogLevel: true, showFileNames: true, showLineNumbers: true, showDate: true, writeToFile: nil, fileLogLevel: .Debug)
         
         return true
     }

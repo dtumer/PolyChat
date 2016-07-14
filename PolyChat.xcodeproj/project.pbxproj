@@ -130,6 +130,13 @@
 		0F960B081D1CD70900E0D902 /* FirebaseAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F960B061D1CD70900E0D902 /* FirebaseAuthService.swift */; };
 		0F971FB71D2F614900560B93 /* XCGLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F971FB61D2F614900560B93 /* XCGLogger.framework */; };
 		0F971FB81D2F614900560B93 /* XCGLogger.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0F971FB61D2F614900560B93 /* XCGLogger.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0F971FBB1D3745B200560B93 /* GlobalUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F971FBA1D3745B200560B93 /* GlobalUtilities.swift */; };
+		0F971FBC1D3745B200560B93 /* GlobalUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F971FBA1D3745B200560B93 /* GlobalUtilities.swift */; };
+		0F971FBD1D3745B200560B93 /* GlobalUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F971FBA1D3745B200560B93 /* GlobalUtilities.swift */; };
+		0F971FBF1D37522300560B93 /* UserCourseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F971FBE1D37522300560B93 /* UserCourseManager.swift */; };
+		0F971FC01D37522300560B93 /* UserCourseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F971FBE1D37522300560B93 /* UserCourseManager.swift */; };
+		0F971FC11D37522300560B93 /* UserCourseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F971FBE1D37522300560B93 /* UserCourseManager.swift */; };
+		0F971FC41D37549200560B93 /* UserCourseManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F971FC21D37549200560B93 /* UserCourseManagerTests.swift */; };
 		13A36AC5950293ECF654AEB2 /* Pods_PolyChatUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1F78191A67A36E6E62E6352 /* Pods_PolyChatUITests.framework */; };
 		AE6BDDC5A92BA00DC6D1DF4E /* Pods_PolyChatTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F192C361E3F1DC4C0166D138 /* Pods_PolyChatTests.framework */; };
 		B451FD7B451FDE28202166C4 /* Pods_PolyChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 435BAAAC375EEC888B720DFF /* Pods_PolyChat.framework */; };
@@ -240,6 +247,9 @@
 		0F960B021D1CD69500E0D902 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		0F960B061D1CD70900E0D902 /* FirebaseAuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseAuthService.swift; sourceTree = "<group>"; };
 		0F971FB61D2F614900560B93 /* XCGLogger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = XCGLogger.framework; path = "/Users/dad/Library/Developer/Xcode/DerivedData/PolyChat-gmuwtpdmoxrigbbrrjbydfrrpfrs/Build/Products/Debug-iphonesimulator/XCGLogger/XCGLogger.framework"; sourceTree = "<absolute>"; };
+		0F971FBA1D3745B200560B93 /* GlobalUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalUtilities.swift; sourceTree = "<group>"; };
+		0F971FBE1D37522300560B93 /* UserCourseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCourseManager.swift; sourceTree = "<group>"; };
+		0F971FC21D37549200560B93 /* UserCourseManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCourseManagerTests.swift; sourceTree = "<group>"; };
 		237B9F05A1314D8AC14F5169 /* Pods-PolyChatUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PolyChatUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PolyChatUITests/Pods-PolyChatUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		435BAAAC375EEC888B720DFF /* Pods_PolyChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PolyChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		47E8AFE8831B888359655AF6 /* Pods-PolyChatUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PolyChatUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PolyChatUITests/Pods-PolyChatUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -385,6 +395,7 @@
 			isa = PBXGroup;
 			children = (
 				0F4AFF751D1E04610030C3BD /* ValidationService.swift */,
+				0F971FBA1D3745B200560B93 /* GlobalUtilities.swift */,
 			);
 			name = Client;
 			sourceTree = "<group>";
@@ -396,6 +407,7 @@
 				0F65FC471D1E270E00470498 /* User.swift */,
 				0F65FC6E1D22031400470498 /* NSErrorExtension.swift */,
 				0F34D84F1D2615C4002584FB /* SubViewSegue.swift */,
+				0F971FBE1D37522300560B93 /* UserCourseManager.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -419,6 +431,7 @@
 			isa = PBXGroup;
 			children = (
 				0F65FC5F1D1E427800470498 /* UserTests.swift */,
+				0F971FC21D37549200560B93 /* UserCourseManagerTests.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -868,6 +881,7 @@
 				0F4159C81D1A492700EE4E58 /* MainViewController.swift in Sources */,
 				0F4AFF661D1DDA8B0030C3BD /* MockDataService.swift in Sources */,
 				0F65FC541D1E286600470498 /* FirebaseMyCoursesService.swift in Sources */,
+				0F971FBB1D3745B200560B93 /* GlobalUtilities.swift in Sources */,
 				0F65FC501D1E27FE00470498 /* MockUserService.swift in Sources */,
 				0F4AFF6A1D1DDF140030C3BD /* FirebaseInitMockDatabase.swift in Sources */,
 				0F4AFF761D1E04610030C3BD /* ValidationService.swift in Sources */,
@@ -884,6 +898,7 @@
 				0F65FC3F1D1E265800470498 /* MyCoursesServiceProtocol.swift in Sources */,
 				0F4AFF5D1D1DDA040030C3BD /* FirebaseDataService.swift in Sources */,
 				0F65FC411D1E26AE00470498 /* UserServiceProtocol.swift in Sources */,
+				0F971FBF1D37522300560B93 /* UserCourseManager.swift in Sources */,
 				0F4AFF551D1DD8E60030C3BD /* UserServiceFactory.swift in Sources */,
 				0F34D84C1D26148B002584FB /* SubViewController.swift in Sources */,
 				0F65FC4C1D1E27B000470498 /* FirebaseUserService.swift in Sources */,
@@ -924,7 +939,9 @@
 				0F65FC511D1E27FE00470498 /* MockUserService.swift in Sources */,
 				D8EAFB1D1D1D01FC000638CF /* AuthServiceFactory.swift in Sources */,
 				0F4AFF5E1D1DDA040030C3BD /* FirebaseDataService.swift in Sources */,
+				0F971FBC1D3745B200560B93 /* GlobalUtilities.swift in Sources */,
 				0F34D87A1D274456002584FB /* FirebaseChatRoomService.swift in Sources */,
+				0F971FC41D37549200560B93 /* UserCourseManagerTests.swift in Sources */,
 				0F4AFF771D1E04610030C3BD /* ValidationService.swift in Sources */,
 				0F65FC4D1D1E27B000470498 /* FirebaseUserService.swift in Sources */,
 				0F4159DE1D1A492700EE4E58 /* PolyChatTests.swift in Sources */,
@@ -938,6 +955,7 @@
 				0F65FC701D22031400470498 /* NSErrorExtension.swift in Sources */,
 				0F4AFF831D1E10090030C3BD /* MyCoursesTableViewCell.swift in Sources */,
 				0F960B041D1CD69500E0D902 /* Constants.swift in Sources */,
+				0F971FC01D37522300560B93 /* UserCourseManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -947,6 +965,7 @@
 			files = (
 				D83FC3AA1D24C85300DDCF25 /* LoginViewController.swift in Sources */,
 				0F4AFF6C1D1DDF140030C3BD /* FirebaseInitMockDatabase.swift in Sources */,
+				0F971FBD1D3745B200560B93 /* GlobalUtilities.swift in Sources */,
 				0F65FC451D1E26B300470498 /* MyCoursesServiceProtocol.swift in Sources */,
 				D8EAFB181D1CFC03000638CF /* SignUpViewController.swift in Sources */,
 				D8EAFB161D1CFBFB000638CF /* AuthServiceProtocol.swift in Sources */,
@@ -977,6 +996,7 @@
 				0F65FC431D1E26AE00470498 /* UserServiceProtocol.swift in Sources */,
 				0F4AFF571D1DD8EA0030C3BD /* UserServiceFactory.swift in Sources */,
 				0F4AFF841D1E10090030C3BD /* MyCoursesTableViewCell.swift in Sources */,
+				0F971FC11D37522300560B93 /* UserCourseManager.swift in Sources */,
 				0F34D84E1D26148B002584FB /* SubViewController.swift in Sources */,
 				0F34D87B1D274456002584FB /* FirebaseChatRoomService.swift in Sources */,
 				0F34D8731D2743F3002584FB /* MockChatService.swift in Sources */,

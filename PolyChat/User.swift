@@ -8,23 +8,28 @@
 import Foundation
 
 class User {
+    var name: String! = ""
     var email: String! = ""
+    var role: Int = Constants.USER_DEFAULT
+    var userImageLink: String = "" //change this to default later
     var courses: [Course]! = []
     
     init(dictionary: NSDictionary) {
         self.email = dictionary["email"] as! String
+        self.name = dictionary["name"] as! String
         
-        for course in dictionary["courses"] as! [String] {
-            courses.append(Course(name: course))
-        }
+        
+//        for (courseId, course) in dictionary["courses"] as! NSDictionary {
+//            print(courseId)
+//        }
     }
     
     //returns string list of courses
-    private func toStringCourses() -> [String] {
-        var ret: [String] = []
+    private func toStringCourses() -> [String: Course] {
+        var ret: [String: Course] = [:]
         
         for course in self.courses {
-            ret.append(course.name)
+            
         }
         
         return ret
@@ -35,6 +40,7 @@ class User {
         return [
             "email": self.email,
             "courses": toStringCourses(),
+            
         ]
     }
 }

@@ -11,24 +11,15 @@ import XCTest
 class UserTests: XCTestCase {
     
     func testUserCreation() {
-        let courses = [
-            "CPE-101-01",
-            "CPE-101-02",
-            "ENGL-149-02",
-            "CPE-141-05"
-        ]
-        
+        let email = "dtumer@calpoly.edu"
         let userDict = [
-            "email": "dtumer@calpoly.edu",
-            "courses": courses
+            "email": email,
+            "name": GlobalUtilities.getNameFromEmail(email)
         ]
         
         let user1 = User(dictionary: userDict)
         
         XCTAssertEqual(user1.email, "dtumer@calpoly.edu")
-        
-        for courseNdx in 0..<user1.courses.count {
-            XCTAssertEqual(user1.courses[courseNdx].name, courses[courseNdx])
-        }
+        XCTAssertEqual(user1.name, "dtumer")
     }
 }
