@@ -14,7 +14,7 @@ class FirebaseMyCoursesService: MyCoursesServiceProtocol {
     func getEnrolledCourses(uid: String, callback: ([Course]?, NSError?) -> ()) {
         userService.getUser(uid, callback: { (user, error) in
             if let user = user {
-                callback(user.courses, nil)
+                callback(nil, nil)
             }
             
             callback(nil, error)

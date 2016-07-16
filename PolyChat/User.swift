@@ -8,39 +8,46 @@
 import Foundation
 
 class User {
+    var id: String! = ""
     var name: String! = ""
     var email: String! = ""
     var role: Int = Constants.USER_DEFAULT
     var userImageLink: String = "" //change this to default later
-    var courses: [Course]! = []
+    var coursesManager: FirebaseUserCourseManager! = FirebaseUserCourseManager(coursesDict: [:])
     
+    //constructor given a user dictionary
     init(dictionary: NSDictionary) {
-        self.email = dictionary["email"] as! String
-        self.name = dictionary["name"] as! String
-        
-        
-//        for (courseId, course) in dictionary["courses"] as! NSDictionary {
-//            print(courseId)
-//        }
-    }
-    
-    //returns string list of courses
-    private func toStringCourses() -> [String: Course] {
-        var ret: [String: Course] = [:]
-        
-        for course in self.courses {
-            
+        //check if id is string
+        if let id = dictionary["id"] as? String {
+            self.id = id
         }
-        
-        return ret
+        //check if id is int
+        else if let id = dictionary["id"] as? Int {
+            self.id = String(id)
+        }
+        if let name = dictionary["name"] as? String {
+            self.name = name
+        }
+        if let email = dictionary["email"] as? String {
+            self.email = email
+        }
+        if let role = dictionary["role"] as? Int {
+            self.role = role
+        }
+        if let courses = dictionary["courses"] as? [String: [String: [String]]] {
+            self.coursesManager = FirebaseUserCourseManager(coursesDict: courses)
+        }
     }
     
     //turns the user into a dictionary
     func toDictionary() -> NSDictionary {
         return [
+            "id": self.id,
+            "name": self.name,
             "email": self.email,
-            "courses": toStringCourses(),
-            
+            "role": self.role,
+            "user_image_link": self.userImageLink,
+            "courses": coursesManager.courses
         ]
     }
 }
