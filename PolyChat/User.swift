@@ -39,10 +39,11 @@ class User {
         }
     }
     
-    //turns the user into a dictionary
+    //turns instance of User into a JSON object
     func toDictionary() -> NSDictionary {
         return [
-            "id": self.id,
+            //don't need id for firebase, but should make it so that this model implements some delegate
+            //"id": self.id,
             "name": self.name,
             "email": self.email,
             "role": self.role,

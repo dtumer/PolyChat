@@ -12,8 +12,6 @@ class Course {
     
     var id: String! = ""
     var name: String! = ""
-    var users: [String] = []
-    var groups: [String] = []
     
     init(dictionary: NSDictionary) {
         if let id = dictionary["id"] as? String {
@@ -26,11 +24,13 @@ class Course {
         if let name = dictionary["name"] as? String {
             self.name = name
         }
-        if let users = dictionary["users"] as? [String] {
-            self.users = users
-        }
-        if let groups = dictionary["groups"] as? [String] {
-            self.groups = groups
-        }
+    }
+    
+    //Converts this course object to a JSON object
+    func toDictionary() -> NSDictionary {
+        return [
+            //"id": self.id,
+            "name": self.name
+        ]
     }
 }

@@ -86,10 +86,15 @@ class FirebaseUserCourseManager: UserCourseManagerProtocol {
     }
     
     //enrolls the user in a course
-    func enrollUserInCourse(uid: String, courseId: String) {
+    //returns whether or not the erolling process was successful
+    func enrollUserInCourse(uid: String, courseId: String) -> Bool {
         if self.courses[courseId] == nil {
             courses[courseId] = [:]
+            
+            return true
         }
+        
+        return false
     }
     
     //adds a user to a group within a course

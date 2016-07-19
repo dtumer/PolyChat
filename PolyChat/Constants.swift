@@ -29,10 +29,14 @@ struct Constants {
     
     //table keys
     static let usersDBKey = "USERS" //specifies objects in db that contain USER data
-    static let chatRoomsDBKey = "CHAT_ROOMS" //specifies objects in db that contain CHAT_ROOM data
+    static let chatRoomsDBKey = "CHATROOMS" //specifies objects in db that contain CHAT_ROOM data
     static let messagesDBKey = "MESSAGES" //specifies objects in db that contain MESSAGE data
     static let coursesDBKey = "COURSES" // specifies objects in db that contain COURSE data
     static let groupsDBKey = "GROUPS" // specifies object in bd that contain GROUP data
+    static let usersGroupsDBKey = "USERS_GROUPS"
+    static let usersCoursesDBKey = "USERS_COURSES"
+    static let usersChatRoomsDBKey = "USERS_CHATROOMS"
+    static let chatRoomsMessagesDBKey = "CHATROOMS_MESSAGES"
     
     //TableViewController Reuse Identifiers
     static let myCoursesReuseId = "MyCourseCell"
