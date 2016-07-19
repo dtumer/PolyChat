@@ -7,7 +7,7 @@
 //
 
 class ChatRoomsMessagesServiceFactory {
-    class func getUsersCoursesService(serviceKey: String) -> ChatRoomsMessagesServiceProtocol {
+    class func getChatRoomsMessagesService(serviceKey: String) -> ChatRoomsMessagesServiceProtocol {
         switch serviceKey {
         case Constants.FIREBASE_SERVICE_KEY:
             return FirebaseChatRoomsMessagesService()

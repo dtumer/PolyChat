@@ -7,7 +7,7 @@
 //
 
 class UsersChatRoomsServiceFactory {
-    class func getUsersCoursesService(serviceKey: String) -> UsersChatRoomsServiceProtocol {
+    class func getUsersChatRoomsService(serviceKey: String) -> UsersChatRoomsServiceProtocol {
         switch serviceKey {
         case Constants.FIREBASE_SERVICE_KEY:
             return FirebaseUsersChatRoomsService()

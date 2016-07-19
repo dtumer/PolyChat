@@ -13,7 +13,6 @@ class User {
     var email: String! = ""
     var role: Int = Constants.USER_DEFAULT
     var userImageLink: String = "" //change this to default later
-    var coursesManager: FirebaseUserCourseManager! = FirebaseUserCourseManager(coursesDict: [:])
     
     //constructor given a user dictionary
     init(dictionary: NSDictionary) {
@@ -34,9 +33,6 @@ class User {
         if let role = dictionary["role"] as? Int {
             self.role = role
         }
-        if let courses = dictionary["courses"] as? [String: [String: [String]]] {
-            self.coursesManager = FirebaseUserCourseManager(coursesDict: courses)
-        }
     }
     
     //turns instance of User into a JSON object
@@ -47,8 +43,7 @@ class User {
             "name": self.name,
             "email": self.email,
             "role": self.role,
-            "user_image_link": self.userImageLink,
-            "courses": coursesManager.courses
+            "user_image_link": self.userImageLink
         ]
     }
 }

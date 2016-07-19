@@ -13,7 +13,7 @@ class MyCoursesTableViewController: UITableViewController {
     
     //services variables
     var authService: AuthServiceProtocol!
-    var myCoursesService: MyCoursesServiceProtocol!
+    var myCoursesService: CourseServiceProtocol!
     
     //instance variables for UI
     var user: NSDictionary!
@@ -27,7 +27,7 @@ class MyCoursesTableViewController: UITableViewController {
         
         //retrieve services we will need
         self.authService = AuthServiceFactory.getAuthService(Constants.CURRENT_SERVICE_KEY)
-        self.myCoursesService = MyCoursesServiceFactory.getMyCoursesService(Constants.CURRENT_SERVICE_KEY)
+        //self.myCoursesService = MyCoursesServiceFactory.getMyCoursesService(Constants.CURRENT_SERVICE_KEY)
         
         //check if a user is logged in
         if !authService.hasOpenSession() {
@@ -72,22 +72,22 @@ class MyCoursesTableViewController: UITableViewController {
     
     //loads the courses from the database
     func loadCourses(uid: String) {
-        self.myCoursesService.getEnrolledCourses(uid, callback: { (courses, error) in
-            if let courses = courses {
-                self.courses = courses
-                self.tableView.reloadData()
-            }
-            else {
-                print("ERROR: \(error?.localizedDescription)")
-            }
-        })
+//        self.myCoursesService.getEnrolledCourses(uid, callback: { (courses, error) in
+//            if let courses = courses {
+//                self.courses = courses
+//                self.tableView.reloadData()
+//            }
+//            else {
+//                print("ERROR: \(error?.localizedDescription)")
+//            }
+//        })
     }
     
     //used to initialize mock data in database
     private func initMockData() {
-        let mockInit = FirebaseInitMockDatabase()
+        //let mockInit = FirebaseInitMockDatabase()
     
-        mockInit.initMockDB()
+        //mockInit.initMockDB()
     }
     
     @IBAction func signOutPressed(sender: AnyObject) {

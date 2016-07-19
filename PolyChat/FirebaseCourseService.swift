@@ -32,23 +32,23 @@ class FirebaseCourseService: CourseServiceProtocol {
                 callback(error)
             }
             
-            let success = user!.coursesManager.enrollUserInCourse(userId, courseId: courseId)
+            //let success = user!.coursesManager.enrollUserInCourse(userId, courseId: courseId)
             
             //check if adding the course was successful
-            if success {
-                //resync user with DB
-                self.userService.putUser(user!.id, user: user!, callback: { error in
-                    if let error = error {
-                        callback(error)
-                    }
-                    
-                    callback(nil)
-                })
-            }
-            else {
-                //create error and send it back
-                callback(NSError(domain: "FirebaseCourseService::enrollUserInCourse()", code: 0, description: "Error adding course. User already enrolled in course"))
-            }
+//            if success {
+//                //resync user with DB
+//                self.userService.putUser(user!.id, user: user!, callback: { error in
+//                    if let error = error {
+//                        callback(error)
+//                    }
+//                    
+//                    callback(nil)
+//                })
+//            }
+//            else {
+//                //create error and send it back
+//                callback(NSError(domain: "FirebaseCourseService::enrollUserInCourse()", code: 0, description: "Error adding course. User already enrolled in course"))
+//            }
         })
     }
 }

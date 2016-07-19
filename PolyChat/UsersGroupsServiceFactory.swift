@@ -7,7 +7,7 @@
 //
 
 class UsersGroupsServiceFactory {
-    class func getUsersCoursesService(serviceKey: String) -> UsersGroupsServiceProtocol {
+    class func getUsersGroupsService(serviceKey: String) -> UsersGroupsServiceProtocol {
         switch serviceKey {
         case Constants.FIREBASE_SERVICE_KEY:
             return FirebaseUsersGroupsService()

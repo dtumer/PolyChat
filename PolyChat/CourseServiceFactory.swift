@@ -7,7 +7,7 @@
 //
 
 class CourseServiceFactory {
-    class func getUserService(serviceKey: String) -> CourseServiceProtocol {
+    class func getCourseService(serviceKey: String) -> CourseServiceProtocol {
         switch serviceKey {
         case Constants.FIREBASE_SERVICE_KEY:
             return FirebaseCourseService()
