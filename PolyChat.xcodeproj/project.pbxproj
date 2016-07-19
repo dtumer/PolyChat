@@ -43,6 +43,24 @@
 		0F2B56311D3DEB91008BF1F6 /* MockUsersCoursesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2B56301D3DEB91008BF1F6 /* MockUsersCoursesService.swift */; };
 		0F2B56321D3DEB91008BF1F6 /* MockUsersCoursesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2B56301D3DEB91008BF1F6 /* MockUsersCoursesService.swift */; };
 		0F2B56331D3DEB91008BF1F6 /* MockUsersCoursesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2B56301D3DEB91008BF1F6 /* MockUsersCoursesService.swift */; };
+		0F2B56351D3DEBFD008BF1F6 /* UsersGroupsServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2B56341D3DEBFD008BF1F6 /* UsersGroupsServiceFactory.swift */; };
+		0F2B56361D3DEBFD008BF1F6 /* UsersGroupsServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2B56341D3DEBFD008BF1F6 /* UsersGroupsServiceFactory.swift */; };
+		0F2B56371D3DEBFD008BF1F6 /* UsersGroupsServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2B56341D3DEBFD008BF1F6 /* UsersGroupsServiceFactory.swift */; };
+		0F2B563A1D3DEC46008BF1F6 /* UsersChatRoomsServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2B56391D3DEC46008BF1F6 /* UsersChatRoomsServiceFactory.swift */; };
+		0F2B563B1D3DEC46008BF1F6 /* UsersChatRoomsServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2B56391D3DEC46008BF1F6 /* UsersChatRoomsServiceFactory.swift */; };
+		0F2B563C1D3DEC46008BF1F6 /* UsersChatRoomsServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2B56391D3DEC46008BF1F6 /* UsersChatRoomsServiceFactory.swift */; };
+		0F2B563E1D3DECA7008BF1F6 /* ChatRoomsMessagesServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2B563D1D3DECA7008BF1F6 /* ChatRoomsMessagesServiceFactory.swift */; };
+		0F2B563F1D3DECA7008BF1F6 /* ChatRoomsMessagesServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2B563D1D3DECA7008BF1F6 /* ChatRoomsMessagesServiceFactory.swift */; };
+		0F2B56401D3DECA7008BF1F6 /* ChatRoomsMessagesServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2B563D1D3DECA7008BF1F6 /* ChatRoomsMessagesServiceFactory.swift */; };
+		0F2B56421D3DECD2008BF1F6 /* MockUsersGroupsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2B56411D3DECD2008BF1F6 /* MockUsersGroupsService.swift */; };
+		0F2B56431D3DECD2008BF1F6 /* MockUsersGroupsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2B56411D3DECD2008BF1F6 /* MockUsersGroupsService.swift */; };
+		0F2B56441D3DECD2008BF1F6 /* MockUsersGroupsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2B56411D3DECD2008BF1F6 /* MockUsersGroupsService.swift */; };
+		0F2B56461D3DECE8008BF1F6 /* MockUsersChatRoomsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2B56451D3DECE8008BF1F6 /* MockUsersChatRoomsService.swift */; };
+		0F2B56471D3DECE8008BF1F6 /* MockUsersChatRoomsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2B56451D3DECE8008BF1F6 /* MockUsersChatRoomsService.swift */; };
+		0F2B56481D3DECE8008BF1F6 /* MockUsersChatRoomsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2B56451D3DECE8008BF1F6 /* MockUsersChatRoomsService.swift */; };
+		0F2B564A1D3DED26008BF1F6 /* MockChatRoomsMessagesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2B56491D3DED26008BF1F6 /* MockChatRoomsMessagesService.swift */; };
+		0F2B564B1D3DED26008BF1F6 /* MockChatRoomsMessagesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2B56491D3DED26008BF1F6 /* MockChatRoomsMessagesService.swift */; };
+		0F2B564C1D3DED26008BF1F6 /* MockChatRoomsMessagesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2B56491D3DED26008BF1F6 /* MockChatRoomsMessagesService.swift */; };
 		0F34D84C1D26148B002584FB /* SubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F34D84B1D26148B002584FB /* SubViewController.swift */; };
 		0F34D84D1D26148B002584FB /* SubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F34D84B1D26148B002584FB /* SubViewController.swift */; };
 		0F34D84E1D26148B002584FB /* SubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F34D84B1D26148B002584FB /* SubViewController.swift */; };
@@ -263,6 +281,12 @@
 		0F2B56281D3DEB03008BF1F6 /* FirebaseChatRoomsMessagesService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseChatRoomsMessagesService.swift; sourceTree = "<group>"; };
 		0F2B562C1D3DEB2C008BF1F6 /* ChatRoomsMessagesServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatRoomsMessagesServiceProtocol.swift; sourceTree = "<group>"; };
 		0F2B56301D3DEB91008BF1F6 /* MockUsersCoursesService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockUsersCoursesService.swift; sourceTree = "<group>"; };
+		0F2B56341D3DEBFD008BF1F6 /* UsersGroupsServiceFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersGroupsServiceFactory.swift; sourceTree = "<group>"; };
+		0F2B56391D3DEC46008BF1F6 /* UsersChatRoomsServiceFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersChatRoomsServiceFactory.swift; sourceTree = "<group>"; };
+		0F2B563D1D3DECA7008BF1F6 /* ChatRoomsMessagesServiceFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatRoomsMessagesServiceFactory.swift; sourceTree = "<group>"; };
+		0F2B56411D3DECD2008BF1F6 /* MockUsersGroupsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockUsersGroupsService.swift; sourceTree = "<group>"; };
+		0F2B56451D3DECE8008BF1F6 /* MockUsersChatRoomsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockUsersChatRoomsService.swift; sourceTree = "<group>"; };
+		0F2B56491D3DED26008BF1F6 /* MockChatRoomsMessagesService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockChatRoomsMessagesService.swift; sourceTree = "<group>"; };
 		0F34D84B1D26148B002584FB /* SubViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubViewController.swift; sourceTree = "<group>"; };
 		0F34D84F1D2615C4002584FB /* SubViewSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubViewSegue.swift; sourceTree = "<group>"; };
 		0F34D8541D262D39002584FB /* Chat.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
@@ -374,6 +398,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F2B56381D3DEC31008BF1F6 /* Factories */ = {
+			isa = PBXGroup;
+			children = (
+				0F34D8641D274348002584FB /* ChatRoomServiceFactory.swift */,
+				0F65FC3C1D1E262800470498 /* MyCoursesServiceFactory.swift */,
+				D8EAFB1B1D1D01FC000638CF /* AuthServiceFactory.swift */,
+				0F4AFF541D1DD8E60030C3BD /* UserServiceFactory.swift */,
+				D89D27AB1D375503006542DF /* CourseServiceFactory.swift */,
+				0F2B560C1D3DE9B1008BF1F6 /* UsersCoursesServiceFactory.swift */,
+				0F2B56341D3DEBFD008BF1F6 /* UsersGroupsServiceFactory.swift */,
+				0F2B56391D3DEC46008BF1F6 /* UsersChatRoomsServiceFactory.swift */,
+				0F2B563D1D3DECA7008BF1F6 /* ChatRoomsMessagesServiceFactory.swift */,
+			);
+			name = Factories;
+			sourceTree = "<group>";
+		};
 		0F34D8531D262D22002584FB /* Chat */ = {
 			isa = PBXGroup;
 			children = (
@@ -452,6 +492,9 @@
 				0F34D87C1D27446C002584FB /* MockChatRoomService.swift */,
 				D89D27B71D375617006542DF /* MockCourseService.swift */,
 				0F2B56301D3DEB91008BF1F6 /* MockUsersCoursesService.swift */,
+				0F2B56411D3DECD2008BF1F6 /* MockUsersGroupsService.swift */,
+				0F2B56451D3DECE8008BF1F6 /* MockUsersChatRoomsService.swift */,
+				0F2B56491D3DED26008BF1F6 /* MockChatRoomsMessagesService.swift */,
 			);
 			name = Mock;
 			sourceTree = "<group>";
@@ -459,12 +502,7 @@
 		0F4AFF791D1E04780030C3BD /* Server */ = {
 			isa = PBXGroup;
 			children = (
-				0F34D8641D274348002584FB /* ChatRoomServiceFactory.swift */,
-				0F65FC3C1D1E262800470498 /* MyCoursesServiceFactory.swift */,
-				D8EAFB1B1D1D01FC000638CF /* AuthServiceFactory.swift */,
-				0F4AFF541D1DD8E60030C3BD /* UserServiceFactory.swift */,
-				D89D27AB1D375503006542DF /* CourseServiceFactory.swift */,
-				0F2B560C1D3DE9B1008BF1F6 /* UsersCoursesServiceFactory.swift */,
+				0F2B56381D3DEC31008BF1F6 /* Factories */,
 				D8EAFB111D1CFB44000638CF /* Protocols */,
 				D8EAFB121D1CFB61000638CF /* Firebase */,
 				0F4AFF601D1DDA480030C3BD /* Mock */,
@@ -1037,6 +1075,7 @@
 				0F2B56291D3DEB03008BF1F6 /* FirebaseChatRoomsMessagesService.swift in Sources */,
 				D89D27C11D375F27006542DF /* CoursesAdminTableViewController.swift in Sources */,
 				0F4AFF7E1D1E0D3D0030C3BD /* Course.swift in Sources */,
+				0F2B56461D3DECE8008BF1F6 /* MockUsersChatRoomsService.swift in Sources */,
 				D89D27AC1D375503006542DF /* CourseServiceFactory.swift in Sources */,
 				0F4AFF621D1DDA5C0030C3BD /* MockAuthService.swift in Sources */,
 				0F960B071D1CD70900E0D902 /* FirebaseAuthService.swift in Sources */,
@@ -1051,6 +1090,8 @@
 				0F2B562D1D3DEB2C008BF1F6 /* ChatRoomsMessagesServiceProtocol.swift in Sources */,
 				0F4AFF6A1D1DDF140030C3BD /* FirebaseInitMockDatabase.swift in Sources */,
 				0F4AFF761D1E04610030C3BD /* ValidationService.swift in Sources */,
+				0F2B56351D3DEBFD008BF1F6 /* UsersGroupsServiceFactory.swift in Sources */,
+				0F2B564A1D3DED26008BF1F6 /* MockChatRoomsMessagesService.swift in Sources */,
 				D8EAFB141D1CFBFB000638CF /* AuthServiceProtocol.swift in Sources */,
 				0F971FD11D387A0300560B93 /* Group.swift in Sources */,
 				0F4159CE1D1A492700EE4E58 /* PolyChat.xcdatamodeld in Sources */,
@@ -1058,11 +1099,13 @@
 				0F4159C61D1A492700EE4E58 /* AppDelegate.swift in Sources */,
 				0F960B031D1CD69500E0D902 /* Constants.swift in Sources */,
 				0F34D8501D2615C4002584FB /* SubViewSegue.swift in Sources */,
+				0F2B563A1D3DEC46008BF1F6 /* UsersChatRoomsServiceFactory.swift in Sources */,
 				D83FC3A81D24C85300DDCF25 /* LoginViewController.swift in Sources */,
 				0F34D8791D274456002584FB /* FirebaseChatRoomService.swift in Sources */,
 				0F34D86D1D2743D3002584FB /* FirebaseChatService.swift in Sources */,
 				0F2B56151D3DEA38008BF1F6 /* UsersGroupsServiceProtocol.swift in Sources */,
 				0F65FC3D1D1E262800470498 /* MyCoursesServiceFactory.swift in Sources */,
+				0F2B56421D3DECD2008BF1F6 /* MockUsersGroupsService.swift in Sources */,
 				D89D27B81D375617006542DF /* MockCourseService.swift in Sources */,
 				0F2B56191D3DEA74008BF1F6 /* UsersChatRoomsServiceProtocol.swift in Sources */,
 				0F65FC6B1D1F967600470498 /* CourseViewController.swift in Sources */,
@@ -1085,6 +1128,7 @@
 				0F65FC581D1E289600470498 /* MockMyCoursesService.swift in Sources */,
 				0F65FC481D1E270E00470498 /* User.swift in Sources */,
 				0F2B561D1D3DEA95008BF1F6 /* FirebaseUsersCoursesService.swift in Sources */,
+				0F2B563E1D3DECA7008BF1F6 /* ChatRoomsMessagesServiceFactory.swift in Sources */,
 				0F34D87D1D27446C002584FB /* MockChatRoomService.swift in Sources */,
 				D89D27B01D375570006542DF /* CourseServiceProtocol.swift in Sources */,
 				0F2B56211D3DEAD5008BF1F6 /* FirebaseUsersGroupsService.swift in Sources */,
@@ -1103,6 +1147,7 @@
 				0F2B56071D3DC300008BF1F6 /* CourseTests.swift in Sources */,
 				0F65FC441D1E26B300470498 /* MyCoursesServiceProtocol.swift in Sources */,
 				0F65FC611D1E427800470498 /* UserTests.swift in Sources */,
+				0F2B56471D3DECE8008BF1F6 /* MockUsersChatRoomsService.swift in Sources */,
 				0F34D8761D274444002584FB /* ChatRoomServiceProtocol.swift in Sources */,
 				0F2B56161D3DEA38008BF1F6 /* UsersGroupsServiceProtocol.swift in Sources */,
 				D89D27B91D375617006542DF /* MockCourseService.swift in Sources */,
@@ -1137,7 +1182,9 @@
 				0F2B56051D3DC2F3008BF1F6 /* GroupTests.swift in Sources */,
 				0F2B560E1D3DE9B1008BF1F6 /* UsersCoursesServiceFactory.swift in Sources */,
 				0F2B56321D3DEB91008BF1F6 /* MockUsersCoursesService.swift in Sources */,
+				0F2B564B1D3DED26008BF1F6 /* MockChatRoomsMessagesService.swift in Sources */,
 				D89D27A91D3749C2006542DF /* AddCourseViewController.swift in Sources */,
+				0F2B56431D3DECD2008BF1F6 /* MockUsersGroupsService.swift in Sources */,
 				D8EAFB1D1D1D01FC000638CF /* AuthServiceFactory.swift in Sources */,
 				0F4AFF5E1D1DDA040030C3BD /* FirebaseDataService.swift in Sources */,
 				0F971FBC1D3745B200560B93 /* GlobalUtilities.swift in Sources */,
@@ -1145,16 +1192,19 @@
 				0F34D87A1D274456002584FB /* FirebaseChatRoomService.swift in Sources */,
 				0F971FC41D37549200560B93 /* FirebaseUserCourseManagerTests.swift in Sources */,
 				0F4AFF771D1E04610030C3BD /* ValidationService.swift in Sources */,
+				0F2B563F1D3DECA7008BF1F6 /* ChatRoomsMessagesServiceFactory.swift in Sources */,
 				0F65FC4D1D1E27B000470498 /* FirebaseUserService.swift in Sources */,
 				0F34D86A1D2743BB002584FB /* ChatServiceProtocol.swift in Sources */,
 				0F34D8661D274348002584FB /* ChatRoomServiceFactory.swift in Sources */,
 				0F65FC551D1E286600470498 /* FirebaseMyCoursesService.swift in Sources */,
+				0F2B56361D3DEBFD008BF1F6 /* UsersGroupsServiceFactory.swift in Sources */,
 				0F2B56221D3DEAD5008BF1F6 /* FirebaseUsersGroupsService.swift in Sources */,
 				0F65FC421D1E26AE00470498 /* UserServiceProtocol.swift in Sources */,
 				0F34D87E1D27446C002584FB /* MockChatRoomService.swift in Sources */,
 				0F34D84D1D26148B002584FB /* SubViewController.swift in Sources */,
 				0F971FC91D3874A600560B93 /* UserCourseManagerProtocol.swift in Sources */,
 				0F4AFF561D1DD8EA0030C3BD /* UserServiceFactory.swift in Sources */,
+				0F2B563B1D3DEC46008BF1F6 /* UsersChatRoomsServiceFactory.swift in Sources */,
 				0F65FC701D22031400470498 /* NSErrorExtension.swift in Sources */,
 				0F4AFF831D1E10090030C3BD /* MyCoursesTableViewCell.swift in Sources */,
 				0F2B560B1D3DC3A7008BF1F6 /* MockDatabase.swift in Sources */,
@@ -1181,9 +1231,11 @@
 				0F2B56271D3DEAEC008BF1F6 /* FirebaseUsersChatRoomsService.swift in Sources */,
 				0F34D87F1D27446C002584FB /* MockChatRoomService.swift in Sources */,
 				0F971FCA1D3874A600560B93 /* UserCourseManagerProtocol.swift in Sources */,
+				0F2B56441D3DECD2008BF1F6 /* MockUsersGroupsService.swift in Sources */,
 				0F65FC6D1D1F967600470498 /* CourseViewController.swift in Sources */,
 				D89D27B21D375570006542DF /* CourseServiceProtocol.swift in Sources */,
 				0F2B562B1D3DEB03008BF1F6 /* FirebaseChatRoomsMessagesService.swift in Sources */,
+				0F2B56481D3DECE8008BF1F6 /* MockUsersChatRoomsService.swift in Sources */,
 				0F34D8521D2615C4002584FB /* SubViewSegue.swift in Sources */,
 				0F4AFF641D1DDA5C0030C3BD /* MockAuthService.swift in Sources */,
 				0F2B562F1D3DEB2C008BF1F6 /* ChatRoomsMessagesServiceProtocol.swift in Sources */,
@@ -1191,6 +1243,7 @@
 				0F65FC4A1D1E270E00470498 /* User.swift in Sources */,
 				0F2B560F1D3DE9B1008BF1F6 /* UsersCoursesServiceFactory.swift in Sources */,
 				0F65FC5A1D1E289600470498 /* MockMyCoursesService.swift in Sources */,
+				0F2B56401D3DECA7008BF1F6 /* ChatRoomsMessagesServiceFactory.swift in Sources */,
 				0F4AFF801D1E0D3D0030C3BD /* Course.swift in Sources */,
 				0F4AFF701D1DE3670030C3BD /* MyCoursesTableViewController.swift in Sources */,
 				0F65FC711D22031400470498 /* NSErrorExtension.swift in Sources */,
@@ -1220,9 +1273,12 @@
 				0F34D87B1D274456002584FB /* FirebaseChatRoomService.swift in Sources */,
 				0F34D8731D2743F3002584FB /* MockChatService.swift in Sources */,
 				D89D27A11D374824006542DF /* AdminSettingsTableViewController.swift in Sources */,
+				0F2B564C1D3DED26008BF1F6 /* MockChatRoomsMessagesService.swift in Sources */,
+				0F2B563C1D3DEC46008BF1F6 /* UsersChatRoomsServiceFactory.swift in Sources */,
 				0F2B561B1D3DEA74008BF1F6 /* UsersChatRoomsServiceProtocol.swift in Sources */,
 				0F2B56131D3DEA1C008BF1F6 /* UsersCoursesServiceProtocol.swift in Sources */,
 				0F960B051D1CD69500E0D902 /* Constants.swift in Sources */,
+				0F2B56371D3DEBFD008BF1F6 /* UsersGroupsServiceFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
