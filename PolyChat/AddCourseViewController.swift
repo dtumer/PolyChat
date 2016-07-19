@@ -10,6 +10,7 @@ import UIKit
 
 class AddCourseViewController: UIViewController, UITextFieldDelegate {
 
+    var courseService = CourseServiceFactory.getCourseService(Constants.CURRENT_SERVICE_KEY)
     @IBOutlet weak var courseNameTextField: UITextField!
     
     override func viewDidLoad() {
@@ -35,17 +36,34 @@ class AddCourseViewController: UIViewController, UITextFieldDelegate {
     */
     
     @IBAction func donePressed(sender: UIBarButtonItem) {
-        let courseName = courseNameTextField.text!
-        print(courseName)
-        
         // TODO: Load course into Firebase
+        let courseName = courseNameTextField.text!
+        let courseDict = ["name" : courseName]
+        let course = Course(dictionary: courseDict)
         
+        if !isValidCourseName(courseName) {
+            courseService.addCourse(course, callback: { error in
+                if let error = error {
+                    // Handle error
+                    print("ERROR OCCURRED IN ADD COURSE")
+                } else {
+                    print("Course \(course.name) added")
+                }
+            })
+        }
         
         dismissViewControllerAnimated(true, completion: nil)
     }
     
     @IBAction func cancelPressed(sender: UIBarButtonItem) {
         dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func isValidCourseName(str: String) -> Bool {
+        if(str.isEmpty) {
+            return true
+        }
+        return (str.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()) == "")
     }
 
 }

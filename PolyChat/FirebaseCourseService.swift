@@ -18,9 +18,16 @@ class FirebaseCourseService: CourseServiceProtocol {
         
     }
     
-    //puts a course in the database
-    func putCourse(courseId: String, course: Course, callback: (NSError?) -> ()) {
+    //gets all the courses from the database
+    func getAllCourses(callback: ([Course]?, NSError?) -> ()) {
         
+    }
+    
+    //puts a course in the database
+    func addCourse(course: Course, callback: (NSError?) -> ()) {
+        let key = courseRef.child(Constants.coursesDBKey).childByAutoId().key
+        let childUpdates = ["/\(Constants.coursesDBKey)/\(key)": course.toDictionary()]
+        courseRef.updateChildValues(childUpdates)
     }
     
     //enrolls a user in the course specified

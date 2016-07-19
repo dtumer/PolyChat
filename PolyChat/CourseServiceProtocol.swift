@@ -12,8 +12,11 @@ protocol CourseServiceProtocol {
     //get course
     func getCourse(courseId: String, callback: (Course?, NSError?) -> ())
 
+    //get all courses
+    func getAllCourses(callback: ([Course]?, NSError?) -> ())
+    
     //put course
-    func putCourse(courseId: String, course: Course, callback: (NSError?) -> ())
+    func addCourse(course: Course, callback: (NSError?) -> ())
     
     //enrolls a student in a course
     func enrollUserInCourse(userId: String, courseId: String, callback: (NSError?) -> ())

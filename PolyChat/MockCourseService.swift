@@ -13,7 +13,11 @@ class MockCourseService: CourseServiceProtocol {
         
     }
     
-    func putCourse(courseId: String, course: Course, callback: (NSError?) -> ()) {
+    func getAllCourses(callback: ([Course]?, NSError?) -> ()) {
+        
+    }
+    
+    func addCourse(course: Course, callback: (NSError?) -> ()) {
         
     }
     

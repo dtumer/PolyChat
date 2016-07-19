@@ -33,4 +33,13 @@ class Course {
             "name": self.name
         ]
     }
+    
+    //Checks if the course is a valid course
+    func isValid() -> Bool {
+        if(self.name.isEmpty) {
+            return false
+        }
+        
+        return !(self.name.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()) == "")
+    }
 }
