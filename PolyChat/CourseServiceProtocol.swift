@@ -17,7 +17,4 @@ protocol CourseServiceProtocol {
     
     //put course
     func addCourse(course: Course, callback: (NSError?) -> ())
-    
-    //enrolls a student in a course
-    func enrollUserInCourse(userId: String, courseId: String, callback: (NSError?) -> ())
 }

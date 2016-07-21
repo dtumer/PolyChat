@@ -9,5 +9,15 @@
 import Foundation
 
 class MockGroupService: GroupServiceProtocol {
+    func getAllGroups(callback: ([Group]?, NSError?) -> ()) {
+        
+    }
     
+    func getGroup(groupId: String, callback: (Group?, NSError?) -> ()) {
+        
+    }
+    
+    func addGroup(group: Group, callback: (NSError?) -> ()) {
+        
+    }
 }

@@ -8,6 +8,16 @@
 
 import Foundation
 
-class FirebaseGroupService: GroupServiceProtocol {
+class FirebaseGroupService: FirebaseDatabaseService, GroupServiceProtocol {
+    func getGroup(groupId: String, callback: (Group?, NSError?) -> ()) {
+        
+    }
     
+    func getAllGroups(callback: ([Group]?, NSError?) -> ()) {
+        
+    }
+    
+    func addGroup(group: Group, callback: (NSError?) -> ()) {
+        
+    }
 }

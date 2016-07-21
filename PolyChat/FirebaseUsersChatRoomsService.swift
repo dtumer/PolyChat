@@ -8,6 +8,6 @@
 
 import Foundation
 
-class FirebaseUsersChatRoomsService: UsersChatRoomsServiceProtocol {
+class FirebaseUsersChatRoomsService: FirebaseDatabaseService, UsersChatRoomsServiceProtocol {
     
 }

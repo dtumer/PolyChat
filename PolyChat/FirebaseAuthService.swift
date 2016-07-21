@@ -12,7 +12,7 @@ import Firebase
 /*
  * This class will contain methods for authenticating users through Firebase
 */
-class FirebaseAuthService: AuthServiceProtocol {
+class FirebaseAuthService: FirebaseDatabaseService, AuthServiceProtocol {
     let userService = UserServiceFactory.getUserService(Constants.CURRENT_SERVICE_KEY)
     
     func signUpUser(email: String, passHash: String) {

@@ -8,12 +8,11 @@
 
 import Firebase
 
-class FirebaseUserService: UserServiceProtocol {
-    let userRef = FIRDatabase.database().reference()
+class FirebaseUserService: FirebaseDatabaseService, UserServiceProtocol {
     
     // Gets a user from the database given their UID. Passes an NSError with code 0 if user is not found
     func getUser(uid: String, callback: (User?, NSError?) -> ()) {
-        userRef.child(Constants.usersDBKey).child(uid).observeSingleEventOfType(.Value, withBlock: { snapshot in
+        dbRef.child(Constants.usersDBKey).child(uid).observeSingleEventOfType(.Value, withBlock: { snapshot in
             if let value = snapshot.value {
                 if value is NSNull {
                     return
@@ -36,7 +35,7 @@ class FirebaseUserService: UserServiceProtocol {
             ]
             
             //insert user into the database
-            self.userRef.updateChildValues(childVals, withCompletionBlock: { (error, ref) in
+            self.dbRef.updateChildValues(childVals, withCompletionBlock: { (error, ref) in
                 if let error = error {
                     callback(error)
                     return

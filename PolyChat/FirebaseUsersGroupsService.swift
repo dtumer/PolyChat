@@ -8,6 +8,6 @@
 
 import Foundation
 
-class FirebaseUsersGroupsService: UsersGroupsServiceProtocol {
+class FirebaseUsersGroupsService: FirebaseDatabaseService, UsersGroupsServiceProtocol {
     
 }

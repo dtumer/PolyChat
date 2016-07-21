@@ -8,6 +8,6 @@
 
 import Foundation
 
-class FirebaseChatRoomsMessagesService: ChatRoomsMessagesServiceProtocol {
+class FirebaseChatRoomsMessagesService: FirebaseDatabaseService, ChatRoomsMessagesServiceProtocol {
     
 }

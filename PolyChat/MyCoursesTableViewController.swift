@@ -13,11 +13,12 @@ class MyCoursesTableViewController: UITableViewController {
     
     //services variables
     var authService: AuthServiceProtocol!
-    var myCoursesService: CourseServiceProtocol!
+    var usersCoursesService: UsersCoursesServiceProtocol!
+    var courseService: CourseServiceProtocol!
     
     //instance variables for UI
     var user: NSDictionary!
-    var courses = [Course]()
+    var courses: [Course] = []
     
     //on view did load
     override func viewDidLoad() {
@@ -27,7 +28,8 @@ class MyCoursesTableViewController: UITableViewController {
         
         //retrieve services we will need
         self.authService = AuthServiceFactory.getAuthService(Constants.CURRENT_SERVICE_KEY)
-        //self.myCoursesService = MyCoursesServiceFactory.getMyCoursesService(Constants.CURRENT_SERVICE_KEY)
+        self.usersCoursesService = UsersCoursesServiceFactory.getUsersCoursesService(Constants.CURRENT_SERVICE_KEY)
+        self.courseService = CourseServiceFactory.getCourseService(Constants.CURRENT_SERVICE_KEY)
         
         //check if a user is logged in
         if !authService.hasOpenSession() {
@@ -72,6 +74,11 @@ class MyCoursesTableViewController: UITableViewController {
     
     //loads the courses from the database
     func loadCourses(uid: String) {
+        self.usersCoursesService.getEnrolledCourses(uid, callback: { (courses, error) in
+            if let courses = courses {
+                self.courses = courses
+            }
+        })
 //        self.myCoursesService.getEnrolledCourses(uid, callback: { (courses, error) in
 //            if let courses = courses {
 //                self.courses = courses

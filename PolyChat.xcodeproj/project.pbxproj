@@ -85,6 +85,9 @@
 		0F2B566A1D3DF446008BF1F6 /* MockMessageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2B56691D3DF446008BF1F6 /* MockMessageService.swift */; };
 		0F2B566B1D3DF446008BF1F6 /* MockMessageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2B56691D3DF446008BF1F6 /* MockMessageService.swift */; };
 		0F2B566C1D3DF446008BF1F6 /* MockMessageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2B56691D3DF446008BF1F6 /* MockMessageService.swift */; };
+		0F2B56721D40861F008BF1F6 /* FirebaseDatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2B56711D40861F008BF1F6 /* FirebaseDatabaseService.swift */; };
+		0F2B56731D40861F008BF1F6 /* FirebaseDatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2B56711D40861F008BF1F6 /* FirebaseDatabaseService.swift */; };
+		0F2B56741D40861F008BF1F6 /* FirebaseDatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2B56711D40861F008BF1F6 /* FirebaseDatabaseService.swift */; };
 		0F34D84C1D26148B002584FB /* SubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F34D84B1D26148B002584FB /* SubViewController.swift */; };
 		0F34D84D1D26148B002584FB /* SubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F34D84B1D26148B002584FB /* SubViewController.swift */; };
 		0F34D84E1D26148B002584FB /* SubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F34D84B1D26148B002584FB /* SubViewController.swift */; };
@@ -279,6 +282,7 @@
 		0F2B56611D3DF368008BF1F6 /* FirebaseMessageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseMessageService.swift; sourceTree = "<group>"; };
 		0F2B56651D3DF431008BF1F6 /* MockGroupService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockGroupService.swift; sourceTree = "<group>"; };
 		0F2B56691D3DF446008BF1F6 /* MockMessageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockMessageService.swift; sourceTree = "<group>"; };
+		0F2B56711D40861F008BF1F6 /* FirebaseDatabaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseDatabaseService.swift; sourceTree = "<group>"; };
 		0F34D84B1D26148B002584FB /* SubViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubViewController.swift; sourceTree = "<group>"; };
 		0F34D84F1D2615C4002584FB /* SubViewSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubViewSegue.swift; sourceTree = "<group>"; };
 		0F34D8541D262D39002584FB /* Chat.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
@@ -723,6 +727,7 @@
 				0F2B56201D3DEAD5008BF1F6 /* FirebaseUsersGroupsService.swift */,
 				0F2B56241D3DEAEC008BF1F6 /* FirebaseUsersChatRoomsService.swift */,
 				0F2B56281D3DEB03008BF1F6 /* FirebaseChatRoomsMessagesService.swift */,
+				0F2B56711D40861F008BF1F6 /* FirebaseDatabaseService.swift */,
 			);
 			name = Firebase;
 			sourceTree = "<group>";
@@ -1048,6 +1053,7 @@
 				0F971FD11D387A0300560B93 /* Group.swift in Sources */,
 				0F4159CE1D1A492700EE4E58 /* PolyChat.xcdatamodeld in Sources */,
 				D89D27A81D3749C2006542DF /* AddCourseViewController.swift in Sources */,
+				0F2B56721D40861F008BF1F6 /* FirebaseDatabaseService.swift in Sources */,
 				0F4159C61D1A492700EE4E58 /* AppDelegate.swift in Sources */,
 				0F960B031D1CD69500E0D902 /* Constants.swift in Sources */,
 				0F34D8501D2615C4002584FB /* SubViewSegue.swift in Sources */,
@@ -1154,6 +1160,7 @@
 				0F2B56531D3DF1FE008BF1F6 /* GroupServiceFactory.swift in Sources */,
 				0F2B560B1D3DC3A7008BF1F6 /* MockDatabase.swift in Sources */,
 				0F960B041D1CD69500E0D902 /* Constants.swift in Sources */,
+				0F2B56731D40861F008BF1F6 /* FirebaseDatabaseService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1168,6 +1175,7 @@
 				0F2B56541D3DF1FE008BF1F6 /* GroupServiceFactory.swift in Sources */,
 				0F971FD31D387A0300560B93 /* Group.swift in Sources */,
 				D8EAFB181D1CFC03000638CF /* SignUpViewController.swift in Sources */,
+				0F2B56741D40861F008BF1F6 /* FirebaseDatabaseService.swift in Sources */,
 				D8EAFB161D1CFBFB000638CF /* AuthServiceProtocol.swift in Sources */,
 				D89D27C31D375F27006542DF /* CoursesAdminTableViewController.swift in Sources */,
 				0F971FD71D387A3A00560B93 /* ChatRoom.swift in Sources */,

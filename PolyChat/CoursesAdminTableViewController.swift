@@ -10,32 +10,19 @@ import UIKit
 
 class CoursesAdminTableViewController: UITableViewController {
 
+    var courseService = CourseServiceFactory.getCourseService(Constants.CURRENT_SERVICE_KEY)
+    var courses: [Course] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupNavBar()
+        loadCourses()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    // MARK: - Table view data source
-
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
     }
     
     private func setupNavBar() {
@@ -49,16 +36,39 @@ class CoursesAdminTableViewController: UITableViewController {
         let navController = UINavigationController.init(rootViewController:vc)
         self.presentViewController(navController, animated: true, completion: nil)
     }
-
+    
+    private func loadCourses() {
+        courseService.getAllCourses({ (courses, error) in
+            print(courses)
+        })
+    }
+    
     /*
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+}
 
-        // Configure the cell...
+/* Extension to impolement table view for the Admin Courses manager */
+extension CoursesAdminTableViewController {
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return courses.count
+    }
+
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier(Constants.coursesReuseId, forIndexPath: indexPath)
 
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.
@@ -94,15 +104,4 @@ class CoursesAdminTableViewController: UITableViewController {
         return true
     }
     */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

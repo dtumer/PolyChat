@@ -9,9 +9,11 @@
 import Foundation
 import Firebase
 
-class FirebaseChatRoomService: ChatRoomServiceProtocol {
-    let userService = UserServiceFactory.getUserService(Constants.FIREBASE_SERVICE_KEY)
-    let chatRoomRef = FIRDatabase.database().reference()
+class FirebaseChatRoomService: FirebaseDatabaseService, ChatRoomServiceProtocol {
+    
+    func getChatRoom(chatRoomId: String, callback: (ChatRoom?, NSError?) -> ()) {
+        
+    }
     
     func getRoomsWithUser(uid: String, completion: (NSArray?, NSError?) -> ()) {
         //1: Get rooms that user is in from the Users table

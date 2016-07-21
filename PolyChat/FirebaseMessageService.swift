@@ -8,6 +8,6 @@
 
 import Foundation
 
-class FirebaseMessageService: MessageServiceProtocol {
+class FirebaseMessageService: FirebaseDatabaseService, MessageServiceProtocol {
     
 }
