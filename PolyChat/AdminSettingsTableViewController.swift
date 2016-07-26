@@ -10,8 +10,16 @@ import UIKit
 
 class AdminSettingsTableViewController: UITableViewController {
 
+    @IBOutlet weak var logoutCell: UITableViewCell!
+    let authService: AuthServiceProtocol! = AuthServiceFactory.getAuthService(Constants.CURRENT_SERVICE_KEY)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //if there's no open session
+        if !self.authService.hasOpenSession() {
+            self.performSegueWithIdentifier(Constants.loginSegueId, sender: self)
+        }
         
         //setupNavBar()
         // Uncomment the following line to preserve selection between presentations
@@ -20,17 +28,22 @@ class AdminSettingsTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
+}
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    // MARK: - Table view data source
+/* Table View Controller functions */
+extension AdminSettingsTableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 2
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
+        
+        if cell == logoutCell {
+            self.authService.logout()
+            self.navigationController?.popToRootViewControllerAnimated(true)
+        }
     }
 
     /*

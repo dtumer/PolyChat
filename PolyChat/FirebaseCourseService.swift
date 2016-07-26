@@ -27,19 +27,11 @@ class FirebaseCourseService: FirebaseDatabaseService, CourseServiceProtocol {
     }
     
     //gets all the courses from the database
-    //NOT DONE
     func getAllCourses(callback: ([Course]?, NSError?) -> ()) {
-        var retCourses: [Course] = []
-        
-        print(dbRef)
-        
-        dbRef.observeEventType(.Value, withBlock: { snapshot in
-            if let courses = snapshot.value {
-                print(courses)
-            }
-            else {
-                print(snapshot.value)
-            }
+        dbRef.child(Constants.coursesDBKey).observeEventType(.Value, withBlock: { snapshot in
+            print("success")
+            }, withCancelBlock: { error in
+            print(error)
         })
     }
     

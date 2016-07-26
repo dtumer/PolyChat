@@ -30,31 +30,22 @@ class MyCoursesTableViewController: UITableViewController {
         self.authService = AuthServiceFactory.getAuthService(Constants.CURRENT_SERVICE_KEY)
         self.usersCoursesService = UsersCoursesServiceFactory.getUsersCoursesService(Constants.CURRENT_SERVICE_KEY)
         self.courseService = CourseServiceFactory.getCourseService(Constants.CURRENT_SERVICE_KEY)
-        
-        //check if a user is logged in
-        if !authService.hasOpenSession() {
-            self.performSegueWithIdentifier(Constants.loginSegueId, sender: self)
-        }
-        else {
-            //get logged in user information
-            if let user = self.authService.getUserData() {
-                self.user = user
-                loadCourses(user[Constants.uidKey] as! String)
-            }
-        }
     }
     
     //on view did appear
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
+        //check if a user is logged in
         if !authService.hasOpenSession() {
+            print("NO OPEN SESSION")
             self.performSegueWithIdentifier(Constants.loginSegueId, sender: self)
         }
         else {
+            //get logged in user information
             if let user = self.authService.getUserData() {
                 self.user = user
-                loadCourses(user[Constants.uidKey] as! String)
+                //loadCourses(user[Constants.uidKey] as! String)
             }
         }
     }
@@ -75,7 +66,9 @@ class MyCoursesTableViewController: UITableViewController {
     //loads the courses from the database
     func loadCourses(uid: String) {
         self.usersCoursesService.getEnrolledCourses(uid, callback: { (courses, error) in
+            print("kljshfskjd")
             if let courses = courses {
+                print("here")
                 self.courses = courses
             }
         })
