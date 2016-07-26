@@ -66,7 +66,6 @@ class MyCoursesTableViewController: UITableViewController {
     //loads the courses from the database
     func loadCourses(uid: String) {
         self.usersCoursesService.getEnrolledCourses(uid, callback: { (courses, error) in
-            print("kljshfskjd")
             if let courses = courses {
                 print("here")
                 self.courses = courses

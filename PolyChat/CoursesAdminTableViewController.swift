@@ -17,12 +17,17 @@ class CoursesAdminTableViewController: UITableViewController {
         super.viewDidLoad()
         
         setupNavBar()
-        loadCourses()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        loadCourses()
     }
     
     private func setupNavBar() {
@@ -37,9 +42,16 @@ class CoursesAdminTableViewController: UITableViewController {
         self.presentViewController(navController, animated: true, completion: nil)
     }
     
+    /* Loads all the courses. TODO implement spinner for loading times */
     private func loadCourses() {
         courseService.getAllCourses({ (courses, error) in
-            print(courses)
+            if let courses = courses {
+                self.courses = courses
+                self.tableView.reloadData()
+            }
+            else {
+                print(error)
+            }
         })
     }
     
@@ -65,8 +77,10 @@ extension CoursesAdminTableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(Constants.coursesReuseId, forIndexPath: indexPath)
-
+        let cell = tableView.dequeueReusableCellWithIdentifier(Constants.coursesReuseId, forIndexPath: indexPath) as! CoursesAdminTableViewCell
+        
+        cell.course = courses[indexPath.row]
+        
         return cell
     }
 

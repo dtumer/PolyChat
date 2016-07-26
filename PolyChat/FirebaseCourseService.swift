@@ -29,9 +29,25 @@ class FirebaseCourseService: FirebaseDatabaseService, CourseServiceProtocol {
     //gets all the courses from the database
     func getAllCourses(callback: ([Course]?, NSError?) -> ()) {
         dbRef.child(Constants.coursesDBKey).observeEventType(.Value, withBlock: { snapshot in
-            print("success")
-            }, withCancelBlock: { error in
-            print(error)
+            var courses: [Course] = []
+            
+            if let coursesDict = snapshot.value as? NSDictionary {
+                for (key, course) in coursesDict {
+                    if let courseDict = course as? NSDictionary {
+                        courses.append(Course(dictionary: courseDict))
+                    }
+                    else {
+                        //LOG THIS IN A DIFFERENT WAY
+                        print("NOT DICTIONARY")
+                    }
+                }
+            }
+            else {
+                let error = NSError(domain: self.DOMAIN, code: 0, description: "Error: Course is not an NSDictionary in the database")
+                callback(nil, error)
+            }
+            
+            callback(courses, nil)
         })
     }
     
