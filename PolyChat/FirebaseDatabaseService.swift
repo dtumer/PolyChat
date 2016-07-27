@@ -11,6 +11,7 @@ import Firebase
 
 class FirebaseDatabaseService {
     let dbRef = FIRDatabase.database().reference()
+    var handles: [UInt] = []
     
     /* Gets the next ID in the given firebase table */ 
     func getAutoId(tableKey: String) -> String {

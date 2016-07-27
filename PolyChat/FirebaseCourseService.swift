@@ -30,7 +30,7 @@ class FirebaseCourseService: FirebaseDatabaseService, CourseServiceProtocol {
     
     //gets all the courses from the database
     func getAllCourses(callback: ([Course]?, NSError?) -> ()) {
-        dbRef.child(Constants.coursesDBKey).observeEventType(.Value, withBlock: { snapshot in
+        dbRef.child(Constants.coursesDBKey).observeSingleEventOfType(.Value, withBlock: { snapshot in
             var courses: [Course] = []
             
             if let coursesDict = snapshot.value as? NSDictionary {

@@ -24,6 +24,9 @@ class MyCoursesTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //init courses
+        self.courses = []
+        
         //initMockData()
         
         //retrieve services we will need
@@ -35,6 +38,9 @@ class MyCoursesTableViewController: UITableViewController {
     //on view did appear
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        
+        //init courses
+        self.courses = []
         
         //check if a user is logged in
         if !authService.hasOpenSession() {
@@ -65,6 +71,7 @@ class MyCoursesTableViewController: UITableViewController {
     
     //loads the courses from the database
     func loadCourses(uid: String) {
+        //init courses
         self.courses = []
         
         self.usersCoursesService.getEnrolledCourses(uid, callback: { (courses, error) in
