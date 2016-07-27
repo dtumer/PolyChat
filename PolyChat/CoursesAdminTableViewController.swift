@@ -91,12 +91,21 @@ extension CoursesAdminTableViewController {
         return true
     }
 
-    //TODO finish adding delete to the admin courses section. AKA delete from DB
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
+            let courseToRemove = self.courses[indexPath.row]
+            
             self.courses.removeAtIndex(indexPath.row)
-            self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            self.courseService.removeCourse(courseToRemove, callback: { error in
+                //TODO make this log and display differently
+                if let error = error {
+                    print(error)
+                }
+                else {
+                    self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                }
+            })
         }
         else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view

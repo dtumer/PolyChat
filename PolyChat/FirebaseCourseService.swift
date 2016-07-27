@@ -16,7 +16,8 @@ class FirebaseCourseService: FirebaseDatabaseService, CourseServiceProtocol {
     //gets a course from the database
     func getCourse(courseId: String, callback: (Course?, NSError?) -> ()) {
         dbRef.child(Constants.coursesDBKey).child(courseId).observeEventType(.Value, withBlock: { snapshot in
-            if let courseDict = snapshot.value as? NSDictionary {
+            if let courseDict = snapshot.value as? NSMutableDictionary {
+                courseDict["id"] = courseId
                 callback(Course(dictionary: courseDict), nil)
                 return
             }
@@ -35,7 +36,8 @@ class FirebaseCourseService: FirebaseDatabaseService, CourseServiceProtocol {
             
             if let coursesDict = snapshot.value as? NSDictionary {
                 for (key, course) in coursesDict {
-                    if let courseDict = course as? NSDictionary {
+                    if let courseDict = course as? NSMutableDictionary {
+                        courseDict["id"] = key
                         courses.append(Course(dictionary: courseDict))
                     }
                     else {
@@ -59,5 +61,18 @@ class FirebaseCourseService: FirebaseDatabaseService, CourseServiceProtocol {
         let childUpdates = ["/\(Constants.coursesDBKey)/\(key)": course.toDictionary()]
         
         dbRef.updateChildValues(childUpdates)
+    }
+    
+    //removes a course from the database
+    func removeCourse(course: Course, callback: (NSError?) -> ()) {
+        dbRef.child(Constants.coursesDBKey).child(course.id).removeValueWithCompletionBlock({ (error, ref) in
+            if let error = error {
+                callback(error)
+                return
+            }
+            
+            callback(nil)
+            return
+        })
     }
 }

@@ -20,4 +20,8 @@ class MockCourseService: CourseServiceProtocol {
     func addCourse(course: Course, callback: (NSError?) -> ()) {
         
     }
+    
+    func removeCourse(course: Course, callback: (NSError?) -> ()) {
+        
+    }
 }

@@ -17,4 +17,7 @@ protocol CourseServiceProtocol {
     
     //put course
     func addCourse(course: Course, callback: (NSError?) -> ())
+    
+    //remove course
+    func removeCourse(course: Course, callback: (NSError?) -> ())
 }
