@@ -45,7 +45,7 @@ class MyCoursesTableViewController: UITableViewController {
             //get logged in user information
             if let user = self.authService.getUserData() {
                 self.user = user
-                //loadCourses(user[Constants.uidKey] as! String)
+                loadCourses(user[Constants.uidKey] as! String)
             }
         }
     }
@@ -65,10 +65,15 @@ class MyCoursesTableViewController: UITableViewController {
     
     //loads the courses from the database
     func loadCourses(uid: String) {
+        self.courses = []
+        
         self.usersCoursesService.getEnrolledCourses(uid, callback: { (courses, error) in
             if let courses = courses {
-                print("here")
-                self.courses = courses
+                self.courses += courses
+                self.tableView.reloadData()
+            }
+            else {
+                print(error?.description)
             }
         })
 //        self.myCoursesService.getEnrolledCourses(uid, callback: { (courses, error) in

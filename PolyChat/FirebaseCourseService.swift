@@ -15,14 +15,16 @@ class FirebaseCourseService: FirebaseDatabaseService, CourseServiceProtocol {
     
     //gets a course from the database
     func getCourse(courseId: String, callback: (Course?, NSError?) -> ()) {
-        dbRef.child(Constants.coursesDBKey).child(courseId).observeSingleEventOfType(.Value, withBlock: { snapshot in
+        dbRef.child(Constants.coursesDBKey).child(courseId).observeEventType(.Value, withBlock: { snapshot in
             if let courseDict = snapshot.value as? NSDictionary {
                 callback(Course(dictionary: courseDict), nil)
+                return
             }
             
             let error = NSError(domain: "\(self.DOMAIN)getCourse", code: 0, description: "Error getting course by that ID")
             
             callback(nil, error)
+            return
         })
     }
     
