@@ -223,6 +223,9 @@
 		D89D27C11D375F27006542DF /* CoursesAdminTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89D27C01D375F27006542DF /* CoursesAdminTableViewController.swift */; };
 		D89D27C21D375F27006542DF /* CoursesAdminTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89D27C01D375F27006542DF /* CoursesAdminTableViewController.swift */; };
 		D89D27C31D375F27006542DF /* CoursesAdminTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89D27C01D375F27006542DF /* CoursesAdminTableViewController.swift */; };
+		D8B37C2C1D4D4F3200E6A823 /* ViewUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B37C2B1D4D4F3200E6A823 /* ViewUserViewController.swift */; };
+		D8B37C2D1D4D4F3200E6A823 /* ViewUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B37C2B1D4D4F3200E6A823 /* ViewUserViewController.swift */; };
+		D8B37C2E1D4D4F3200E6A823 /* ViewUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B37C2B1D4D4F3200E6A823 /* ViewUserViewController.swift */; };
 		D8EAFB0E1D1CF675000638CF /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8EAFB0D1D1CF675000638CF /* SignUp.storyboard */; };
 		D8EAFB101D1CF8D1000638CF /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EAFB0F1D1CF8D1000638CF /* SignUpViewController.swift */; };
 		D8EAFB141D1CFBFB000638CF /* AuthServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EAFB131D1CFBFB000638CF /* AuthServiceProtocol.swift */; };
@@ -244,9 +247,9 @@
 		D8F24D301D486110009FBFD1 /* UsersAdmin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8F24D2F1D486110009FBFD1 /* UsersAdmin.storyboard */; };
 		D8F24D311D486110009FBFD1 /* UsersAdmin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8F24D2F1D486110009FBFD1 /* UsersAdmin.storyboard */; };
 		D8F24D321D486110009FBFD1 /* UsersAdmin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8F24D2F1D486110009FBFD1 /* UsersAdmin.storyboard */; };
-		D8F24D351D486147009FBFD1 /* EditUser.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8F24D341D486147009FBFD1 /* EditUser.storyboard */; };
-		D8F24D361D486147009FBFD1 /* EditUser.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8F24D341D486147009FBFD1 /* EditUser.storyboard */; };
-		D8F24D371D486147009FBFD1 /* EditUser.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8F24D341D486147009FBFD1 /* EditUser.storyboard */; };
+		D8F24D351D486147009FBFD1 /* ViewEditUser.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8F24D341D486147009FBFD1 /* ViewEditUser.storyboard */; };
+		D8F24D361D486147009FBFD1 /* ViewEditUser.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8F24D341D486147009FBFD1 /* ViewEditUser.storyboard */; };
+		D8F24D371D486147009FBFD1 /* ViewEditUser.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8F24D341D486147009FBFD1 /* ViewEditUser.storyboard */; };
 		D8F24D391D486162009FBFD1 /* EditUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F24D381D486162009FBFD1 /* EditUserViewController.swift */; };
 		D8F24D3A1D486162009FBFD1 /* EditUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F24D381D486162009FBFD1 /* EditUserViewController.swift */; };
 		D8F24D3B1D486162009FBFD1 /* EditUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F24D381D486162009FBFD1 /* EditUserViewController.swift */; };
@@ -362,6 +365,7 @@
 		D89D27B71D375617006542DF /* MockCourseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockCourseService.swift; sourceTree = "<group>"; };
 		D89D27BC1D375EFB006542DF /* CoursesAdmin.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CoursesAdmin.storyboard; sourceTree = "<group>"; };
 		D89D27C01D375F27006542DF /* CoursesAdminTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoursesAdminTableViewController.swift; sourceTree = "<group>"; };
+		D8B37C2B1D4D4F3200E6A823 /* ViewUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewUserViewController.swift; sourceTree = "<group>"; };
 		D8EAFB0D1D1CF675000638CF /* SignUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		D8EAFB0F1D1CF8D1000638CF /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		D8EAFB131D1CFBFB000638CF /* AuthServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthServiceProtocol.swift; sourceTree = "<group>"; };
@@ -369,7 +373,7 @@
 		D8F24D271D4860E6009FBFD1 /* UsersAdminTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersAdminTableViewController.swift; sourceTree = "<group>"; };
 		D8F24D2B1D4860FB009FBFD1 /* UsersAdminTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersAdminTableViewCell.swift; sourceTree = "<group>"; };
 		D8F24D2F1D486110009FBFD1 /* UsersAdmin.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UsersAdmin.storyboard; sourceTree = "<group>"; };
-		D8F24D341D486147009FBFD1 /* EditUser.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EditUser.storyboard; sourceTree = "<group>"; };
+		D8F24D341D486147009FBFD1 /* ViewEditUser.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ViewEditUser.storyboard; sourceTree = "<group>"; };
 		D8F24D381D486162009FBFD1 /* EditUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditUserViewController.swift; sourceTree = "<group>"; };
 		DAA2236EA50E536BC28A1DC9 /* Pods-PolyChatTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PolyChatTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PolyChatTests/Pods-PolyChatTests.release.xcconfig"; sourceTree = "<group>"; };
 		E9D556AAAAEAB5A1844F8485 /* Pods-PolyChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PolyChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-PolyChat/Pods-PolyChat.release.xcconfig"; sourceTree = "<group>"; };
@@ -761,21 +765,14 @@
 		D8F24D261D4860A3009FBFD1 /* UsersAdmin */ = {
 			isa = PBXGroup;
 			children = (
-				D8F24D331D486123009FBFD1 /* AddUser */,
 				D8F24D2F1D486110009FBFD1 /* UsersAdmin.storyboard */,
 				D8F24D271D4860E6009FBFD1 /* UsersAdminTableViewController.swift */,
 				D8F24D2B1D4860FB009FBFD1 /* UsersAdminTableViewCell.swift */,
-			);
-			name = UsersAdmin;
-			sourceTree = "<group>";
-		};
-		D8F24D331D486123009FBFD1 /* AddUser */ = {
-			isa = PBXGroup;
-			children = (
-				D8F24D341D486147009FBFD1 /* EditUser.storyboard */,
+				D8F24D341D486147009FBFD1 /* ViewEditUser.storyboard */,
+				D8B37C2B1D4D4F3200E6A823 /* ViewUserViewController.swift */,
 				D8F24D381D486162009FBFD1 /* EditUserViewController.swift */,
 			);
-			name = AddUser;
+			name = UsersAdmin;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -890,7 +887,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D8F24D351D486147009FBFD1 /* EditUser.storyboard in Resources */,
+				D8F24D351D486147009FBFD1 /* ViewEditUser.storyboard in Resources */,
 				D89D279B1D37444F006542DF /* AdminSettings.storyboard in Resources */,
 				D89D27A41D374986006542DF /* AddCourse.storyboard in Resources */,
 				0F34D8551D262D39002584FB /* Chat.storyboard in Resources */,
@@ -925,7 +922,7 @@
 				0F34D8561D262D39002584FB /* Chat.storyboard in Resources */,
 				0F65FC681D1F965D00470498 /* Course.storyboard in Resources */,
 				0F34D85E1D262D67002584FB /* Groups.storyboard in Resources */,
-				D8F24D361D486147009FBFD1 /* EditUser.storyboard in Resources */,
+				D8F24D361D486147009FBFD1 /* ViewEditUser.storyboard in Resources */,
 				D8F24D311D486110009FBFD1 /* UsersAdmin.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -945,7 +942,7 @@
 				0F34D8571D262D39002584FB /* Chat.storyboard in Resources */,
 				0F65FC691D1F965D00470498 /* Course.storyboard in Resources */,
 				0F34D85F1D262D67002584FB /* Groups.storyboard in Resources */,
-				D8F24D371D486147009FBFD1 /* EditUser.storyboard in Resources */,
+				D8F24D371D486147009FBFD1 /* ViewEditUser.storyboard in Resources */,
 				D8F24D321D486110009FBFD1 /* UsersAdmin.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1123,6 +1120,7 @@
 				0F2B56191D3DEA74008BF1F6 /* UsersChatRoomsServiceProtocol.swift in Sources */,
 				0F2B566A1D3DF446008BF1F6 /* MockMessageService.swift in Sources */,
 				0F65FC6B1D1F967600470498 /* CourseViewController.swift in Sources */,
+				D8B37C2C1D4D4F3200E6A823 /* ViewUserViewController.swift in Sources */,
 				D89D279F1D374824006542DF /* AdminSettingsTableViewController.swift in Sources */,
 				0F65FC411D1E26AE00470498 /* UserServiceProtocol.swift in Sources */,
 				0F4AFF551D1DD8E60030C3BD /* UserServiceFactory.swift in Sources */,
@@ -1156,6 +1154,7 @@
 				D89D27A01D374824006542DF /* AdminSettingsTableViewController.swift in Sources */,
 				0F65FC6C1D1F967600470498 /* CourseViewController.swift in Sources */,
 				0F2B56071D3DC300008BF1F6 /* CourseTests.swift in Sources */,
+				D8B37C2D1D4D4F3200E6A823 /* ViewUserViewController.swift in Sources */,
 				0F2B564F1D3DF163008BF1F6 /* MessageServiceFactory.swift in Sources */,
 				0F65FC611D1E427800470498 /* UserTests.swift in Sources */,
 				0F2B56471D3DECE8008BF1F6 /* MockUsersChatRoomsService.swift in Sources */,
@@ -1276,6 +1275,7 @@
 				D89D27AE1D375503006542DF /* CourseServiceFactory.swift in Sources */,
 				D8F24D3B1D486162009FBFD1 /* EditUserViewController.swift in Sources */,
 				0F2B56171D3DEA38008BF1F6 /* UsersGroupsServiceProtocol.swift in Sources */,
+				D8B37C2E1D4D4F3200E6A823 /* ViewUserViewController.swift in Sources */,
 				0F4AFF841D1E10090030C3BD /* MyCoursesTableViewCell.swift in Sources */,
 				0F2B561F1D3DEA95008BF1F6 /* FirebaseUsersCoursesService.swift in Sources */,
 				0F2B56231D3DEAD5008BF1F6 /* FirebaseUsersGroupsService.swift in Sources */,

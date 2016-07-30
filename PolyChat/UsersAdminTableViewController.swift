@@ -10,11 +10,14 @@ import UIKit
 
 class UsersAdminTableViewController: UITableViewController {
     
-    let userService = UserServiceFactory.getUserService(Constants.CURRENT_SERVICE_KEY)
+    var userService: UserServiceProtocol!
     var users: [User] = []
+    var selectedUser: User!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        userService = UserServiceFactory.getUserService(Constants.CURRENT_SERVICE_KEY)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -31,6 +34,13 @@ class UsersAdminTableViewController: UITableViewController {
                 print(error)
             }
         })
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == Constants.viewEditUserSegueId {
+            let vc = segue.destinationViewController as! EditUserViewController
+            vc.user = selectedUser
+        }
     }
 
 }
@@ -59,6 +69,10 @@ extension UsersAdminTableViewController {
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        selectedUser = users[indexPath.row]
     }
     
     /*
