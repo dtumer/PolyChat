@@ -12,6 +12,8 @@ class User {
     var name: String! = ""
     var email: String! = ""
     var role: Int = Constants.USER_DEFAULT
+    var notifications: Bool = Constants.NOTIFICATIONS_DEFAULT
+    var is_anonymous: Bool = Constants.IS_ANONYMOUS_DEFAULT
     var userImageLink: String = "" //change this to default later
     
     //constructor given a user dictionary
@@ -33,6 +35,12 @@ class User {
         if let role = dictionary["role"] as? Int {
             self.role = role
         }
+        if let notifications = dictionary["notifications"] as? Bool {
+            self.notifications = notifications
+        }
+        if let is_anonymous = dictionary["is_anonymous"] as? Bool {
+            self.is_anonymous = is_anonymous
+        }
     }
     
     //turns instance of User into a JSON object
@@ -43,6 +51,8 @@ class User {
             "name": self.name,
             "email": self.email,
             "role": self.role,
+            "notifications": self.notifications,
+            "is_anonymous": self.is_anonymous,
             "user_image_link": self.userImageLink
         ]
     }

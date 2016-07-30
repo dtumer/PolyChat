@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="6Z4-Rc-mvF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="6Z4-Rc-mvF">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
@@ -51,6 +51,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="fEo-9z-nmx" kind="show" id="cDG-hi-8Ra"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="ybg-nc-PCh" style="IBUITableViewCellStyleDefault" id="JJZ-ZO-Tt1">
                                         <rect key="frame" x="0.0" y="137.5" width="600" height="44"/>
@@ -116,7 +119,15 @@
                 <viewControllerPlaceholder storyboardName="Login" id="bNx-oy-OXt" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F5R-Mm-khg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1436.5" y="55"/>
+            <point key="canvasLocation" x="1388.5" y="135"/>
+        </scene>
+        <!--UsersAdmin-->
+        <scene sceneID="I7w-5I-Ryq">
+            <objects>
+                <viewControllerPlaceholder storyboardName="UsersAdmin" id="fEo-9z-nmx" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TFl-2E-Wjb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1409" y="12"/>
         </scene>
         <!--CoursesAdmin-->
         <scene sceneID="x5s-xQ-34Z">

@@ -53,4 +53,8 @@ struct Constants {
     static let USER_DEFAULT = 0
     static let USER_ADMIN = 1
     static let USER_JESUS = 2
+    //user notifications
+    static let NOTIFICATIONS_DEFAULT = false
+    //user anonymous
+    static let IS_ANONYMOUS_DEFAULT = false
 }
