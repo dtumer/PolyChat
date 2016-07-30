@@ -8,6 +8,7 @@
 
 import UIKit
 
+//TODO rewrite this to use one course cell cause right now there's two classes that have the same code
 class CoursesAdminTableViewCell: UITableViewCell {
     
     @IBOutlet weak var courseTitle: UILabel!

@@ -24,12 +24,13 @@ class MyCoursesTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //init courses
-        self.courses = []
+        initServices()
         
-        //initMockData()
-        
-        //retrieve services we will need
+        //makes sure there's no weird grayness happening in the nav bar
+        self.navigationController?.navigationBar.translucent = false
+    }
+    
+    private func initServices() {
         self.authService = AuthServiceFactory.getAuthService(Constants.CURRENT_SERVICE_KEY)
         self.usersCoursesService = UsersCoursesServiceFactory.getUsersCoursesService(Constants.CURRENT_SERVICE_KEY)
         self.courseService = CourseServiceFactory.getCourseService(Constants.CURRENT_SERVICE_KEY)
@@ -44,6 +45,7 @@ class MyCoursesTableViewController: UITableViewController {
         
         //check if a user is logged in
         if !authService.hasOpenSession() {
+            //TODO GET RID OF PRINT
             print("NO OPEN SESSION")
             self.performSegueWithIdentifier(Constants.loginSegueId, sender: self)
         }

@@ -26,6 +26,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4Fw-Se-VOW">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="b33-wa-0oR"/>
                                 </constraints>
@@ -95,7 +96,6 @@
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Iuh-6D-20j"/>
-                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="menuCollectionView" destination="4Fw-Se-VOW" id="nsG-xw-O3I"/>
                     </connections>
@@ -117,6 +117,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <segue destination="Sec-c6-hIZ" kind="custom" identifier="ChatSegue" customClass="SubViewSegue" customModule="PolyChat" id="e7L-ss-thU"/>
                         <segue destination="Cfz-0K-oTv" kind="custom" identifier="GroupsSegue" customClass="SubViewSegue" customModule="PolyChat" id="cyI-IX-3sC"/>

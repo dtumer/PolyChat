@@ -15,7 +15,7 @@ class FirebaseCourseService: FirebaseDatabaseService, CourseServiceProtocol {
     
     //gets a course from the database
     func getCourse(courseId: String, callback: (Course?, NSError?) -> ()) {
-        dbRef.child(Constants.coursesDBKey).child(courseId).observeEventType(.Value, withBlock: { snapshot in
+        dbRef.child(Constants.coursesDBKey).child(courseId).observeSingleEventOfType(.Value, withBlock: { snapshot in
             if let courseDict = snapshot.value as? NSMutableDictionary {
                 courseDict["id"] = courseId
                 callback(Course(dictionary: courseDict), nil)
