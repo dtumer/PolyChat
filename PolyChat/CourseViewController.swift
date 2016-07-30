@@ -46,6 +46,8 @@ class CourseViewController: UIViewController, UICollectionViewDelegate, UICollec
     private func setupNavBar() {
         let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: nil, action: #selector(CourseViewController.createMessagePressed))
         self.navigationItem.rightBarButtonItem = addButton
+        self.navigationItem.rightBarButtonItem?.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
     }
     
     //action for when the create message button is pressed
