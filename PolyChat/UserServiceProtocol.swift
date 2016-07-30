@@ -9,5 +9,6 @@ import Foundation
 
 protocol UserServiceProtocol {
     func getUser(uid: String, callback: (User?, NSError?) -> ())
+    func getAllUsers(callback: ([User]?, NSError?) -> ())
     func putUser(uid: String?, user: User, callback: (NSError?) -> ())
 }

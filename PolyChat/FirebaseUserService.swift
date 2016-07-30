@@ -9,6 +9,7 @@
 import Firebase
 
 class FirebaseUserService: FirebaseDatabaseService, UserServiceProtocol {
+    let DOMAIN = "FirebaseUserService::"
     
     // Gets a user from the database given their UID. Passes an NSError with code 0 if user is not found
     func getUser(uid: String, callback: (User?, NSError?) -> ()) {
@@ -24,6 +25,30 @@ class FirebaseUserService: FirebaseDatabaseService, UserServiceProtocol {
             
             callback(nil, NSError(domain: "FirebaseUserServices", code: 0, description: "No user with that UID found"))
             return
+        })
+    }
+    
+    // Gets all the users from the database
+    func getAllUsers(callback: ([User]?, NSError?) -> ()) {
+        dbRef.child(Constants.usersDBKey).observeSingleEventOfType(.Value, withBlock: { snapshot in
+            var users: [User] = []
+            
+            if let usersDict = snapshot.value as? NSDictionary {
+                for (key, user) in usersDict {
+                    if let userDict = user as? NSMutableDictionary {
+                        userDict["id"] = key
+                        users.append(User(dictionary: userDict))
+                    } else {
+                        // TODO: Log error when dictionary not found
+                        print("FirebaseUserService: NOT A DICTIONARY")
+                    }
+                }
+            } else {
+                let error = NSError(domain: self.DOMAIN, code: 0, description: "Error: User is not an NSDictionary in the database")
+                callback(nil, error)
+            }
+            
+            callback(users, nil)
         })
     }
     
@@ -49,4 +74,5 @@ class FirebaseUserService: FirebaseDatabaseService, UserServiceProtocol {
         callback(NSError(domain: "FirebaseUserService", code: 1, description: "No UID provided"))
         return
     }
+
 }

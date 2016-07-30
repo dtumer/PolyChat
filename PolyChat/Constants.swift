@@ -41,6 +41,7 @@ struct Constants {
     //TableViewController Reuse Identifiers
     static let myCoursesReuseId = "MyCourseCell"
     static let coursesReuseId = "CourseCell"
+    static let usersAdminReuseId = "UsersAdminCell"
     static let menuReuseId = "MenuCell"
     
     //Segue Identifiers

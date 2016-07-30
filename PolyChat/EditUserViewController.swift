@@ -8,9 +8,9 @@
 
 import UIKit
 
-class EditUserViewController: UIViewController {
+class EditUserViewController: UIViewController, UITextFieldDelegate {
     
-    var userService = UserServiceFactory.getUserService(Constants.CURRENT_SERVICE_KEY)
+    let userService = UserServiceFactory.getUserService(Constants.CURRENT_SERVICE_KEY)
     let authService = AuthServiceFactory.getAuthService(Constants.CURRENT_SERVICE_KEY)
     
     @IBOutlet weak var emailTextField: UITextField!
@@ -19,19 +19,22 @@ class EditUserViewController: UIViewController {
     @IBOutlet weak var notificationsTextField: UITextField!
     @IBOutlet weak var anonymousTextField: UITextField!
     
+    //var user: User
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func donePressed(sender: UIBarButtonItem) {
         let email = emailTextField.text!
         let name = nameTextField.text!
         let role = roleTextField.text!
-        let notifications = stringToBool(notificationsTextField.text!)
-        let anonymous = stringToBool(anonymousTextField.text!)
+        let notifications: Bool? = stringToBool(notificationsTextField.text!)
+        let anonymous: Bool? = stringToBool(anonymousTextField.text!)
         
         let userDict: NSDictionary = ["email" : email, "name": name, "role": role, "notifications": notifications!, "is_anonymous": anonymous!]
         let user = User(dictionary: userDict)

@@ -12,6 +12,10 @@ class MockUserService: UserServiceProtocol {
         
     }
     
+    func getAllUsers(callback: ([User]?, NSError?) -> ()) {
+        
+    }
+    
     func putUser(uid: String?, user: User, callback: (NSError?) -> ()) {
         
     }
