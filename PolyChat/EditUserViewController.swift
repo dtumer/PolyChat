@@ -25,6 +25,24 @@ class EditUserViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         userService = UserServiceFactory.getUserService(Constants.CURRENT_SERVICE_KEY)
         authService = AuthServiceFactory.getAuthService(Constants.CURRENT_SERVICE_KEY)
+        
+        setUserTextFields()
+    }
+    
+    private func setUserTextFields() {
+        emailTextField.text = user.email
+        nameTextField.text = user.name
+        roleTextField.text = user.role.description
+        notificationsTextField.text = user.notifications.description
+        anonymousTextField.text = user.is_anonymous.description
+    }
+    
+    @IBAction func savePressed(sender: UIBarButtonItem) {
+        navigationController?.popViewControllerAnimated(false)
+    }
+    
+    @IBAction func cancelPressed(sender: UIBarButtonItem) {
+        navigationController?.popViewControllerAnimated(false)
     }
     
     private func stringToBool(str: String) -> Bool? {

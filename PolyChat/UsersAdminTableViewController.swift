@@ -22,6 +22,7 @@ class UsersAdminTableViewController: UITableViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        
         loadUsers()
     }
     
@@ -37,8 +38,8 @@ class UsersAdminTableViewController: UITableViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == Constants.viewEditUserSegueId {
-            let vc = segue.destinationViewController as! EditUserViewController
+        if segue.identifier == Constants.viewUserSegueId {
+            let vc = segue.destinationViewController as! ViewUserViewController
             vc.user = selectedUser
         }
     }
@@ -73,6 +74,7 @@ extension UsersAdminTableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         selectedUser = users[indexPath.row]
+        performSegueWithIdentifier(Constants.viewUserSegueId, sender: self)
     }
     
     /*

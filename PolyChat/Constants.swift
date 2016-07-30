@@ -46,7 +46,8 @@ struct Constants {
     
     //Segue Identifiers
     static let loginSegueId = "LoginSegue"
-    static let viewEditUserSegueId = "ViewEditUserSegue"
+    static let viewUserSegueId = "ViewUserSegue"
+    static let editUserSegueId = "EditUserSegue"
     
     /* Model Constants */
     //User

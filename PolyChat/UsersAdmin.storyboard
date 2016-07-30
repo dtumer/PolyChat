@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--Users Admin Table View Controller-->
+        <!--Users-->
         <scene sceneID="ufe-cB-ssu">
             <objects>
-                <tableViewController id="wbF-aU-qNj" customClass="UsersAdminTableViewController" customModule="PolyChat" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Users" id="wbF-aU-qNj" customClass="UsersAdminTableViewController" customModule="PolyChat" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Iez-65-nWm">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -31,7 +31,6 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="userNameLabel" destination="V3J-2O-uvW" id="fCf-8q-lFS"/>
-                                    <segue destination="5lw-24-RC4" kind="show" identifier="ViewEditUserSegue" id="yEH-mB-vUG"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -40,6 +39,9 @@
                             <outlet property="delegate" destination="wbF-aU-qNj" id="PnB-qV-6aW"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <segue destination="5lw-24-RC4" kind="show" identifier="ViewUserSegue" id="vNW-wS-9uG"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qwH-bR-IGh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
