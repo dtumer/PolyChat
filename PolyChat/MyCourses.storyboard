@@ -45,8 +45,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="My Courses" id="pcR-nT-OPD">
-                        <barButtonItem key="leftBarButtonItem" image="MenuIcon" id="xtp-rF-uUg"/>
+                        <barButtonItem key="leftBarButtonItem" image="MenuIcon" id="xtp-rF-uUg">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Admin" id="rAS-uw-gmD">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <segue destination="BEv-0e-ANx" kind="show" id="ELx-Pg-q1M"/>
                             </connections>
@@ -93,6 +96,10 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="yI1-wf-3fC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.011764705882352941" green="0.33725490196078434" blue="0.25882352941176467" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
