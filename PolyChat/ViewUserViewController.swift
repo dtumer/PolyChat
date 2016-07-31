@@ -24,6 +24,12 @@ class ViewUserViewController: UIViewController {
         setUserLabels()
     }
 
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        setUserLabels()
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == Constants.editUserSegueId {
             let vc = segue.destinationViewController as! EditUserViewController

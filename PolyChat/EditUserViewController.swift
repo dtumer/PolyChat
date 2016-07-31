@@ -13,7 +13,7 @@ class EditUserViewController: UIViewController, UITextFieldDelegate {
     var userService: UserServiceProtocol!
     var authService: AuthServiceProtocol!
     
-    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var roleTextField: UITextField!
     @IBOutlet weak var notificationsTextField: UITextField!
@@ -30,14 +30,33 @@ class EditUserViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func setUserTextFields() {
-        emailTextField.text = user.email
+        emailLabel.text = user.email
         nameTextField.text = user.name
         roleTextField.text = user.role.description
         notificationsTextField.text = user.notifications.description
         anonymousTextField.text = user.is_anonymous.description
     }
     
+    // Update the user from the text fields when save button is pressed
     @IBAction func savePressed(sender: UIBarButtonItem) {
+        user.name = nameTextField.text!
+        if let role = Int(roleTextField.text!) {
+            user.role = role
+        }
+        if let notifications = GlobalUtilities.stringToBool(notificationsTextField.text!) {
+            user.notifications = notifications
+        }
+        if let anonymous = GlobalUtilities.stringToBool(anonymousTextField.text!) {
+            user.is_anonymous = anonymous
+        }
+        
+        // Update the user in the database
+        userService.putUser(user.id, user: user, callback: { error in
+            if let error = error {
+                print(error)
+            }
+        })
+        
         navigationController?.popViewControllerAnimated(false)
     }
     
@@ -45,15 +64,11 @@ class EditUserViewController: UIViewController, UITextFieldDelegate {
         navigationController?.popViewControllerAnimated(false)
     }
     
-    private func stringToBool(str: String) -> Bool? {
-        switch str {
-        case "True", "true", "yes", "1", "T", "t":
-            return true
-        case "False", "false", "no", "0", "F", "f":
-            return false
-        default:
-            return nil
-        }
+    // UITextFieldDelegate Methods
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 
 }

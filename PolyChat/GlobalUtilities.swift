@@ -15,4 +15,15 @@ class GlobalUtilities {
         
         return emailArr[0]
     }
+    
+    static func stringToBool(str: String) -> Bool? {
+        switch str {
+        case "TRUE", "True", "true", "yes", "1", "T", "t":
+            return true
+        case "FALSE", "False", "false", "no", "0", "F", "f":
+            return false
+        default:
+            return nil
+        }
+    }
 }
