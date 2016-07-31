@@ -31,7 +31,7 @@ class CreateChatRoomViewController: UIViewController {
             self.performSegueWithIdentifier(Constants.loginSegueId, sender: self)
         }
         else {
-            print("HERE")
+            print(course.id)
         }
     }
     
@@ -51,6 +51,8 @@ class CreateChatRoomViewController: UIViewController {
                 vc.chatRoom = ChatRoom(dictionary: [
                     "name": self.chatRoomNameLabel.text!
                 ])
+                
+                vc.course = self.course
             }
         }
     }

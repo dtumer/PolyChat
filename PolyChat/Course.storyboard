@@ -180,7 +180,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="GbF-U1-IYY" style="IBUITableViewCellStyleDefault" id="aWe-1E-ydn" customClass="UsersSelectTableViewCell" customModule="PolyChat" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="UserCell" textLabel="GbF-U1-IYY" style="IBUITableViewCellStyleDefault" id="aWe-1E-ydn" customClass="UsersSelectTableViewCell" customModule="PolyChat" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aWe-1E-ydn" id="zdx-bF-xXk">
@@ -306,6 +306,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="aPP-Am-uED"/>
+        <segue reference="5jk-0y-fEs"/>
     </inferredMetricsTieBreakers>
 </document>

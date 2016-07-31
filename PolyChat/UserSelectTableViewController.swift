@@ -13,12 +13,12 @@ class UserSelectTableViewController: UITableViewController {
     //services
     var authService: AuthServiceProtocol!
     var chatRoomService: ChatRoomServiceProtocol!
-    var usersCoursesService: UsersCoursesServiceProtocol!
+    var coursesUsersService: CoursesUsersServiceProtocol!
     
     var course: Course!
     var chatRoom: ChatRoom!
-    var users: [User]! = []
-    var selectedUsers: [User]! = []
+    var users: [User] = []
+    var selectedUsers: [User] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,16 +42,26 @@ class UserSelectTableViewController: UITableViewController {
     private func initServices() {
         self.authService = AuthServiceFactory.getAuthService(Constants.CURRENT_SERVICE_KEY)
         self.chatRoomService = ChatRoomServiceFactory.getChatRoomService(Constants.CURRENT_SERVICE_KEY)
-        self.usersCoursesService = UsersCoursesServiceFactory.getUsersCoursesService(Constants.CURRENT_SERVICE_KEY)
+        self.coursesUsersService = CoursesUsersServiceFactory.getCoursesUsersService(Constants.CURRENT_SERVICE_KEY)
     }
     
     //loads all users in a course
     private func loadUsers() {
-        
+        self.coursesUsersService.getEnrolledUsers(self.course.id, callback: { (users, error) in
+            if let error = error {
+                //TODO log error better
+                print(error.description)
+            }
+            else {
+                self.users += users!
+                self.tableView.reloadData()
+            }
+        })
     }
     
     //finishes creating the chat room
     @IBAction func createChatRoomPressed(sender: AnyObject) {
+        print("CREATE!!!")
     }
 }
 
@@ -65,8 +75,26 @@ extension UserSelectTableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier(Constants.usersReuseId, forIndexPath: indexPath) as! UsersSelectTableViewCell
+        
+        cell.user = users[indexPath.row]
 
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as! UsersSelectTableViewCell
+        
+        //if it's selected
+        if cell.accessoryType == .Checkmark {
+            cell.accessoryType = .None
+            let ndx = selectedUsers.indexOf({$0.id == cell.user.id})
+            selectedUsers.removeAtIndex(ndx!)
+        }
+        //if we're adding for first time
+        else {
+            cell.accessoryType = .Checkmark
+            selectedUsers.append(users[indexPath.row])
+        }
     }
 }
