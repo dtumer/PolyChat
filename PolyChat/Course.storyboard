@@ -103,30 +103,125 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
                         <outlet property="menuCollectionView" destination="4Fw-Se-VOW" id="nsG-xw-O3I"/>
-                        <segue destination="1jN-Ft-4yM" kind="show" identifier="CreateChatSegue" id="qv6-dO-9Oe"/>
+                        <segue destination="49g-LF-o0r" kind="show" identifier="CreateChatSegue" id="qv6-dO-9Oe"/>
+                        <segue destination="8PY-Nv-apG" kind="show" identifier="LoginSegue" id="aPP-Am-uED"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BpT-bK-28A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4248" y="10"/>
         </scene>
-        <!--View Controller-->
+        <!--Login-->
+        <scene sceneID="SIM-Hz-psa">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Login" id="8PY-Nv-apG" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WOl-dA-p0o" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5255.5" y="-570"/>
+        </scene>
+        <!--Name Chat-->
         <scene sceneID="Ybo-BD-wfN">
             <objects>
-                <viewController id="1jN-Ft-4yM" sceneMemberID="viewController">
+                <viewController id="1jN-Ft-4yM" customClass="CreateChatRoomViewController" customModule="PolyChat" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6Up-pt-SDR"/>
                         <viewControllerLayoutGuide type="bottom" id="F3x-sv-zyO"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="hTd-2E-g6s">
-                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Chat Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DZ2-UQ-pVG">
+                                <rect key="frame" x="20" y="72" width="560" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="owx-R6-aL5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="DZ2-UQ-pVG" firstAttribute="centerX" secondItem="hTd-2E-g6s" secondAttribute="centerX" id="26N-a0-Vy4"/>
+                            <constraint firstItem="DZ2-UQ-pVG" firstAttribute="top" secondItem="6Up-pt-SDR" secondAttribute="bottom" constant="8" id="3OW-Wo-o2n"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="DZ2-UQ-pVG" secondAttribute="trailing" id="Oci-sA-FYJ"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="DZ2-UQ-pVG" secondAttribute="leading" id="mkB-40-SD9"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Name Chat" id="66a-cD-Neu">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="4oh-pA-4AJ">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="cancelCreatePressed:" destination="1jN-Ft-4yM" id="S8E-uc-XUu"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="Wmk-39-UiP">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <segue destination="ZMm-05-3oI" kind="show" identifier="CreateChatNextSegue" id="FkE-4f-mOj"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="chatRoomNameLabel" destination="DZ2-UQ-pVG" id="1ij-tn-EXe"/>
+                        <segue destination="8PY-Nv-apG" kind="show" identifier="LoginSegue" id="rzF-Pb-vcF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PD8-H9-Lmj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5046" y="10"/>
+            <point key="canvasLocation" x="5758" y="10"/>
+        </scene>
+        <!--Select Members-->
+        <scene sceneID="Rwa-b9-729">
+            <objects>
+                <tableViewController id="ZMm-05-3oI" customClass="UserSelectTableViewController" customModule="PolyChat" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="6aI-FV-WUq">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="GbF-U1-IYY" style="IBUITableViewCellStyleDefault" id="aWe-1E-ydn" customClass="UsersSelectTableViewCell" customModule="PolyChat" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aWe-1E-ydn" id="zdx-bF-xXk">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GbF-U1-IYY">
+                                            <rect key="frame" x="15" y="0.0" width="570" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="usernameLabel" destination="GbF-U1-IYY" id="ZOb-LU-iVe"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="ZMm-05-3oI" id="L4M-Ku-XIR"/>
+                            <outlet property="delegate" destination="ZMm-05-3oI" id="Nxb-O1-WNt"/>
+                        </connections>
+                    </tableView>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Select Members" id="Kdc-N8-Ycn">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="EvA-To-pfP">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="createChatRoomPressed:" destination="ZMm-05-3oI" id="LZA-uy-ojL"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="8PY-Nv-apG" kind="show" identifier="LoginSegue" id="5jk-0y-fEs"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="316-x2-HZ2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6487" y="10"/>
         </scene>
         <!--Sub View Controller-->
         <scene sceneID="1ib-Z7-aYx">
@@ -185,5 +280,32 @@
             </objects>
             <point key="canvasLocation" x="4337.5" y="1190"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="HEX-oM-USJ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="49g-LF-o0r" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="r8W-ys-OBj">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="0.01176470588" green="0.33725490200000002" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="textShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="1jN-Ft-4yM" kind="relationship" relationship="rootViewController" id="HBB-7R-Rvh"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jvo-YC-wsc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5068" y="10"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="aPP-Am-uED"/>
+    </inferredMetricsTieBreakers>
 </document>
