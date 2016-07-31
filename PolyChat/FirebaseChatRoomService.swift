@@ -13,6 +13,7 @@ class FirebaseChatRoomService: FirebaseDatabaseService, ChatRoomServiceProtocol 
     let DOMAIN = "FirebaseChatRoomService::"
     let coursesChatRoomsService = CoursesChatRoomsFactory.getCoursesChatRoomsService(Constants.CURRENT_SERVICE_KEY)
     let usersChatRoomsService = UsersChatRoomsServiceFactory.getUsersChatRoomsService(Constants.CURRENT_SERVICE_KEY)
+    let chatRoomsUsersService = ChatRoomsUsersServiceFactory.getChatRoomsUsersService(Constants.CURRENT_SERVICE_KEY)
     
     func getChatRoom(chatRoomId: String, callback: (ChatRoom?, NSError?) -> ()) {
         
@@ -52,6 +53,13 @@ class FirebaseChatRoomService: FirebaseDatabaseService, ChatRoomServiceProtocol 
                                 }
                             })
                         }
+                        
+                        //4: Add all users to CHATROOMS_USERS table
+                        self.chatRoomsUsersService.addUsersToChatRoom(chatRoom.id, users: users, callback: { error in
+                            if let error = error {
+                                callback(error)
+                            }
+                        })
                     }
                 })
             }

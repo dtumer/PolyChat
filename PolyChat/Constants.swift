@@ -34,8 +34,11 @@ struct Constants {
     static let coursesDBKey = "COURSES" // specifies objects in db that contain COURSE data
     static let groupsDBKey = "GROUPS" // specifies object in bd that contain GROUP data
     static let usersGroupsDBKey = "USERS_GROUPS"
+    static let groupsUsersDBKey = "GROUPS_USERS" //TODO make these services
     static let usersCoursesDBKey = "USERS_COURSES"
+    static let corusesUsersDBKey = "COURSES_USERS"
     static let usersChatRoomsDBKey = "USERS_CHATROOMS"
+    static let chatRoomsUsersDBKey = "CHATROOMS_USERS" //TODO make this service
     static let chatRoomsMessagesDBKey = "CHATROOMS_MESSAGES"
     static let coursesChatRoomsDBKey = "COURSES_CHATROOMS"
     
@@ -53,6 +56,7 @@ struct Constants {
     static let viewUserSegueId = "ViewUserSegue"
     static let editUserSegueId = "EditUserSegue"
     static let createChatSegueId = "CreateChatSegue"
+    static let createChatNextSegueId = "CreateChatNextSegue"
     
     /* Model Constants */
     //User

@@ -59,6 +59,19 @@ class CourseViewController: UIViewController, UICollectionViewDelegate, UICollec
         if segue.identifier == CourseViewController.subViewEmbedSegueId {
             self.subViewController = segue.destinationViewController as! SubViewController
         }
+        else if segue.identifier == Constants.createChatSegueId {
+            if let vc = segue.destinationViewController as? UINavigationController {
+                let subVCS = vc.viewControllers
+                
+                if subVCS.count > 0 {
+                    if let subVC = subVCS[0] as? CreateChatRoomViewController {
+                        subVC.course = self.course
+                    }
+                }
+            }
+            
+            //TODO else return error somehow
+        }
     }
 }
 
