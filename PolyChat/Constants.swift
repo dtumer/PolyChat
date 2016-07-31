@@ -44,6 +44,7 @@ struct Constants {
     static let coursesReuseId = "CourseCell"
     static let usersAdminReuseId = "UsersAdminCell"
     static let menuReuseId = "MenuCell"
+    static let userCourseAdminReuseId = "UserCourseAdminCell"
     
     //Segue Identifiers
     static let loginSegueId = "LoginSegue"
@@ -62,4 +63,7 @@ struct Constants {
     static let NOTIFICATIONS_DEFAULT = false
     //user anonymous
     static let IS_ANONYMOUS_DEFAULT = false
+    
+    // Section headers
+    static let userCoursesAdminSectionHeader = "Courses"
 }
