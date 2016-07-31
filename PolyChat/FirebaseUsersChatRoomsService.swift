@@ -9,7 +9,7 @@
 import Foundation
 
 class FirebaseUsersChatRoomsService: FirebaseDatabaseService, UsersChatRoomsServiceProtocol {
-    func getChatRooms(userId: String, callback: ([ChatRoom]?, NSError?) -> ()) {
+    func getChatRoomsByUser(userId: String, callback: ([ChatRoom]?, NSError?) -> ()) {
         
     }
     

@@ -9,5 +9,9 @@
 import Foundation
 
 protocol ChatRoomsUsersServiceProtocol {
+    //get all users in a chat room
+    func getAllUsersInChatRoom(chatRoomsId: String, callback: ([User]?, NSError?) -> ())
     
+    //adds users to chat room
+    func addUsersToChatRoom(chatRoomId: String, users: [User], callback: (NSError?) -> ())
 }
