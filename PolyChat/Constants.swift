@@ -37,6 +37,7 @@ struct Constants {
     static let usersCoursesDBKey = "USERS_COURSES"
     static let usersChatRoomsDBKey = "USERS_CHATROOMS"
     static let chatRoomsMessagesDBKey = "CHATROOMS_MESSAGES"
+    static let coursesChatRoomsDBKey = "COURSES_CHATROOMS"
     
     //TableViewController Reuse Identifiers
     static let myCoursesReuseId = "MyCourseCell"
@@ -48,6 +49,7 @@ struct Constants {
     static let loginSegueId = "LoginSegue"
     static let viewUserSegueId = "ViewUserSegue"
     static let editUserSegueId = "EditUserSegue"
+    static let createChatSegueId = "CreateChatSegue"
     
     /* Model Constants */
     //User

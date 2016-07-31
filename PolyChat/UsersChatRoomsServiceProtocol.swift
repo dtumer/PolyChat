@@ -6,6 +6,12 @@
 //  Copyright © 2016 DenFan. All rights reserved.
 //
 
+import Foundation
+
 protocol UsersChatRoomsServiceProtocol {
+    //gets all chat rooms that a user is in
+    func getChatRooms(userId: String, callback: ([ChatRoom]?, NSError?) -> ())
     
+    //adds the user to a chat room
+    func addUserToChatRoom(userId: String, chatRoomId: String, callback: (NSError?) -> ())
 }

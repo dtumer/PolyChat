@@ -44,15 +44,15 @@ class CourseViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     //sets up the navigation bar
     private func setupNavBar() {
-        let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: nil, action: #selector(CourseViewController.createMessagePressed))
+        let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(CourseViewController.createMessagePressed))
         self.navigationItem.rightBarButtonItem = addButton
         self.navigationItem.rightBarButtonItem?.tintColor = UIColor.whiteColor()
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
     }
     
     //action for when the create message button is pressed
-    func createMessagePressed() {
-        print("TODO")
+    func createMessagePressed(sender: AnyObject?) {
+        self.performSegueWithIdentifier(Constants.createChatSegueId, sender: self)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

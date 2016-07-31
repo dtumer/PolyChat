@@ -11,4 +11,7 @@ import Foundation
 protocol ChatRoomServiceProtocol {
     //get chat room by id
     func getChatRoom(chatRoomId: String, callback: (ChatRoom?, NSError?) -> ())
+    
+    //creates a chat room
+    func createChatRoom(courseId: String, users: [User], chatRoom: ChatRoom, callback: (NSError?) -> ())
 }

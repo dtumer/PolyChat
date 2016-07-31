@@ -9,5 +9,11 @@
 import Foundation
 
 class FirebaseUsersChatRoomsService: FirebaseDatabaseService, UsersChatRoomsServiceProtocol {
+    func getChatRooms(userId: String, callback: ([ChatRoom]?, NSError?) -> ()) {
+        
+    }
     
+    func addUserToChatRoom(userId: String, chatRoomId: String, callback: (NSError?) -> ()) {
+        
+    }
 }
