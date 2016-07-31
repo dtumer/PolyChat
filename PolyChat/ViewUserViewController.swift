@@ -10,24 +10,46 @@ import UIKit
 
 class ViewUserViewController: UIViewController {
     
+    var usersCoursesService: UsersCoursesServiceProtocol!
+    
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var roleLabel: UILabel!
     @IBOutlet weak var notificationsLabel: UILabel!
     @IBOutlet weak var anonymousLabel: UILabel!
+    @IBOutlet weak var userCoursesTableView: UITableView!
     
     var user: User!
+    var userCourses: [Course] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        initServices()
         setUserLabels()
+        loadUserCourses()
     }
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
         setUserLabels()
+        loadUserCourses()
+    }
+    
+    private func initServices() {
+        self.usersCoursesService = UsersCoursesServiceFactory.getUsersCoursesService(Constants.CURRENT_SERVICE_KEY)
+    }
+    
+    private func loadUserCourses() {
+        usersCoursesService.getEnrolledCourses(user.id, callback: { courses, error in
+            if let courses = courses {
+                self.userCourses = courses
+                self.userCoursesTableView.reloadData()
+            } else {
+                print(error)
+            }
+        })
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -45,4 +67,27 @@ class ViewUserViewController: UIViewController {
         anonymousLabel.text = user.is_anonymous.description
     }
 
+}
+
+// User's courses table view delegate/datasource
+extension ViewUserViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return userCourses.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier(Constants.userCourseAdminReuseId) as! CoursesAdminTableViewCell
+        cell.course = userCourses[indexPath.row]
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return Constants.userCoursesAdminSectionHeader
+    }
+    
 }
