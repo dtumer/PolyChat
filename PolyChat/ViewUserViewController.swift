@@ -56,6 +56,7 @@ class ViewUserViewController: UIViewController {
         if segue.identifier == Constants.editUserSegueId {
             let vc = segue.destinationViewController as! EditUserViewController
             vc.user = self.user
+            vc.userCourses = self.userCourses
         }
     }
     
@@ -66,6 +67,11 @@ class ViewUserViewController: UIViewController {
         notificationsLabel.text = user.notifications.description
         anonymousLabel.text = user.is_anonymous.description
     }
+    
+    @IBAction func editPressed(sender: UIBarButtonItem) {
+        performSegueWithIdentifier(Constants.editUserSegueId, sender: self)
+    }
+    
 
 }
 

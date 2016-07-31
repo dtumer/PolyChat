@@ -18,8 +18,10 @@ class EditUserViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var roleTextField: UITextField!
     @IBOutlet weak var notificationsTextField: UITextField!
     @IBOutlet weak var anonymousTextField: UITextField!
+    @IBOutlet weak var userCoursesEditTableView: UITableView!
     
     var user: User!
+    var userCourses: [Course]!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +29,7 @@ class EditUserViewController: UIViewController, UITextFieldDelegate {
         authService = AuthServiceFactory.getAuthService(Constants.CURRENT_SERVICE_KEY)
         
         setUserTextFields()
+        self.userCoursesEditTableView.setEditing(true, animated: true)
     }
     
     private func setUserTextFields() {
@@ -71,4 +74,50 @@ class EditUserViewController: UIViewController, UITextFieldDelegate {
         return true
     }
 
+}
+
+extension EditUserViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // Add one to account for add course cell
+        return userCourses.count + 1
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        // Cell is a course if row is within the count of courses
+        if indexPath.row < userCourses.count {
+            let cell = tableView.dequeueReusableCellWithIdentifier(Constants.userCourseAdminEditReuseId) as! CoursesAdminTableViewCell
+            cell.course = userCourses[indexPath.row]
+            return cell
+        } else { // Otherwise, cell is an add course cell
+            let cell = tableView.dequeueReusableCellWithIdentifier(Constants.userCourseAdminAddReuseId)!
+            return cell
+        }
+    }
+    
+    // Support conditional editing of the table view.
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        // Only rows with courses can be editable
+        return indexPath.row < userCourses.count
+    }
+    
+    // Support editing the table view.
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            // Delete the row from the data source
+            userCourses.removeAtIndex(indexPath.row)
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+        } else if editingStyle == .Insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        }
+    }
+    
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return Constants.userCoursesAdminSectionHeader
+    }
+    
 }

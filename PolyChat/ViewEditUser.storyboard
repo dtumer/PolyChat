@@ -139,7 +139,7 @@
                     <navigationItem key="navigationItem" title="View User" id="WTT-f5-vx9">
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="hkT-55-jVp">
                             <connections>
-                                <segue destination="dQ1-7b-S65" kind="show" identifier="EditUserSegue" animates="NO" id="x7T-Xz-8JQ"/>
+                                <action selector="editPressed:" destination="fE3-5q-JUF" id="tXb-5C-a5I"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -151,6 +151,7 @@
                         <outlet property="notificationsLabel" destination="BWw-yp-dsg" id="y8n-MH-X30"/>
                         <outlet property="roleLabel" destination="q8b-60-EIi" id="mn1-5W-3iL"/>
                         <outlet property="userCoursesTableView" destination="DXg-qx-GLr" id="5t3-Kz-mvg"/>
+                        <segue destination="dQ1-7b-S65" kind="show" identifier="EditUserSegue" animates="NO" id="rKu-KE-noU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gQk-Hp-cAU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -253,17 +254,67 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yod-Sa-pXQ">
+                                <rect key="frame" x="20" y="346" width="560" height="182"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="UserCourseAdminEditCell" textLabel="5SF-g6-uaT" style="IBUITableViewCellStyleDefault" id="5Xk-d3-DHl" customClass="CoursesAdminTableViewCell" customModule="PolyChat" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="560" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5Xk-d3-DHl" id="1P4-Xk-gnp">
+                                            <rect key="frame" x="0.0" y="0.0" width="560" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Course Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5SF-g6-uaT">
+                                                    <rect key="frame" x="15" y="0.0" width="530" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="courseTitle" destination="5SF-g6-uaT" id="kMC-Es-x38"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="UserCourseAdminAddCell" textLabel="80i-9c-3nS" style="IBUITableViewCellStyleDefault" id="uBb-u2-OYJ">
+                                        <rect key="frame" x="0.0" y="72" width="560" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uBb-u2-OYJ" id="yip-p8-H4U">
+                                            <rect key="frame" x="0.0" y="0.0" width="560" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Add Course" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="80i-9c-3nS">
+                                                    <rect key="frame" x="15" y="0.0" width="530" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="dQ1-7b-S65" id="3hw-XQ-XGJ"/>
+                                    <outlet property="delegate" destination="dQ1-7b-S65" id="7J9-pM-jDd"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="leadingMargin" secondItem="7KZ-Ag-LJz" secondAttribute="leading" id="0wa-YJ-NDX"/>
                             <constraint firstItem="q4N-2A-UfP" firstAttribute="top" secondItem="6ji-Rc-fXl" secondAttribute="bottom" constant="8" id="4VE-wi-Ybf"/>
                             <constraint firstItem="tWu-DN-Tyu" firstAttribute="top" secondItem="yg3-jj-H8x" secondAttribute="bottom" constant="8" id="4pH-z0-gxP"/>
+                            <constraint firstItem="DsQ-Ga-UUJ" firstAttribute="top" secondItem="yod-Sa-pXQ" secondAttribute="bottom" constant="8" id="5bC-Iu-yhj"/>
                             <constraint firstAttribute="leadingMargin" secondItem="6ji-Rc-fXl" secondAttribute="leading" id="6t8-tu-mDh"/>
                             <constraint firstAttribute="leadingMargin" secondItem="5pb-dj-dIa" secondAttribute="leading" id="C1s-6e-OXT"/>
                             <constraint firstAttribute="leadingMargin" secondItem="tWu-DN-Tyu" secondAttribute="leading" id="Dc2-Ce-Y8a"/>
+                            <constraint firstItem="yod-Sa-pXQ" firstAttribute="top" secondItem="YHz-Gm-bAm" secondAttribute="bottom" constant="12" id="EX0-uI-sGR"/>
                             <constraint firstItem="5pb-dj-dIa" firstAttribute="top" secondItem="zF9-aN-x3Q" secondAttribute="bottom" constant="8" id="FiR-kS-FIL"/>
                             <constraint firstItem="6ji-Rc-fXl" firstAttribute="top" secondItem="5pb-dj-dIa" secondAttribute="bottom" constant="8" id="GOy-cT-zWd"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="yod-Sa-pXQ" secondAttribute="trailing" id="HSb-PD-gT8"/>
                             <constraint firstAttribute="leadingMargin" secondItem="q4N-2A-UfP" secondAttribute="leading" id="JiV-Hq-dvf"/>
                             <constraint firstAttribute="leadingMargin" secondItem="YHz-Gm-bAm" secondAttribute="leading" id="Jz8-aZ-WEf"/>
                             <constraint firstItem="7KZ-Ag-LJz" firstAttribute="top" secondItem="3i2-bz-OIR" secondAttribute="bottom" constant="8" id="NLa-yy-cK7"/>
@@ -271,6 +322,7 @@
                             <constraint firstItem="YHz-Gm-bAm" firstAttribute="top" secondItem="otc-ge-t1Q" secondAttribute="bottom" constant="8" id="Vxn-HG-DCS"/>
                             <constraint firstAttribute="leadingMargin" secondItem="oXa-So-5SQ" secondAttribute="leading" constant="-8" id="YoT-gW-dKJ"/>
                             <constraint firstAttribute="leadingMargin" secondItem="yg3-jj-H8x" secondAttribute="leading" id="ZmO-CF-kQb"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="yod-Sa-pXQ" secondAttribute="leading" id="aOC-U6-ejv"/>
                             <constraint firstAttribute="leadingMargin" secondItem="zF9-aN-x3Q" secondAttribute="leading" id="bBg-8O-S3j"/>
                             <constraint firstItem="yg3-jj-H8x" firstAttribute="top" secondItem="q4N-2A-UfP" secondAttribute="bottom" constant="8" id="efP-KY-265"/>
                             <constraint firstItem="zF9-aN-x3Q" firstAttribute="top" secondItem="oXa-So-5SQ" secondAttribute="bottom" constant="12" id="lrV-iA-wBC"/>
@@ -297,6 +349,7 @@
                         <outlet property="nameTextField" destination="5pb-dj-dIa" id="Lrr-on-3h5"/>
                         <outlet property="notificationsTextField" destination="tWu-DN-Tyu" id="O4c-Mu-R2X"/>
                         <outlet property="roleTextField" destination="q4N-2A-UfP" id="AeQ-1W-5YB"/>
+                        <outlet property="userCoursesEditTableView" destination="yod-Sa-pXQ" id="Fos-Zw-A8Y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ewi-TB-Rbc" userLabel="First Responder" sceneMemberID="firstResponder"/>
