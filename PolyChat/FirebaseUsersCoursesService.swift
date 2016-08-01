@@ -18,7 +18,6 @@ class FirebaseUsersCoursesService: FirebaseDatabaseService, UsersCoursesServiceP
     //gets all enrolled courses of a specified user
     func getEnrolledCourses(userId: String, callback: ([Course]?, NSError?) -> ()) {
         dbRef.child(Constants.usersCoursesDBKey).child(userId).observeSingleEventOfType(.Value, withBlock: { snapshot in
-            var courses: [Course] = []
             
             if let coursesArr = snapshot.value as? NSArray {
                 for cId in coursesArr {
@@ -29,8 +28,7 @@ class FirebaseUsersCoursesService: FirebaseDatabaseService, UsersCoursesServiceP
                                 return
                             }
                             else {
-                                courses.append(course!)
-                                callback(courses, nil)
+                                callback([course!], nil)
                             }
                         })
                     }
