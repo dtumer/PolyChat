@@ -35,7 +35,6 @@ class FirebaseChatRoomService: FirebaseDatabaseService, ChatRoomServiceProtocol 
         
         dbRef.updateChildValues(childUpdates, withCompletionBlock: { (error, ref) in
             if let error = error {
-                //TODO log better
                 callback(error)
             }
             else {
@@ -58,6 +57,9 @@ class FirebaseChatRoomService: FirebaseDatabaseService, ChatRoomServiceProtocol 
                         self.chatRoomsUsersService.addUsersToChatRoom(chatRoom.id, users: users, callback: { error in
                             if let error = error {
                                 callback(error)
+                            }
+                            else {
+                                callback(nil)
                             }
                         })
                     }

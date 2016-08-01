@@ -14,17 +14,15 @@ class FirebaseUserService: FirebaseDatabaseService, UserServiceProtocol {
     // Gets a user from the database given their UID. Passes an NSError with code 0 if user is not found
     func getUser(uid: String, callback: (User?, NSError?) -> ()) {
         dbRef.child(Constants.usersDBKey).child(uid).observeSingleEventOfType(.Value, withBlock: { snapshot in
-            if let value = snapshot.value {
-                if value is NSNull {
-                    return
-                }
+            if let value = snapshot.value as? NSMutableDictionary{
+                //add uid to dictionary
+                value["id"] = uid
                 
-                callback(User(dictionary: value as! NSDictionary), nil)
-                return
+                callback(User(dictionary: value), nil)
             }
-            
-            callback(nil, NSError(domain: "FirebaseUserServices", code: 0, description: "No user with that UID found"))
-            return
+            else {
+                callback(nil, NSError(domain: "FirebaseUserServices", code: 0, description: "No user with that UID found"))
+            }
         })
     }
     

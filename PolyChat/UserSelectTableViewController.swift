@@ -61,7 +61,15 @@ class UserSelectTableViewController: UITableViewController {
     
     //finishes creating the chat room
     @IBAction func createChatRoomPressed(sender: AnyObject) {
-        print("CREATE!!!")
+        self.chatRoomService.createChatRoom(self.course.id, users: self.selectedUsers, chatRoom: self.chatRoom, callback: { error in
+            if let error = error {
+                //TODO log error better
+                print(error.description)
+            }
+            else {
+                self.dismissViewControllerAnimated(true, completion: nil)
+            }
+        })
     }
 }
 

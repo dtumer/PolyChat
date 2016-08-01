@@ -38,7 +38,7 @@ struct Constants {
     static let usersCoursesDBKey = "USERS_COURSES"
     static let coursesUsersDBKey = "COURSES_USERS"
     static let usersChatRoomsDBKey = "USERS_CHATROOMS"
-    static let chatRoomsUsersDBKey = "CHATROOMS_USERS" //TODO make this service
+    static let chatRoomsUsersDBKey = "CHATROOMS_USERS"
     static let chatRoomsMessagesDBKey = "CHATROOMS_MESSAGES"
     static let coursesChatRoomsDBKey = "COURSES_CHATROOMS"
     
