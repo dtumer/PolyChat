@@ -10,14 +10,46 @@ import UIKit
 
 class ChatTableViewController: UITableViewController {
 
+    //services
+    var authService: AuthServiceProtocol!
+    
+    var course: Course!
+    var user: NSDictionary!
     var chatRooms: [ChatRoom]! = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        initServices()
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        
+        self.chatRooms = []
+        
+        //check if a user is logged in
+        if !authService.hasOpenSession() {
+            //TODO GET RID OF PRINT
+            print("NO OPEN SESSION")
+            self.performSegueWithIdentifier(Constants.loginSegueId, sender: self)
+        }
+        else {
+            //get logged in user information
+            if let user = self.authService.getUserData() {
+                self.user = user
+                loadChatRooms(user[Constants.uidKey] as! String)
+            }
+        }
+    }
+    
+    //initializes services needed
+    private func initServices() {
+        self.authService = AuthServiceFactory.getAuthService(Constants.CURRENT_SERVICE_KEY)
+    }
+    
+    func loadChatRooms(userId: String) {
+        
     }
 }
 
