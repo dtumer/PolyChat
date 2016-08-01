@@ -101,8 +101,17 @@ extension EditUserViewController: UITableViewDelegate, UITableViewDataSource {
     
     // Support conditional editing of the table view.
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Only rows with courses can be editable
-        return indexPath.row < userCourses.count
+        // Both types of cells can be edited (.Insert and .Delete editing styles)
+        return true
+    }
+    
+    func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
+        // If row is a course, set style to delete
+        if indexPath.row < userCourses.count {
+            return .Delete
+        } else { // Row is add row cell, set style to insert
+            return .Insert
+        }
     }
     
     // Support editing the table view.
@@ -112,7 +121,7 @@ extension EditUserViewController: UITableViewDelegate, UITableViewDataSource {
             userCourses.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+            
         }
     }
     

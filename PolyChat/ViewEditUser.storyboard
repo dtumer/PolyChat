@@ -161,7 +161,7 @@
         <!--Edit User-->
         <scene sceneID="Gag-Ia-Gz6">
             <objects>
-                <viewController id="dQ1-7b-S65" customClass="EditUserViewController" customModule="PolyChat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Edit User" id="dQ1-7b-S65" customClass="EditUserViewController" customModule="PolyChat" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3i2-bz-OIR"/>
                         <viewControllerLayoutGuide type="bottom" id="DsQ-Ga-UUJ"/>
@@ -355,6 +355,34 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ewi-TB-Rbc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1216" y="352"/>
+        </scene>
+        <!--Add User Course-->
+        <scene sceneID="65X-fl-nXd">
+            <objects>
+                <tableViewController title="Add User Course" id="BB0-dh-ZmG" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="pWe-IX-NuJ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="iDV-fg-s4Z">
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iDV-fg-s4Z" id="Ynf-sv-lB7">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="BB0-dh-ZmG" id="mFA-LK-eHF"/>
+                            <outlet property="delegate" destination="BB0-dh-ZmG" id="YPi-hI-eib"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GzM-ty-3AB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1965" y="352"/>
         </scene>
     </scenes>
 </document>
