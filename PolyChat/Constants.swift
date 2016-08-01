@@ -36,7 +36,7 @@ struct Constants {
     static let usersGroupsDBKey = "USERS_GROUPS"
     static let groupsUsersDBKey = "GROUPS_USERS" //TODO make these services
     static let usersCoursesDBKey = "USERS_COURSES"
-    static let corusesUsersDBKey = "COURSES_USERS"
+    static let coursesUsersDBKey = "COURSES_USERS"
     static let usersChatRoomsDBKey = "USERS_CHATROOMS"
     static let chatRoomsUsersDBKey = "CHATROOMS_USERS" //TODO make this service
     static let chatRoomsMessagesDBKey = "CHATROOMS_MESSAGES"
@@ -44,6 +44,7 @@ struct Constants {
     
     //TableViewController Reuse Identifiers
     static let myCoursesReuseId = "MyCourseCell"
+    static let usersReuseId = "UserCell"
     static let coursesReuseId = "CourseCell"
     static let usersAdminReuseId = "UsersAdminCell"
     static let menuReuseId = "MenuCell"
