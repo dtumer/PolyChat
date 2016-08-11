@@ -14,7 +14,6 @@ class FirebaseUsersCoursesService: FirebaseDatabaseService, UsersCoursesServiceP
     
     let courseService = CourseServiceFactory.getCourseService(Constants.CURRENT_SERVICE_KEY)
     
-    
     //gets all enrolled courses of a specified user
     func getEnrolledCourses(userId: String, callback: ([Course]?, NSError?) -> ()) {
         dbRef.child(Constants.usersCoursesDBKey).child(userId).observeSingleEventOfType(.Value, withBlock: { snapshot in

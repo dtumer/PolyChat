@@ -16,4 +16,8 @@ class MockUsersChatRoomsService: UsersChatRoomsServiceProtocol {
     func addUserToChatRoom(userId: String, chatRoomId: String, callback: (NSError?) -> ()) {
         
     }
+    
+    func createChatRoom(courseId: String, users: [User], chatRoom: ChatRoom, callback: (NSError?) -> ()) {
+        
+    }
 }

@@ -51,6 +51,7 @@ struct Constants {
     static let userCourseAdminReuseId = "UserCourseAdminCell"
     static let userCourseAdminEditReuseId = "UserCourseAdminEditCell"
     static let userCourseAdminAddReuseId = "UserCourseAdminAddCell"
+    static let chatCellReuseId = "ChatCell"
     
     //Segue Identifiers
     static let loginSegueId = "LoginSegue"

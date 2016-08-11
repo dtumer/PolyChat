@@ -12,7 +12,7 @@ class UserSelectTableViewController: UITableViewController {
     
     //services
     var authService: AuthServiceProtocol!
-    var chatRoomService: ChatRoomServiceProtocol!
+    var usersChatRoomsService: UsersChatRoomsServiceProtocol!
     var coursesUsersService: CoursesUsersServiceProtocol!
     
     var course: Course!
@@ -41,7 +41,7 @@ class UserSelectTableViewController: UITableViewController {
     //initializes services that we will need
     private func initServices() {
         self.authService = AuthServiceFactory.getAuthService(Constants.CURRENT_SERVICE_KEY)
-        self.chatRoomService = ChatRoomServiceFactory.getChatRoomService(Constants.CURRENT_SERVICE_KEY)
+        self.usersChatRoomsService = UsersChatRoomsServiceFactory.getUsersChatRoomsService(Constants.CURRENT_SERVICE_KEY)
         self.coursesUsersService = CoursesUsersServiceFactory.getCoursesUsersService(Constants.CURRENT_SERVICE_KEY)
     }
     
@@ -61,7 +61,7 @@ class UserSelectTableViewController: UITableViewController {
     
     //finishes creating the chat room
     @IBAction func createChatRoomPressed(sender: AnyObject) {
-        self.chatRoomService.createChatRoom(self.course.id, users: self.selectedUsers, chatRoom: self.chatRoom, callback: { error in
+        self.usersChatRoomsService.createChatRoom(self.course.id, users: self.selectedUsers, chatRoom: self.chatRoom, callback: { error in
             if let error = error {
                 //TODO log error better
                 print(error.description)

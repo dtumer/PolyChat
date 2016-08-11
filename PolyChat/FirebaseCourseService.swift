@@ -11,7 +11,6 @@ import Firebase
 
 class FirebaseCourseService: FirebaseDatabaseService, CourseServiceProtocol {
     let DOMAIN = "FirebaseCourseService::"
-    let userService = UserServiceFactory.getUserService(Constants.CURRENT_SERVICE_KEY)
     
     //gets a course from the database
     func getCourse(courseId: String, callback: (Course?, NSError?) -> ()) {

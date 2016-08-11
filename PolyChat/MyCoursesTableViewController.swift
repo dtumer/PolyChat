@@ -83,18 +83,10 @@ class MyCoursesTableViewController: UITableViewController {
                 self.tableView.reloadData()
             }
             else {
+                //TODO change this to log errors instead of printing them
                 print(error?.description)
             }
         })
-//        self.myCoursesService.getEnrolledCourses(uid, callback: { (courses, error) in
-//            if let courses = courses {
-//                self.courses = courses
-//                self.tableView.reloadData()
-//            }
-//            else {
-//                print("ERROR: \(error?.localizedDescription)")
-//            }
-//        })
     }
     
     //used to initialize mock data in database

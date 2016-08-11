@@ -14,4 +14,7 @@ protocol UsersChatRoomsServiceProtocol {
     
     //adds the user to a chat room
     func addUserToChatRoom(userId: String, chatRoomId: String, callback: (NSError?) -> ())
+    
+    //creates a chat room
+    func createChatRoom(courseId: String, users: [User], chatRoom: ChatRoom, callback: (NSError?) -> ())
 }

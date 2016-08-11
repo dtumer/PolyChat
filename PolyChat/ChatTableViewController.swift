@@ -12,10 +12,11 @@ class ChatTableViewController: UITableViewController {
 
     //services
     var authService: AuthServiceProtocol!
+    var usersChatRoomsService: UsersChatRoomsServiceProtocol!
     
     var course: Course!
     var user: NSDictionary!
-    var chatRooms: [ChatRoom]! = []
+    var chatRooms: [ChatRoom] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,8 +31,6 @@ class ChatTableViewController: UITableViewController {
         
         //check if a user is logged in
         if !authService.hasOpenSession() {
-            //TODO GET RID OF PRINT
-            print("NO OPEN SESSION")
             self.performSegueWithIdentifier(Constants.loginSegueId, sender: self)
         }
         else {
@@ -46,10 +45,25 @@ class ChatTableViewController: UITableViewController {
     //initializes services needed
     private func initServices() {
         self.authService = AuthServiceFactory.getAuthService(Constants.CURRENT_SERVICE_KEY)
+        self.usersChatRoomsService = UsersChatRoomsServiceFactory.getUsersChatRoomsService(Constants.CURRENT_SERVICE_KEY)
     }
     
+    //loads all the chat rooms that a user is in
     func loadChatRooms(userId: String) {
+        //init chat rooms
+        self.chatRooms = []
+        self.tableView.reloadData()
         
+        self.usersChatRoomsService.getChatRoomsByUser(userId, callback: { (chatRooms, error) in
+            if let chatRooms = chatRooms {
+                self.chatRooms += chatRooms
+                self.tableView.reloadData()
+            }
+            else {
+                //TODO change this to log instead of print
+                print(error?.description)
+            }
+        })
     }
 }
 
@@ -62,15 +76,13 @@ extension ChatTableViewController {
         return chatRooms.count
     }
 
-    /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
+        let cell = tableView.dequeueReusableCellWithIdentifier(Constants.chatCellReuseId, forIndexPath: indexPath) as! ChatTableViewCell
+        
+        cell.chatRoom = self.chatRooms[indexPath.row]
 
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.
