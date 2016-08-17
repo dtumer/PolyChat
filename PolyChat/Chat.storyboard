@@ -31,6 +31,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="chatRoomTitleLabel" destination="6T1-n8-LPp" id="z5T-O3-8De"/>
+                                    <segue destination="HlS-vS-FK7" kind="show" identifier="ChatRoomDetailsSegue" id="5n6-63-TD1"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -43,6 +44,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cDx-6m-Xa0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="260" y="243"/>
+        </scene>
+        <!--Chat Room View Controller-->
+        <scene sceneID="jdz-wN-SWl">
+            <objects>
+                <viewController id="HlS-vS-FK7" customClass="ChatRoomViewController" customModule="PolyChat" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mIe-eX-q8X"/>
+                        <viewControllerLayoutGuide type="bottom" id="yTT-J5-fYx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="MK6-B4-796">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NFs-pu-5KL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1012" y="243"/>
         </scene>
     </scenes>
 </document>

@@ -65,6 +65,30 @@ class ChatTableViewController: UITableViewController {
             }
         })
     }
+    
+    //override should perform segue
+    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
+        if identifier == Constants.chatRoomDetailsSegueId {
+            if let cell = sender as? ChatTableViewCell {
+                if let _ = cell.layer.valueForKey(Constants.ndxKey) as? Int {
+                    return true
+                }
+            }
+        }
+        
+        return false
+    }
+    
+    //override of prepare for segue
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        //segue for going to the chat details view
+        if segue.identifier == Constants.chatRoomDetailsSegueId {
+            let vc = segue.destinationViewController as! ChatRoomViewController
+            let cell = sender as! ChatTableViewCell
+            
+            vc.chatRoom = self.chatRooms[cell.layer.valueForKey(Constants.ndxKey) as! Int]
+        }
+    }
 }
 
 extension ChatTableViewController {
@@ -80,6 +104,7 @@ extension ChatTableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier(Constants.chatCellReuseId, forIndexPath: indexPath) as! ChatTableViewCell
         
         cell.chatRoom = self.chatRooms[indexPath.row]
+        cell.layer.setValue(indexPath.row, forKey: Constants.ndxKey)
 
         return cell
     }

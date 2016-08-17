@@ -24,6 +24,9 @@ struct Constants {
     static let MOCK_SERVICE_KEY: String = "mock"
     //static let MYSQL_SERVICE_KEY: String = "mysql"
     
+    //hash key for setting ndx on a cell
+    static let ndxKey = "ndx"
+    
     //database keys
     static let idKey = "id"
     
@@ -59,6 +62,7 @@ struct Constants {
     static let editUserSegueId = "EditUserSegue"
     static let createChatSegueId = "CreateChatSegue"
     static let createChatNextSegueId = "CreateChatNextSegue"
+    static let chatRoomDetailsSegueId = "ChatRoomDetailsSegue"
     
     /* Model Constants */
     //User
