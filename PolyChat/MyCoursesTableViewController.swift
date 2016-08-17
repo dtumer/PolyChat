@@ -105,6 +105,7 @@ class MyCoursesTableViewController: UITableViewController {
     }
 }
 
+//table view extension
 extension MyCoursesTableViewController {
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1

@@ -139,12 +139,22 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qnd-Jg-pOr">
+                                <rect key="frame" x="20" y="120" width="560" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="DZ2-UQ-pVG" firstAttribute="centerX" secondItem="hTd-2E-g6s" secondAttribute="centerX" id="26N-a0-Vy4"/>
                             <constraint firstItem="DZ2-UQ-pVG" firstAttribute="top" secondItem="6Up-pt-SDR" secondAttribute="bottom" constant="8" id="3OW-Wo-o2n"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Qnd-Jg-pOr" secondAttribute="trailing" id="JxZ-g2-Igu"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="Qnd-Jg-pOr" secondAttribute="leading" id="Kz9-gd-AxC"/>
+                            <constraint firstItem="Qnd-Jg-pOr" firstAttribute="top" secondItem="DZ2-UQ-pVG" secondAttribute="bottom" constant="8" id="OSb-xc-guz"/>
                             <constraint firstAttribute="trailingMargin" secondItem="DZ2-UQ-pVG" secondAttribute="trailing" id="Oci-sA-FYJ"/>
+                            <constraint firstItem="Qnd-Jg-pOr" firstAttribute="centerX" secondItem="hTd-2E-g6s" secondAttribute="centerX" id="SBM-Cy-Cjg"/>
                             <constraint firstAttribute="leadingMargin" secondItem="DZ2-UQ-pVG" secondAttribute="leading" id="mkB-40-SD9"/>
                         </constraints>
                     </view>
@@ -158,13 +168,15 @@
                         <barButtonItem key="rightBarButtonItem" title="Next" id="Wmk-39-UiP">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <segue destination="ZMm-05-3oI" kind="show" identifier="CreateChatNextSegue" id="FkE-4f-mOj"/>
+                                <action selector="nextScreenPressed:" destination="1jN-Ft-4yM" id="oQb-Go-g1i"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="chatRoomNameLabel" destination="DZ2-UQ-pVG" id="1ij-tn-EXe"/>
+                        <outlet property="chatRoomNameField" destination="DZ2-UQ-pVG" id="tGM-jj-s20"/>
+                        <outlet property="nameErrorLabel" destination="Qnd-Jg-pOr" id="8Cv-T1-7oW"/>
                         <segue destination="8PY-Nv-apG" kind="show" identifier="LoginSegue" id="rzF-Pb-vcF"/>
+                        <segue destination="ZMm-05-3oI" kind="show" identifier="CreateChatNextSegue" id="PF1-fp-zQq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PD8-H9-Lmj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -306,6 +318,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="5jk-0y-fEs"/>
+        <segue reference="rzF-Pb-vcF"/>
     </inferredMetricsTieBreakers>
 </document>
