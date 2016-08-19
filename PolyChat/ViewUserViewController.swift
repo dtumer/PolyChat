@@ -38,7 +38,7 @@ class ViewUserViewController: UIViewController {
     }
     
     private func initServices() {
-        self.usersCoursesService = UsersCoursesServiceFactory.getUsersCoursesService(Constants.CURRENT_SERVICE_KEY)
+        self.usersCoursesService = UsersCoursesServiceFactory.sharedInstance
     }
     
     private func loadUserCourses() {

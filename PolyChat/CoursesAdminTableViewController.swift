@@ -10,7 +10,7 @@ import UIKit
 
 class CoursesAdminTableViewController: UITableViewController {
 
-    var courseService = CourseServiceFactory.getCourseService(Constants.CURRENT_SERVICE_KEY)
+    var courseService = CourseServiceFactory.sharedInstance
     var courses: [Course] = []
     
     override func viewDidLoad() {

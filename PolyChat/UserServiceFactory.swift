@@ -7,7 +7,15 @@
 //
 
 class UserServiceFactory {
-    class func getUserService(serviceKey: String) -> UserServiceProtocol {
+    class var sharedInstance: UserServiceProtocol! {
+        struct Singleton {
+            static let instance = UserServiceFactory.getUserService(Constants.CURRENT_SERVICE_KEY)
+        }
+        
+        return Singleton.instance
+    }
+    
+    private class func getUserService(serviceKey: String) -> UserServiceProtocol {
         switch serviceKey {
             case Constants.FIREBASE_SERVICE_KEY:
                 return FirebaseUserService()

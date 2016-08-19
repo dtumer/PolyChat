@@ -7,7 +7,15 @@
 //
 
 class MessageServiceFactory {
-    class func getMessageService(serviceKey: String) -> MessageServiceProtocol {
+    class var sharedInstance: MessageServiceProtocol! {
+        struct Singleton {
+            static let instance = MessageServiceFactory.getMessageService(Constants.CURRENT_SERVICE_KEY)
+        }
+        
+        return Singleton.instance
+    }
+    
+    private class func getMessageService(serviceKey: String) -> MessageServiceProtocol {
         switch serviceKey {
         case Constants.FIREBASE_SERVICE_KEY:
             return FirebaseMessageService()

@@ -22,7 +22,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: Actions
     @IBAction func signUp(sender: UIButton) {
-        let authService = AuthServiceFactory.getAuthService(Constants.CURRENT_SERVICE_KEY)
+        let authService = AuthServiceFactory.sharedInstance
         
         // Validate Email
         if ValidationService.isValidEmail(emailTextField.text!) {

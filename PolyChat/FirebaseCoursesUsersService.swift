@@ -11,7 +11,7 @@ import Foundation
 class FirebaseCoursesUsersService: FirebaseDatabaseService, CoursesUsersServiceProtocol {
     let DOMAIN = "FirebaseCoursesUsersService::"
     
-    let userService = UserServiceFactory.getUserService(Constants.CURRENT_SERVICE_KEY)
+    let userService = UserServiceFactory.sharedInstance
     
     func getEnrolledUsers(courseId: String, callback: ([User]?, NSError?) -> ()) {
         dbRef.child(Constants.coursesUsersDBKey).child(courseId).observeSingleEventOfType(.Value, withBlock: { snapshot in

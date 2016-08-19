@@ -7,7 +7,15 @@
 //
 
 class GroupServiceFactory {
-    class func getGroupService(serviceKey: String) -> GroupServiceProtocol {
+    class var sharedInstance: GroupServiceProtocol! {
+        struct Singleton {
+            static let instance = GroupServiceFactory.getGroupService(Constants.CURRENT_SERVICE_KEY)
+        }
+        
+        return Singleton.instance
+    }
+    
+    private class func getGroupService(serviceKey: String) -> GroupServiceProtocol {
         switch serviceKey {
         case Constants.FIREBASE_SERVICE_KEY:
             return FirebaseGroupService()

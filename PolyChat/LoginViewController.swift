@@ -18,7 +18,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
 
         // Retrieve Auth Service
-        self.authService = AuthServiceFactory.getAuthService(Constants.CURRENT_SERVICE_KEY)
+        self.authService = AuthServiceFactory.sharedInstance
     }
 
     /*

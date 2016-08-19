@@ -41,7 +41,7 @@ class CreateChatRoomViewController: UIViewController {
     
     //initializes services needed for this view controller
     private func initServices() {
-        self.authService = AuthServiceFactory.getAuthService(Constants.CURRENT_SERVICE_KEY)
+        self.authService = AuthServiceFactory.sharedInstance
     }
     
     //dismiss chat room create when cancel is pressed

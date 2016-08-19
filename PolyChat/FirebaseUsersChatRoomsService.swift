@@ -11,9 +11,9 @@ import Foundation
 class FirebaseUsersChatRoomsService: FirebaseDatabaseService, UsersChatRoomsServiceProtocol {
     let DOMAIN = "FirebaseUsersChatRoomServices::"
     
-    let chatRoomService = ChatRoomServiceFactory.getChatRoomService(Constants.CURRENT_SERVICE_KEY)
-    let coursesChatRoomsService = CoursesChatRoomsFactory.getCoursesChatRoomsService(Constants.CURRENT_SERVICE_KEY)
-    let chatRoomsUsersService = ChatRoomsUsersServiceFactory.getChatRoomsUsersService(Constants.CURRENT_SERVICE_KEY)
+    let chatRoomService = ChatRoomServiceFactory.sharedInstance
+    let coursesChatRoomsService = CoursesChatRoomsServiceFactory.sharedInstance
+    let chatRoomsUsersService = ChatRoomsUsersServiceFactory.sharedInstance
     
     func createChatRoom(courseId: String, users: [User], chatRoom: ChatRoom, callback: (NSError?) -> ()) {
         //1: Add chat room to CHATROOMS table

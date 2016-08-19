@@ -12,7 +12,7 @@ import Firebase
 class FirebaseUsersCoursesService: FirebaseDatabaseService, UsersCoursesServiceProtocol {
     let DOMAIN = "FirebaseUsersCoursesService::"
     
-    let courseService = CourseServiceFactory.getCourseService(Constants.CURRENT_SERVICE_KEY)
+    let courseService = CourseServiceFactory.sharedInstance
     
     //gets all enrolled courses of a specified user
     func getEnrolledCourses(userId: String, callback: ([Course]?, NSError?) -> ()) {

@@ -17,7 +17,7 @@ class UsersAdminTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        userService = UserServiceFactory.getUserService(Constants.CURRENT_SERVICE_KEY)
+        userService = UserServiceFactory.sharedInstance
     }
     
     override func viewDidAppear(animated: Bool) {

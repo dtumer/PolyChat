@@ -151,9 +151,9 @@
 		0F55EA0C1D4D4DC300A0D2B4 /* ChatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F55EA0B1D4D4DC300A0D2B4 /* ChatTableViewController.swift */; };
 		0F55EA0D1D4D4DC300A0D2B4 /* ChatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F55EA0B1D4D4DC300A0D2B4 /* ChatTableViewController.swift */; };
 		0F55EA0E1D4D4DC300A0D2B4 /* ChatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F55EA0B1D4D4DC300A0D2B4 /* ChatTableViewController.swift */; };
-		0F55EA101D4D789300A0D2B4 /* CoursesChatRoomsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F55EA0F1D4D789300A0D2B4 /* CoursesChatRoomsFactory.swift */; };
-		0F55EA111D4D789300A0D2B4 /* CoursesChatRoomsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F55EA0F1D4D789300A0D2B4 /* CoursesChatRoomsFactory.swift */; };
-		0F55EA121D4D789300A0D2B4 /* CoursesChatRoomsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F55EA0F1D4D789300A0D2B4 /* CoursesChatRoomsFactory.swift */; };
+		0F55EA101D4D789300A0D2B4 /* CoursesChatRoomsServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F55EA0F1D4D789300A0D2B4 /* CoursesChatRoomsServiceFactory.swift */; };
+		0F55EA111D4D789300A0D2B4 /* CoursesChatRoomsServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F55EA0F1D4D789300A0D2B4 /* CoursesChatRoomsServiceFactory.swift */; };
+		0F55EA121D4D789300A0D2B4 /* CoursesChatRoomsServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F55EA0F1D4D789300A0D2B4 /* CoursesChatRoomsServiceFactory.swift */; };
 		0F55EA141D4D78ED00A0D2B4 /* CoursesChatRoomsServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F55EA131D4D78ED00A0D2B4 /* CoursesChatRoomsServiceProtocol.swift */; };
 		0F55EA151D4D78ED00A0D2B4 /* CoursesChatRoomsServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F55EA131D4D78ED00A0D2B4 /* CoursesChatRoomsServiceProtocol.swift */; };
 		0F55EA161D4D78ED00A0D2B4 /* CoursesChatRoomsServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F55EA131D4D78ED00A0D2B4 /* CoursesChatRoomsServiceProtocol.swift */; };
@@ -390,7 +390,7 @@
 		0F4AFF7D1D1E0D3D0030C3BD /* Course.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
 		0F4AFF811D1E10090030C3BD /* MyCoursesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCoursesTableViewCell.swift; sourceTree = "<group>"; };
 		0F55EA0B1D4D4DC300A0D2B4 /* ChatTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatTableViewController.swift; sourceTree = "<group>"; };
-		0F55EA0F1D4D789300A0D2B4 /* CoursesChatRoomsFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoursesChatRoomsFactory.swift; sourceTree = "<group>"; };
+		0F55EA0F1D4D789300A0D2B4 /* CoursesChatRoomsServiceFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoursesChatRoomsServiceFactory.swift; sourceTree = "<group>"; };
 		0F55EA131D4D78ED00A0D2B4 /* CoursesChatRoomsServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoursesChatRoomsServiceProtocol.swift; sourceTree = "<group>"; };
 		0F55EA171D4D791400A0D2B4 /* FirebaseCoursesChatRoomsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseCoursesChatRoomsService.swift; sourceTree = "<group>"; };
 		0F55EA1B1D4D793700A0D2B4 /* MockCoursesChatRoomsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockCoursesChatRoomsService.swift; sourceTree = "<group>"; };
@@ -495,7 +495,7 @@
 				0F2B56391D3DEC46008BF1F6 /* UsersChatRoomsServiceFactory.swift */,
 				0F55EA3B1D4EA1D200A0D2B4 /* ChatRoomsUsersServiceFactory.swift */,
 				0F2B563D1D3DECA7008BF1F6 /* ChatRoomsMessagesServiceFactory.swift */,
-				0F55EA0F1D4D789300A0D2B4 /* CoursesChatRoomsFactory.swift */,
+				0F55EA0F1D4D789300A0D2B4 /* CoursesChatRoomsServiceFactory.swift */,
 			);
 			name = Factories;
 			sourceTree = "<group>";
@@ -1223,7 +1223,7 @@
 				0F2B566A1D3DF446008BF1F6 /* MockMessageService.swift in Sources */,
 				0F65FC6B1D1F967600470498 /* CourseViewController.swift in Sources */,
 				D8B37C2C1D4D4F3200E6A823 /* ViewUserViewController.swift in Sources */,
-				0F55EA101D4D789300A0D2B4 /* CoursesChatRoomsFactory.swift in Sources */,
+				0F55EA101D4D789300A0D2B4 /* CoursesChatRoomsServiceFactory.swift in Sources */,
 				D89D279F1D374824006542DF /* AdminSettingsTableViewController.swift in Sources */,
 				0F65FC411D1E26AE00470498 /* UserServiceProtocol.swift in Sources */,
 				0F4AFF551D1DD8E60030C3BD /* UserServiceFactory.swift in Sources */,
@@ -1286,7 +1286,7 @@
 				0F2B562E1D3DEB2C008BF1F6 /* ChatRoomsMessagesServiceProtocol.swift in Sources */,
 				D8EAFB151D1CFBFB000638CF /* AuthServiceProtocol.swift in Sources */,
 				0F2B56261D3DEAEC008BF1F6 /* FirebaseUsersChatRoomsService.swift in Sources */,
-				0F55EA111D4D789300A0D2B4 /* CoursesChatRoomsFactory.swift in Sources */,
+				0F55EA111D4D789300A0D2B4 /* CoursesChatRoomsServiceFactory.swift in Sources */,
 				0F2B56671D3DF431008BF1F6 /* MockGroupService.swift in Sources */,
 				0F2B561E1D3DEA95008BF1F6 /* FirebaseUsersCoursesService.swift in Sources */,
 				0F960B081D1CD70900E0D902 /* FirebaseAuthService.swift in Sources */,
@@ -1414,7 +1414,7 @@
 				0F4AFF571D1DD8EA0030C3BD /* UserServiceFactory.swift in Sources */,
 				D89D27AE1D375503006542DF /* CourseServiceFactory.swift in Sources */,
 				D8F24D3B1D486162009FBFD1 /* EditUserViewController.swift in Sources */,
-				0F55EA121D4D789300A0D2B4 /* CoursesChatRoomsFactory.swift in Sources */,
+				0F55EA121D4D789300A0D2B4 /* CoursesChatRoomsServiceFactory.swift in Sources */,
 				0F2B56171D3DEA38008BF1F6 /* UsersGroupsServiceProtocol.swift in Sources */,
 				D8B37C2E1D4D4F3200E6A823 /* ViewUserViewController.swift in Sources */,
 				0F4AFF841D1E10090030C3BD /* MyCoursesTableViewCell.swift in Sources */,

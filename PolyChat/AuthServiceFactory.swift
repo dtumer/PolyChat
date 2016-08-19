@@ -7,7 +7,15 @@
 //
 
 class AuthServiceFactory {
-    class func getAuthService(serviceKey: String) -> AuthServiceProtocol? {
+    class var sharedInstance: AuthServiceProtocol! {
+        struct Singleton {
+            static let instance = AuthServiceFactory.getAuthService(Constants.CURRENT_SERVICE_KEY)
+        }
+        
+        return Singleton.instance
+    }
+    
+    private class func getAuthService(serviceKey: String) -> AuthServiceProtocol? {
         switch serviceKey {
             case Constants.FIREBASE_SERVICE_KEY:
                 return FirebaseAuthService()

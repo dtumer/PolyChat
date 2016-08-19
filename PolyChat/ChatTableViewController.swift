@@ -44,8 +44,8 @@ class ChatTableViewController: UITableViewController {
     
     //initializes services needed
     private func initServices() {
-        self.authService = AuthServiceFactory.getAuthService(Constants.CURRENT_SERVICE_KEY)
-        self.usersChatRoomsService = UsersChatRoomsServiceFactory.getUsersChatRoomsService(Constants.CURRENT_SERVICE_KEY)
+        self.authService = AuthServiceFactory.sharedInstance
+        self.usersChatRoomsService = UsersChatRoomsServiceFactory.sharedInstance
     }
     
     //loads all the chat rooms that a user is in

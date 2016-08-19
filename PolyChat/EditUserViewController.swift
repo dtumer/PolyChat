@@ -25,8 +25,8 @@ class EditUserViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        userService = UserServiceFactory.getUserService(Constants.CURRENT_SERVICE_KEY)
-        authService = AuthServiceFactory.getAuthService(Constants.CURRENT_SERVICE_KEY)
+        userService = UserServiceFactory.sharedInstance
+        authService = AuthServiceFactory.sharedInstance
         
         setUserTextFields()
         self.userCoursesEditTableView.setEditing(true, animated: true)

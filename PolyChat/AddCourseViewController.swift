@@ -10,7 +10,7 @@ import UIKit
 
 class AddCourseViewController: UIViewController, UITextFieldDelegate {
 
-    var courseService = CourseServiceFactory.getCourseService(Constants.CURRENT_SERVICE_KEY)
+    var courseService = CourseServiceFactory.sharedInstance
     @IBOutlet weak var courseNameTextField: UITextField!
     
     override func viewDidLoad() {

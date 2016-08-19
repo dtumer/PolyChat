@@ -9,7 +9,15 @@
 import Foundation
 
 class ChatRoomServiceFactory {
-    class func getChatRoomService(serviceKey: String) -> ChatRoomServiceProtocol {
+    class var sharedInstance: ChatRoomServiceProtocol! {
+        struct Singleton {
+            static let instance = ChatRoomServiceFactory.getChatRoomService(Constants.CURRENT_SERVICE_KEY)
+        }
+        
+        return Singleton.instance
+    }
+    
+    private class func getChatRoomService(serviceKey: String) -> ChatRoomServiceProtocol {
         switch serviceKey {
         case Constants.FIREBASE_SERVICE_KEY:
             return FirebaseChatRoomService()

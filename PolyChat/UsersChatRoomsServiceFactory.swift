@@ -7,7 +7,15 @@
 //
 
 class UsersChatRoomsServiceFactory {
-    class func getUsersChatRoomsService(serviceKey: String) -> UsersChatRoomsServiceProtocol {
+    class var sharedInstance: UsersChatRoomsServiceProtocol! {
+        struct Singleton {
+            static let instance = UsersChatRoomsServiceFactory.getUsersChatRoomsService(Constants.CURRENT_SERVICE_KEY)
+        }
+        
+        return Singleton.instance
+    }
+    
+    private class func getUsersChatRoomsService(serviceKey: String) -> UsersChatRoomsServiceProtocol {
         switch serviceKey {
         case Constants.FIREBASE_SERVICE_KEY:
             return FirebaseUsersChatRoomsService()

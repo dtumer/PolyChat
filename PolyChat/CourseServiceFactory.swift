@@ -7,7 +7,15 @@
 //
 
 class CourseServiceFactory {
-    class func getCourseService(serviceKey: String) -> CourseServiceProtocol {
+    class var sharedInstance: CourseServiceProtocol! {
+        struct Singleton {
+            static let instance = CourseServiceFactory.getCourseService(Constants.CURRENT_SERVICE_KEY)
+        }
+        
+        return Singleton.instance
+    }
+    
+    private class func getCourseService(serviceKey: String) -> CourseServiceProtocol {
         switch serviceKey {
         case Constants.FIREBASE_SERVICE_KEY:
             return FirebaseCourseService()

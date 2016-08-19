@@ -7,7 +7,15 @@
 //
 
 class UsersGroupsServiceFactory {
-    class func getUsersGroupsService(serviceKey: String) -> UsersGroupsServiceProtocol {
+    class var sharedInstance: UsersGroupsServiceProtocol! {
+        struct Singleton {
+            static let instance = UsersGroupsServiceFactory.getUsersGroupsService(Constants.CURRENT_SERVICE_KEY)
+        }
+        
+        return Singleton.instance
+    }
+    
+    private class func getUsersGroupsService(serviceKey: String) -> UsersGroupsServiceProtocol {
         switch serviceKey {
         case Constants.FIREBASE_SERVICE_KEY:
             return FirebaseUsersGroupsService()

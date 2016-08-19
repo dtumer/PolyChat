@@ -40,9 +40,9 @@ class UserSelectTableViewController: UITableViewController {
     
     //initializes services that we will need
     private func initServices() {
-        self.authService = AuthServiceFactory.getAuthService(Constants.CURRENT_SERVICE_KEY)
-        self.usersChatRoomsService = UsersChatRoomsServiceFactory.getUsersChatRoomsService(Constants.CURRENT_SERVICE_KEY)
-        self.coursesUsersService = CoursesUsersServiceFactory.getCoursesUsersService(Constants.CURRENT_SERVICE_KEY)
+        self.authService = AuthServiceFactory.sharedInstance
+        self.usersChatRoomsService = UsersChatRoomsServiceFactory.sharedInstance
+        self.coursesUsersService = CoursesUsersServiceFactory.sharedInstance
     }
     
     //loads all users in a course

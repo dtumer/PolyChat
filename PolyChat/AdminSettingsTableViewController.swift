@@ -11,7 +11,7 @@ import UIKit
 class AdminSettingsTableViewController: UITableViewController {
 
     @IBOutlet weak var logoutCell: UITableViewCell!
-    let authService: AuthServiceProtocol! = AuthServiceFactory.getAuthService(Constants.CURRENT_SERVICE_KEY)
+    let authService: AuthServiceProtocol! = AuthServiceFactory.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()

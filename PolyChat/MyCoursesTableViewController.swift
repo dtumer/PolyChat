@@ -31,9 +31,9 @@ class MyCoursesTableViewController: UITableViewController {
     }
     
     private func initServices() {
-        self.authService = AuthServiceFactory.getAuthService(Constants.CURRENT_SERVICE_KEY)
-        self.usersCoursesService = UsersCoursesServiceFactory.getUsersCoursesService(Constants.CURRENT_SERVICE_KEY)
-        self.courseService = CourseServiceFactory.getCourseService(Constants.CURRENT_SERVICE_KEY)
+        self.authService = AuthServiceFactory.sharedInstance
+        self.usersCoursesService = UsersCoursesServiceFactory.sharedInstance
+        self.courseService = CourseServiceFactory.sharedInstance
     }
     
     //on view did appear
