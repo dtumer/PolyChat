@@ -6,6 +6,8 @@
 //  Copyright © 2016 DenFan. All rights reserved.
 //
 
+import Foundation
+
 protocol ChatRoomsMessagesServiceProtocol {
-    
+    func getAllMessagesInChatRoom(chatRoomsId: String, callback: ([Message]?, NSError?) -> ())
 }

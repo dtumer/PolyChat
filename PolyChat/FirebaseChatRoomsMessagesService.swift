@@ -9,5 +9,7 @@
 import Foundation
 
 class FirebaseChatRoomsMessagesService: FirebaseDatabaseService, ChatRoomsMessagesServiceProtocol {
-    
+    func getAllMessagesInChatRoom(chatRoomsId: String, callback: ([Message]?, NSError?) -> ()) {
+        
+    }
 }
