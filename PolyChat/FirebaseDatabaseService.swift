@@ -17,4 +17,11 @@ class FirebaseDatabaseService {
     func getAutoId(tableKey: String) -> String {
         return dbRef.child(tableKey).childByAutoId().key
     }
+    
+    //Closes all handles that are open
+    func closeAllHandles() {
+        for handle in handles {
+            dbRef.removeObserverWithHandle(handle)
+        }
+    }
 }

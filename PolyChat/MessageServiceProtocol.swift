@@ -6,6 +6,8 @@
 //  Copyright © 2016 DenFan. All rights reserved.
 //
 
+import Foundation
+
 protocol MessageServiceProtocol {
-    
+    func getMessage(messageId: String, callback: (Message?, NSError?) -> ())
 }

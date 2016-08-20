@@ -9,5 +9,7 @@
 import Foundation
 
 class MockMessageService: MessageServiceProtocol {
-    
+    func getMessage(messageId: String, callback: (Message?, NSError?) -> ()) {
+        
+    }
 }
