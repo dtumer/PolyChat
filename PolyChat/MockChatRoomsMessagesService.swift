@@ -9,7 +9,7 @@
 import Foundation
 
 class MockChatRoomsMessagesService: ChatRoomsMessagesServiceProtocol {
-    func getAllMessagesInChatRoom(chatRoomsId: String, callback: ([Message]?, NSError?) -> ()) {
+    func getAllMessagesInChatRoom(chatRoomsId: String, callback: (Message?, NSError?) -> ()) {
         
     }
     

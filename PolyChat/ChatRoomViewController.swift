@@ -52,11 +52,13 @@ class ChatRoomViewController: JSQMessagesViewController {
                     self.user = user
                     self.senderId = user.id
                     self.senderDisplayName = user.name
+                    self.loadMessages()
                 } else if let error = error {
                     print(error)
                 }
             })
         }
+        
     }
     
     //initializes services needed
@@ -85,9 +87,41 @@ class ChatRoomViewController: JSQMessagesViewController {
         collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSizeZero
     }
     
+    func loadMessages() {
+        //init chat rooms
+        self.messages = []
+        chatRoomsMessagesService.getAllMessagesInChatRoom(chatRoom.id, callback: { (messages, error) in
+            if let messages = messages {
+                let message = JSQMessage(senderId: messages.senderId, displayName: "", text: messages.body)
+                self.messages += [message]
+                self.finishReceivingMessage()
+            }
+            else {
+                //TODO change this to log instead of print
+                print(error?.description)
+            }
+        })
+    }
+    
     func addMessage(text: String) {
         let message = JSQMessage(senderId: user.id, displayName: user.name, text: text)
         messages.append(message)
+    }
+    
+    override func didPressSendButton(button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: NSDate!) {
+        let message = Message(dictionary:[
+            "body": text,
+            "sender_id": senderId
+        ])
+        chatRoomsMessagesService.addMessageToChatRoom(chatRoom.id, message: message, callback: { error in
+            if let error = error {
+                print(error)
+            } else {
+                JSQSystemSoundPlayer.jsq_playMessageSentSound()
+                self.finishSendingMessage()
+                self.collectionView.reloadData()
+            }
+        })
     }
 }
 
@@ -109,6 +143,34 @@ extension ChatRoomViewController {
             return outgoingBubbleImageView
         } else {
             return incomingBubbleImageView
+        }
+    }
+    
+    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = super.collectionView(collectionView, cellForItemAtIndexPath: indexPath) as! JSQMessagesCollectionViewCell
+        let message = messages[indexPath.item]
+        
+        if message.senderId == senderId {
+            cell.textView!.textColor = UIColor.whiteColor()
+        } else {
+            cell.textView!.textColor = UIColor.blackColor()
+        }
+        
+        return cell
+    }
+    
+    // For the display name of messages
+    override func collectionView(collectionView: JSQMessagesCollectionView?, attributedTextForMessageBubbleTopLabelAtIndexPath indexPath: NSIndexPath!) -> NSAttributedString! {
+        let message = messages[indexPath.item]
+        switch message.senderId {
+        case user.id:
+            return nil
+        default:
+            guard let senderDisplayName = message.senderDisplayName else {
+                assertionFailure()
+                return nil
+            }
+            return NSAttributedString(string: senderDisplayName)
         }
     }
     
