@@ -10,4 +10,5 @@ import Foundation
 
 protocol ChatRoomsMessagesServiceProtocol {
     func getAllMessagesInChatRoom(chatRoomsId: String, callback: ([Message]?, NSError?) -> ())
+    func addMessageToChatRoom(chatRoomId: String, message: Message, callback: (NSError?) -> ())
 }
