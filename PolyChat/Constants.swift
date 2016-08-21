@@ -67,6 +67,7 @@ struct Constants {
     /* Model Constants */
     //User
     static let uidKey = "uid"
+    static let emailKey = "email"
     //user roles
     static let USER_DEFAULT = 0
     static let USER_ADMIN = 1

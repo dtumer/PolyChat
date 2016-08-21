@@ -58,7 +58,7 @@ class FirebaseAuthService: FirebaseDatabaseService, AuthServiceProtocol {
             
             //check if user is in USERS DB. If not add user
             self.userService.getUser(user!.uid, callback: { (user, error) in
-                if let user = user {
+                if user != nil {
                     callback(nil)
                     return
                 }
@@ -91,12 +91,25 @@ class FirebaseAuthService: FirebaseDatabaseService, AuthServiceProtocol {
         }
     }
     
+    func getCurrentUser(callback: (User?, NSError?) -> ()) {
+        if let user = FIRAuth.auth()?.currentUser {
+            userService.getUser(user.uid, callback: { user, error in
+                if let error = error {
+                    callback(nil, error)
+                }
+                if let user = user {
+                    callback(user, nil)
+                }
+            })
+        }
+    }
+    
     func getUserData() -> NSDictionary? {
         var retUser: [String:AnyObject]? = [:]
         
         if let user = FIRAuth.auth()?.currentUser {
-            retUser!["uid"] = user.uid
-            retUser!["email"] = user.email
+            retUser![Constants.uidKey] = user.uid
+            retUser![Constants.emailKey] = user.email
         }
         
         return retUser

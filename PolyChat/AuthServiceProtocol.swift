@@ -20,6 +20,9 @@ protocol AuthServiceProtocol {
     //checks whether or not a user is logged in
     func hasOpenSession() -> Bool
     
+    // gets the currently logged in User
+    func getCurrentUser(callback: (User?, NSError?) -> ())
+    
     //grabs user data of the user that is logged in
     func getUserData() -> NSDictionary?
     

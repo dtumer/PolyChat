@@ -35,7 +35,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBAction func loginPressed(sender: UIButton) {
         authService?.loginUser(emailTextField.text!, passHash: passwordTextField.text!, callback: { (error) in
             if let error = error { //error when logging in user
-                print("THERE WAS AN ERROR LOGGING IN THE USER")
+                print(error)
                 return
             }
             

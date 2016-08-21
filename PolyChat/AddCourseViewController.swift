@@ -44,9 +44,9 @@ class AddCourseViewController: UIViewController, UITextFieldDelegate {
         if !isValidCourseName(courseName) {
             courseService.addCourse(course, callback: { error in
                 if let error = error {
-                    // Handle error
-                    print("ERROR OCCURRED IN ADD COURSE")
+                    print(error)
                 } else {
+                    // TODO: Make feedback for course added
                     print("Course \(course.name) added")
                 }
             })

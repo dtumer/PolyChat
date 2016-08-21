@@ -94,7 +94,7 @@ extension CourseViewController {
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Constants.menuReuseId, forIndexPath: indexPath) as! MenuCollectionViewCell
+        _ = collectionView.dequeueReusableCellWithReuseIdentifier(Constants.menuReuseId, forIndexPath: indexPath) as! MenuCollectionViewCell
         
         self.subViewController.changeSubView(self.menuItems[indexPath.row])
     }

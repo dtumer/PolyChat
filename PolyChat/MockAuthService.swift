@@ -24,6 +24,10 @@ class MockAuthService: AuthServiceProtocol {
         return false
     }
     
+    func getCurrentUser(callback: (User?, NSError?) -> ()) {
+        
+    }
+    
     func getUserData() -> NSDictionary? {
         return nil
     }
