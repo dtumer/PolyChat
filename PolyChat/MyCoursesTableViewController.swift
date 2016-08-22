@@ -16,8 +16,10 @@ class MyCoursesTableViewController: UITableViewController {
     var usersCoursesService: UsersCoursesServiceProtocol!
     var courseService: CourseServiceProtocol!
     
-    //instance variables for UI
-    var user: NSDictionary!
+    //logged in user
+    var user: User!
+    
+    //list of courses that the logged in user is enrolled in
     var courses: [Course] = []
     
     //on view did load
@@ -30,6 +32,7 @@ class MyCoursesTableViewController: UITableViewController {
         self.navigationController?.navigationBar.translucent = false
     }
     
+    //initializes all services needed by this controller
     private func initServices() {
         self.authService = AuthServiceFactory.sharedInstance
         self.usersCoursesService = UsersCoursesServiceFactory.sharedInstance
@@ -45,29 +48,20 @@ class MyCoursesTableViewController: UITableViewController {
         
         //check if a user is logged in
         if !authService.hasOpenSession() {
-            //TODO GET RID OF PRINT
-            print("NO OPEN SESSION")
             self.performSegueWithIdentifier(Constants.loginSegueId, sender: self)
         }
         else {
             //get logged in user information
-            if let user = self.authService.getUserData() {
-                self.user = user
-                loadCourses(user[Constants.uidKey] as! String)
-            }
-        }
-    }
-    
-    private func performAuthentication(completion: () -> ()) {
-        if !authService.hasOpenSession() {
-            self.performSegueWithIdentifier(Constants.loginSegueId, sender: self)
-            return
-        }
-        
-        if let user = self.authService.getUserData() {
-            self.user = user
-            loadCourses(user[Constants.uidKey] as! String)
-            completion()
+            self.authService.getCurrentUser({ (user, error) in
+                if let error = error {
+                    //TODO log error
+                    print(error.description)
+                }
+                else {
+                    self.user = user!
+                    self.loadCourses(self.user.id)
+                }
+            })
         }
     }
     

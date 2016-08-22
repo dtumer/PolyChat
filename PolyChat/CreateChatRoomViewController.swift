@@ -13,9 +13,13 @@ class CreateChatRoomViewController: UIViewController {
     @IBOutlet weak var chatRoomNameField: UITextField!
     @IBOutlet weak var nameErrorLabel: UILabel!
     
-    //services
+    //auth service for checking login
     var authService: AuthServiceProtocol!
     
+    //logged in user object
+    var user: User!
+    
+    //current course object
     var course: Course!
     
     override func viewDidLoad() {
@@ -35,7 +39,15 @@ class CreateChatRoomViewController: UIViewController {
             self.performSegueWithIdentifier(Constants.loginSegueId, sender: self)
         }
         else {
-            print(course.id)
+            self.authService.getCurrentUser({ (user, error) in
+                if let error = error {
+                    //TODO change this to not print
+                    print(error.description)
+                }
+                else {
+                    self.user = user!
+                }
+            })
         }
     }
     

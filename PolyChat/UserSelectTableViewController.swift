@@ -15,9 +15,19 @@ class UserSelectTableViewController: UITableViewController {
     var usersChatRoomsService: UsersChatRoomsServiceProtocol!
     var coursesUsersService: CoursesUsersServiceProtocol!
     
+    //current course object
     var course: Course!
+    
+    //chat room object of the chat room being created
     var chatRoom: ChatRoom!
+    
+    //the user that is creating the chat room
+    var user: User!
+    
+    //all users encrolled in the course
     var users: [User] = []
+    
+    //all selected users
     var selectedUsers: [User] = []
 
     override func viewDidLoad() {
@@ -34,7 +44,17 @@ class UserSelectTableViewController: UITableViewController {
             self.performSegueWithIdentifier(Constants.loginSegueId, sender: self)
         }
         else {
-            loadUsers()
+            self.authService.getCurrentUser({ (user, error) in
+                if let error = error {
+                    //TODO change this print statement
+                    print(error.description)
+                }
+                else {
+                    self.user = user!
+                    self.selectedUsers.append(self.user)
+                    self.loadUsers(self.course.id)
+                }
+            })
         }
     }
     
@@ -46,8 +66,8 @@ class UserSelectTableViewController: UITableViewController {
     }
     
     //loads all users in a course
-    private func loadUsers() {
-        self.coursesUsersService.getEnrolledUsers(self.course.id, callback: { (users, error) in
+    private func loadUsers(courseId: String) {
+        self.coursesUsersService.getEnrolledUsers(self.user.id, courseId: courseId, callback: { (users, error) in
             if let error = error {
                 //TODO log error better
                 print(error.description)

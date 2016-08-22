@@ -83,6 +83,7 @@ class FirebaseAuthService: FirebaseDatabaseService, AuthServiceProtocol {
     func logout() -> Bool {
         do {
             try FIRAuth.auth()?.signOut()
+            self.closeAllHandles()
             return true
         }
         catch {
@@ -96,9 +97,11 @@ class FirebaseAuthService: FirebaseDatabaseService, AuthServiceProtocol {
             userService.getUser(user.uid, callback: { user, error in
                 if let error = error {
                     callback(nil, error)
+                    return
                 }
                 if let user = user {
                     callback(user, nil)
+                    return
                 }
             })
         }

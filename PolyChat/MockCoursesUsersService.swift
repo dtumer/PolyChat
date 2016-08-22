@@ -9,7 +9,7 @@
 import Foundation
 
 class MockCoursesUsersService: CoursesUsersServiceProtocol {
-    func getEnrolledUsers(courseId: String, callback: ([User]?, NSError?) -> ()) {
+    func getEnrolledUsers(userId: String, courseId: String, callback: ([User]?, NSError?) -> ()) {
         
     }
     
