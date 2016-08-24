@@ -12,7 +12,7 @@ class UserSelectTableViewController: UITableViewController {
     
     //services
     var authService: AuthServiceProtocol!
-    var usersChatRoomsService: UsersChatRoomsServiceProtocol!
+    var chatRoomService: ChatRoomServiceProtocol!
     var coursesUsersService: CoursesUsersServiceProtocol!
     
     //current course object
@@ -61,7 +61,7 @@ class UserSelectTableViewController: UITableViewController {
     //initializes services that we will need
     private func initServices() {
         self.authService = AuthServiceFactory.sharedInstance
-        self.usersChatRoomsService = UsersChatRoomsServiceFactory.sharedInstance
+        self.chatRoomService = ChatRoomServiceFactory.sharedInstance
         self.coursesUsersService = CoursesUsersServiceFactory.sharedInstance
     }
     
@@ -81,15 +81,24 @@ class UserSelectTableViewController: UITableViewController {
     
     //finishes creating the chat room
     @IBAction func createChatRoomPressed(sender: AnyObject) {
-        self.usersChatRoomsService.createChatRoom(self.course.id, users: self.selectedUsers, chatRoom: self.chatRoom, callback: { error in
-            if let error = error {
-                //TODO log error better
-                print(error.description)
-            }
-            else {
-                self.dismissViewControllerAnimated(true, completion: nil)
-            }
-        })
+        //check if there were users selected
+        if selectedUsers.count <= 1 {
+            let alert = UIAlertController(title: "Error", message: "Please choose at least one other user to chat with!", preferredStyle: .Alert)
+            
+            alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+        else {
+            self.chatRoomService.createChatRoom(self.course.id, users: self.selectedUsers, chatRoom: self.chatRoom, callback: { error in
+                if let error = error {
+                    //TODO log error better
+                    print(error.description)
+                }
+                else {
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                }
+            })
+        }
     }
 }
 

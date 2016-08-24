@@ -55,11 +55,18 @@ class FirebaseCourseService: FirebaseDatabaseService, CourseServiceProtocol {
     }
     
     //puts a course in the database
-    func addCourse(course: Course, callback: (NSError?) -> ()) {
+    func addCourse(course: Course, callback: (String?, NSError?) -> ()) {
         let key = getAutoId(Constants.coursesDBKey)
         let childUpdates = ["/\(Constants.coursesDBKey)/\(key)": course.toDictionary()]
         
-        dbRef.updateChildValues(childUpdates)
+        dbRef.updateChildValues(childUpdates, withCompletionBlock: { (error, ref) in
+            if let error = error {
+                callback(nil, error)
+            }
+            else {
+                callback(key, nil)
+            }
+        })
     }
     
     //removes a course from the database

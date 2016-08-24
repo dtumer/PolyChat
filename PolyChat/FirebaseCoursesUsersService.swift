@@ -13,6 +13,7 @@ class FirebaseCoursesUsersService: FirebaseDatabaseService, CoursesUsersServiceP
     
     let userService = UserServiceFactory.sharedInstance
     
+    //get all users enrolled in a course
     func getEnrolledUsers(userId: String, courseId: String, callback: ([User]?, NSError?) -> ()) {
         let handle = dbRef.child(Constants.coursesUsersDBKey).child(courseId).observeEventType(.Value, withBlock: { snapshot in
             
@@ -47,6 +48,7 @@ class FirebaseCoursesUsersService: FirebaseDatabaseService, CoursesUsersServiceP
         self.handles.append(handle)
     }
     
+    //enroll a user in a course
     func enrollUserInCourse(courseId: String, userId: String, callback: (NSError?) -> ()) {
         
     }

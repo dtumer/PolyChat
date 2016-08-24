@@ -9,11 +9,9 @@
 import Foundation
 
 class MockCoursesChatRoomsService: CoursesChatRoomsServiceProtocol {
-    func getChatRooms(courseId: String, callback: ([ChatRoom]?, NSError?) -> ()) {
-        
-    }
     
-    func addChatRoom(courseId: String, chatRoom: ChatRoom, callback: (NSError?) -> ()) {
+    //adds reference to chat room in the COURSES_CHATROOMS table
+    func addChatRoomReference(courseId: String, chatRoom: ChatRoom, callback: (NSError?) -> ()) {
         
     }
 }

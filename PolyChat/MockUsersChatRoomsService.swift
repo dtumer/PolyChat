@@ -9,15 +9,14 @@
 import Foundation
 
 class MockUsersChatRoomsService: UsersChatRoomsServiceProtocol {
-    func getChatRoomsByUser(userId: String, callback: ([ChatRoom]?, NSError?) -> ()) {
+    
+    //add reference
+    func addUserChatRoomReference(userId: String, chatRoomId: String, callback: (NSError?) -> ()) {
         
     }
     
-    func addUserToChatRoom(userId: String, chatRoomId: String, callback: (NSError?) -> ()) {
-        
-    }
-    
-    func createChatRoom(courseId: String, users: [User], chatRoom: ChatRoom, callback: (NSError?) -> ()) {
+    //remove reference
+    func removeUserChatRoomReference(userId: String, chatRoomId: String, callback: (NSError?) -> ()) {
         
     }
 }

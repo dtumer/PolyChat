@@ -11,18 +11,8 @@ import Foundation
 class FirebaseCoursesChatRoomsService: FirebaseDatabaseService, CoursesChatRoomsServiceProtocol {
     let DOMAIN = "FirebaseCoursesChatRoomsServices::"
     
-    func getChatRooms(courseId: String, callback: ([ChatRoom]?, NSError?) -> ()) {
-        dbRef.child(Constants.coursesChatRoomsDBKey).child(courseId).observeSingleEventOfType(.Value, withBlock: { snapshot in
-            if let val = snapshot.value as? NSArray {
-                
-            }
-            else if let val = snapshot.value as? NSNull {
-                print("NULL")
-            }
-        })
-    }
-    
-    func addChatRoom(courseId: String, chatRoom: ChatRoom, callback: (NSError?) -> ()) {
+    //add reference to chat room in COURSES_CHATROOMS
+    func addChatRoomReference(courseId: String, chatRoom: ChatRoom, callback: (NSError?) -> ()) {
         self.getChatRoomsIds(courseId, callback: { (courseIds, error) in
             var ids: [String] = []
             

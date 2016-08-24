@@ -12,7 +12,7 @@ class ChatTableViewController: UITableViewController {
 
     //services
     var authService: AuthServiceProtocol!
-    var usersChatRoomsService: UsersChatRoomsServiceProtocol!
+    var chatRoomService: ChatRoomServiceProtocol!
     
     //course object
     var course: Course!
@@ -56,7 +56,7 @@ class ChatTableViewController: UITableViewController {
     //initializes services needed
     private func initServices() {
         self.authService = AuthServiceFactory.sharedInstance
-        self.usersChatRoomsService = UsersChatRoomsServiceFactory.sharedInstance
+        self.chatRoomService = ChatRoomServiceFactory.sharedInstance
     }
     
     //loads all the chat rooms that a user is in
@@ -65,7 +65,7 @@ class ChatTableViewController: UITableViewController {
         self.chatRooms = []
         self.tableView.reloadData()
         
-        self.usersChatRoomsService.getChatRoomsByUser(userId, callback: { (chatRooms, error) in
+        self.chatRoomService.getChatRoomsInCourseWithUser(self.course.id, userId: user.id, callback: { (chatRooms, error) in
             if let chatRooms = chatRooms {
                 self.chatRooms += chatRooms
                 self.tableView.reloadData()

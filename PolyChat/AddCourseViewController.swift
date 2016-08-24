@@ -42,7 +42,7 @@ class AddCourseViewController: UIViewController, UITextFieldDelegate {
         let course = Course(dictionary: courseDict)
         
         if !isValidCourseName(courseName) {
-            courseService.addCourse(course, callback: { error in
+            courseService.addCourse(course, callback: { (string, error) in
                 if let error = error {
                     print(error)
                 } else {

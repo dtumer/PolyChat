@@ -9,12 +9,24 @@
 import Foundation
 
 protocol UsersChatRoomsServiceProtocol {
-    //gets all chat rooms that a user is in
-    func getChatRoomsByUser(userId: String, callback: ([ChatRoom]?, NSError?) -> ())
     
-    //adds the user to a chat room
-    func addUserToChatRoom(userId: String, chatRoomId: String, callback: (NSError?) -> ())
+    /*
+     * Adds a reference to the USERS_CHATROOMS table that links a user to a chat room
+     *
+     * @param userId        - The ID of the user to add to the chat room
+     * @param chatRoomId    - The ID of the chat room to add the specified user to
+     * @param callback      - The callback function. Called with an error if there is one
+     */
+    func addUserChatRoomReference(userId: String, chatRoomId: String, callback: (NSError?) -> ())
     
-    //creates a chat room
-    func createChatRoom(courseId: String, users: [User], chatRoom: ChatRoom, callback: (NSError?) -> ())
+    /*
+     * Removes a reference in USERS_CHATROOMS table that links the specified user to the specified chat room
+     *
+     * @param userId        - The ID of the user to remove from the chat room
+     * @param chatRoomId    - The ID of the chat room to remove the specified user from
+     * @param callback      - The callback function. Called with an error if there is one
+     *
+     * NOTE: MAKE SURE TO CALL SUBSEQUENT FUNCTION IN ChatRoomsUsersService AS WELL
+     */
+    func removeUserChatRoomReference(userId: String, chatRoomId: String, callback: (NSError?) -> ())
 }

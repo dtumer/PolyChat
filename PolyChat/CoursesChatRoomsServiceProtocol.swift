@@ -9,9 +9,12 @@
 import Foundation
 
 protocol CoursesChatRoomsServiceProtocol {
-    //gets the chat rooms for a course
-    func getChatRooms(courseId: String, callback: ([ChatRoom]?, NSError?) ->())
-    
-    //adds a chat room to the respective course
-    func addChatRoom(courseId: String, chatRoom: ChatRoom, callback: (NSError?) -> ())
+    /*
+     * Adds a reference to the chat room in the COURSES_CHATROOMS table
+     *
+     * @param courseId  - The ID of the course to add the reference to
+     * @param chatRoom  - The chat room object to be added as a reference to the table
+     * @param callback  - The callback function. Called with an error if there is one.
+     */
+    func addChatRoomReference(courseId: String, chatRoom: ChatRoom, callback: (NSError?) -> ())
 }

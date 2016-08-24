@@ -9,19 +9,23 @@
 import Foundation
 
 class MockCourseService: CourseServiceProtocol {
-    func getCourse(courseId: String, callback: (Course?, NSError?) -> ()) {
-        
-    }
-    
     func getAllCourses(callback: ([Course]?, NSError?) -> ()) {
         
     }
     
-    func addCourse(course: Course, callback: (NSError?) -> ()) {
+    func getCourse(courseId: String, callback: (Course?, NSError?) -> ()) {
+        
+    }
+    
+    func addCourse(course: Course, callback: (String?, NSError?) -> ()) {
         
     }
     
     func removeCourse(course: Course, callback: (NSError?) -> ()) {
         
     }
+}
+
+extension MockCourseService {
+    
 }

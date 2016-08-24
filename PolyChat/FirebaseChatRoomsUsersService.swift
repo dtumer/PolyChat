@@ -11,12 +11,8 @@ import Foundation
 class FirebaseChatRoomsUsersService: FirebaseDatabaseService, ChatRoomsUsersServiceProtocol {
     let DOMAIN = "FirebaseChatRoomsUsersService::"
     
-    func getAllUsersInChatRoom(chatRoomsId: String, callback: ([User]?, NSError?) -> ()) {
-        
-    }
-    
-    //adds users to chatroom (works for adding first time as well as adding users to chat room later
-    func addUsersToChatRoom(chatRoomId: String, users: [User], callback: (NSError?) -> ()) {
+    //adds references to the users in the CHATROOMS_USERS table
+    func addChatRoomsUsersReference(chatRoomId: String, users: [User], callback: (NSError?) -> ()) {
         self.getUserIdsInChatRoom(chatRoomId, callback: { (userIds, error) in
             var ids: [String] = []
             
@@ -49,6 +45,7 @@ class FirebaseChatRoomsUsersService: FirebaseDatabaseService, ChatRoomsUsersServ
         })
     }
     
+    //gets all user ids in a specified chat room
     func getUserIdsInChatRoom(chatRoomId: String, callback: ([String]?, NSError?) -> ()) {
         dbRef.child(Constants.chatRoomsUsersDBKey).child(chatRoomId).observeSingleEventOfType(.Value, withBlock: { snapshot in
             if let val = snapshot.value as? [String] {
