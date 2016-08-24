@@ -58,6 +58,7 @@ class CourseViewController: UIViewController, UICollectionViewDelegate, UICollec
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == CourseViewController.subViewEmbedSegueId {
             self.subViewController = segue.destinationViewController as! SubViewController
+            self.subViewController.course = self.course
         }
         else if segue.identifier == Constants.createChatSegueId {
             if let vc = segue.destinationViewController as? UINavigationController {
@@ -69,8 +70,6 @@ class CourseViewController: UIViewController, UICollectionViewDelegate, UICollec
                     }
                 }
             }
-            
-            //TODO else return error somehow
         }
     }
 }

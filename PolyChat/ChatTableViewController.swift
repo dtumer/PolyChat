@@ -14,9 +14,16 @@ class ChatTableViewController: UITableViewController {
     var authService: AuthServiceProtocol!
     var usersChatRoomsService: UsersChatRoomsServiceProtocol!
     
+    //course object
     var course: Course!
+    
+    //logged in user object
     var user: User!
+    
+    //all chat rooms in this course that the logged in user is in
     var chatRooms: [ChatRoom] = []
+    
+    //the chat room that is selected
     var selectedChatRoom: ChatRoom!
     
     override func viewDidLoad() {
