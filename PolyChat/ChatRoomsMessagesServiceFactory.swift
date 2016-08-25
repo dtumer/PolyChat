@@ -20,7 +20,7 @@ class ChatRoomsMessagesServiceFactory {
         case Constants.FIREBASE_SERVICE_KEY:
             return FirebaseChatRoomsMessagesService()
         default:
-            return MockChatRoomsMessagesService()
+            return FirebaseChatRoomsMessagesService()
         }
     }
 }

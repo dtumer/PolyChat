@@ -20,7 +20,7 @@ class AuthServiceFactory {
             case Constants.FIREBASE_SERVICE_KEY:
                 return FirebaseAuthService()
             default:
-                return MockAuthService()
+                return FirebaseAuthService()
         }
     }
 }

@@ -20,7 +20,7 @@ class UserServiceFactory {
             case Constants.FIREBASE_SERVICE_KEY:
                 return FirebaseUserService()
             default:
-                return MockUserService()
+                return FirebaseUserService()
         }
     }
 }

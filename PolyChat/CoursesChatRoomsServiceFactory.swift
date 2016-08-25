@@ -20,7 +20,7 @@ class CoursesChatRoomsServiceFactory {
         case Constants.FIREBASE_SERVICE_KEY:
             return FirebaseCoursesChatRoomsService()
         default:
-            return MockCoursesChatRoomsService()
+            return FirebaseCoursesChatRoomsService()
         }
     }
 }

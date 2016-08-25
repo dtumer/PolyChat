@@ -20,7 +20,7 @@ class GroupServiceFactory {
         case Constants.FIREBASE_SERVICE_KEY:
             return FirebaseGroupService()
         default:
-            return MockGroupService()
+            return FirebaseGroupService()
         }
     }
 }

@@ -20,7 +20,7 @@ class MessageServiceFactory {
         case Constants.FIREBASE_SERVICE_KEY:
             return FirebaseMessageService()
         default:
-            return MockMessageService()
+            return FirebaseMessageService()
         }
     }
 }

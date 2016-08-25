@@ -20,7 +20,7 @@ class UsersGroupsServiceFactory {
         case Constants.FIREBASE_SERVICE_KEY:
             return FirebaseUsersGroupsService()
         default:
-            return MockUsersGroupsService()
+            return FirebaseUsersGroupsService()
         }
     }
 }
