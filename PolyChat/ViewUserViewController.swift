@@ -10,7 +10,7 @@ import UIKit
 
 class ViewUserViewController: UIViewController {
     
-    var usersCoursesService: UsersCoursesServiceProtocol!
+    var courseService: CourseServiceProtocol!
     
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
@@ -38,15 +38,17 @@ class ViewUserViewController: UIViewController {
     }
     
     private func initServices() {
-        self.usersCoursesService = UsersCoursesServiceFactory.sharedInstance
+        self.courseService = CourseServiceFactory.sharedInstance
     }
     
     private func loadUserCourses() {
-        usersCoursesService.getEnrolledCourses(user.id, callback: { courses, error in
+        courseService.getCoursesUserIsEnrolledIn(user.id, callback: { courses, error in
             if let courses = courses {
                 self.userCourses = courses
                 self.userCoursesTableView.reloadData()
-            } else {
+            }
+            else {
+                //TODO change this to a logger
                 print(error)
             }
         })

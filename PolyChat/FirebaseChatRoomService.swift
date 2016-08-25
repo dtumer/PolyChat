@@ -55,9 +55,11 @@ class FirebaseChatRoomService: FirebaseDatabaseService, ChatRoomServiceProtocol 
 
 /* COMPOSITE FUNCTIONS */
 extension FirebaseChatRoomService {
-    
     //gets all chat rooms in a course that a user is a part of
     func getChatRoomsInCourseWithUser(courseId: String, userId: String, callback: ([ChatRoom]?, NSError?) -> ()) {
+        var chatRooms: [ChatRoom] = []
+        var numChatRooms = 0
+        
         //1: Get all chat rooms a user is in
         dbRef.child(Constants.usersChatRoomsDBKey).child(userId).observeSingleEventOfType(.Value, withBlock: { snapshot in
             if let chatRoomArr = snapshot.value as? NSArray {
@@ -74,7 +76,13 @@ extension FirebaseChatRoomService {
                                         callback(nil, error)
                                     }
                                     else {
-                                        callback([chatRoom!], nil)
+                                        chatRooms.append(chatRoom!)
+                                        numChatRooms += 1
+                                    }
+                                    
+                                    //only callback with everything if we've processed everything correctly
+                                    if numChatRooms == chatRoomArr.count {
+                                        callback(chatRooms, nil)
                                     }
                                 })
                             }

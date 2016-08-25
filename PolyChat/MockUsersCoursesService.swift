@@ -9,11 +9,13 @@
 import Foundation
 
 class MockUsersCoursesService: UsersCoursesServiceProtocol {
-    func getEnrolledCourses(userId: String, callback: ([Course]?, NSError?) -> ()) {
+    //add a reference
+    func addUserCourseReference(userId: String, courseId: String, callback: (NSError?) -> ()) {
         
     }
     
-    func enrollUserInCourse(userId: String, courseId: String, callback: (NSError?) -> ()) {
+    //removes a reference
+    func removeUserCourseReference(userId: String, courseId: String, callback: (NSError?) -> ()) {
         
     }
 }

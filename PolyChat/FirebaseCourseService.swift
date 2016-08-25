@@ -82,3 +82,51 @@ class FirebaseCourseService: FirebaseDatabaseService, CourseServiceProtocol {
         })
     }
 }
+
+/* COMPOSITE DATABASE TABLE FUNCTIONS */
+extension FirebaseCourseService {
+    //gets all courses a user is enrolled in
+    func getCoursesUserIsEnrolledIn(userId: String, callback: ([Course]?, NSError?) -> ()) {
+        var courses: [Course] = []
+        var numCourses = 0
+        
+        dbRef.child(Constants.usersCoursesDBKey).child(userId).observeSingleEventOfType(.Value, withBlock: { snapshot in
+            if let coursesArr = snapshot.value as? NSArray {
+                for cId in coursesArr {
+                    if let courseId = cId as? String {
+                        self.getCourse(courseId, callback: { (course, error) in
+                            if let error = error {
+                                callback(nil, error)
+                                return
+                            }
+                            else {
+                                courses.append(course!)
+                                numCourses += 1
+                            }
+                            
+                            //only callback when everything is complete
+                            if numCourses == coursesArr.count {
+                                callback(courses, nil)
+                            }
+                        })
+                    }
+                    else {
+                        let error = NSError(domain: self.DOMAIN, code: 0, description: "Course id for some reason is not a String")
+                        callback(nil, error)
+                        return
+                    }
+                }
+            }
+            else {
+                let error = NSError(domain: self.DOMAIN, code: 0, description: "Value in DB is not NSArray")
+                callback(nil, error)
+                return
+            }
+        })
+    }
+    
+    //enrolls a student in a course
+    func enrollStudentInCourse(userId: String, courseId: String, callback: (NSError?) -> ()) {
+        //TODO finish this
+    }
+}

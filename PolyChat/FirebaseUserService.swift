@@ -77,6 +77,9 @@ class FirebaseUserService: FirebaseDatabaseService, UserServiceProtocol {
 /* COMPOSITE FUNCTIONS */
 extension FirebaseUserService {
     func getAllUsersInACourse(courseId: String, userId: String, callback: ([User]?, NSError?) -> ()) {
+        var users: [User] = []
+        var numUsers = 0
+        
         let handle = dbRef.child(Constants.coursesUsersDBKey).child(courseId).observeEventType(.Value, withBlock: { snapshot in
             if let userIds = snapshot.value as? NSArray {
                 for uid in userIds {
@@ -87,7 +90,13 @@ extension FirebaseUserService {
                                     callback(nil, error)
                                 }
                                 else {
-                                    callback([user!], nil)
+                                    users.append(user!)
+                                    numUsers += 1
+                                }
+                                
+                                //only do the success callback when we have all the objects processed
+                                if numUsers == userIds.count {
+                                    callback(users, nil)
                                 }
                             })
                         }

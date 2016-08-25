@@ -40,4 +40,29 @@ protocol CourseServiceProtocol {
      * @param callback  - The callback function. Called with an error if there is one.
      */
     func removeCourse(course: Course, callback: (NSError?) -> ())
+    
+    
+    /*
+     * -----------------------------------
+     * COMPOSITE DATABASE ACCESS FUNCTIONS
+     * -----------------------------------
+     */
+    
+    
+    /*
+     * Gets all courses that a user is enrolled in
+     *
+     * @param userId    - The ID of the user to get enrolled courses for
+     * @param callback  - The callback function. Called with the list of courses or an error if there was one
+     */
+    func getCoursesUserIsEnrolledIn(userId: String, callback: ([Course]?, NSError?) -> ())
+    
+    /*
+     * Enrolls a user in a course
+     *
+     * @param userId    - The ID of the student to enroll in a course
+     * @param courseId  - The ID of the course to enroll the student in
+     * @param callback  - The callback function. Called with an error if there is one
+     */
+    func enrollStudentInCourse(userId: String, courseId: String, callback: (NSError?) -> ())
 }

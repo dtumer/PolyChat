@@ -27,5 +27,11 @@ class MockCourseService: CourseServiceProtocol {
 }
 
 extension MockCourseService {
+    func getCoursesUserIsEnrolledIn(userId: String, callback: ([Course]?, NSError?) -> ()) {
+        
+    }
     
+    func enrollStudentInCourse(userId: String, courseId: String, callback: (NSError?) -> ()) {
+        
+    }
 }

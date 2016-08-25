@@ -67,13 +67,9 @@ class MyCoursesTableViewController: UITableViewController {
     
     //loads the courses from the database
     func loadCourses(uid: String) {
-        //init courses
-        self.courses = []
-        self.tableView.reloadData()
-        
-        self.usersCoursesService.getEnrolledCourses(uid, callback: { (courses, error) in
+        self.courseService.getCoursesUserIsEnrolledIn(uid, callback: { (courses, error) in
             if let courses = courses {
-                self.courses += courses
+                self.courses = courses
                 self.tableView.reloadData()
             }
             else {

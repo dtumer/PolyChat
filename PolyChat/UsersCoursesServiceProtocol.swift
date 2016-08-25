@@ -9,9 +9,21 @@
 import Foundation
 
 protocol UsersCoursesServiceProtocol {
-    //get all courses a user is enrolled in
-    func getEnrolledCourses(userId: String, callback: ([Course]?, NSError?) -> ())
+    /*
+     * Adds a reference of a course to the USERS_COURSES table
+     *
+     * @param userId    - The ID of the user to add a course reference to in the DB
+     * @param courseId  - The ID of the course to add to the user in the DB
+     * @param callback  - The callback function. Called with an error if there is one
+     */
+    func addUserCourseReference(userId: String, courseId: String, callback: (NSError?) -> ())
     
-    //enrolls a specified student in a course
-    func enrollUserInCourse(userId: String, courseId: String, callback: (NSError?) -> ())
+    /*
+     * Removed a reference of a course from the USERS_COURSES table
+     *
+     * @param userId    - The ID of the user to remove the course reference from in the DB
+     * @param courseId  - The ID of the course to remove from the DB
+     * @param callback  - The callback function. Called with an error if there is one
+     */
+    func removeUserCourseReference(userId: String, courseId: String, callback: (NSError?) -> ())
 }

@@ -57,13 +57,10 @@ class MembersTableViewController: UITableViewController {
     }
     
     //loads all the users in this course
-    func loadUsers(courseId: String) {
-        //init users object
-        self.users = []
-        
+    func loadUsers(courseId: String) {        
         userService.getAllUsersInACourse(courseId, userId: "", callback: { (users, error) in
             if let users = users {
-                self.users += users
+                self.users = users
                 self.tableView.reloadData()
             }
             else {
@@ -71,7 +68,6 @@ class MembersTableViewController: UITableViewController {
                 print(error?.description)
             }
         })
-
     }
 }
 
