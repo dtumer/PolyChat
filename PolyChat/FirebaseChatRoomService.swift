@@ -74,6 +74,7 @@ extension FirebaseChatRoomService {
                                 self.getChatRoom(crId as! String, callback: { (chatRoom, error) in
                                     if let error = error {
                                         callback(nil, error)
+                                        return
                                     }
                                     else {
                                         chatRooms.append(chatRoom!)

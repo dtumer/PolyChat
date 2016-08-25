@@ -9,5 +9,43 @@
 import Foundation
 
 protocol MessageServiceProtocol {
+    /*
+     * Gets a message from the MESSAGES table
+     *
+     * @param messageId - The ID of the message to get
+     * @param callback  - The callback function. Called with the message or an error if there is one
+     */
     func getMessage(messageId: String, callback: (Message?, NSError?) -> ())
+    
+    /*
+     * Add message to MESSAGES table
+     *
+     * @param message
+     * @param callback  - The callback function. Called with the key of the message or an error if there is one
+     */
+    func addMessage(message: Message, callback: (String?, NSError?) -> ())
+    
+    
+    /*
+     * -----------------------------------
+     * COMPOSITE DATABASE ACCESS FUNCTIONS
+     * -----------------------------------
+     */
+    
+    /*
+     * Gets all messages in a chat room
+     *
+     * @param chatRoomId    - The ID of the chat room to get messages from
+     * @param callback      - The callback function. Called with the messages or an error if there is one
+     */
+    func getMessagesInChatRoom(chatRoomId: String, callback: ([Message]?, NSError?) -> ())
+    
+    /*
+     * Adds a message to the chat room
+     *
+     * @param chatRoomId    - The ID of the chat room to add the message to
+     * @param message       - The message object of the message to be added
+     * @param callback      - The callback function. Called with and error if there is one
+     */
+    func addMessageToChatRoom(chatRoomId: String, message: Message, callback: (NSError?) -> ())
 }

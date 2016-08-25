@@ -612,7 +612,7 @@
 			isa = PBXGroup;
 			children = (
 				0F971FC61D38749600560B93 /* Protocols */,
-				D89D27991D374411006542DF /* AdminSettings */,
+				D89D27991D374411006542DF /* GeneralSettings */,
 				0F65FC461D1E270400470498 /* Models */,
 				0F960B131D1CF35300E0D902 /* Course */,
 				0F960B101D1CF2CD00E0D902 /* MyCourses */,
@@ -723,7 +723,7 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		D89D27991D374411006542DF /* AdminSettings */ = {
+		D89D27991D374411006542DF /* GeneralSettings */ = {
 			isa = PBXGroup;
 			children = (
 				D8F24D261D4860A3009FBFD1 /* UsersAdmin */,
@@ -731,7 +731,7 @@
 				D89D279A1D37444F006542DF /* AdminSettings.storyboard */,
 				D89D279E1D374824006542DF /* AdminSettingsTableViewController.swift */,
 			);
-			name = AdminSettings;
+			name = GeneralSettings;
 			sourceTree = "<group>";
 		};
 		D89D27A21D374962006542DF /* AddCourse */ = {

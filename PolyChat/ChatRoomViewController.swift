@@ -14,7 +14,7 @@ class ChatRoomViewController: JSQMessagesViewController {
     // Services
     var authService: AuthServiceProtocol!
     var userService: UserServiceProtocol!
-    var chatRoomsMessagesService: ChatRoomsMessagesServiceProtocol!
+    var messageService: MessageServiceProtocol!
     
     // Current user
     var user: User!
@@ -65,7 +65,7 @@ class ChatRoomViewController: JSQMessagesViewController {
     private func initServices() {
         self.authService = AuthServiceFactory.sharedInstance
         self.userService = UserServiceFactory.sharedInstance
-        self.chatRoomsMessagesService = ChatRoomsMessagesServiceFactory.sharedInstance
+        self.messageService = MessageServiceFactory.sharedInstance
     }
 
     //initializes navigation bar
@@ -90,11 +90,13 @@ class ChatRoomViewController: JSQMessagesViewController {
     func loadMessages() {
         //init chat rooms
         self.messages = []
-        chatRoomsMessagesService.getAllMessagesInChatRoom(chatRoom.id, callback: { (messages, error) in
+        messageService.getMessagesInChatRoom(chatRoom.id, callback: { (messages, error) in
             if let messages = messages {
-                let message = JSQMessage(senderId: messages.senderId, displayName: "", text: messages.body)
-                self.messages += [message]
-                self.finishReceivingMessage()
+                for msg in messages {
+                    let msg = JSQMessage(senderId: msg.senderId, displayName: "", text: msg.body)
+                    self.messages.append(msg)
+                    self.finishReceivingMessage()
+                }
             }
             else {
                 //TODO change this to log instead of print
@@ -113,7 +115,7 @@ class ChatRoomViewController: JSQMessagesViewController {
             "body": text,
             "sender_id": senderId
         ])
-        chatRoomsMessagesService.addMessageToChatRoom(chatRoom.id, message: message, callback: { error in
+        messageService.addMessageToChatRoom(chatRoom.id, message: message, callback: { error in
             if let error = error {
                 print(error)
             } else {

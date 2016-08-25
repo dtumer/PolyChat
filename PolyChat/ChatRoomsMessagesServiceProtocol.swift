@@ -9,6 +9,11 @@
 import Foundation
 
 protocol ChatRoomsMessagesServiceProtocol {
-    func getAllMessagesInChatRoom(chatRoomsId: String, callback: (Message?, NSError?) -> ())
-    func addMessageToChatRoom(chatRoomId: String, message: Message, callback: (NSError?) -> ())
+    /*
+     * Adds reference in the CHATROOMS_MESSAGES table
+     *
+     * @param chatRoomId    - The ID of the chat room to add the reference to
+     * @param messageId     - The ID of the message to be added
+     */
+    func addChatRoomsMessagesReference(chatRoomId: String, messageId: String, callback: (NSError?) -> ())
 }

@@ -11,6 +11,9 @@ import Foundation
 class FirebaseMessageService: FirebaseDatabaseService, MessageServiceProtocol {
     let DOMAIN = "FirebaseMessageService::"
     
+    let chatRoomsMessagesService = ChatRoomsMessagesServiceFactory.sharedInstance
+    
+    //gets a message from the database
     func getMessage(messageId: String, callback: (Message?, NSError?) -> ()) {
         dbRef.child(Constants.messagesDBKey).child(messageId).observeSingleEventOfType(.Value, withBlock: { snapshot in
             if let messageDict = snapshot.value as? NSMutableDictionary {
@@ -23,6 +26,85 @@ class FirebaseMessageService: FirebaseDatabaseService, MessageServiceProtocol {
             
             callback(nil, error)
             return
+        })
+    }
+    
+    //adds a message to the db
+    func addMessage(message: Message, callback: (String?, NSError?) -> ()) {
+        let key = getAutoId(Constants.messagesDBKey)
+        let childUpdates = ["/\(Constants.messagesDBKey)/\(key)": message.toDictionary()]
+        
+        dbRef.updateChildValues(childUpdates, withCompletionBlock: { (error, ref) in
+            if let error = error {
+                callback(nil, error)
+            }
+            else {
+                callback(key, nil)
+            }
+        })
+    }
+}
+
+/* COMPOSITE DATABASE FUNCTIONS */
+extension FirebaseMessageService {
+    //gets all messages in a chat room
+    func getMessagesInChatRoom(chatRoomId: String, callback: ([Message]?, NSError?) -> ()) {
+        var messages: [Message] = []
+        var numMessages = 0
+        
+        dbRef.child(Constants.chatRoomsMessagesDBKey).child(chatRoomId).observeSingleEventOfType(.Value, withBlock: { snapshot in
+            if let msgArr = snapshot.value as? NSArray {
+                for msgId in msgArr {
+                    if let msgId = msgId as? String {
+                        self.getMessage(msgId, callback: { (msg, error) in
+                            if let error = error {
+                                callback(nil, error)
+                                return
+                            }
+                            else {
+                                messages.append(msg!)
+                                numMessages += 1
+                            }
+                            
+                            //callback when all messages are loaded
+                            if numMessages == msgArr.count {
+                                callback(messages, nil)
+                            }
+                        })
+                    }
+                    else {
+                        let error = NSError(domain: "\(self.DOMAIN)getMessagesInChatRoom", code: 0, description: "Message ID is not a string in the DB")
+                        callback(nil, error)
+                        return
+                    }
+                }
+            }
+            else {
+                let error = NSError(domain: "\(self.DOMAIN)getMessagesInChatRoom", code: 1, description: "Value in DB is not of type NSArray")
+                callback(nil, error)
+                return
+            }
+        })
+    }
+    
+    //adds a message to the chat room
+    func addMessageToChatRoom(chatRoomId: String, message: Message, callback: (NSError?) -> ()) {
+        //1: Add message to MESSAGES table
+        self.addMessage(message, callback: { (key, error) in
+            if let error = error {
+                callback(error)
+            }
+            else {
+                //2: Add reference to message in chat room
+                self.chatRoomsMessagesService.addChatRoomsMessagesReference(chatRoomId, messageId: key!, callback: { error in
+                    if let error = error {
+                        callback(error)
+                    }
+                    else {
+                        callback(nil)
+                    }
+                })
+            }
         })
     }
 }

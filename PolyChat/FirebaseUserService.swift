@@ -88,6 +88,7 @@ extension FirebaseUserService {
                             self.getUser(uid, callback: { (user, error) in
                                 if let error = error {
                                     callback(nil, error)
+                                    return
                                 }
                                 else {
                                     users.append(user!)
