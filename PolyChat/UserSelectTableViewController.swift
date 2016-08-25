@@ -13,7 +13,7 @@ class UserSelectTableViewController: UITableViewController {
     //services
     var authService: AuthServiceProtocol!
     var chatRoomService: ChatRoomServiceProtocol!
-    var coursesUsersService: CoursesUsersServiceProtocol!
+    var userService: UserServiceProtocol!
     
     //current course object
     var course: Course!
@@ -62,12 +62,12 @@ class UserSelectTableViewController: UITableViewController {
     private func initServices() {
         self.authService = AuthServiceFactory.sharedInstance
         self.chatRoomService = ChatRoomServiceFactory.sharedInstance
-        self.coursesUsersService = CoursesUsersServiceFactory.sharedInstance
+        self.userService = UserServiceFactory.sharedInstance
     }
     
     //loads all users in a course
     private func loadUsers(courseId: String) {
-        self.coursesUsersService.getEnrolledUsers(self.user.id, courseId: courseId, callback: { (users, error) in
+        self.userService.getAllUsersInACourse(courseId, userId: self.user.id, callback: { (users, error) in
             if let error = error {
                 //TODO log error better
                 print(error.description)

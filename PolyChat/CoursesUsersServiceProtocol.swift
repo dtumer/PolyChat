@@ -9,10 +9,7 @@
 import Foundation
 
 protocol CoursesUsersServiceProtocol {
-    //gets all users that are enrolled in a course
-    //userId: user id of the logged in user (don't add them)
-    func getEnrolledUsers(userId: String, courseId: String, callback: ([User]?, NSError?) -> ())
-    
     //adds a user to a course
+    //TODO change the name of this function and implement it
     func enrollUserInCourse(courseId: String, userId: String, callback: (NSError?) -> ())
 }

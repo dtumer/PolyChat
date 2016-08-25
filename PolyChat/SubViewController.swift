@@ -51,6 +51,9 @@ class SubViewController: UIViewController {
             vc.course = self.course
         }
         //if on the members tab
+        if let vc = segue.destinationViewController as? MembersTableViewController {
+            vc.course = self.course
+        }
         //if on group tab
         //if on settings tab
     }

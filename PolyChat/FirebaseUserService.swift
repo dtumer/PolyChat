@@ -72,5 +72,40 @@ class FirebaseUserService: FirebaseDatabaseService, UserServiceProtocol {
         callback(NSError(domain: "FirebaseUserService", code: 1, description: "No UID provided"))
         return
     }
+}
 
+/* COMPOSITE FUNCTIONS */
+extension FirebaseUserService {
+    func getAllUsersInACourse(courseId: String, userId: String, callback: ([User]?, NSError?) -> ()) {
+        let handle = dbRef.child(Constants.coursesUsersDBKey).child(courseId).observeEventType(.Value, withBlock: { snapshot in
+            if let userIds = snapshot.value as? NSArray {
+                for uid in userIds {
+                    if let uid = uid as? String {
+                        if uid != userId {
+                            self.getUser(uid, callback: { (user, error) in
+                                if let error = error {
+                                    callback(nil, error)
+                                }
+                                else {
+                                    callback([user!], nil)
+                                }
+                            })
+                        }
+                    }
+                    else {
+                        let error = NSError(domain: self.DOMAIN, code: 0, description: "Course id for some reason is not a String")
+                        callback(nil, error)
+                        return
+                    }
+                }
+            }
+            else {
+                let error = NSError(domain: self.DOMAIN, code: 0, description: "Value in DB is not NSArray")
+                callback(nil, error)
+                return
+            }
+        })
+        
+        self.handles.append(handle)
+    }
 }
