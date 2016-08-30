@@ -52,7 +52,7 @@ extension FirebaseMessageService {
         var messages: [Message] = []
         var numMessages = 0
         
-        dbRef.child(Constants.chatRoomsMessagesDBKey).child(chatRoomId).observeSingleEventOfType(.Value, withBlock: { snapshot in
+        let handle = dbRef.child(Constants.chatRoomsMessagesDBKey).child(chatRoomId).observeEventType(.ChildAdded, withBlock: { snapshot in
             if let msgArr = snapshot.value as? NSArray {
                 for msgId in msgArr {
                     if let msgId = msgId as? String {
@@ -79,12 +79,25 @@ extension FirebaseMessageService {
                     }
                 }
             }
+            else if let msgId = snapshot.value as? String {
+                self.getMessage(msgId, callback: { (msg, error) in
+                    if let error = error {
+                        callback(nil, error)
+                        return
+                    }
+                    else {
+                        callback([msg!], nil)
+                    }
+                })
+            }
             else {
                 let error = NSError(domain: "\(self.DOMAIN)getMessagesInChatRoom", code: 1, description: "Value in DB is not of type NSArray")
                 callback(nil, error)
                 return
             }
         })
+        
+        self.handles.append(handle)
     }
     
     //adds a message to the chat room

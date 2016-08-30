@@ -90,6 +90,7 @@ class ChatRoomViewController: JSQMessagesViewController {
     func loadMessages() {
         //init chat rooms
         self.messages = []
+        
         messageService.getMessagesInChatRoom(chatRoom.id, callback: { (messages, error) in
             if let messages = messages {
                 for msg in messages {
