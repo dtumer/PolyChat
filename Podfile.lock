@@ -1,4 +1,5 @@
 PODS:
+  - AwesomeCache (2.2)
   - Firebase (3.2.1):
     - Firebase/Core (= 3.2.1)
   - Firebase/AdMob (3.2.1):
@@ -109,6 +110,7 @@ PODS:
   - XCGLogger (3.3)
 
 DEPENDENCIES:
+  - AwesomeCache (~> 2.0)
   - Firebase
   - Firebase/AdMob
   - Firebase/AppIndexing
@@ -124,6 +126,7 @@ DEPENDENCIES:
   - XCGLogger (~> 3.3)
 
 SPEC CHECKSUMS:
+  AwesomeCache: 366415b66330fb02d085bb24a2164fb04893d4fc
   Firebase: 6c80ac28d59d06bfd9152a7b6ea17625ca93183d
   FirebaseAnalytics: 6f75b04e6bfb8e0b6e9ef298e04c24eea3b13863
   FirebaseAppIndexing: abbefc167746ac131b4f70cb09ea98bd62c5ae30
@@ -150,6 +153,6 @@ SPEC CHECKSUMS:
   JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
   XCGLogger: d6e196e78940ff6daab17d6917107876f973fa31
 
-PODFILE CHECKSUM: 371d7264a678f5156ede2bbf2a1173a88e1e0ec2
+PODFILE CHECKSUM: 302e2d5abe037876b9032b08d5f9dec0fcd7d93b
 
 COCOAPODS: 1.0.1
