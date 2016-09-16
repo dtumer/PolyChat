@@ -9,6 +9,7 @@
 import UIKit
 
 class MyCoursesTableViewController: UITableViewController {
+    
     @IBOutlet weak var menuButton: UIBarButtonItem!
     
     //services variables
@@ -27,6 +28,7 @@ class MyCoursesTableViewController: UITableViewController {
         super.viewDidLoad()
         
         initServices()
+        initMenu()
         
         //makes sure there's no weird grayness happening in the nav bar
         self.navigationController?.navigationBar.translucent = false
@@ -37,6 +39,15 @@ class MyCoursesTableViewController: UITableViewController {
         self.authService = AuthServiceFactory.sharedInstance
         self.usersCoursesService = UsersCoursesServiceFactory.sharedInstance
         self.courseService = CourseServiceFactory.sharedInstance
+    }
+    
+    //initializes the slide out menu
+    private func initMenu() {
+        if (self.revealViewController() != nil) {
+            menuButton.target = self.revealViewController()
+            menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        }
     }
     
     //on view did appear
