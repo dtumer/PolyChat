@@ -10,6 +10,7 @@ import UIKit
 
 class MainMenuTableSectionHeaderView: UITableViewHeaderFooterView {
     
+    @IBOutlet weak var usernameLabel: UILabel!
     
 
 }

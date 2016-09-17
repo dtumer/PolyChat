@@ -5,18 +5,21 @@
 //  Created by Stefan Bonilla on 9/16/16.
 //  Copyright © 2016 DenFan. All rights reserved.
 //
+//  Controller for the slide out main menu on the MyCourses page
 
 import UIKit
 
 class MainMenuTableViewController: UITableViewController {
+    
+    // Logged in user
+    var user: User!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // register the nib
         let nib = UINib(nibName: "MainMenuHeader", bundle: nil)
         tableView.registerNib(nib, forHeaderFooterViewReuseIdentifier: "MainMenuHeader")
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
     }
 
     // MARK: - Table view data source
@@ -38,18 +41,9 @@ class MainMenuTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = self.tableView.dequeueReusableHeaderFooterViewWithIdentifier("MainMenuHeader") as! MainMenuTableSectionHeaderView
+        header.usernameLabel.text = user.name
         return header
     }
-
-    /*
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
 
     /*
     // MARK: - Navigation

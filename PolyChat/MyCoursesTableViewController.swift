@@ -26,9 +26,7 @@ class MyCoursesTableViewController: UITableViewController {
     //on view did load
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         initServices()
-        initMenu()
         
         //makes sure there's no weird grayness happening in the nav bar
         self.navigationController?.navigationBar.translucent = false
@@ -47,6 +45,8 @@ class MyCoursesTableViewController: UITableViewController {
             menuButton.target = self.revealViewController()
             menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+            let menuVC = self.revealViewController().rearViewController as! MainMenuTableViewController
+            menuVC.user = self.user
         }
     }
     
@@ -71,6 +71,8 @@ class MyCoursesTableViewController: UITableViewController {
                 else {
                     self.user = user!
                     self.loadCourses(self.user.id)
+                    // Menu needs user information since it varies based on user (username, role, etc.)
+                    self.initMenu()
                 }
             })
         }
