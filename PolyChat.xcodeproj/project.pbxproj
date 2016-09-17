@@ -213,7 +213,16 @@
 		0FFBEA2B1D6576E3002E80C4 /* MembersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFBEA291D6576E3002E80C4 /* MembersTableViewCell.swift */; };
 		0FFBEA2C1D6576E3002E80C4 /* MembersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFBEA291D6576E3002E80C4 /* MembersTableViewCell.swift */; };
 		13A36AC5950293ECF654AEB2 /* Pods_PolyChatUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1F78191A67A36E6E62E6352 /* Pods_PolyChatUITests.framework */; };
+		6D1EA7921D8DEB430022FDEC /* MainMenuHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D1EA7911D8DEB430022FDEC /* MainMenuHeader.xib */; };
+		6D1EA7931D8DEB430022FDEC /* MainMenuHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D1EA7911D8DEB430022FDEC /* MainMenuHeader.xib */; };
+		6D1EA7941D8DEB430022FDEC /* MainMenuHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D1EA7911D8DEB430022FDEC /* MainMenuHeader.xib */; };
+		6D1EA7961D8DEC750022FDEC /* MainMenuTableSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1EA7951D8DEC750022FDEC /* MainMenuTableSectionHeaderView.swift */; };
+		6D1EA7971D8DEC750022FDEC /* MainMenuTableSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1EA7951D8DEC750022FDEC /* MainMenuTableSectionHeaderView.swift */; };
+		6D1EA7981D8DEC750022FDEC /* MainMenuTableSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1EA7951D8DEC750022FDEC /* MainMenuTableSectionHeaderView.swift */; };
 		6D2660A51D8C930000F14442 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D2660A41D8C930000F14442 /* SWRevealViewController.m */; };
+		6D2660A71D8CAC4900F14442 /* MainMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2660A61D8CAC4900F14442 /* MainMenuTableViewController.swift */; };
+		6D2660A81D8CAC4900F14442 /* MainMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2660A61D8CAC4900F14442 /* MainMenuTableViewController.swift */; };
+		6D2660A91D8CAC4900F14442 /* MainMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2660A61D8CAC4900F14442 /* MainMenuTableViewController.swift */; };
 		AE6BDDC5A92BA00DC6D1DF4E /* Pods_PolyChatTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F192C361E3F1DC4C0166D138 /* Pods_PolyChatTests.framework */; };
 		B451FD7B451FDE28202166C4 /* Pods_PolyChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 435BAAAC375EEC888B720DFF /* Pods_PolyChat.framework */; };
 		D83FC3A41D24C82F00DDCF25 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D83FC3A31D24C82F00DDCF25 /* Login.storyboard */; };
@@ -386,9 +395,12 @@
 		237B9F05A1314D8AC14F5169 /* Pods-PolyChatUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PolyChatUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PolyChatUITests/Pods-PolyChatUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		435BAAAC375EEC888B720DFF /* Pods_PolyChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PolyChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		47E8AFE8831B888359655AF6 /* Pods-PolyChatUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PolyChatUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PolyChatUITests/Pods-PolyChatUITests.release.xcconfig"; sourceTree = "<group>"; };
+		6D1EA7911D8DEB430022FDEC /* MainMenuHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenuHeader.xib; sourceTree = "<group>"; };
+		6D1EA7951D8DEC750022FDEC /* MainMenuTableSectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuTableSectionHeaderView.swift; sourceTree = "<group>"; };
 		6D2660A21D8C930000F14442 /* PolyChat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PolyChat-Bridging-Header.h"; sourceTree = "<group>"; };
 		6D2660A31D8C930000F14442 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWRevealViewController.h; path = "../../../Downloads/SWRevealViewController-master/SWRevealViewController/SWRevealViewController.h"; sourceTree = "<group>"; };
 		6D2660A41D8C930000F14442 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWRevealViewController.m; path = "../../../Downloads/SWRevealViewController-master/SWRevealViewController/SWRevealViewController.m"; sourceTree = "<group>"; };
+		6D2660A61D8CAC4900F14442 /* MainMenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuTableViewController.swift; sourceTree = "<group>"; };
 		B1F78191A67A36E6E62E6352 /* Pods_PolyChatUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PolyChatUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2D4FD39431F2C7B2E5BA8ED /* Pods-PolyChatTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PolyChatTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PolyChatTests/Pods-PolyChatTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D83FC3A31D24C82F00DDCF25 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
@@ -648,9 +660,12 @@
 		0F960B101D1CF2CD00E0D902 /* MyCourses */ = {
 			isa = PBXGroup;
 			children = (
-				0F4AFF6D1D1DE3670030C3BD /* MyCoursesTableViewController.swift */,
 				0F4AFF711D1DE3770030C3BD /* MyCourses.storyboard */,
+				6D1EA7911D8DEB430022FDEC /* MainMenuHeader.xib */,
+				0F4AFF6D1D1DE3670030C3BD /* MyCoursesTableViewController.swift */,
 				0F4AFF811D1E10090030C3BD /* MyCoursesTableViewCell.swift */,
+				6D2660A61D8CAC4900F14442 /* MainMenuTableViewController.swift */,
+				6D1EA7951D8DEC750022FDEC /* MainMenuTableSectionHeaderView.swift */,
 			);
 			name = MyCourses;
 			sourceTree = "<group>";
@@ -939,6 +954,7 @@
 				D89D279B1D37444F006542DF /* AdminSettings.storyboard in Resources */,
 				D89D27A41D374986006542DF /* AddCourse.storyboard in Resources */,
 				0F34D8551D262D39002584FB /* Chat.storyboard in Resources */,
+				6D1EA7921D8DEB430022FDEC /* MainMenuHeader.xib in Resources */,
 				D83FC3A41D24C82F00DDCF25 /* Login.storyboard in Resources */,
 				0F4159D31D1A492700EE4E58 /* LaunchScreen.storyboard in Resources */,
 				0F65FC671D1F965D00470498 /* Course.storyboard in Resources */,
@@ -959,6 +975,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D1EA7931D8DEB430022FDEC /* MainMenuHeader.xib in Resources */,
 				D89D27BE1D375EFB006542DF /* CoursesAdmin.storyboard in Resources */,
 				D83FC3A51D24C82F00DDCF25 /* Login.storyboard in Resources */,
 				D8EAFB191D1CFC0C000638CF /* SignUp.storyboard in Resources */,
@@ -979,6 +996,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D1EA7941D8DEB430022FDEC /* MainMenuHeader.xib in Resources */,
 				D89D27BF1D375EFB006542DF /* CoursesAdmin.storyboard in Resources */,
 				D83FC3A61D24C82F00DDCF25 /* Login.storyboard in Resources */,
 				D8EAFB1A1D1CFC0C000638CF /* SignUp.storyboard in Resources */,
@@ -1149,12 +1167,14 @@
 				0F4AFF761D1E04610030C3BD /* ValidationService.swift in Sources */,
 				0F55EA281D4E977F00A0D2B4 /* UsersSelectTableViewCell.swift in Sources */,
 				0F2B56351D3DEBFD008BF1F6 /* UsersGroupsServiceFactory.swift in Sources */,
+				6D1EA7961D8DEC750022FDEC /* MainMenuTableSectionHeaderView.swift in Sources */,
 				D8EAFB141D1CFBFB000638CF /* AuthServiceProtocol.swift in Sources */,
 				0F971FD11D387A0300560B93 /* Group.swift in Sources */,
 				0F4159CE1D1A492700EE4E58 /* PolyChat.xcdatamodeld in Sources */,
 				0F55EA241D4E870800A0D2B4 /* UserSelectTableViewController.swift in Sources */,
 				D89D27A81D3749C2006542DF /* AddCourseViewController.swift in Sources */,
 				0F2B56721D40861F008BF1F6 /* FirebaseDatabaseService.swift in Sources */,
+				6D2660A71D8CAC4900F14442 /* MainMenuTableViewController.swift in Sources */,
 				0F4159C61D1A492700EE4E58 /* AppDelegate.swift in Sources */,
 				0F960B031D1CD69500E0D902 /* Constants.swift in Sources */,
 				0F34D8501D2615C4002584FB /* SubViewSegue.swift in Sources */,
@@ -1219,6 +1239,7 @@
 				0F55EA311D4E9F6B00A0D2B4 /* CoursesUsersServiceProtocol.swift in Sources */,
 				0F34D8761D274444002584FB /* ChatRoomServiceProtocol.swift in Sources */,
 				0F2B56161D3DEA38008BF1F6 /* UsersGroupsServiceProtocol.swift in Sources */,
+				6D2660A81D8CAC4900F14442 /* MainMenuTableViewController.swift in Sources */,
 				D8EAFB171D1CFC02000638CF /* SignUpViewController.swift in Sources */,
 				0FFBEA231D64E93F002E80C4 /* ChatRoomViewController.swift in Sources */,
 				0FE0E52B1D47244B00E6E64F /* CoursesAdminTableViewCell.swift in Sources */,
@@ -1231,6 +1252,7 @@
 				D89D27B11D375570006542DF /* CourseServiceProtocol.swift in Sources */,
 				0F2B562A1D3DEB03008BF1F6 /* FirebaseChatRoomsMessagesService.swift in Sources */,
 				D8F24D3A1D486162009FBFD1 /* EditUserViewController.swift in Sources */,
+				6D1EA7971D8DEC750022FDEC /* MainMenuTableSectionHeaderView.swift in Sources */,
 				0F2B562E1D3DEB2C008BF1F6 /* ChatRoomsMessagesServiceProtocol.swift in Sources */,
 				D8EAFB151D1CFBFB000638CF /* AuthServiceProtocol.swift in Sources */,
 				0F2B56261D3DEAEC008BF1F6 /* FirebaseUsersChatRoomsService.swift in Sources */,
@@ -1304,6 +1326,7 @@
 				0F2B56741D40861F008BF1F6 /* FirebaseDatabaseService.swift in Sources */,
 				D8EAFB161D1CFBFB000638CF /* AuthServiceProtocol.swift in Sources */,
 				D89D27C31D375F27006542DF /* CoursesAdminTableViewController.swift in Sources */,
+				6D1EA7981D8DEC750022FDEC /* MainMenuTableSectionHeaderView.swift in Sources */,
 				0F55EA2E1D4E9F2F00A0D2B4 /* CoursesUsersServiceFactory.swift in Sources */,
 				0F971FD71D387A3A00560B93 /* ChatRoom.swift in Sources */,
 				0FFBEA2C1D6576E3002E80C4 /* MembersTableViewCell.swift in Sources */,
@@ -1339,6 +1362,7 @@
 				0F2B56601D3DF34A008BF1F6 /* FirebaseGroupService.swift in Sources */,
 				0F4AFF781D1E04610030C3BD /* ValidationService.swift in Sources */,
 				0F65FC631D1F875D00470498 /* FirebaseAuthService.swift in Sources */,
+				6D2660A91D8CAC4900F14442 /* MainMenuTableViewController.swift in Sources */,
 				0F55EA161D4D78ED00A0D2B4 /* CoursesChatRoomsServiceProtocol.swift in Sources */,
 				0F65FC4E1D1E27B000470498 /* FirebaseUserService.swift in Sources */,
 				0F4159E91D1A492700EE4E58 /* PolyChatUITests.swift in Sources */,
