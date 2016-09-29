@@ -223,6 +223,12 @@
 		6D2660A71D8CAC4900F14442 /* MainMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2660A61D8CAC4900F14442 /* MainMenuTableViewController.swift */; };
 		6D2660A81D8CAC4900F14442 /* MainMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2660A61D8CAC4900F14442 /* MainMenuTableViewController.swift */; };
 		6D2660A91D8CAC4900F14442 /* MainMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2660A61D8CAC4900F14442 /* MainMenuTableViewController.swift */; };
+		6D26A2C71D9CC9AB004216D9 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D26A2C61D9CC9AB004216D9 /* ProfileViewController.swift */; };
+		6D26A2C81D9CC9AB004216D9 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D26A2C61D9CC9AB004216D9 /* ProfileViewController.swift */; };
+		6D26A2C91D9CC9AB004216D9 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D26A2C61D9CC9AB004216D9 /* ProfileViewController.swift */; };
+		6D26A2CB1D9CD3F3004216D9 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D26A2CA1D9CD3F3004216D9 /* SettingsViewController.swift */; };
+		6D26A2CC1D9CD3F3004216D9 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D26A2CA1D9CD3F3004216D9 /* SettingsViewController.swift */; };
+		6D26A2CD1D9CD3F3004216D9 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D26A2CA1D9CD3F3004216D9 /* SettingsViewController.swift */; };
 		AE6BDDC5A92BA00DC6D1DF4E /* Pods_PolyChatTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F192C361E3F1DC4C0166D138 /* Pods_PolyChatTests.framework */; };
 		B451FD7B451FDE28202166C4 /* Pods_PolyChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 435BAAAC375EEC888B720DFF /* Pods_PolyChat.framework */; };
 		D83FC3A41D24C82F00DDCF25 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D83FC3A31D24C82F00DDCF25 /* Login.storyboard */; };
@@ -401,6 +407,8 @@
 		6D2660A31D8C930000F14442 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		6D2660A41D8C930000F14442 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		6D2660A61D8CAC4900F14442 /* MainMenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuTableViewController.swift; sourceTree = "<group>"; };
+		6D26A2C61D9CC9AB004216D9 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		6D26A2CA1D9CD3F3004216D9 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		B1F78191A67A36E6E62E6352 /* Pods_PolyChatUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PolyChatUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2D4FD39431F2C7B2E5BA8ED /* Pods-PolyChatTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PolyChatTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PolyChatTests/Pods-PolyChatTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D83FC3A31D24C82F00DDCF25 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
@@ -666,6 +674,8 @@
 				0F4AFF811D1E10090030C3BD /* MyCoursesTableViewCell.swift */,
 				6D2660A61D8CAC4900F14442 /* MainMenuTableViewController.swift */,
 				6D1EA7951D8DEC750022FDEC /* MainMenuTableSectionHeaderView.swift */,
+				6D26A2C61D9CC9AB004216D9 /* ProfileViewController.swift */,
+				6D26A2CA1D9CD3F3004216D9 /* SettingsViewController.swift */,
 			);
 			name = MyCourses;
 			sourceTree = "<group>";
@@ -1166,6 +1176,7 @@
 				0F2B562D1D3DEB2C008BF1F6 /* ChatRoomsMessagesServiceProtocol.swift in Sources */,
 				0F4AFF761D1E04610030C3BD /* ValidationService.swift in Sources */,
 				0F55EA281D4E977F00A0D2B4 /* UsersSelectTableViewCell.swift in Sources */,
+				6D26A2CB1D9CD3F3004216D9 /* SettingsViewController.swift in Sources */,
 				0F2B56351D3DEBFD008BF1F6 /* UsersGroupsServiceFactory.swift in Sources */,
 				6D1EA7961D8DEC750022FDEC /* MainMenuTableSectionHeaderView.swift in Sources */,
 				D8EAFB141D1CFBFB000638CF /* AuthServiceProtocol.swift in Sources */,
@@ -1198,6 +1209,7 @@
 				D89D279F1D374824006542DF /* AdminSettingsTableViewController.swift in Sources */,
 				0F65FC411D1E26AE00470498 /* UserServiceProtocol.swift in Sources */,
 				0F4AFF551D1DD8E60030C3BD /* UserServiceFactory.swift in Sources */,
+				6D26A2C71D9CC9AB004216D9 /* ProfileViewController.swift in Sources */,
 				0FE23DE21D66C2F1001DDF54 /* Message.swift in Sources */,
 				0F55EA441D4EA23000A0D2B4 /* FirebaseChatRoomsUsersService.swift in Sources */,
 				0F55EA181D4D791400A0D2B4 /* FirebaseCoursesChatRoomsService.swift in Sources */,
@@ -1250,9 +1262,11 @@
 				D83FC3A91D24C85300DDCF25 /* LoginViewController.swift in Sources */,
 				0F55EA191D4D791400A0D2B4 /* FirebaseCoursesChatRoomsService.swift in Sources */,
 				D89D27B11D375570006542DF /* CourseServiceProtocol.swift in Sources */,
+				6D26A2C81D9CC9AB004216D9 /* ProfileViewController.swift in Sources */,
 				0F2B562A1D3DEB03008BF1F6 /* FirebaseChatRoomsMessagesService.swift in Sources */,
 				D8F24D3A1D486162009FBFD1 /* EditUserViewController.swift in Sources */,
 				6D1EA7971D8DEC750022FDEC /* MainMenuTableSectionHeaderView.swift in Sources */,
+				6D26A2CC1D9CD3F3004216D9 /* SettingsViewController.swift in Sources */,
 				0F2B562E1D3DEB2C008BF1F6 /* ChatRoomsMessagesServiceProtocol.swift in Sources */,
 				D8EAFB151D1CFBFB000638CF /* AuthServiceProtocol.swift in Sources */,
 				0F2B56261D3DEAEC008BF1F6 /* FirebaseUsersChatRoomsService.swift in Sources */,
@@ -1316,6 +1330,7 @@
 			files = (
 				D83FC3AA1D24C85300DDCF25 /* LoginViewController.swift in Sources */,
 				0F2B56581D3DF2BF008BF1F6 /* GroupServiceProtocol.swift in Sources */,
+				6D26A2CD1D9CD3F3004216D9 /* SettingsViewController.swift in Sources */,
 				0F55EA461D4EA23000A0D2B4 /* FirebaseChatRoomsUsersService.swift in Sources */,
 				0F2B56501D3DF163008BF1F6 /* MessageServiceFactory.swift in Sources */,
 				0F971FBD1D3745B200560B93 /* GlobalUtilities.swift in Sources */,
@@ -1380,6 +1395,7 @@
 				0F2B561F1D3DEA95008BF1F6 /* FirebaseUsersCoursesService.swift in Sources */,
 				0F2B56231D3DEAD5008BF1F6 /* FirebaseUsersGroupsService.swift in Sources */,
 				0F34D84E1D26148B002584FB /* SubViewController.swift in Sources */,
+				6D26A2C91D9CC9AB004216D9 /* ProfileViewController.swift in Sources */,
 				0F2B565C1D3DF2ED008BF1F6 /* MessageServiceProtocol.swift in Sources */,
 				0F34D87B1D274456002584FB /* FirebaseChatRoomService.swift in Sources */,
 				D89D27A11D374824006542DF /* AdminSettingsTableViewController.swift in Sources */,
