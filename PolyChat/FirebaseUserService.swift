@@ -96,7 +96,7 @@ extension FirebaseUserService {
                                 }
                                 
                                 //only do the success callback when we have all the objects processed
-                                if numUsers == userIds.count {
+                                if numUsers == userIds.count - 1 {
                                     callback(users, nil)
                                 }
                             })
