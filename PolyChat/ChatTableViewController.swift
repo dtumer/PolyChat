@@ -39,15 +39,15 @@ class ChatTableViewController: UITableViewController {
             self.performSegueWithIdentifier(Constants.loginSegueId, sender: self)
         } else {
             // get currently logged in user
-            loggedInFlag = false
+            loggedInFlag = true
+            
             authService.getCurrentUser({ user, error in
                 if let user = user {
                     self.user = user
                     self.loadChatRooms(user.id)
-                    self.loggedInFlag = true
                 } else if let error = error {
+                    //TODO alert out something and log error
                     print(error)
-                    self.loggedInFlag = false
                 }
             })
         }
