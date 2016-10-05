@@ -93,14 +93,21 @@ class ChatRoomViewController: JSQMessagesViewController {
         
         messageService.getMessagesInChatRoom(chatRoom.id, callback: { (messages, error) in
             if let messages = messages {
-                for msg in messages {
-                    let msg = JSQMessage(senderId: msg.senderId, displayName: "", text: msg.body)
-                    self.messages.append(msg)
-                    self.finishReceivingMessage()
+                for message in messages {
+                    self.userService.getUser(message.senderId, callback: { (user, error) in
+                        if let user = user {
+                            let msg = JSQMessage(senderId: user.id, displayName: user.name, text: message.body)
+                            self.messages.append(msg)
+                            self.finishReceivingMessage()
+                        } else { // Message Id does not map to a valid user, so don't append the message
+                            //TODO: change this to log instead of print
+                            print(error?.description)
+                        }
+                    })
                 }
             }
             else {
-                //TODO change this to log instead of print
+                //TODO: change this to log instead of print
                 print(error?.description)
             }
         })
@@ -175,6 +182,10 @@ extension ChatRoomViewController {
             }
             return NSAttributedString(string: senderDisplayName)
         }
+    }
+    
+    override func collectionView(collectionView: JSQMessagesCollectionView!, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout!, heightForMessageBubbleTopLabelAtIndexPath indexPath: NSIndexPath!) -> CGFloat {
+        return 13 //or what ever height you want to give
     }
     
     override func collectionView(collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageAvatarImageDataSource! {
