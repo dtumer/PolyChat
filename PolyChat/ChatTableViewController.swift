@@ -26,7 +26,7 @@ class ChatTableViewController: UITableViewController {
     //the chat room that is selected
     var selectedChatRoom: ChatRoom!
     
-    var loggedInFlag: Bool!
+    var loggedInFlag = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +39,7 @@ class ChatTableViewController: UITableViewController {
             self.performSegueWithIdentifier(Constants.loginSegueId, sender: self)
         } else {
             // get currently logged in user
+            loggedInFlag = false
             authService.getCurrentUser({ user, error in
                 if let user = user {
                     self.user = user
