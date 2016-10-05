@@ -26,19 +26,16 @@ class ChatTableViewController: UITableViewController {
     //the chat room that is selected
     var selectedChatRoom: ChatRoom!
     
+    var loggedInFlag: Bool!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         initServices()
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        self.chatRooms = []
         
         //check if a user is logged in
         if !authService.hasOpenSession() {
+            loggedInFlag = false
             self.performSegueWithIdentifier(Constants.loginSegueId, sender: self)
         } else {
             // get currently logged in user
@@ -46,10 +43,22 @@ class ChatTableViewController: UITableViewController {
                 if let user = user {
                     self.user = user
                     self.loadChatRooms(user.id)
+                    self.loggedInFlag = true
                 } else if let error = error {
                     print(error)
+                    self.loggedInFlag = false
                 }
             })
+        }
+        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        // check if a user is logged in
+        if !loggedInFlag {
+            self.performSegueWithIdentifier(Constants.loginSegueId, sender: self)
         }
     }
     
