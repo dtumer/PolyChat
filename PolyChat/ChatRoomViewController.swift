@@ -94,16 +94,10 @@ class ChatRoomViewController: JSQMessagesViewController {
         messageService.getMessagesInChatRoom(chatRoom.id, callback: { (messages, error) in
             if let messages = messages {
                 for message in messages {
-                    self.userService.getUser(message.senderId, callback: { (user, error) in
-                        if let user = user {
-                            let msg = JSQMessage(senderId: user.id, displayName: user.name, text: message.body)
-                            self.messages.append(msg)
-                            self.finishReceivingMessage()
-                        } else { // Message Id does not map to a valid user, so don't append the message
-                            //TODO: change this to log instead of print
-                            print(error?.description)
-                        }
-                    })
+                    let msg = JSQMessage(senderId: message.senderId, senderDisplayName: message.senderName,
+                        date: NSDate(timeIntervalSince1970: message.messageSent), text: message.body)
+                    self.messages.append(msg)
+                    self.finishReceivingMessage()
                 }
             }
             else {
@@ -121,7 +115,8 @@ class ChatRoomViewController: JSQMessagesViewController {
     override func didPressSendButton(button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: NSDate!) {
         let message = Message(dictionary:[
             "body": text,
-            "sender_id": senderId
+            "sender_id": senderId,
+            "sender_name": senderDisplayName
         ])
         messageService.addMessageToChatRoom(chatRoom.id, message: message, callback: { error in
             if let error = error {
