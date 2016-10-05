@@ -108,7 +108,7 @@ class ChatRoomViewController: JSQMessagesViewController {
     }
     
     func addMessage(text: String) {
-        let message = JSQMessage(senderId: user.id, displayName: user.name, text: text)
+        let message = JSQMessage(senderId: senderId, displayName: senderDisplayName, text: text)
         messages.append(message)
     }
     
@@ -168,7 +168,7 @@ extension ChatRoomViewController {
     override func collectionView(collectionView: JSQMessagesCollectionView?, attributedTextForMessageBubbleTopLabelAtIndexPath indexPath: NSIndexPath!) -> NSAttributedString! {
         let message = messages[indexPath.item]
         switch message.senderId {
-        case user.id:
+        case senderId:
             return nil
         default:
             guard let senderDisplayName = message.senderDisplayName else {
