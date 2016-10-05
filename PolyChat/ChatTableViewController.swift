@@ -26,12 +26,17 @@ class ChatTableViewController: UITableViewController {
     //the chat room that is selected
     var selectedChatRoom: ChatRoom!
     
+    //flag for determining whether or not the user is authenticated
     var loggedInFlag = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         initServices()
+        
+        refreshControl = UIRefreshControl()
+        refreshControl?.addTarget(self, action: #selector(refresh), forControlEvents: .ValueChanged)
+        self.tableView.addSubview(refreshControl!)
         
         //check if a user is logged in
         if !authService.hasOpenSession() {
@@ -69,6 +74,11 @@ class ChatTableViewController: UITableViewController {
         self.chatRoomService = ChatRoomServiceFactory.sharedInstance
     }
     
+    //refreshes the view
+    func refresh() {
+        loadChatRooms(self.user.id)
+    }
+    
     //loads all the chat rooms that a user is in
     func loadChatRooms(userId: String) {
         //init chat rooms
@@ -79,9 +89,10 @@ class ChatTableViewController: UITableViewController {
             if let chatRooms = chatRooms {
                 self.chatRooms += chatRooms
                 self.tableView.reloadData()
+                self.refreshControl?.endRefreshing()
             }
             else {
-                //TODO change this to log instead of print
+                //TODO change this to log instead of print. Maybe also alert something out
                 print(error?.description)
             }
         })
