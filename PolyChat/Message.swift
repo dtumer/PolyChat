@@ -12,8 +12,10 @@ class Message {
     var id: String = ""
     var body: String = ""
     var senderId: String = ""
+    var senderName: String = ""
     var numLikes: Int = 0
     var numDislikes: Int = 0
+    var messageSent: Double = NSDate().timeIntervalSince1970
     
     init(dictionary: NSDictionary) {
         if let id = dictionary["id"] as? String {
@@ -31,12 +33,20 @@ class Message {
             self.senderId = senderId
         }
         
+        if let senderName = dictionary["sender_name"] as? String {
+            self.senderName = senderName
+        }
+        
         if let numLikes = dictionary["num_likes"] as? Int {
             self.numLikes = numLikes
         }
         
         if let numDislikes = dictionary["num_dislikes"] as? Int {
             self.numDislikes = numDislikes
+        }
+        
+        if let messageSent = dictionary["message_sent"] as? Double {
+            self.messageSent = messageSent
         }
     }
     
@@ -46,8 +56,10 @@ class Message {
             //"id": self.id,
             "body": self.body,
             "sender_id": self.senderId,
+            "sender_name": self.senderName,
             "num_likes": self.numLikes,
-            "num_dislikes": self.numDislikes
+            "num_dislikes": self.numDislikes,
+            "message_sent": self.messageSent
         ]
     }
 }
