@@ -82,9 +82,6 @@
 		0F34D8551D262D39002584FB /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F34D8541D262D39002584FB /* Chat.storyboard */; };
 		0F34D8561D262D39002584FB /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F34D8541D262D39002584FB /* Chat.storyboard */; };
 		0F34D8571D262D39002584FB /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F34D8541D262D39002584FB /* Chat.storyboard */; };
-		0F34D8591D262D58002584FB /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F34D8581D262D58002584FB /* Settings.storyboard */; };
-		0F34D85A1D262D58002584FB /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F34D8581D262D58002584FB /* Settings.storyboard */; };
-		0F34D85B1D262D58002584FB /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F34D8581D262D58002584FB /* Settings.storyboard */; };
 		0F34D85D1D262D67002584FB /* Groups.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F34D85C1D262D67002584FB /* Groups.storyboard */; };
 		0F34D85E1D262D67002584FB /* Groups.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F34D85C1D262D67002584FB /* Groups.storyboard */; };
 		0F34D85F1D262D67002584FB /* Groups.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F34D85C1D262D67002584FB /* Groups.storyboard */; };
@@ -343,7 +340,6 @@
 		0F34D84B1D26148B002584FB /* SubViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubViewController.swift; sourceTree = "<group>"; };
 		0F34D84F1D2615C4002584FB /* SubViewSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubViewSegue.swift; sourceTree = "<group>"; };
 		0F34D8541D262D39002584FB /* Chat.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
-		0F34D8581D262D58002584FB /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		0F34D85C1D262D67002584FB /* Groups.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Groups.storyboard; sourceTree = "<group>"; };
 		0F34D8601D262DB6002584FB /* Members.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Members.storyboard; sourceTree = "<group>"; };
 		0F34D8641D274348002584FB /* ChatRoomServiceFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatRoomServiceFactory.swift; sourceTree = "<group>"; };
@@ -683,7 +679,6 @@
 		0F960B131D1CF35300E0D902 /* Course */ = {
 			isa = PBXGroup;
 			children = (
-				0F960B1A1D1CF40700E0D902 /* Settings */,
 				0F34D8531D262D22002584FB /* Chat */,
 				0F960B191D1CF40000E0D902 /* Groups */,
 				0F960B181D1CF3FA00E0D902 /* Members */,
@@ -713,14 +708,6 @@
 				0F34D85C1D262D67002584FB /* Groups.storyboard */,
 			);
 			name = Groups;
-			sourceTree = "<group>";
-		};
-		0F960B1A1D1CF40700E0D902 /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-				0F34D8581D262D58002584FB /* Settings.storyboard */,
-			);
-			name = Settings;
 			sourceTree = "<group>";
 		};
 		0F971FC61D38749600560B93 /* Protocols */ = {
@@ -901,6 +888,7 @@
 				0F4159E11D1A492700EE4E58 /* Frameworks */,
 				0F4159E21D1A492700EE4E58 /* Resources */,
 				3BE93567577D0CED3DE27897 /* [CP] Copy Pods Resources */,
+				4FB11C539DB100477AC4BC34 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -977,7 +965,6 @@
 				0F34D85D1D262D67002584FB /* Groups.storyboard in Resources */,
 				0F4159CB1D1A492700EE4E58 /* Main.storyboard in Resources */,
 				D8EAFB0E1D1CF675000638CF /* SignUp.storyboard in Resources */,
-				0F34D8591D262D58002584FB /* Settings.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -991,7 +978,6 @@
 				D8EAFB191D1CFC0C000638CF /* SignUp.storyboard in Resources */,
 				D89D279C1D37444F006542DF /* AdminSettings.storyboard in Resources */,
 				0F4AFF731D1DE3770030C3BD /* MyCourses.storyboard in Resources */,
-				0F34D85A1D262D58002584FB /* Settings.storyboard in Resources */,
 				D89D27A51D374986006542DF /* AddCourse.storyboard in Resources */,
 				0F34D8621D262DB6002584FB /* Members.storyboard in Resources */,
 				0F34D8561D262D39002584FB /* Chat.storyboard in Resources */,
@@ -1012,7 +998,6 @@
 				D8EAFB1A1D1CFC0C000638CF /* SignUp.storyboard in Resources */,
 				D89D279D1D37444F006542DF /* AdminSettings.storyboard in Resources */,
 				0F4AFF741D1DE3770030C3BD /* MyCourses.storyboard in Resources */,
-				0F34D85B1D262D58002584FB /* Settings.storyboard in Resources */,
 				D89D27A61D374986006542DF /* AddCourse.storyboard in Resources */,
 				0F34D8631D262DB6002584FB /* Members.storyboard in Resources */,
 				0F34D8571D262D39002584FB /* Chat.storyboard in Resources */,
@@ -1098,7 +1083,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		4AB18AC209ED4760AD3ED5D2 /* [CP] Check Pods Manifest.lock */ = {
@@ -1113,7 +1098,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		4FB11C539DB100477AC4BC34 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PolyChatUITests/Pods-PolyChatUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		6BACAE632DEBE2CCA23BE1F7 /* [CP] Embed Pods Frameworks */ = {
@@ -1143,7 +1143,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

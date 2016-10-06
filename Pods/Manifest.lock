@@ -1,5 +1,4 @@
 PODS:
-  - AwesomeCache (2.2)
   - Firebase (3.2.1):
     - Firebase/Core (= 3.2.1)
   - Firebase/AdMob (3.2.1):
@@ -107,10 +106,10 @@ PODS:
   - JSQMessagesViewController (7.3.2):
     - JSQSystemSoundPlayer (~> 2.0.1)
   - JSQSystemSoundPlayer (2.0.1)
+  - KTCenterFlowLayout (1.3)
   - XCGLogger (3.3)
 
 DEPENDENCIES:
-  - AwesomeCache (~> 2.0)
   - Firebase
   - Firebase/AdMob
   - Firebase/AppIndexing
@@ -123,10 +122,10 @@ DEPENDENCIES:
   - Firebase/RemoteConfig
   - Firebase/Storage
   - JSQMessagesViewController
+  - KTCenterFlowLayout
   - XCGLogger (~> 3.3)
 
 SPEC CHECKSUMS:
-  AwesomeCache: 366415b66330fb02d085bb24a2164fb04893d4fc
   Firebase: 6c80ac28d59d06bfd9152a7b6ea17625ca93183d
   FirebaseAnalytics: 6f75b04e6bfb8e0b6e9ef298e04c24eea3b13863
   FirebaseAppIndexing: abbefc167746ac131b4f70cb09ea98bd62c5ae30
@@ -151,8 +150,9 @@ SPEC CHECKSUMS:
   GoogleUtilities: 56c5ac05b7aa5dc417a1bb85221a9516e04d7032
   JSQMessagesViewController: bf14e4d644e1c59476f47f2f8410c34c6c0294f3
   JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
+  KTCenterFlowLayout: 2905970d36c653d9a7736c20bfa0d37dcf797d6b
   XCGLogger: d6e196e78940ff6daab17d6917107876f973fa31
 
-PODFILE CHECKSUM: 302e2d5abe037876b9032b08d5f9dec0fcd7d93b
+PODFILE CHECKSUM: 5c8bcc6b3fb298531d1d5d16891d55281723c0f0
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.1.0.rc.2

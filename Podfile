@@ -9,7 +9,7 @@ def pods
     
     pod 'JSQMessagesViewController'
     pod 'XCGLogger', '~> 3.3'
-    pod 'AwesomeCache', '~> 2.0'
+    pod 'KTCenterFlowLayout'
 end
 #loads all firebase pods
 def firebase

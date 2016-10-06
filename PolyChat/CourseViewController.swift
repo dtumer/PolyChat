@@ -29,7 +29,6 @@ class CourseViewController: UIViewController, UICollectionViewDelegate, UICollec
         "Chat",
         "Groups",
         "Members",
-        "Settings",
     ]
 
     //view did load
@@ -84,6 +83,10 @@ extension CourseViewController {
         return self.menuItems.count
     }
     
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        return CGSize(width: 100.0, height: 40.0)
+    }
+    
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Constants.menuReuseId, forIndexPath: indexPath) as! MenuCollectionViewCell
         
@@ -101,11 +104,12 @@ extension CourseViewController {
 
 //cell class for the menu bar
 class MenuCollectionViewCell: UICollectionViewCell {
+    let selectedColor = UIColor(red: 6/255, green: 86/255, blue: 66/255, alpha: 1)
     @IBOutlet weak var itemTitleLabel: UILabel!
     
     override var selected: Bool {
         didSet {
-            self.contentView.backgroundColor = selected ? UIColor.blueColor(): nil
+            self.contentView.backgroundColor = selected ? selectedColor : nil
         }
     }
 }
