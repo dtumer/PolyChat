@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import KTCenterFlowLayout
 
 class CourseViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     //move this to constants
@@ -25,6 +26,8 @@ class CourseViewController: UIViewController, UICollectionViewDelegate, UICollec
     /* CollectionView variables */
     @IBOutlet weak var menuCollectionView: UICollectionView!
     
+    let layout = KTCenterFlowLayout()
+    
     var menuItems = [
         "Chat",
         "Groups",
@@ -37,6 +40,11 @@ class CourseViewController: UIViewController, UICollectionViewDelegate, UICollec
         
         //create navigation button
         setupNavBar()
+        
+        //setup layout
+        layout.minimumInteritemSpacing = 0.0
+        layout.minimumLineSpacing = 0.0
+        self.menuCollectionView.collectionViewLayout = layout
         
         self.menuCollectionView.selectItemAtIndexPath(NSIndexPath(forRow: 0, inSection: 0), animated: true, scrollPosition: .Left)
     }
@@ -84,13 +92,17 @@ extension CourseViewController {
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSize(width: 100.0, height: 40.0)
+        return CGSize(width: UIScreen.mainScreen().bounds.width / CGFloat(self.menuItems.count), height: 40.0)
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Constants.menuReuseId, forIndexPath: indexPath) as! MenuCollectionViewCell
         
         cell.itemTitleLabel.text = menuItems[indexPath.row]
+        
+        //set up border for cells
+        cell.layer.borderColor = UIColor(red: 3/255, green: 86/255, blue: 66/255, alpha: 1).CGColor
+        cell.layer.borderWidth = 1.0
         
         return cell
     }

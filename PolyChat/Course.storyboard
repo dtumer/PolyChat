@@ -23,14 +23,19 @@
                                     <segue destination="NjN-uH-TBI" kind="embed" identifier="SubViewEmbedSegue" id="0Rj-EQ-smq"/>
                                 </connections>
                             </containerView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4Fw-Se-VOW">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="40"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4Fw-Se-VOW">
+                                <rect key="frame" x="0.0" y="0.0" width="616" height="40"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="b33-wa-0oR"/>
                                 </constraints>
-                                <collectionViewLayout key="collectionViewLayout" id="LXx-Ks-CIT" customClass="KTCenterFlowLayout"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="eIh-wc-qgf">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MenuCell" id="Vmc-D1-acZ" customClass="MenuCollectionViewCell" customModule="PolyChat" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -39,8 +44,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Menu Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="100" translatesAutoresizingMaskIntoConstraints="NO" id="Mkb-y6-fbF">
-                                                    <rect key="frame" x="8" y="14" width="84" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Menu Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="100" translatesAutoresizingMaskIntoConstraints="NO" id="Mkb-y6-fbF">
+                                                    <rect key="frame" x="8" y="14" width="34" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="100" id="0gZ-Iz-R7C"/>
                                                         <constraint firstAttribute="width" constant="84" id="L9b-sP-xGd"/>
@@ -58,7 +63,7 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
-                                        <color key="backgroundColor" red="0.70588235294117641" green="0.65490196078431373" blue="0.42352941176470588" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.70588235290000001" green="0.65490196079999996" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="trailingMargin" secondItem="Mkb-y6-fbF" secondAttribute="trailing" id="5bU-IW-da5"/>
                                             <constraint firstItem="Mkb-y6-fbF" firstAttribute="centerX" secondItem="Vmc-D1-acZ" secondAttribute="centerX" id="AGv-Vb-y53"/>
@@ -92,7 +97,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="XKn-gP-Whl" secondAttribute="trailing" constant="-20" id="M9R-1u-lcK"/>
                             <constraint firstItem="XKn-gP-Whl" firstAttribute="centerY" secondItem="U8f-7N-3ft" secondAttribute="centerY" id="RBW-7g-Z5q"/>
                             <constraint firstItem="XKn-gP-Whl" firstAttribute="leading" secondItem="U8f-7N-3ft" secondAttribute="leadingMargin" constant="-20" id="cOw-lD-Wuo"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="4Fw-Se-VOW" secondAttribute="trailing" constant="-20" id="eaN-sQ-pd4"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="4Fw-Se-VOW" secondAttribute="trailing" constant="-15" id="eaN-sQ-pd4"/>
                             <constraint firstItem="XKn-gP-Whl" firstAttribute="top" secondItem="bRQ-KB-yfq" secondAttribute="bottom" constant="100" id="nZY-iL-GwG"/>
                             <constraint firstItem="4Fw-Se-VOW" firstAttribute="top" secondItem="bRQ-KB-yfq" secondAttribute="bottom" id="ncn-zw-mdz"/>
                             <constraint firstItem="XKn-gP-Whl" firstAttribute="top" secondItem="4Fw-Se-VOW" secondAttribute="bottom" id="vMm-8j-cEZ"/>
@@ -100,6 +105,7 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="eaN-sQ-pd4"/>
                                 <exclude reference="RBW-7g-Z5q"/>
                                 <exclude reference="nZY-iL-GwG"/>
                             </mask>
