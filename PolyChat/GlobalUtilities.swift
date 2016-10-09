@@ -26,4 +26,9 @@ class GlobalUtilities {
             return nil
         }
     }
+    
+    static func isBlankString(text: String) -> Bool {
+        let trimmed = text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        return trimmed.isEmpty
+    }
 }
