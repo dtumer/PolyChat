@@ -11,6 +11,7 @@ import UIKit
 class SettingsViewController: UIViewController {
 
     @IBOutlet weak var menuButton: UIBarButtonItem!
+    @IBOutlet weak var notificationsSwitch: UISwitch!
     
     //services variables
     var authService: AuthServiceProtocol!
@@ -22,25 +23,11 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initServices()
-        
+        notificationsSwitch.addTarget(self,
+                                      action: #selector(SettingsViewController.notificationsStateChanged(_:)),
+                                      forControlEvents: UIControlEvents.ValueChanged)
         //makes sure there's no weird grayness happening in the nav bar
         self.navigationController?.navigationBar.translucent = false
-    }
-    
-    //initializes all services needed by this controller
-    private func initServices() {
-        self.authService = AuthServiceFactory.sharedInstance
-    }
-    
-    //initializes the slide out menu
-    private func initMenu() {
-        if (self.revealViewController() != nil) {
-            menuButton.target = self.revealViewController()
-            menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
-            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-            let menuVC = self.revealViewController().rearViewController as! MainMenuTableViewController
-            menuVC.user = self.user
-        }
     }
     
     //on view did appear
@@ -66,5 +53,30 @@ class SettingsViewController: UIViewController {
             })
         }
     }
+    
+    //initializes all services needed by this controller
+    private func initServices() {
+        self.authService = AuthServiceFactory.sharedInstance
+    }
+    
+    //initializes the slide out menu
+    private func initMenu() {
+        if (self.revealViewController() != nil) {
+            menuButton.target = self.revealViewController()
+            menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+            let menuVC = self.revealViewController().rearViewController as! MainMenuTableViewController
+            menuVC.user = self.user
+        }
+    }
 
+    func notificationsStateChanged(switchState: UISwitch) {
+        // TODO: implement notifications
+        if switchState.on {
+            print("Notifications Enabled")
+        } else {
+            print("Notifications Disabled")
+        }
+    }
+    
 }

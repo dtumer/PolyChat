@@ -344,7 +344,35 @@
                     <view key="view" contentMode="scaleToFill" id="dZT-fY-LHU">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tzo-bA-PGh">
+                                <rect key="frame" x="0.0" y="64" width="600" height="55"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notifications" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kES-1D-JoG">
+                                        <rect key="frame" x="12" y="17" width="95.5" height="20"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vlf-St-x6z">
+                                        <rect key="frame" x="539" y="12" width="51" height="31"/>
+                                    </switch>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="Jdi-YO-jlR"/>
+                                    <constraint firstItem="kES-1D-JoG" firstAttribute="leading" secondItem="Tzo-bA-PGh" secondAttribute="leading" constant="12" id="XEd-tB-ptT"/>
+                                    <constraint firstItem="kES-1D-JoG" firstAttribute="centerY" secondItem="Tzo-bA-PGh" secondAttribute="centerY" id="kRB-0Q-AdC"/>
+                                    <constraint firstAttribute="trailing" secondItem="Vlf-St-x6z" secondAttribute="trailing" constant="12" id="nPV-M9-GnI"/>
+                                    <constraint firstItem="Vlf-St-x6z" firstAttribute="centerY" secondItem="Tzo-bA-PGh" secondAttribute="centerY" id="tN3-a4-CDp"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="Tzo-bA-PGh" firstAttribute="centerX" secondItem="dZT-fY-LHU" secondAttribute="centerX" id="GB4-5O-0LX"/>
+                            <constraint firstItem="Tzo-bA-PGh" firstAttribute="top" secondItem="edv-WX-uXR" secondAttribute="bottom" id="Q4p-nK-grO"/>
+                            <constraint firstItem="Tzo-bA-PGh" firstAttribute="width" secondItem="dZT-fY-LHU" secondAttribute="width" id="xs9-qh-mYK"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Settings" id="RU6-Sj-C7m">
                         <barButtonItem key="leftBarButtonItem" image="MenuIcon" id="B18-j6-r3O">
@@ -353,6 +381,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="menuButton" destination="B18-j6-r3O" id="76f-KX-3Lz"/>
+                        <outlet property="notificationsSwitch" destination="Vlf-St-x6z" id="7Pr-yC-wA7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kBk-6B-j6G" userLabel="First Responder" sceneMemberID="firstResponder"/>
