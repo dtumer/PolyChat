@@ -12,6 +12,7 @@ class SettingsViewController: UIViewController {
 
     @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet weak var notificationsSwitch: UISwitch!
+    @IBOutlet weak var anonymousSwitch: UISwitch!
     
     //services variables
     var authService: AuthServiceProtocol!
@@ -25,6 +26,9 @@ class SettingsViewController: UIViewController {
         initServices()
         notificationsSwitch.addTarget(self,
                                       action: #selector(SettingsViewController.notificationsStateChanged(_:)),
+                                      forControlEvents: UIControlEvents.ValueChanged)
+        anonymousSwitch.addTarget(self,
+                                      action: #selector(SettingsViewController.anonymousStateChanged(_:)),
                                       forControlEvents: UIControlEvents.ValueChanged)
         //makes sure there's no weird grayness happening in the nav bar
         self.navigationController?.navigationBar.translucent = false
@@ -76,6 +80,15 @@ class SettingsViewController: UIViewController {
             print("Notifications Enabled")
         } else {
             print("Notifications Disabled")
+        }
+    }
+    
+    func anonymousStateChanged(switchState: UISwitch) {
+        // TODO: implement notifications
+        if switchState.on {
+            print("Anonymous Enabled")
+        } else {
+            print("Anonymous Disabled")
         }
     }
     

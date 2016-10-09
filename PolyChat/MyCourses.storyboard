@@ -366,11 +366,35 @@
                                     <constraint firstItem="Vlf-St-x6z" firstAttribute="centerY" secondItem="Tzo-bA-PGh" secondAttribute="centerY" id="tN3-a4-CDp"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ihv-FB-kZT">
+                                <rect key="frame" x="0.0" y="120" width="600" height="55"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Anonymous" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ugx-n4-hZ4">
+                                        <rect key="frame" x="12" y="17" width="90.5" height="20"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uDh-3v-c61">
+                                        <rect key="frame" x="539" y="12" width="51" height="31"/>
+                                    </switch>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="Ugx-n4-hZ4" firstAttribute="centerY" secondItem="Ihv-FB-kZT" secondAttribute="centerY" id="0yE-oH-CEn"/>
+                                    <constraint firstItem="uDh-3v-c61" firstAttribute="centerY" secondItem="Ihv-FB-kZT" secondAttribute="centerY" id="Rt3-DZ-qea"/>
+                                    <constraint firstAttribute="height" constant="55" id="jLc-mB-qGN"/>
+                                    <constraint firstItem="Ugx-n4-hZ4" firstAttribute="leading" secondItem="Ihv-FB-kZT" secondAttribute="leading" constant="12" id="qo2-BZ-dJF"/>
+                                    <constraint firstAttribute="trailing" secondItem="uDh-3v-c61" secondAttribute="trailing" constant="12" id="sVm-qb-ea6"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="Ihv-FB-kZT" firstAttribute="top" secondItem="Tzo-bA-PGh" secondAttribute="bottom" constant="1" id="1PZ-3Y-fAl"/>
                             <constraint firstItem="Tzo-bA-PGh" firstAttribute="centerX" secondItem="dZT-fY-LHU" secondAttribute="centerX" id="GB4-5O-0LX"/>
+                            <constraint firstItem="Ihv-FB-kZT" firstAttribute="width" secondItem="dZT-fY-LHU" secondAttribute="width" id="KJM-rI-eTQ"/>
                             <constraint firstItem="Tzo-bA-PGh" firstAttribute="top" secondItem="edv-WX-uXR" secondAttribute="bottom" id="Q4p-nK-grO"/>
+                            <constraint firstItem="Ihv-FB-kZT" firstAttribute="centerX" secondItem="dZT-fY-LHU" secondAttribute="centerX" id="gaL-f7-gPX"/>
                             <constraint firstItem="Tzo-bA-PGh" firstAttribute="width" secondItem="dZT-fY-LHU" secondAttribute="width" id="xs9-qh-mYK"/>
                         </constraints>
                     </view>
@@ -380,6 +404,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="anonymousSwitch" destination="uDh-3v-c61" id="uBM-YY-Fy1"/>
                         <outlet property="menuButton" destination="B18-j6-r3O" id="76f-KX-3Lz"/>
                         <outlet property="notificationsSwitch" destination="Vlf-St-x6z" id="7Pr-yC-wA7"/>
                     </connections>
