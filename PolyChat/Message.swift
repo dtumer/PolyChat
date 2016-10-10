@@ -16,6 +16,7 @@ class Message {
     var numLikes: Int = 0
     var numDislikes: Int = 0
     var messageSent: Double = NSDate().timeIntervalSince1970
+    var stamp: String = ""
     
     init(dictionary: NSDictionary) {
         if let id = dictionary["id"] as? String {
@@ -48,6 +49,10 @@ class Message {
         if let messageSent = dictionary["message_sent"] as? Double {
             self.messageSent = messageSent
         }
+        
+        if let stamp = dictionary["stamp"] as? String {
+            self.stamp = stamp
+        }
     }
     
     //Converts this instance of ChatRoom to JSON object
@@ -59,7 +64,8 @@ class Message {
             "sender_name": self.senderName,
             "num_likes": self.numLikes,
             "num_dislikes": self.numDislikes,
-            "message_sent": self.messageSent
+            "message_sent": self.messageSent,
+            "stamp": self.stamp
         ]
     }
 }
