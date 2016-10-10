@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: UIViewController, SWRevealViewControllerDelegate {
 
     @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet weak var notificationsSwitch: UISwitch!
@@ -71,6 +71,21 @@ class SettingsViewController: UIViewController {
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
             let menuVC = self.revealViewController().rearViewController as! MainMenuTableViewController
             menuVC.user = self.user
+            self.revealViewController().delegate = self
+        }
+    }
+    
+    // For disabling interaction with the front view while the slide out menu is visible
+    func revealController(revealController: SWRevealViewController!, willMoveToPosition position: FrontViewPosition) {
+        if position == FrontViewPosition.Left {
+            for view in self.view.subviews {
+                view.userInteractionEnabled = true
+            }
+        }
+        else if position == FrontViewPosition.Right {
+            for view in self.view.subviews {
+                view.userInteractionEnabled = false
+            }
         }
     }
 

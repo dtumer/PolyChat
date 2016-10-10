@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MyCoursesTableViewController: UITableViewController {
+class MyCoursesTableViewController: UITableViewController, SWRevealViewControllerDelegate {
     
     @IBOutlet weak var menuButton: UIBarButtonItem!
     
@@ -47,6 +47,7 @@ class MyCoursesTableViewController: UITableViewController {
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
             let menuVC = self.revealViewController().rearViewController as! MainMenuTableViewController
             menuVC.user = self.user
+            self.revealViewController().delegate = self
         }
     }
     
@@ -105,6 +106,24 @@ class MyCoursesTableViewController: UITableViewController {
         }
         
         //print error?
+    }
+    
+    // For disabling interaction with the front view while the slide out menu is visible
+    func revealController(revealController: SWRevealViewController!, willMoveToPosition position: FrontViewPosition) {
+        if position == FrontViewPosition.Left {
+            self.tableView.scrollEnabled = true
+            
+            for view in self.tableView.subviews {
+                view.userInteractionEnabled = true
+            }
+        }
+        else if position == FrontViewPosition.Right {
+            self.tableView.scrollEnabled = false
+            
+            for view in self.tableView.subviews {
+                view.userInteractionEnabled = false
+            }
+        }
     }
 }
 

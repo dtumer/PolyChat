@@ -663,10 +663,10 @@
 			children = (
 				0F4AFF711D1DE3770030C3BD /* MyCourses.storyboard */,
 				6D1EA7911D8DEB430022FDEC /* MainMenuHeader.xib */,
-				0F4AFF6D1D1DE3670030C3BD /* MyCoursesTableViewController.swift */,
-				0F4AFF811D1E10090030C3BD /* MyCoursesTableViewCell.swift */,
 				6D2660A61D8CAC4900F14442 /* MainMenuTableViewController.swift */,
 				6D1EA7951D8DEC750022FDEC /* MainMenuTableSectionHeaderView.swift */,
+				0F4AFF6D1D1DE3670030C3BD /* MyCoursesTableViewController.swift */,
+				0F4AFF811D1E10090030C3BD /* MyCoursesTableViewCell.swift */,
 				6D26A2C61D9CC9AB004216D9 /* ProfileViewController.swift */,
 				6D26A2CA1D9CD3F3004216D9 /* SettingsViewController.swift */,
 			);

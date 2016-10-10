@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController, UITextFieldDelegate {
+class ProfileViewController: UIViewController, UITextFieldDelegate, SWRevealViewControllerDelegate {
 
     @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet weak var nameTextField: UITextField!
@@ -70,6 +70,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
             let menuVC = self.revealViewController().rearViewController as! MainMenuTableViewController
             menuVC.user = self.user
+            self.revealViewController().delegate = self
         }
     }
     
@@ -91,6 +92,20 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
                 print(error)
             }
         })
+    }
+    
+    // For disabling interaction with the front view while the slide out menu is visible
+    func revealController(revealController: SWRevealViewController!, willMoveToPosition position: FrontViewPosition) {
+        if position == FrontViewPosition.Left {
+            for view in self.view.subviews {
+                view.userInteractionEnabled = true
+            }
+        }
+        else if position == FrontViewPosition.Right {
+            for view in self.view.subviews {
+                view.userInteractionEnabled = false
+            }
+        }
     }
 
 }
