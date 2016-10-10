@@ -167,16 +167,12 @@ extension ChatRoomViewController {
     // For the display name of messages
     override func collectionView(collectionView: JSQMessagesCollectionView?, attributedTextForMessageBubbleTopLabelAtIndexPath indexPath: NSIndexPath!) -> NSAttributedString! {
         let message = messages[indexPath.item]
-        switch message.senderId {
-        case senderId:
+        
+        guard let senderDisplayName = message.senderDisplayName else {
+            assertionFailure()
             return nil
-        default:
-            guard let senderDisplayName = message.senderDisplayName else {
-                assertionFailure()
-                return nil
-            }
-            return NSAttributedString(string: senderDisplayName)
         }
+        return NSAttributedString(string: senderDisplayName)
     }
     
     override func collectionView(collectionView: JSQMessagesCollectionView!, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout!, heightForMessageBubbleTopLabelAtIndexPath indexPath: NSIndexPath!) -> CGFloat {
