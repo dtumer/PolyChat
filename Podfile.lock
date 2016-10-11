@@ -1,4 +1,5 @@
 PODS:
+  - CryptoSwift (0.5.2)
   - Firebase (3.2.1):
     - Firebase/Core (= 3.2.1)
   - Firebase/AdMob (3.2.1):
@@ -107,9 +108,11 @@ PODS:
     - JSQSystemSoundPlayer (~> 2.0.1)
   - JSQSystemSoundPlayer (2.0.1)
   - KTCenterFlowLayout (1.3)
+  - SwiftKeychainWrapper (2.0.0)
   - XCGLogger (3.3)
 
 DEPENDENCIES:
+  - CryptoSwift (from `https://github.com/krzyzanowskim/CryptoSwift`, branch `swift2`)
   - Firebase
   - Firebase/AdMob
   - Firebase/AppIndexing
@@ -123,9 +126,21 @@ DEPENDENCIES:
   - Firebase/Storage
   - JSQMessagesViewController
   - KTCenterFlowLayout
+  - SwiftKeychainWrapper
   - XCGLogger (~> 3.3)
 
+EXTERNAL SOURCES:
+  CryptoSwift:
+    :branch: swift2
+    :git: https://github.com/krzyzanowskim/CryptoSwift
+
+CHECKOUT OPTIONS:
+  CryptoSwift:
+    :commit: 03a745bb6533ed97b055c1a2883be2b542a50252
+    :git: https://github.com/krzyzanowskim/CryptoSwift
+
 SPEC CHECKSUMS:
+  CryptoSwift: c1ef79f901b86099a6fe8b3c7524cf9f3f3c8c40
   Firebase: 6c80ac28d59d06bfd9152a7b6ea17625ca93183d
   FirebaseAnalytics: 6f75b04e6bfb8e0b6e9ef298e04c24eea3b13863
   FirebaseAppIndexing: abbefc167746ac131b4f70cb09ea98bd62c5ae30
@@ -151,8 +166,9 @@ SPEC CHECKSUMS:
   JSQMessagesViewController: bf14e4d644e1c59476f47f2f8410c34c6c0294f3
   JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
   KTCenterFlowLayout: 2905970d36c653d9a7736c20bfa0d37dcf797d6b
+  SwiftKeychainWrapper: 3575838215fa36c816899c301a7afe370bd94814
   XCGLogger: d6e196e78940ff6daab17d6917107876f973fa31
 
-PODFILE CHECKSUM: 5c8bcc6b3fb298531d1d5d16891d55281723c0f0
+PODFILE CHECKSUM: 7b535be8ec0a97378ba6c7d66cb62d5a80b5e359
 
 COCOAPODS: 1.1.0.rc.2

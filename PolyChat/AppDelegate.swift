@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 import Firebase
 import XCGLogger
+import SwiftKeychainWrapper
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -28,6 +29,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //configure logger (will output to console)
         log.setup(Constants.APP_MODE, showLogIdentifier: true, showFunctionName: true, showThreadName: true, showLogLevel: true, showFileNames: true, showLineNumbers: true, showDate: true, writeToFile: nil, fileLogLevel: .Debug)
+        
+        //configure keychain
+        if !KeychainWrapper.defaultKeychainWrapper().setString(Constants.APP_CERT, forKey: Constants.APP_CERT_KEY) {
+            //TODO log error
+            return false
+        }
         
         return true
     }

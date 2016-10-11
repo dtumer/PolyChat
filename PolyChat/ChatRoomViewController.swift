@@ -8,6 +8,8 @@
 
 import UIKit
 import JSQMessagesViewController
+import SwiftKeychainWrapper
+import CryptoSwift
 
 class ChatRoomViewController: JSQMessagesViewController {
 
@@ -28,6 +30,9 @@ class ChatRoomViewController: JSQMessagesViewController {
     // Two types of message bubbles
     var outgoingBubbleImageView: JSQMessagesBubbleImage!
     var incomingBubbleImageView: JSQMessagesBubbleImage!
+    
+    //app cert
+    let appCert: [UInt8] = GlobalUtilities.hexToByteArray(KeychainWrapper.defaultKeychainWrapper().stringForKey(Constants.APP_CERT_KEY)!)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -94,10 +99,17 @@ class ChatRoomViewController: JSQMessagesViewController {
         messageService.getMessagesInChatRoom(chatRoom.id, callback: { (messages, error) in
             if let messages = messages {
                 for message in messages {
-                    let msg = JSQMessage(senderId: message.senderId, senderDisplayName: message.senderName,
-                        date: NSDate(timeIntervalSince1970: message.messageSent), text: message.body)
-                    self.messages.append(msg)
-                    self.finishReceivingMessage()
+                    do {
+                        let iv = GlobalUtilities.hexToByteArray(message.stamp)
+                        let body = try String(data: NSData.withBytes(AES(key: self.appCert, iv: iv, blockMode: .CBC, padding: PKCS7()).decrypt(GlobalUtilities.hexToByteArray(message.body))), encoding: NSUTF8StringEncoding)
+                        let msg = JSQMessage(senderId: message.senderId, senderDisplayName: message.senderName,
+                            date: NSDate(timeIntervalSince1970: message.messageSent), text: body)
+                        self.messages.append(msg)
+                        self.finishReceivingMessage()
+                    }
+                    catch {
+                        print(error)
+                    }
                 }
             }
             else {
@@ -113,20 +125,30 @@ class ChatRoomViewController: JSQMessagesViewController {
     }
     
     override func didPressSendButton(button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: NSDate!) {
-        let message = Message(dictionary:[
-            "body": text,
-            "sender_id": senderId,
-            "sender_name": senderDisplayName
-        ])
-        messageService.addMessageToChatRoom(chatRoom.id, message: message, callback: { error in
-            if let error = error {
-                print(error)
-            } else {
-                JSQSystemSoundPlayer.jsq_playMessageSentSound()
-                self.finishSendingMessage()
-                self.collectionView.reloadData()
-            }
-        })
+        do {
+            let iv = AES.randomIV(AES.blockSize)
+            let stamp = NSData.withBytes(iv).toHexString()
+            let body = try NSData.withBytes(AES(key: appCert, iv: iv, blockMode: .CBC, padding: PKCS7()).encrypt(text.utf8.map({$0}))).toHexString()
+            let message = Message(dictionary:[
+                "body": body,
+                "sender_id": senderId,
+                "sender_name": senderDisplayName,
+                "stamp": stamp
+                ])
+            messageService.addMessageToChatRoom(chatRoom.id, message: message, callback: { error in
+                if let error = error {
+                    print(error)
+                } else {
+                    JSQSystemSoundPlayer.jsq_playMessageSentSound()
+                    self.finishSendingMessage()
+                    self.collectionView.reloadData()
+                }
+            })
+
+        }
+        catch {
+            print(error)
+        }
     }
 }
 

@@ -31,4 +31,18 @@ class GlobalUtilities {
         let trimmed = text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
         return trimmed.isEmpty
     }
+    
+    //converts hex strings to byte arrays
+    static func hexToByteArray(hex: String) -> [UInt8] {
+        var ndx = 0
+        var byteArr: [UInt8] = []
+        
+        while ndx < hex.characters.count {
+            byteArr.append(UInt8("\(hex[hex.startIndex.advancedBy(ndx)])\(hex[hex.startIndex.advancedBy(ndx + 1)])", radix: 16)!)
+            
+            ndx += 2
+        }
+        
+        return byteArr
+    }
 }

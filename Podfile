@@ -10,6 +10,8 @@ def pods
     pod 'JSQMessagesViewController'
     pod 'XCGLogger', '~> 3.3'
     pod 'KTCenterFlowLayout'
+    pod 'SwiftKeychainWrapper'
+    pod 'CryptoSwift', :git => "https://github.com/krzyzanowskim/CryptoSwift", :branch => "swift2"
 end
 #loads all firebase pods
 def firebase

@@ -18,6 +18,10 @@ struct Constants {
     private static let APP_DEV = XCGLogger.LogLevel.Debug
     private static let APP_PROD = XCGLogger.LogLevel.None
     
+    //keychain constants
+    static let APP_CERT = "FE313B23BE54C7843CFB944788B01EBF"
+    static let APP_CERT_KEY = "app_cert"
+    
     //service keys for which server/database services to use in-app
     static let CURRENT_SERVICE_KEY: String = Constants.FIREBASE_SERVICE_KEY
     static let FIREBASE_SERVICE_KEY: String = "firebase"
