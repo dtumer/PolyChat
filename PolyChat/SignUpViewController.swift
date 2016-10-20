@@ -71,7 +71,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     
     //dismisses sign up view controller
     @IBAction func cancelSignUp(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
     // MARK: UITextFieldDelegate Methods

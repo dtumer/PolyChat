@@ -14,6 +14,8 @@ class SettingsViewController: UIViewController, SWRevealViewControllerDelegate {
     @IBOutlet weak var notificationsSwitch: UISwitch!
     @IBOutlet weak var anonymousSwitch: UISwitch!
     
+    @IBOutlet weak var splashView: UIView!
+    
     //services variables
     var authService: AuthServiceProtocol!
     
@@ -32,6 +34,9 @@ class SettingsViewController: UIViewController, SWRevealViewControllerDelegate {
                                       forControlEvents: UIControlEvents.ValueChanged)
         //makes sure there's no weird grayness happening in the nav bar
         self.navigationController?.navigationBar.translucent = false
+        
+        //hide splash view
+        self.splashView.hidden = true
     }
     
     //on view did appear
@@ -56,6 +61,14 @@ class SettingsViewController: UIViewController, SWRevealViewControllerDelegate {
                 }
             })
         }
+    }
+    
+    @IBAction func logoutUser(sender: AnyObject) {
+        self.authService.logout()
+        
+        self.splashView.hidden = false
+        self.splashView.backgroundColor = UIColor.whiteColor()
+        self.performSegueWithIdentifier(Constants.loginSegueId, sender: self)
     }
     
     //initializes all services needed by this controller

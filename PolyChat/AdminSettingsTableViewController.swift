@@ -36,15 +36,6 @@ extension AdminSettingsTableViewController {
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 2
     }
-    
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let cell = tableView.cellForRowAtIndexPath(indexPath)
-        
-        if cell == logoutCell {
-            self.authService.logout()
-            self.navigationController?.popToRootViewControllerAnimated(true)
-        }
-    }
 
     /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
