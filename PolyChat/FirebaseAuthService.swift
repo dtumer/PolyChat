@@ -13,13 +13,13 @@ import Firebase
  * This class will contain methods for authenticating users through Firebase
 */
 class FirebaseAuthService: FirebaseDatabaseService, AuthServiceProtocol {
+    let DOMAIN = "FirebaseAuthService::"
     let userService = UserServiceFactory.sharedInstance
     
-    func signUpUser(email: String, passHash: String) {
+    func signUpUser(email: String, passHash: String, callback: (NSError?) -> ()) {
         FIRAuth.auth()?.createUserWithEmail(email, password: passHash) { (user, error) in
-            if let error = error {
-                //change to logger
-                print("ERROR: \(error.localizedDescription))")
+            if error != nil {
+                callback(NSError(domain: "\(self.DOMAIN)signUpUser", code: 0, description: "Error with user creation. User already created"))
                 return
             }
             
@@ -35,10 +35,13 @@ class FirebaseAuthService: FirebaseDatabaseService, AuthServiceProtocol {
             print(user!.uid)
             
             self.userService.putUser(user!.uid, user: User(dictionary: userObj), callback: { error in
-                if let error = error {
-                    //change to logger
-                    print("ERROR: \(error.localizedDescription)")
+                if error != nil {
+                    callback(NSError(domain: "\(self.DOMAIN)signUpUser", code: 1, description: "Error user could not be stored in the database"))
+                    return
                 }
+                
+                callback(nil)
+                return
             })
         }
     }

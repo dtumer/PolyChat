@@ -13,34 +13,40 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     var authService: AuthServiceProtocol!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    
+    @IBOutlet weak var emailView: UIView!
+    @IBOutlet weak var passwordView: UIView!
+    
+    @IBOutlet weak var errorLabel: UILabel!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Retrieve Auth Service
         self.authService = AuthServiceFactory.sharedInstance
+        
+        errorLabel.hidden = true
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
     
     @IBAction func loginPressed(sender: UIButton) {
-        authService?.loginUser(emailTextField.text!, passHash: passwordTextField.text!, callback: { (error) in
-            if let error = error { //error when logging in user
-                print(error)
-                return
-            }
-            
-            self.dismissViewControllerAnimated(true, completion: nil)
-        })
+        if (isValidEmail(emailTextField.text!) && isValidPassword(passwordTextField.text!)) {
+            authService?.loginUser("\(emailTextField.text!)@calpoly.edu", passHash: passwordTextField.text!, callback: { (error) in
+                if error != nil { //error when logging in user
+                    self.incorrectInput()
+                    return
+                }
+                else {
+                    self.correctInput()
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                    
+                    return
+                }
+            })
+        }
+        else {
+            self.incorrectInput()
+        }
     }
     
     // MARK: UITextFieldDelegate Methods
@@ -49,4 +55,37 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return true
     }
 
+    //checks for valid email
+    func isValidEmail(email: String) -> Bool {
+        if (!email.isEmpty && ValidationService.isValidEmail(email)) {
+            return true
+        }
+        
+        return false
+    }
+    
+    //checks for valid password
+    func isValidPassword(password: String) -> Bool {
+        return password.characters.count >= 8
+    }
+    
+    //sets ui for incorrect input
+    func incorrectInput() {
+        self.errorLabel.hidden = false
+        
+        self.emailView.layer.borderColor = UIColor.redColor().CGColor
+        self.emailView.layer.borderWidth = 1.0
+        
+        self.passwordView.layer.borderColor = UIColor.redColor().CGColor
+        self.passwordView.layer.borderWidth = 1.0
+    }
+    
+    //sets ui for correct input
+    func correctInput() {
+        self.errorLabel.hidden = true
+        
+        self.emailView.layer.borderWidth = 0.0
+        
+        self.passwordView.layer.borderWidth = 0.0
+    }
 }

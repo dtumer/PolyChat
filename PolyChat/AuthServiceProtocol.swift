@@ -9,7 +9,7 @@ import Foundation
 
 protocol AuthServiceProtocol {
     // function for signing up a user for the PolyChat service
-    func signUpUser(email: String, passHash: String)
+    func signUpUser(email: String, passHash: String, callback: (NSError?) -> ())
     
     // function for logging in a user to the PolyChat service
     func loginUser(email: String, passHash: String, callback: (NSError?) -> ())
