@@ -336,7 +336,6 @@
         <!--Settings-->
         <scene sceneID="wNp-1M-fWJ">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kBk-6B-j6G" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController title="Settings" id="Zh0-LQ-yEL" customClass="SettingsViewController" customModule="PolyChat" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="edv-WX-uXR"/>
@@ -402,10 +401,6 @@
                                     <action selector="logoutUser:" destination="Zh0-LQ-yEL" eventType="touchUpInside" id="IQA-mv-ULp"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Azy-3N-hMY">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -413,14 +408,10 @@
                             <constraint firstItem="Tzo-bA-PGh" firstAttribute="centerX" secondItem="dZT-fY-LHU" secondAttribute="centerX" id="GB4-5O-0LX"/>
                             <constraint firstItem="Ihv-FB-kZT" firstAttribute="width" secondItem="dZT-fY-LHU" secondAttribute="width" id="KJM-rI-eTQ"/>
                             <constraint firstItem="xog-V7-LXX" firstAttribute="centerX" secondItem="dZT-fY-LHU" secondAttribute="centerX" id="LGc-bd-fsm"/>
-                            <constraint firstItem="Azy-3N-hMY" firstAttribute="centerX" secondItem="dZT-fY-LHU" secondAttribute="centerX" id="NFE-TA-K68"/>
-                            <constraint firstItem="Azy-3N-hMY" firstAttribute="height" secondItem="dZT-fY-LHU" secondAttribute="height" id="Q1D-n1-6LW"/>
                             <constraint firstItem="Tzo-bA-PGh" firstAttribute="top" secondItem="edv-WX-uXR" secondAttribute="bottom" id="Q4p-nK-grO"/>
                             <constraint firstItem="xog-V7-LXX" firstAttribute="top" secondItem="Ihv-FB-kZT" secondAttribute="bottom" constant="12" id="ami-5n-Irk"/>
                             <constraint firstItem="Ihv-FB-kZT" firstAttribute="centerX" secondItem="dZT-fY-LHU" secondAttribute="centerX" id="gaL-f7-gPX"/>
                             <constraint firstItem="xog-V7-LXX" firstAttribute="width" secondItem="dZT-fY-LHU" secondAttribute="width" id="gzy-QE-khg"/>
-                            <constraint firstItem="Azy-3N-hMY" firstAttribute="width" secondItem="dZT-fY-LHU" secondAttribute="width" id="kQu-U5-vCa"/>
-                            <constraint firstItem="Azy-3N-hMY" firstAttribute="centerY" secondItem="dZT-fY-LHU" secondAttribute="centerY" id="wEz-ib-NPI"/>
                             <constraint firstItem="Tzo-bA-PGh" firstAttribute="width" secondItem="dZT-fY-LHU" secondAttribute="width" id="xs9-qh-mYK"/>
                         </constraints>
                     </view>
@@ -433,10 +424,10 @@
                         <outlet property="anonymousSwitch" destination="uDh-3v-c61" id="uBM-YY-Fy1"/>
                         <outlet property="menuButton" destination="B18-j6-r3O" id="76f-KX-3Lz"/>
                         <outlet property="notificationsSwitch" destination="Vlf-St-x6z" id="7Pr-yC-wA7"/>
-                        <outlet property="splashView" destination="Azy-3N-hMY" id="mtx-Ys-I66"/>
                         <segue destination="q3s-Pv-CrB" kind="showDetail" identifier="LoginSegue" action="showViewController:sender:" id="flk-uB-x78"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kBk-6B-j6G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3558" y="1506"/>
         </scene>
