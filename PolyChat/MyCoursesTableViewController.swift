@@ -28,6 +28,10 @@ class MyCoursesTableViewController: UITableViewController, SWRevealViewControlle
         super.viewDidLoad()
         initServices()
         
+        refreshControl = UIRefreshControl()
+        refreshControl?.addTarget(self, action: #selector(refresh), forControlEvents: .ValueChanged)
+        self.tableView.addSubview(refreshControl!)
+        
         //makes sure there's no weird grayness happening in the nav bar
         self.navigationController?.navigationBar.translucent = false
     }
@@ -85,12 +89,18 @@ class MyCoursesTableViewController: UITableViewController, SWRevealViewControlle
             if let courses = courses {
                 self.courses = courses
                 self.tableView.reloadData()
+                self.refreshControl?.endRefreshing()
             }
             else {
                 //TODO change this to log errors instead of printing them
                 print(error?.description)
             }
         })
+    }
+    
+    //refresh handler
+    func refresh() {
+        loadCourses(self.user.id)
     }
     
     //used to initialize mock data in database

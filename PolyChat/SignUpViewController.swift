@@ -12,19 +12,22 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var emailLabel: UILabel!
-    @IBOutlet weak var passwordLabel: UILabel!
+    @IBOutlet weak var confirmTextField: UITextField!
+    
     @IBOutlet weak var emailView: UIView!
     @IBOutlet weak var passwordView: UIView!
+    @IBOutlet weak var confirmView: UIView!
     
     @IBOutlet weak var emailErrorLabel: UILabel!
     @IBOutlet weak var passwordErrorLabel: UILabel!
+    @IBOutlet weak var confirmErrorLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         emailErrorLabel.hidden = true
         passwordErrorLabel.hidden = true
+        confirmErrorLabel.hidden = true
     }
     
     // MARK: Actions
@@ -60,10 +63,21 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                 setCorrectEmail()
             }
             
-            if !isValidPassword(passwordTextField.text!) {
+            let validPassword = isValidPassword(passwordTextField.text!)
+            let passEqual = isPasswordsEqual(passwordTextField.text!, confirmPass: confirmTextField.text!)
+            let isValid = validPassword && passEqual
+            
+            print(passEqual)
+            
+            if !validPassword {
                 setIncorrectPassword()
             }
-            else {
+            
+            if !passEqual {
+                setPasswordMismatch()
+            }
+            
+            if isValid {
                 setCorrectPassword()
             }
         }
@@ -83,6 +97,11 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     //checks for valid password
     func isValidPassword(password: String) -> Bool {
         return !password.isEmpty && password.characters.count >= 8
+    }
+    
+    //checks for equal passwords
+    func isPasswordsEqual(password: String, confirmPass: String) -> Bool {
+        return password == confirmPass
     }
     
     //sets correct email address
@@ -111,7 +130,17 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     //sets correct password
     func setCorrectPassword() {
         passwordErrorLabel.hidden = true
+        confirmErrorLabel.hidden = true
         
         passwordView.layer.borderWidth = 0.0
+        confirmView.layer.borderWidth = 0.0
+    }
+    
+    //sets password mismatch
+    func setPasswordMismatch() {
+        confirmErrorLabel.hidden = false
+        
+        confirmView.layer.borderColor = UIColor.redColor().CGColor
+        confirmView.layer.borderWidth = 1.0
     }
 }

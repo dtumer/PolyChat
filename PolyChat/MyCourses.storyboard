@@ -2,39 +2,54 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="LVt-YX-2zh">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--My Courses-->
         <scene sceneID="soK-z4-sKO">
             <objects>
                 <tableViewController storyboardIdentifier="MyCoursesStoryboard" id="zG2-4p-Iju" customClass="MyCoursesTableViewController" customModule="PolyChat" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="63" sectionHeaderHeight="28" sectionFooterHeight="28" id="0W5-jU-6kE">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="58" sectionHeaderHeight="18" sectionFooterHeight="18" id="0W5-jU-6kE">
                         <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="MyCourseCell" rowHeight="63" id="XbU-gD-Sre" customClass="MyCoursesTableViewCell" customModule="PolyChat" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="600" height="63"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyCourseCell" id="XbU-gD-Sre" customClass="MyCoursesTableViewCell" customModule="PolyChat" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="49.5" width="600" height="58"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XbU-gD-Sre" id="7jY-zW-bTb">
-                                    <rect key="frame" x="0.0" y="0.0" width="567" height="62.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="58"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Course Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hXU-ko-p0L">
-                                            <rect key="frame" x="8" y="21" width="105" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WmX-3A-QH5">
+                                            <rect key="frame" x="0.0" y="2.5" width="600" height="55"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Course Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bjv-DZ-1ga">
+                                                    <rect key="frame" x="8" y="17" width="584" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="bjv-DZ-1ga" secondAttribute="trailing" constant="8" id="4VB-QX-gkd"/>
+                                                <constraint firstItem="bjv-DZ-1ga" firstAttribute="centerY" secondItem="WmX-3A-QH5" secondAttribute="centerY" id="8FH-LQ-kku"/>
+                                                <constraint firstAttribute="height" constant="55" id="Q4M-iB-oIG"/>
+                                                <constraint firstItem="bjv-DZ-1ga" firstAttribute="leading" secondItem="WmX-3A-QH5" secondAttribute="leading" constant="8" id="ekt-e8-hQI"/>
+                                                <constraint firstItem="bjv-DZ-1ga" firstAttribute="centerX" secondItem="WmX-3A-QH5" secondAttribute="centerX" id="gBL-NV-0Ah"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstAttribute="leadingMargin" secondItem="hXU-ko-p0L" secondAttribute="leading" id="N43-lD-YE3"/>
-                                        <constraint firstItem="hXU-ko-p0L" firstAttribute="centerY" secondItem="7jY-zW-bTb" secondAttribute="centerY" id="t2F-FS-Nmh"/>
+                                        <constraint firstItem="WmX-3A-QH5" firstAttribute="centerY" secondItem="7jY-zW-bTb" secondAttribute="centerY" id="P5i-nL-GPw"/>
+                                        <constraint firstItem="WmX-3A-QH5" firstAttribute="width" secondItem="7jY-zW-bTb" secondAttribute="width" id="Vcm-f5-hvr"/>
+                                        <constraint firstItem="WmX-3A-QH5" firstAttribute="centerX" secondItem="7jY-zW-bTb" secondAttribute="centerX" id="ueB-L9-p1M"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
-                                    <outlet property="courseNameLabel" destination="hXU-ko-p0L" id="z8k-vB-fFn"/>
+                                    <outlet property="courseNameLabel" destination="bjv-DZ-1ga" id="SJJ-Qu-j3f"/>
                                     <segue destination="DYI-mf-xSh" kind="show" identifier="CourseDetailSegue" id="ber-bA-prB"/>
                                 </connections>
                             </tableViewCell>
@@ -459,6 +474,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="jLr-0q-ljP"/>
-        <segue reference="flk-uB-x78"/>
+        <segue reference="zbS-Xo-pKp"/>
     </inferredMetricsTieBreakers>
 </document>
