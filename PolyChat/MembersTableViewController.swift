@@ -27,6 +27,11 @@ class MembersTableViewController: UITableViewController {
         super.viewDidLoad()
         
         initServices()
+        
+        //sets up refresh control
+        refreshControl = UIRefreshControl()
+        refreshControl?.addTarget(self, action: #selector(refresh), forControlEvents: .ValueChanged)
+        self.tableView.addSubview(refreshControl!)
     }
     
     //initializes service that will be needed by this controller
@@ -62,12 +67,18 @@ class MembersTableViewController: UITableViewController {
             if let users = users {
                 self.users = users
                 self.tableView.reloadData()
+                self.refreshControl?.endRefreshing()
             }
             else {
                 //TODO change this to log instead of print
                 print(error?.description)
             }
         })
+    }
+    
+    //function for refreshing
+    func refresh() {
+        loadUsers(self.course.id)
     }
 }
 

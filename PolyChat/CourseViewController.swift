@@ -92,7 +92,7 @@ extension CourseViewController {
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSize(width: UIScreen.mainScreen().bounds.width / CGFloat(self.menuItems.count), height: 40.0)
+        return CGSize(width: UIScreen.mainScreen().bounds.width / CGFloat(self.menuItems.count), height: 50.0)
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
