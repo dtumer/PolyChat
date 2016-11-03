@@ -11,6 +11,7 @@ import UIKit
 class CreateChatRoomViewController: UIViewController {
 
     @IBOutlet weak var chatRoomNameField: UITextField!
+    @IBOutlet weak var chatNameView: UIView!
     @IBOutlet weak var nameErrorLabel: UILabel!
     
     //auth service for checking login
@@ -69,12 +70,11 @@ class CreateChatRoomViewController: UIViewController {
         //show error message
         else {
             //set text and make error message appear
-            self.nameErrorLabel.text = "Please name your chat room!"
             self.nameErrorLabel.hidden = false
             
             //set color of name field border and its width
-            self.chatRoomNameField.layer.borderColor = UIColor.redColor().CGColor
-            self.chatRoomNameField.layer.borderWidth = 2.0
+            self.chatNameView.layer.borderColor = UIColor.redColor().CGColor
+            self.chatNameView.layer.borderWidth = 2.0
         }
     }
     

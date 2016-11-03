@@ -10,6 +10,7 @@ import UIKit
 
 class MyCoursesTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var courseView: UIView!
     @IBOutlet weak var courseNameLabel: UILabel!
     
     var course: Course! {

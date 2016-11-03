@@ -34,6 +34,9 @@ class MyCoursesTableViewController: UITableViewController, SWRevealViewControlle
         
         //makes sure there's no weird grayness happening in the nav bar
         self.navigationController?.navigationBar.translucent = false
+        
+        //set auto layout view insets
+        self.automaticallyAdjustsScrollViewInsets = false
     }
     
     //initializes all services needed by this controller
