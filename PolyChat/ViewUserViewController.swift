@@ -30,18 +30,18 @@ class ViewUserViewController: UIViewController {
         loadUserCourses()
     }
 
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         setUserLabels()
         loadUserCourses()
     }
     
-    private func initServices() {
+    fileprivate func initServices() {
         self.courseService = CourseServiceFactory.sharedInstance
     }
     
-    private func loadUserCourses() {
+    fileprivate func loadUserCourses() {
         courseService.getCoursesUserIsEnrolledIn(user.id, callback: { courses, error in
             if let courses = courses {
                 self.userCourses = courses
@@ -54,15 +54,15 @@ class ViewUserViewController: UIViewController {
         })
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Constants.editUserSegueId {
-            let vc = segue.destinationViewController as! EditUserViewController
+            let vc = segue.destination as! EditUserViewController
             vc.user = self.user
             vc.userCourses = self.userCourses
         }
     }
     
-    private func setUserLabels() {
+    fileprivate func setUserLabels() {
         emailLabel.text = user.email
         nameLabel.text = user.name
         roleLabel.text = String(user.role)
@@ -70,8 +70,8 @@ class ViewUserViewController: UIViewController {
         anonymousLabel.text = user.is_anonymous.description
     }
     
-    @IBAction func editPressed(sender: UIBarButtonItem) {
-        performSegueWithIdentifier(Constants.editUserSegueId, sender: self)
+    @IBAction func editPressed(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: Constants.editUserSegueId, sender: self)
     }
     
 
@@ -80,21 +80,21 @@ class ViewUserViewController: UIViewController {
 // User's courses table view delegate/datasource
 extension ViewUserViewController: UITableViewDelegate, UITableViewDataSource {
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return userCourses.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(Constants.userCourseAdminReuseId) as! CoursesAdminTableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.userCourseAdminReuseId) as! CoursesAdminTableViewCell
         cell.course = userCourses[indexPath.row]
         return cell
     }
     
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return Constants.userCoursesAdminSectionHeader
     }
     

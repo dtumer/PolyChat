@@ -36,12 +36,12 @@ class UserSelectTableViewController: UITableViewController {
         initServices()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         self.users = []
         self.selectedUsers = []
         
         if !authService.hasOpenSession() {
-            self.performSegueWithIdentifier(Constants.loginSegueId, sender: self)
+            self.performSegue(withIdentifier: Constants.loginSegueId, sender: self)
         }
         else {
             self.authService.getCurrentUser({ (user, error) in
@@ -59,14 +59,14 @@ class UserSelectTableViewController: UITableViewController {
     }
     
     //initializes services that we will need
-    private func initServices() {
+    fileprivate func initServices() {
         self.authService = AuthServiceFactory.sharedInstance
         self.chatRoomService = ChatRoomServiceFactory.sharedInstance
         self.userService = UserServiceFactory.sharedInstance
     }
     
     //loads all users in a course
-    private func loadUsers(courseId: String) {
+    fileprivate func loadUsers(_ courseId: String) {
         self.userService.getAllUsersInACourse(courseId, userId: self.user.id, callback: { (users, error) in
             if let error = error {
                 //TODO log error better
@@ -80,13 +80,13 @@ class UserSelectTableViewController: UITableViewController {
     }
     
     //finishes creating the chat room
-    @IBAction func createChatRoomPressed(sender: AnyObject) {
+    @IBAction func createChatRoomPressed(_ sender: AnyObject) {
         //check if there were users selected
         if selectedUsers.count <= 1 {
-            let alert = UIAlertController(title: "Error", message: "Please choose at least one other user to chat with!", preferredStyle: .Alert)
+            let alert = UIAlertController(title: "Error", message: "Please choose at least one other user to chat with!", preferredStyle: .alert)
             
-            alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-            self.presentViewController(alert, animated: true, completion: nil)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
         else {
             self.chatRoomService.createChatRoom(self.course.id, users: self.selectedUsers, chatRoom: self.chatRoom, callback: { error in
@@ -95,7 +95,7 @@ class UserSelectTableViewController: UITableViewController {
                     print(error.description)
                 }
                 else {
-                    self.dismissViewControllerAnimated(true, completion: nil)
+                    self.dismiss(animated: true, completion: nil)
                 }
             })
         }
@@ -103,34 +103,34 @@ class UserSelectTableViewController: UITableViewController {
 }
 
 extension UserSelectTableViewController {
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return users.count
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(Constants.usersReuseId, forIndexPath: indexPath) as! UsersSelectTableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.usersReuseId, for: indexPath) as! UsersSelectTableViewCell
         
         cell.user = users[indexPath.row]
 
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let cell = tableView.cellForRowAtIndexPath(indexPath) as! UsersSelectTableViewCell
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! UsersSelectTableViewCell
         
         //if it's selected
-        if cell.accessoryType == .Checkmark {
-            cell.accessoryType = .None
-            let ndx = selectedUsers.indexOf({$0.id == cell.user.id})
-            selectedUsers.removeAtIndex(ndx!)
+        if cell.accessoryType == .checkmark {
+            cell.accessoryType = .none
+            let ndx = selectedUsers.index(where: {$0.id == cell.user.id})
+            selectedUsers.remove(at: ndx!)
         }
         //if we're adding for first time
         else {
-            cell.accessoryType = .Checkmark
+            cell.accessoryType = .checkmark
             selectedUsers.append(users[indexPath.row])
         }
     }

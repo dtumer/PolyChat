@@ -12,7 +12,7 @@ class FirebaseCoursesChatRoomsService: FirebaseDatabaseService, CoursesChatRooms
     let DOMAIN = "FirebaseCoursesChatRoomsServices::"
     
     //add reference to chat room in COURSES_CHATROOMS
-    func addChatRoomReference(courseId: String, chatRoom: ChatRoom, callback: (NSError?) -> ()) {
+    func addChatRoomReference(_ courseId: String, chatRoom: ChatRoom, callback: @escaping (NSError?) -> ()) {
         self.getChatRoomsIds(courseId, callback: { (courseIds, error) in
             var ids: [String] = []
             
@@ -35,7 +35,7 @@ class FirebaseCoursesChatRoomsService: FirebaseDatabaseService, CoursesChatRooms
             
             self.dbRef.updateChildValues(childUpdates, withCompletionBlock: { (error, ref) in
                 if let error = error {
-                    callback(error)
+                    callback(error as NSError?)
                 }
                 else {
                     callback(nil)
@@ -46,8 +46,8 @@ class FirebaseCoursesChatRoomsService: FirebaseDatabaseService, CoursesChatRooms
     }
     
     //gets all the ids of the chat rooms
-    func getChatRoomsIds(courseId: String, callback: ([String]?, NSError?) -> ()) {
-        dbRef.child(Constants.coursesChatRoomsDBKey).child(courseId).observeSingleEventOfType(.Value, withBlock: { snapshot in
+    func getChatRoomsIds(_ courseId: String, callback: @escaping ([String]?, NSError?) -> ()) {
+        dbRef.child(Constants.coursesChatRoomsDBKey).child(courseId).observeSingleEvent(of: .value, with: { snapshot in
             if let val = snapshot.value as? [String] {
                 callback(val, nil)
             }

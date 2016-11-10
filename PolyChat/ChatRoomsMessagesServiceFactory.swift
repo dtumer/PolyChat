@@ -15,7 +15,7 @@ class ChatRoomsMessagesServiceFactory {
         return Singleton.instance
     }
     
-    class func getChatRoomsMessagesService(serviceKey: String) -> ChatRoomsMessagesServiceProtocol {
+    class func getChatRoomsMessagesService(_ serviceKey: String) -> ChatRoomsMessagesServiceProtocol {
         switch serviceKey {
         case Constants.FIREBASE_SERVICE_KEY:
             return FirebaseChatRoomsMessagesService()

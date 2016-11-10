@@ -24,27 +24,27 @@ class CoursesAdminTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         loadCourses()
     }
     
-    private func setupNavBar() {
-        let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(CoursesAdminTableViewController.addButtonPressed))
+    fileprivate func setupNavBar() {
+        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(CoursesAdminTableViewController.addButtonPressed))
         self.navigationItem.rightBarButtonItem = addButton
     }
     
     func addButtonPressed() {
         let storyboard = UIStoryboard(name: "AddCourse", bundle: nil)
-        let vc = storyboard.instantiateViewControllerWithIdentifier("addCourseViewController")
+        let vc = storyboard.instantiateViewController(withIdentifier: "addCourseViewController")
         let navController = UINavigationController.init(rootViewController:vc)
-        self.presentViewController(navController, animated: true, completion: nil)
+        self.present(navController, animated: true, completion: nil)
     }
     
     /* Loads all the courses. TODO implement spinner for loading times */
-    private func loadCourses() {
-        courseService.getAllCourses({ (courses, error) in
+    fileprivate func loadCourses() {
+        courseService?.getAllCourses({ (courses, error) in
             if let courses = courses {
                 self.courses = courses
                 self.tableView.reloadData()
@@ -68,16 +68,16 @@ class CoursesAdminTableViewController: UITableViewController {
 
 /* Extension to impolement table view for the Admin Courses manager */
 extension CoursesAdminTableViewController {
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return courses.count
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(Constants.coursesReuseId, forIndexPath: indexPath) as! CoursesAdminTableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.coursesReuseId, for: indexPath) as! CoursesAdminTableViewCell
         
         cell.course = courses[indexPath.row]
         
@@ -86,28 +86,28 @@ extension CoursesAdminTableViewController {
 
     
     // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
 
     // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
             let courseToRemove = self.courses[indexPath.row]
             
-            self.courses.removeAtIndex(indexPath.row)
-            self.courseService.removeCourse(courseToRemove, callback: { error in
+            self.courses.remove(at: indexPath.row)
+            self.courseService?.removeCourse(courseToRemove, callback: { error in
                 //TODO make this log and display differently
                 if let error = error {
                     print(error)
                 }
                 else {
-                    self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                    self.tableView.deleteRows(at: [indexPath], with: .fade)
                 }
             })
         }
-        else if editingStyle == .Insert {
+        else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }

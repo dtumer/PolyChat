@@ -20,12 +20,12 @@ class UsersAdminTableViewController: UITableViewController {
         userService = UserServiceFactory.sharedInstance
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         loadUsers()
     }
     
-    private func loadUsers() {
+    fileprivate func loadUsers() {
         userService.getAllUsers({ (users, error) in
             if let users = users {
                 self.users = users
@@ -36,9 +36,9 @@ class UsersAdminTableViewController: UITableViewController {
         })
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Constants.viewUserSegueId {
-            let vc = segue.destinationViewController as! ViewUserViewController
+            let vc = segue.destination as! ViewUserViewController
             vc.user = selectedUser
         }
     }
@@ -48,17 +48,17 @@ class UsersAdminTableViewController: UITableViewController {
 // Extension to implement tableView methods
 extension UsersAdminTableViewController {
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return users.count
     }
     
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(Constants.usersAdminReuseId, forIndexPath: indexPath) as! UsersAdminTableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.usersAdminReuseId, for: indexPath) as! UsersAdminTableViewCell
         
         cell.user = users[indexPath.row]
         
@@ -66,14 +66,14 @@ extension UsersAdminTableViewController {
     }
     
     // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedUser = users[indexPath.row]
-        performSegueWithIdentifier(Constants.viewUserSegueId, sender: self)
+        performSegue(withIdentifier: Constants.viewUserSegueId, sender: self)
     }
     
     /*

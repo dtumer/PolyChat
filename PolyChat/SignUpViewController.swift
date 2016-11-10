@@ -25,13 +25,13 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        emailErrorLabel.hidden = true
-        passwordErrorLabel.hidden = true
-        confirmErrorLabel.hidden = true
+        emailErrorLabel.isHidden = true
+        passwordErrorLabel.isHidden = true
+        confirmErrorLabel.isHidden = true
     }
     
     // MARK: Actions
-    @IBAction func signUp(sender: UIButton) {
+    @IBAction func signUp(_ sender: UIButton) {
         let authService = AuthServiceFactory.sharedInstance
         
         // Validate Email
@@ -41,16 +41,16 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             
             authService?.signUpUser(emailTextField.text! + "@calpoly.edu", passHash: passwordTextField.text!, callback: { error in
                 if error != nil {
-                    self.emailErrorLabel.hidden = false
+                    self.emailErrorLabel.isHidden = false
                     self.emailErrorLabel.text = "User with that email already exists"
                     
-                    self.emailView.layer.borderColor = UIColor.redColor().CGColor
+                    self.emailView.layer.borderColor = UIColor.red.cgColor
                     self.emailView.layer.borderWidth = 1.0
                 }
                 else {
                     self.emailView.layer.borderWidth = 0.0
                     
-                    self.dismissViewControllerAnimated(true, completion: nil)
+                    self.dismiss(animated: true, completion: nil)
                     return
                 }
             })
@@ -84,53 +84,53 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     }
     
     //dismisses sign up view controller
-    @IBAction func cancelSignUp(sender: AnyObject) {
-        self.navigationController?.popViewControllerAnimated(true)
+    @IBAction func cancelSignUp(_ sender: AnyObject) {
+        self.navigationController?.popViewController(animated: true)
     }
     
     // MARK: UITextFieldDelegate Methods
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
     
     //checks for valid password
-    func isValidPassword(password: String) -> Bool {
+    func isValidPassword(_ password: String) -> Bool {
         return !password.isEmpty && password.characters.count >= 8
     }
     
     //checks for equal passwords
-    func isPasswordsEqual(password: String, confirmPass: String) -> Bool {
+    func isPasswordsEqual(_ password: String, confirmPass: String) -> Bool {
         return password == confirmPass
     }
     
     //sets correct email address
     func setCorrectEmail() {
-        emailErrorLabel.hidden = true
+        emailErrorLabel.isHidden = true
         
         emailView.layer.borderWidth = 0.0
     }
     
     //sets incorrect email address
     func setIncorrectEmail() {
-        emailErrorLabel.hidden = false
+        emailErrorLabel.isHidden = false
         
-        emailView.layer.borderColor = UIColor.redColor().CGColor
+        emailView.layer.borderColor = UIColor.red.cgColor
         emailView.layer.borderWidth = 1.0
     }
     
     //sets incorrect password
     func setIncorrectPassword() {
-        passwordErrorLabel.hidden = false
+        passwordErrorLabel.isHidden = false
         
-        passwordView.layer.borderColor = UIColor.redColor().CGColor
+        passwordView.layer.borderColor = UIColor.red.cgColor
         passwordView.layer.borderWidth = 1.0
     }
     
     //sets correct password
     func setCorrectPassword() {
-        passwordErrorLabel.hidden = true
-        confirmErrorLabel.hidden = true
+        passwordErrorLabel.isHidden = true
+        confirmErrorLabel.isHidden = true
         
         passwordView.layer.borderWidth = 0.0
         confirmView.layer.borderWidth = 0.0
@@ -138,9 +138,9 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     
     //sets password mismatch
     func setPasswordMismatch() {
-        confirmErrorLabel.hidden = false
+        confirmErrorLabel.isHidden = false
         
-        confirmView.layer.borderColor = UIColor.redColor().CGColor
+        confirmView.layer.borderColor = UIColor.red.cgColor
         confirmView.layer.borderWidth = 1.0
     }
 }

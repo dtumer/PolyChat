@@ -14,8 +14,8 @@ class FirebaseMessageService: FirebaseDatabaseService, MessageServiceProtocol {
     let chatRoomsMessagesService = ChatRoomsMessagesServiceFactory.sharedInstance
     
     //gets a message from the database
-    func getMessage(messageId: String, callback: (Message?, NSError?) -> ()) {
-        dbRef.child(Constants.messagesDBKey).child(messageId).observeSingleEventOfType(.Value, withBlock: { snapshot in
+    func getMessage(_ messageId: String, callback: @escaping (Message?, NSError?) -> ()) {
+        dbRef.child(Constants.messagesDBKey).child(messageId).observeSingleEvent(of: .value, with: { snapshot in
             if let messageDict = snapshot.value as? NSMutableDictionary {
                 messageDict["id"] = messageId
                 callback(Message(dictionary: messageDict), nil)
@@ -30,13 +30,13 @@ class FirebaseMessageService: FirebaseDatabaseService, MessageServiceProtocol {
     }
     
     //adds a message to the db
-    func addMessage(message: Message, callback: (String?, NSError?) -> ()) {
+    func addMessage(_ message: Message, callback: @escaping (String?, NSError?) -> ()) {
         let key = getAutoId(Constants.messagesDBKey)
         let childUpdates = ["/\(Constants.messagesDBKey)/\(key)": message.toDictionary()]
         
         dbRef.updateChildValues(childUpdates, withCompletionBlock: { (error, ref) in
             if let error = error {
-                callback(nil, error)
+                callback(nil, error as NSError?)
             }
             else {
                 callback(key, nil)
@@ -48,11 +48,11 @@ class FirebaseMessageService: FirebaseDatabaseService, MessageServiceProtocol {
 /* COMPOSITE DATABASE FUNCTIONS */
 extension FirebaseMessageService {
     //gets all messages in a chat room
-    func getMessagesInChatRoom(chatRoomId: String, callback: ([Message]?, NSError?) -> ()) {
+    func getMessagesInChatRoom(_ chatRoomId: String, callback: @escaping ([Message]?, NSError?) -> ()) {
         var messages: [Message] = []
         var numMessages = 0
         
-        let handle = dbRef.child(Constants.chatRoomsMessagesDBKey).child(chatRoomId).observeEventType(.ChildAdded, withBlock: { snapshot in
+        let handle = dbRef.child(Constants.chatRoomsMessagesDBKey).child(chatRoomId).observe(.childAdded, with: { snapshot in
             if let msgArr = snapshot.value as? NSArray {
                 for msgId in msgArr {
                     if let msgId = msgId as? String {
@@ -101,7 +101,7 @@ extension FirebaseMessageService {
     }
     
     //adds a message to the chat room
-    func addMessageToChatRoom(chatRoomId: String, message: Message, callback: (NSError?) -> ()) {
+    func addMessageToChatRoom(_ chatRoomId: String, message: Message, callback: @escaping (NSError?) -> ()) {
         //1: Add message to MESSAGES table
         self.addMessage(message, callback: { (key, error) in
             if let error = error {
@@ -109,7 +109,7 @@ extension FirebaseMessageService {
             }
             else {
                 //2: Add reference to message in chat room
-                self.chatRoomsMessagesService.addChatRoomsMessagesReference(chatRoomId, messageId: key!, callback: { error in
+                self.chatRoomsMessagesService?.addChatRoomsMessagesReference(chatRoomId: chatRoomId, messageId: key!, callback: { error in
                     if let error = error {
                         callback(error)
                     }

@@ -29,25 +29,25 @@ class MyCoursesTableViewController: UITableViewController, SWRevealViewControlle
         initServices()
         
         refreshControl = UIRefreshControl()
-        refreshControl?.addTarget(self, action: #selector(refresh), forControlEvents: .ValueChanged)
+        refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
         self.tableView.addSubview(refreshControl!)
         
         //makes sure there's no weird grayness happening in the nav bar
-        self.navigationController?.navigationBar.translucent = false
+        self.navigationController?.navigationBar.isTranslucent = false
         
         //set auto layout view insets
         self.automaticallyAdjustsScrollViewInsets = false
     }
     
     //initializes all services needed by this controller
-    private func initServices() {
+    fileprivate func initServices() {
         self.authService = AuthServiceFactory.sharedInstance
         self.usersCoursesService = UsersCoursesServiceFactory.sharedInstance
         self.courseService = CourseServiceFactory.sharedInstance
     }
     
     //initializes the slide out menu
-    private func initMenu() {
+    fileprivate func initMenu() {
         if (self.revealViewController() != nil) {
             menuButton.target = self.revealViewController()
             menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
@@ -59,7 +59,7 @@ class MyCoursesTableViewController: UITableViewController, SWRevealViewControlle
     }
     
     //on view did appear
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         //init courses
@@ -67,7 +67,7 @@ class MyCoursesTableViewController: UITableViewController, SWRevealViewControlle
         
         //check if a user is logged in
         if !authService.hasOpenSession() {
-            self.performSegueWithIdentifier(Constants.loginSegueId, sender: self)
+            self.performSegue(withIdentifier: Constants.loginSegueId, sender: self)
         }
         else {
             //get logged in user information
@@ -87,7 +87,7 @@ class MyCoursesTableViewController: UITableViewController, SWRevealViewControlle
     }
     
     //loads the courses from the database
-    func loadCourses(uid: String) {
+    func loadCourses(_ uid: String) {
         self.courseService.getCoursesUserIsEnrolledIn(uid, callback: { (courses, error) in
             if let courses = courses {
                 self.courses = courses
@@ -107,34 +107,34 @@ class MyCoursesTableViewController: UITableViewController, SWRevealViewControlle
     }
     
     //used to initialize mock data in database
-    private func initMockData() {
+    fileprivate func initMockData() {
         //let mockInit = FirebaseInitMockDatabase()
     
         //mockInit.initMockDB()
     }
     
-    @IBAction func signOutPressed(sender: AnyObject) {
+    @IBAction func signOutPressed(_ sender: AnyObject) {
         if self.authService.logout() {
-            self.performSegueWithIdentifier("LoginSegue", sender: self)
+            self.performSegue(withIdentifier: "LoginSegue", sender: self)
         }
         
         //print error?
     }
     
     // For disabling interaction with the front view while the slide out menu is visible
-    func revealController(revealController: SWRevealViewController!, willMoveToPosition position: FrontViewPosition) {
-        if position == FrontViewPosition.Left {
-            self.tableView.scrollEnabled = true
+    func revealController(_ revealController: SWRevealViewController!, willMoveTo position: FrontViewPosition) {
+        if position == FrontViewPosition.left {
+            self.tableView.isScrollEnabled = true
             
             for view in self.tableView.subviews {
-                view.userInteractionEnabled = true
+                view.isUserInteractionEnabled = true
             }
         }
-        else if position == FrontViewPosition.Right {
-            self.tableView.scrollEnabled = false
+        else if position == FrontViewPosition.right {
+            self.tableView.isScrollEnabled = false
             
             for view in self.tableView.subviews {
-                view.userInteractionEnabled = false
+                view.isUserInteractionEnabled = false
             }
         }
     }
@@ -142,26 +142,26 @@ class MyCoursesTableViewController: UITableViewController, SWRevealViewControlle
 
 //table view extension
 extension MyCoursesTableViewController {
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return courses.count
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(Constants.myCoursesReuseId, forIndexPath: indexPath) as! MyCoursesTableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.myCoursesReuseId, for: indexPath) as! MyCoursesTableViewCell
         
         cell.course = courses[indexPath.row]
 
         return cell
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "CourseDetailSegue" {
             if let cell = sender as? MyCoursesTableViewCell {
-                let toVC = segue.destinationViewController as! CourseViewController
+                let toVC = segue.destination as! CourseViewController
                 toVC.course = cell.course
             }
         }

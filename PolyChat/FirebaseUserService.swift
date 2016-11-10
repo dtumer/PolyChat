@@ -12,8 +12,8 @@ class FirebaseUserService: FirebaseDatabaseService, UserServiceProtocol {
     let DOMAIN = "FirebaseUserService::"
     
     // Gets a user from the database given their UID. Passes an NSError with code 0 if user is not found
-    func getUser(uid: String, callback: (User?, NSError?) -> ()) {
-        dbRef.child(Constants.usersDBKey).child(uid).observeSingleEventOfType(.Value, withBlock: { snapshot in
+    func getUser(_ uid: String, callback: @escaping (User?, NSError?) -> ()) {
+        dbRef.child(Constants.usersDBKey).child(uid).observeSingleEvent(of: .value, with: { snapshot in
             if let value = snapshot.value as? NSMutableDictionary{
                 //add uid to dictionary
                 value["id"] = uid
@@ -27,8 +27,8 @@ class FirebaseUserService: FirebaseDatabaseService, UserServiceProtocol {
     }
     
     // Gets all the users from the database
-    func getAllUsers(callback: ([User]?, NSError?) -> ()) {
-        dbRef.child(Constants.usersDBKey).observeSingleEventOfType(.Value, withBlock: { snapshot in
+    func getAllUsers(_ callback: @escaping ([User]?, NSError?) -> ()) {
+        dbRef.child(Constants.usersDBKey).observeSingleEvent(of: .value, with: { snapshot in
             var users: [User] = []
             
             if let usersDict = snapshot.value as? NSDictionary {
@@ -51,7 +51,7 @@ class FirebaseUserService: FirebaseDatabaseService, UserServiceProtocol {
     }
     
     // Inserts a user into the database with the given UID
-    func putUser(uid: String?, user: User, callback: (NSError?) -> ()) {
+    func putUser(_ uid: String?, user: User, callback: @escaping (NSError?) -> ()) {
         if let userId = uid {
             let childVals = [
                 "\(Constants.usersDBKey)/\(userId)": user.toDictionary(),
@@ -60,7 +60,7 @@ class FirebaseUserService: FirebaseDatabaseService, UserServiceProtocol {
             //insert user into the database
             self.dbRef.updateChildValues(childVals, withCompletionBlock: { (error, ref) in
                 if let error = error {
-                    callback(error)
+                    callback(error as NSError?)
                     return
                 }
                 
@@ -76,11 +76,11 @@ class FirebaseUserService: FirebaseDatabaseService, UserServiceProtocol {
 
 /* COMPOSITE FUNCTIONS */
 extension FirebaseUserService {
-    func getAllUsersInACourse(courseId: String, userId: String, callback: ([User]?, NSError?) -> ()) {
+    func getAllUsersInACourse(_ courseId: String, userId: String, callback: @escaping ([User]?, NSError?) -> ()) {
         var users: [User] = []
         var numUsers = 0
         
-        let handle = dbRef.child(Constants.coursesUsersDBKey).child(courseId).observeEventType(.Value, withBlock: { snapshot in
+        let handle = dbRef.child(Constants.coursesUsersDBKey).child(courseId).observe(.value, with: { snapshot in
             if let userIds = snapshot.value as? NSArray {
                 for uid in userIds {
                     if let uid = uid as? String {

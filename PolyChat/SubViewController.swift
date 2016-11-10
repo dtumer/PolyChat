@@ -23,56 +23,56 @@ class SubViewController: UIViewController {
 
         //initialize chat view first
         self.currentSegueIdentifier = SubViewController.chatSegueId
-        self.performSegueWithIdentifier(self.currentSegueIdentifier, sender: self)
+        self.performSegue(withIdentifier: self.currentSegueIdentifier, sender: self)
     }
     
     // Changes the current sub view to the one specified by the title
-    func changeSubView(subViewTitle: String) {
+    func changeSubView(_ subViewTitle: String) {
         self.currentSegueIdentifier = "\(subViewTitle)Segue"
-        self.performSegueWithIdentifier(self.currentSegueIdentifier, sender: nil)
+        self.performSegue(withIdentifier: self.currentSegueIdentifier, sender: nil)
     }
     
     // Setup the subview as we transition from one view to another
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         setCourse(segue)
         
         if self.childViewControllers.count > 0 {
-            presentChildViewController(self.childViewControllers[0], toVC: segue.destinationViewController, isSwap: true)
+            presentChildViewController(self.childViewControllers[0], toVC: segue.destination, isSwap: true)
         }
         else {
-            presentChildViewController(nil, toVC: segue.destinationViewController, isSwap: false)
+            presentChildViewController(nil, toVC: segue.destination, isSwap: false)
         }
     }
     
     //sets the course object on the respective view controller
-    private func setCourse(segue: UIStoryboardSegue) {
+    fileprivate func setCourse(_ segue: UIStoryboardSegue) {
         //if the destination is the chat view
-        if let vc = segue.destinationViewController as? ChatTableViewController {
+        if let vc = segue.destination as? ChatTableViewController {
             vc.course = self.course
         }
         //if on the members tab
-        if let vc = segue.destinationViewController as? MembersTableViewController {
+        if let vc = segue.destination as? MembersTableViewController {
             vc.course = self.course
         }
         //if on group tab
         //if on settings tab
     }
     
-    private func presentChildViewController(fromVC: UIViewController?, toVC: UIViewController, isSwap: Bool) {
-        toVC.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)
+    fileprivate func presentChildViewController(_ fromVC: UIViewController?, toVC: UIViewController, isSwap: Bool) {
+        toVC.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
         
         if isSwap {
-            fromVC!.willMoveToParentViewController(nil)
+            fromVC!.willMove(toParentViewController: nil)
             self.addChildViewController(toVC)
-            self.transitionFromViewController(fromVC!, toViewController: toVC, duration: 0.25, options: .TransitionCrossDissolve, animations: nil, completion: { (finished) in
+            self.transition(from: fromVC!, to: toVC, duration: 0.25, options: .transitionCrossDissolve, animations: nil, completion: { (finished) in
                 fromVC!.removeFromParentViewController()
-                toVC.didMoveToParentViewController(self)
+                toVC.didMove(toParentViewController: self)
             })
         }
         else {
             self.addChildViewController(toVC)
             self.view.addSubview(toVC.view)
-            toVC.didMoveToParentViewController(self)
+            toVC.didMove(toParentViewController: self)
         }
     }
 }

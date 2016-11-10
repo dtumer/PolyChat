@@ -46,29 +46,29 @@ class CourseViewController: UIViewController, UICollectionViewDelegate, UICollec
         layout.minimumLineSpacing = 0.0
         self.menuCollectionView.collectionViewLayout = layout
         
-        self.menuCollectionView.selectItemAtIndexPath(NSIndexPath(forRow: 0, inSection: 0), animated: true, scrollPosition: .Left)
+        self.menuCollectionView.selectItem(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .left)
     }
     
     //sets up the navigation bar
-    private func setupNavBar() {
-        let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(CourseViewController.createMessagePressed))
+    fileprivate func setupNavBar() {
+        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(CourseViewController.createMessagePressed))
         self.navigationItem.rightBarButtonItem = addButton
-        self.navigationItem.rightBarButtonItem?.tintColor = UIColor.whiteColor()
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationItem.rightBarButtonItem?.tintColor = UIColor.white
+        self.navigationController?.navigationBar.tintColor = UIColor.white
     }
     
     //action for when the create message button is pressed
-    func createMessagePressed(sender: AnyObject?) {
-        self.performSegueWithIdentifier(Constants.createChatSegueId, sender: self)
+    func createMessagePressed(_ sender: AnyObject?) {
+        self.performSegue(withIdentifier: Constants.createChatSegueId, sender: self)
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == CourseViewController.subViewEmbedSegueId {
-            self.subViewController = segue.destinationViewController as! SubViewController
+            self.subViewController = segue.destination as! SubViewController
             self.subViewController.course = self.course
         }
         else if segue.identifier == Constants.createChatSegueId {
-            if let vc = segue.destinationViewController as? UINavigationController {
+            if let vc = segue.destination as? UINavigationController {
                 let subVCS = vc.viewControllers
                 
                 if subVCS.count > 0 {
@@ -83,32 +83,32 @@ class CourseViewController: UIViewController, UICollectionViewDelegate, UICollec
 
 //extension on the course view controller for the collection view menu
 extension CourseViewController {
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.menuItems.count
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSize(width: UIScreen.mainScreen().bounds.width / CGFloat(self.menuItems.count), height: 50.0)
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
+        return CGSize(width: UIScreen.main.bounds.width / CGFloat(self.menuItems.count), height: 50.0)
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Constants.menuReuseId, forIndexPath: indexPath) as! MenuCollectionViewCell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.menuReuseId, for: indexPath) as! MenuCollectionViewCell
         
         cell.itemTitleLabel.text = menuItems[indexPath.row]
         
         //set up border for cells
-        cell.layer.borderColor = UIColor(red: 3/255, green: 86/255, blue: 66/255, alpha: 1).CGColor
+        cell.layer.borderColor = UIColor(red: 3/255, green: 86/255, blue: 66/255, alpha: 1).cgColor
         cell.layer.borderWidth = 1.0
         
         return cell
     }
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        _ = collectionView.dequeueReusableCellWithReuseIdentifier(Constants.menuReuseId, forIndexPath: indexPath) as! MenuCollectionViewCell
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        _ = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.menuReuseId, for: indexPath) as! MenuCollectionViewCell
         
         self.subViewController.changeSubView(self.menuItems[indexPath.row])
     }
@@ -119,9 +119,9 @@ class MenuCollectionViewCell: UICollectionViewCell {
     let selectedColor = UIColor(red: 6/255, green: 86/255, blue: 66/255, alpha: 1)
     @IBOutlet weak var itemTitleLabel: UILabel!
     
-    override var selected: Bool {
+    override var isSelected: Bool {
         didSet {
-            self.contentView.backgroundColor = selected ? selectedColor : nil
+            self.contentView.backgroundColor = isSelected ? selectedColor : nil
         }
     }
 }

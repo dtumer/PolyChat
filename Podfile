@@ -1,6 +1,5 @@
 # Uncomment this line to define a global platform for your project
-# platform :ios, '9.0'
-
+platform :ios, '9.0'
 use_frameworks!
 
 #pod definitions
@@ -8,10 +7,9 @@ def pods
     firebase
     
     pod 'JSQMessagesViewController'
-    pod 'XCGLogger', '~> 3.3'
     pod 'KTCenterFlowLayout'
     pod 'SwiftKeychainWrapper'
-    pod 'CryptoSwift', :git => "https://github.com/krzyzanowskim/CryptoSwift", :branch => "swift2"
+    pod 'CryptoSwift'
 end
 #loads all firebase pods
 def firebase

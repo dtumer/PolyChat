@@ -32,7 +32,7 @@ class ChatRoomViewController: JSQMessagesViewController {
     var incomingBubbleImageView: JSQMessagesBubbleImage!
     
     //app cert
-    let appCert: [UInt8] = GlobalUtilities.hexToByteArray(KeychainWrapper.defaultKeychainWrapper().stringForKey(Constants.APP_CERT_KEY)!)
+    let appCert: [UInt8] = GlobalUtilities.hexToByteArray(KeychainWrapper.standard.string(forKey: Constants.APP_CERT_KEY)!)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,12 +43,12 @@ class ChatRoomViewController: JSQMessagesViewController {
         setupAvatarViewSize()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         //check if a user is logged in
         if !authService.hasOpenSession() {
-            self.performSegueWithIdentifier(Constants.loginSegueId, sender: self)
+            self.performSegue(withIdentifier: Constants.loginSegueId, sender: self)
         }
         else {
             //get logged in user information
@@ -67,29 +67,29 @@ class ChatRoomViewController: JSQMessagesViewController {
     }
     
     //initializes services needed
-    private func initServices() {
+    fileprivate func initServices() {
         self.authService = AuthServiceFactory.sharedInstance
         self.userService = UserServiceFactory.sharedInstance
         self.messageService = MessageServiceFactory.sharedInstance
     }
 
     //initializes navigation bar
-    private func initNavigation() {
+    fileprivate func initNavigation() {
         //sets title to chat room name
         self.navigationItem.title = chatRoom.name
     }
     
     // Sets up the message bubbles
-    private func setupBubbles() {
+    fileprivate func setupBubbles() {
         let factory = JSQMessagesBubbleImageFactory()
-        outgoingBubbleImageView = factory.outgoingMessagesBubbleImageWithColor(UIColor.jsq_messageBubbleBlueColor())
-        incomingBubbleImageView = factory.incomingMessagesBubbleImageWithColor(UIColor.jsq_messageBubbleLightGrayColor())
+        outgoingBubbleImageView = factory?.outgoingMessagesBubbleImage(with: UIColor.jsq_messageBubbleBlue())
+        incomingBubbleImageView = factory?.incomingMessagesBubbleImage(with: UIColor.jsq_messageBubbleLightGray())
     }
     
-    private func setupAvatarViewSize() {
+    fileprivate func setupAvatarViewSize() {
         // TODO: add support for avatars
-        collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSizeZero
-        collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSizeZero
+        collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
+        collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
     }
     
     func loadMessages() {
@@ -101,10 +101,10 @@ class ChatRoomViewController: JSQMessagesViewController {
                 for message in messages {
                     do {
                         let iv = GlobalUtilities.hexToByteArray(message.stamp)
-                        let body = try String(data: NSData.withBytes(AES(key: self.appCert, iv: iv, blockMode: .CBC, padding: PKCS7()).decrypt(GlobalUtilities.hexToByteArray(message.body))), encoding: NSUTF8StringEncoding)
+                        let body = try String(data: Data(AES(key: self.appCert, iv: iv, blockMode: .CBC, padding: PKCS7()).decrypt(GlobalUtilities.hexToByteArray(message.body))), encoding: String.Encoding.utf8)
                         let msg = JSQMessage(senderId: message.senderId, senderDisplayName: message.senderName,
-                            date: NSDate(timeIntervalSince1970: message.messageSent), text: body)
-                        self.messages.append(msg)
+                            date: Date(timeIntervalSince1970: message.messageSent), text: body)
+                        self.messages.append(msg!)
                         self.finishReceivingMessage()
                     }
                     catch {
@@ -119,16 +119,16 @@ class ChatRoomViewController: JSQMessagesViewController {
         })
     }
     
-    func addMessage(text: String) {
+    func addMessage(_ text: String) {
         let message = JSQMessage(senderId: senderId, displayName: senderDisplayName, text: text)
-        messages.append(message)
+        messages.append(message!)
     }
     
-    override func didPressSendButton(button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: NSDate!) {
+    override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
         do {
             let iv = AES.randomIV(AES.blockSize)
-            let stamp = NSData.withBytes(iv).toHexString()
-            let body = try NSData.withBytes(AES(key: appCert, iv: iv, blockMode: .CBC, padding: PKCS7()).encrypt(text.utf8.map({$0}))).toHexString()
+            let stamp = Data(iv).toHexString()
+            let body = try Data(AES(key: appCert, iv: iv, blockMode: .CBC, padding: PKCS7()).encrypt(text.utf8.map({$0}))).toHexString()
             let message = Message(dictionary:[
                 "body": body,
                 "sender_id": senderId,
@@ -155,15 +155,15 @@ class ChatRoomViewController: JSQMessagesViewController {
 // Delegate/DataSource Methods
 extension ChatRoomViewController {
     
-    override func collectionView(collectionView: JSQMessagesCollectionView!, messageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageData! {
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageDataForItemAt indexPath: IndexPath!) -> JSQMessageData! {
         return messages[indexPath.item]
     }
     
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return messages.count
     }
     
-    override func collectionView(collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageBubbleImageDataSource! {
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAt indexPath: IndexPath!) -> JSQMessageBubbleImageDataSource! {
         let message = messages[indexPath.item]
         // TODO: this checks who the message is sent by and returns the correct message bubble
         if message.senderId == senderId {
@@ -173,21 +173,21 @@ extension ChatRoomViewController {
         }
     }
     
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = super.collectionView(collectionView, cellForItemAtIndexPath: indexPath) as! JSQMessagesCollectionViewCell
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! JSQMessagesCollectionViewCell
         let message = messages[indexPath.item]
         
         if message.senderId == senderId {
-            cell.textView!.textColor = UIColor.whiteColor()
+            cell.textView!.textColor = UIColor.white
         } else {
-            cell.textView!.textColor = UIColor.blackColor()
+            cell.textView!.textColor = UIColor.black
         }
         
         return cell
     }
     
     // For the display name of messages
-    override func collectionView(collectionView: JSQMessagesCollectionView?, attributedTextForMessageBubbleTopLabelAtIndexPath indexPath: NSIndexPath!) -> NSAttributedString! {
+    override func collectionView(_ collectionView: JSQMessagesCollectionView?, attributedTextForMessageBubbleTopLabelAt indexPath: IndexPath!) -> NSAttributedString! {
         let message = messages[indexPath.item]
         
         guard let senderDisplayName = message.senderDisplayName else {
@@ -197,11 +197,11 @@ extension ChatRoomViewController {
         return NSAttributedString(string: senderDisplayName)
     }
     
-    override func collectionView(collectionView: JSQMessagesCollectionView!, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout!, heightForMessageBubbleTopLabelAtIndexPath indexPath: NSIndexPath!) -> CGFloat {
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout!, heightForMessageBubbleTopLabelAt indexPath: IndexPath!) -> CGFloat {
         return 13 //or what ever height you want to give
     }
     
-    override func collectionView(collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageAvatarImageDataSource! {
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAt indexPath: IndexPath!) -> JSQMessageAvatarImageDataSource! {
         // TODO: Add support for avatars here
         return nil
     }

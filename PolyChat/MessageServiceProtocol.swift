@@ -15,7 +15,7 @@ protocol MessageServiceProtocol {
      * @param messageId - The ID of the message to get
      * @param callback  - The callback function. Called with the message or an error if there is one
      */
-    func getMessage(messageId: String, callback: (Message?, NSError?) -> ())
+    func getMessage(_ messageId: String, callback: @escaping (Message?, NSError?) -> ())
     
     /*
      * Add message to MESSAGES table
@@ -23,7 +23,7 @@ protocol MessageServiceProtocol {
      * @param message
      * @param callback  - The callback function. Called with the key of the message or an error if there is one
      */
-    func addMessage(message: Message, callback: (String?, NSError?) -> ())
+    func addMessage(_ message: Message, callback: @escaping (String?, NSError?) -> ())
     
     
     /*
@@ -38,7 +38,7 @@ protocol MessageServiceProtocol {
      * @param chatRoomId    - The ID of the chat room to get messages from
      * @param callback      - The callback function. Called with the messages or an error if there is one
      */
-    func getMessagesInChatRoom(chatRoomId: String, callback: ([Message]?, NSError?) -> ())
+    func getMessagesInChatRoom(_ chatRoomId: String, callback: @escaping ([Message]?, NSError?) -> ())
     
     /*
      * Adds a message to the chat room
@@ -47,5 +47,5 @@ protocol MessageServiceProtocol {
      * @param message       - The message object of the message to be added
      * @param callback      - The callback function. Called with and error if there is one
      */
-    func addMessageToChatRoom(chatRoomId: String, message: Message, callback: (NSError?) -> ())
+    func addMessageToChatRoom(_ chatRoomId: String, message: Message, callback: @escaping (NSError?) -> ())
 }

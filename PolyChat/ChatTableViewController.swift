@@ -35,13 +35,13 @@ class ChatTableViewController: UITableViewController {
         initServices()
         
         refreshControl = UIRefreshControl()
-        refreshControl?.addTarget(self, action: #selector(refresh), forControlEvents: .ValueChanged)
+        refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
         self.tableView.addSubview(refreshControl!)
         
         //check if a user is logged in
         if !authService.hasOpenSession() {
             loggedInFlag = false
-            self.performSegueWithIdentifier(Constants.loginSegueId, sender: self)
+            self.performSegue(withIdentifier: Constants.loginSegueId, sender: self)
         } else {
             // get currently logged in user
             loggedInFlag = true
@@ -59,17 +59,17 @@ class ChatTableViewController: UITableViewController {
         
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         // check if a user is logged in
         if !loggedInFlag {
-            self.performSegueWithIdentifier(Constants.loginSegueId, sender: self)
+            self.performSegue(withIdentifier: Constants.loginSegueId, sender: self)
         }
     }
     
     //initializes services needed
-    private func initServices() {
+    fileprivate func initServices() {
         self.authService = AuthServiceFactory.sharedInstance
         self.chatRoomService = ChatRoomServiceFactory.sharedInstance
     }
@@ -80,7 +80,7 @@ class ChatTableViewController: UITableViewController {
     }
     
     //loads all the chat rooms that a user is in
-    func loadChatRooms(userId: String) {
+    func loadChatRooms(_ userId: String) {
         //init chat rooms
         self.chatRooms = []
         self.tableView.reloadData()
@@ -98,9 +98,9 @@ class ChatTableViewController: UITableViewController {
         })
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Constants.chatRoomDetailsSegueId {
-            let vc = segue.destinationViewController as! ChatRoomViewController
+            let vc = segue.destination as! ChatRoomViewController
             vc.chatRoom = selectedChatRoom
             vc.senderId = user.id as String
             vc.senderDisplayName = user.name
@@ -109,22 +109,22 @@ class ChatTableViewController: UITableViewController {
 }
 
 extension ChatTableViewController {
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return chatRooms.count
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(Constants.chatCellReuseId, forIndexPath: indexPath) as! ChatTableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.chatCellReuseId, for: indexPath) as! ChatTableViewCell
         cell.chatRoom = self.chatRooms[indexPath.row]
         return cell
     }
 
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedChatRoom = chatRooms[indexPath.row]
-        performSegueWithIdentifier(Constants.chatRoomDetailsSegueId, sender: self)
+        performSegue(withIdentifier: Constants.chatRoomDetailsSegueId, sender: self)
     }
 }

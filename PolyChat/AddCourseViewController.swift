@@ -35,14 +35,14 @@ class AddCourseViewController: UIViewController, UITextFieldDelegate {
     }
     */
     
-    @IBAction func donePressed(sender: UIBarButtonItem) {
+    @IBAction func donePressed(_ sender: UIBarButtonItem) {
         // TODO: Load course into Firebase
         let courseName = courseNameTextField.text!
         let courseDict = ["name" : courseName]
-        let course = Course(dictionary: courseDict)
+        let course = Course(dictionary: courseDict as NSDictionary)
         
         if !isValidCourseName(courseName) {
-            courseService.addCourse(course, callback: { (string, error) in
+            courseService?.addCourse(course, callback: { (string, error) in
                 if let error = error {
                     print(error)
                 } else {
@@ -52,18 +52,18 @@ class AddCourseViewController: UIViewController, UITextFieldDelegate {
             })
         }
         
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func cancelPressed(sender: UIBarButtonItem) {
-        dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func cancelPressed(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
     }
     
-    func isValidCourseName(str: String) -> Bool {
+    func isValidCourseName(_ str: String) -> Bool {
         if(str.isEmpty) {
             return true
         }
-        return (str.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()) == "")
+        return (str.trimmingCharacters(in: CharacterSet.whitespaces) == "")
     }
 
 }

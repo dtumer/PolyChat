@@ -17,7 +17,7 @@ protocol UsersChatRoomsServiceProtocol {
      * @param chatRoomId    - The ID of the chat room to add the specified user to
      * @param callback      - The callback function. Called with an error if there is one
      */
-    func addUserChatRoomReference(userId: String, chatRoomId: String, callback: (NSError?) -> ())
+    func addUserChatRoomReference(_ userId: String, chatRoomId: String, callback: @escaping (NSError?) -> ())
     
     /*
      * Removes a reference in USERS_CHATROOMS table that links the specified user to the specified chat room
@@ -28,5 +28,5 @@ protocol UsersChatRoomsServiceProtocol {
      *
      * NOTE: MAKE SURE TO CALL SUBSEQUENT FUNCTION IN ChatRoomsUsersService AS WELL
      */
-    func removeUserChatRoomReference(userId: String, chatRoomId: String, callback: (NSError?) -> ())
+    func removeUserChatRoomReference(_ userId: String, chatRoomId: String, callback: @escaping (NSError?) -> ())
 }

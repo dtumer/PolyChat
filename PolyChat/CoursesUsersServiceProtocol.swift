@@ -11,5 +11,5 @@ import Foundation
 protocol CoursesUsersServiceProtocol {
     //adds a user to a course
     //TODO change the name of this function and implement it
-    func enrollUserInCourse(courseId: String, userId: String, callback: (NSError?) -> ())
+    func enrollUserInCourse(_ courseId: String, userId: String, callback: @escaping (NSError?) -> ())
 }

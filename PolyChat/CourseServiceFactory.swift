@@ -15,7 +15,7 @@ class CourseServiceFactory {
         return Singleton.instance
     }
     
-    private class func getCourseService(serviceKey: String) -> CourseServiceProtocol {
+    fileprivate class func getCourseService(_ serviceKey: String) -> CourseServiceProtocol {
         switch serviceKey {
         case Constants.FIREBASE_SERVICE_KEY:
             return FirebaseCourseService()

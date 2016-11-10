@@ -12,7 +12,7 @@ class FirebaseUsersChatRoomsService: FirebaseDatabaseService, UsersChatRoomsServ
     let DOMAIN = "FirebaseUsersChatRoomServices::"
     
     //add chat room reference in the USERS_CHATROOMS table
-    func addUserChatRoomReference(userId: String, chatRoomId: String, callback: (NSError?) -> ()) {
+    func addUserChatRoomReference(_ userId: String, chatRoomId: String, callback: @escaping (NSError?) -> ()) {
         self.getChatRoomIds(userId, callback: { (chatrooms, error) in
             var ids: [String] = []
             
@@ -34,7 +34,7 @@ class FirebaseUsersChatRoomsService: FirebaseDatabaseService, UsersChatRoomsServ
             
             self.dbRef.updateChildValues(childUpdates, withCompletionBlock: { (error, ref) in
                 if let error = error {
-                    callback(error)
+                    callback(error as NSError?)
                 }
                 else {
                     callback(nil)
@@ -44,7 +44,7 @@ class FirebaseUsersChatRoomsService: FirebaseDatabaseService, UsersChatRoomsServ
     }
     
     //removes chat room reference in the USERS_CHATROOMS table
-    func removeUserChatRoomReference(userId: String, chatRoomId: String, callback: (NSError?) -> ()) {
+    func removeUserChatRoomReference(_ userId: String, chatRoomId: String, callback: @escaping (NSError?) -> ()) {
         
     }
     
@@ -93,8 +93,8 @@ class FirebaseUsersChatRoomsService: FirebaseDatabaseService, UsersChatRoomsServ
 //    }
     
     //gets list of chat room ids
-    func getChatRoomIds(userId: String, callback: ([String]?, NSError?) -> ()) {
-        dbRef.child(Constants.usersChatRoomsDBKey).child(userId).observeSingleEventOfType(.Value, withBlock: { snapshot in
+    func getChatRoomIds(_ userId: String, callback: @escaping ([String]?, NSError?) -> ()) {
+        dbRef.child(Constants.usersChatRoomsDBKey).child(userId).observeSingleEvent(of: .value, with: { snapshot in
             if let val = snapshot.value as? [String] {
                 callback(val, nil)
             }

@@ -30,24 +30,24 @@ class MembersTableViewController: UITableViewController {
         
         //sets up refresh control
         refreshControl = UIRefreshControl()
-        refreshControl?.addTarget(self, action: #selector(refresh), forControlEvents: .ValueChanged)
+        refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
         self.tableView.addSubview(refreshControl!)
     }
     
     //initializes service that will be needed by this controller
-    private func initServices() {
+    fileprivate func initServices() {
         self.authService = AuthServiceFactory.sharedInstance
         self.userService = UserServiceFactory.sharedInstance
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         self.users = []
         
         //check if a user is logged in
         if !authService.hasOpenSession() {
-            self.performSegueWithIdentifier(Constants.loginSegueId, sender: self)
+            self.performSegue(withIdentifier: Constants.loginSegueId, sender: self)
         } else {
             // get currently logged in user
             authService.getCurrentUser({ user, error in
@@ -62,7 +62,7 @@ class MembersTableViewController: UITableViewController {
     }
     
     //loads all the users in this course
-    func loadUsers(courseId: String) {        
+    func loadUsers(_ courseId: String) {        
         userService.getAllUsersInACourse(courseId, userId: "", callback: { (users, error) in
             if let users = users {
                 self.users = users
@@ -84,16 +84,16 @@ class MembersTableViewController: UITableViewController {
 
 //table view extension
 extension MembersTableViewController {
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.users.count
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(Constants.usersReuseId, forIndexPath: indexPath) as! MembersTableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.usersReuseId, for: indexPath) as! MembersTableViewCell
 
         cell.user = users[indexPath.row]
 

@@ -26,10 +26,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         // Retrieve Auth Service
         self.authService = AuthServiceFactory.sharedInstance
         
-        errorLabel.hidden = true
+        errorLabel.isHidden = true
     }
     
-    @IBAction func loginPressed(sender: UIButton) {
+    @IBAction func loginPressed(_ sender: UIButton) {
         if (isValidEmail(emailTextField.text!) && isValidPassword(passwordTextField.text!)) {
             authService?.loginUser("\(emailTextField.text!)@calpoly.edu", passHash: passwordTextField.text!, callback: { (error) in
                 if error != nil { //error when logging in user
@@ -38,7 +38,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 }
                 else {
                     self.correctInput()
-                    self.dismissViewControllerAnimated(true, completion: nil)
+                    self.dismiss(animated: true, completion: nil)
                     
                     return
                 }
@@ -50,13 +50,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     // MARK: UITextFieldDelegate Methods
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
 
     //checks for valid email
-    func isValidEmail(email: String) -> Bool {
+    func isValidEmail(_ email: String) -> Bool {
         if (!email.isEmpty && ValidationService.isValidEmail(email)) {
             return true
         }
@@ -65,24 +65,24 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     //checks for valid password
-    func isValidPassword(password: String) -> Bool {
+    func isValidPassword(_ password: String) -> Bool {
         return password.characters.count >= 8
     }
     
     //sets ui for incorrect input
     func incorrectInput() {
-        self.errorLabel.hidden = false
+        self.errorLabel.isHidden = false
         
-        self.emailView.layer.borderColor = UIColor.redColor().CGColor
+        self.emailView.layer.borderColor = UIColor.red.cgColor
         self.emailView.layer.borderWidth = 1.0
         
-        self.passwordView.layer.borderColor = UIColor.redColor().CGColor
+        self.passwordView.layer.borderColor = UIColor.red.cgColor
         self.passwordView.layer.borderWidth = 1.0
     }
     
     //sets ui for correct input
     func correctInput() {
-        self.errorLabel.hidden = true
+        self.errorLabel.isHidden = true
         
         self.emailView.layer.borderWidth = 0.0
         

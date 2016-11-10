@@ -15,7 +15,7 @@ class GroupServiceFactory {
         return Singleton.instance
     }
     
-    private class func getGroupService(serviceKey: String) -> GroupServiceProtocol {
+    fileprivate class func getGroupService(_ serviceKey: String) -> GroupServiceProtocol {
         switch serviceKey {
         case Constants.FIREBASE_SERVICE_KEY:
             return FirebaseGroupService()

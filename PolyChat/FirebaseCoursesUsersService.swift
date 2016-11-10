@@ -12,7 +12,7 @@ class FirebaseCoursesUsersService: FirebaseDatabaseService, CoursesUsersServiceP
     let DOMAIN = "FirebaseCoursesUsersService::"
     
     //enroll a user in a course
-    func enrollUserInCourse(courseId: String, userId: String, callback: (NSError?) -> ()) {
+    func enrollUserInCourse(_ courseId: String, userId: String, callback: @escaping (NSError?) -> ()) {
         
     }
 }

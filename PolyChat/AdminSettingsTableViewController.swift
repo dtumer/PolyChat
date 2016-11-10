@@ -18,7 +18,7 @@ class AdminSettingsTableViewController: UITableViewController {
         
         //if there's no open session
         if !self.authService.hasOpenSession() {
-            self.performSegueWithIdentifier(Constants.loginSegueId, sender: self)
+            self.performSegue(withIdentifier: Constants.loginSegueId, sender: self)
         }
         
         //setupNavBar()
@@ -33,7 +33,7 @@ class AdminSettingsTableViewController: UITableViewController {
 /* Table View Controller functions */
 extension AdminSettingsTableViewController {
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
 

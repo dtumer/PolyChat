@@ -26,21 +26,21 @@ class SettingsViewController: UIViewController, SWRevealViewControllerDelegate {
         initServices()
         notificationsSwitch.addTarget(self,
                                       action: #selector(SettingsViewController.notificationsStateChanged(_:)),
-                                      forControlEvents: UIControlEvents.ValueChanged)
+                                      for: UIControlEvents.valueChanged)
         anonymousSwitch.addTarget(self,
                                       action: #selector(SettingsViewController.anonymousStateChanged(_:)),
-                                      forControlEvents: UIControlEvents.ValueChanged)
+                                      for: UIControlEvents.valueChanged)
         //makes sure there's no weird grayness happening in the nav bar
-        self.navigationController?.navigationBar.translucent = false
+        self.navigationController?.navigationBar.isTranslucent = false
     }
     
     //on view did appear
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         //check if a user is logged in
         if !authService.hasOpenSession() {
-            self.performSegueWithIdentifier(Constants.loginSegueId, sender: self)
+            self.performSegue(withIdentifier: Constants.loginSegueId, sender: self)
         }
         else {
             //get logged in user information
@@ -58,19 +58,19 @@ class SettingsViewController: UIViewController, SWRevealViewControllerDelegate {
         }
     }
     
-    @IBAction func logoutUser(sender: AnyObject) {
+    @IBAction func logoutUser(_ sender: AnyObject) {
         self.authService.logout()
         
-        self.performSegueWithIdentifier(Constants.loginSegueId, sender: self)
+        self.performSegue(withIdentifier: Constants.loginSegueId, sender: self)
     }
     
     //initializes all services needed by this controller
-    private func initServices() {
+    fileprivate func initServices() {
         self.authService = AuthServiceFactory.sharedInstance
     }
     
     //initializes the slide out menu
-    private func initMenu() {
+    fileprivate func initMenu() {
         if (self.revealViewController() != nil) {
             menuButton.target = self.revealViewController()
             menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
@@ -82,31 +82,31 @@ class SettingsViewController: UIViewController, SWRevealViewControllerDelegate {
     }
     
     // For disabling interaction with the front view while the slide out menu is visible
-    func revealController(revealController: SWRevealViewController!, willMoveToPosition position: FrontViewPosition) {
-        if position == FrontViewPosition.Left {
+    func revealController(_ revealController: SWRevealViewController!, willMoveTo position: FrontViewPosition) {
+        if position == FrontViewPosition.left {
             for view in self.view.subviews {
-                view.userInteractionEnabled = true
+                view.isUserInteractionEnabled = true
             }
         }
-        else if position == FrontViewPosition.Right {
+        else if position == FrontViewPosition.right {
             for view in self.view.subviews {
-                view.userInteractionEnabled = false
+                view.isUserInteractionEnabled = false
             }
         }
     }
 
-    func notificationsStateChanged(switchState: UISwitch) {
+    func notificationsStateChanged(_ switchState: UISwitch) {
         // TODO: implement notifications
-        if switchState.on {
+        if switchState.isOn {
             print("Notifications Enabled")
         } else {
             print("Notifications Disabled")
         }
     }
     
-    func anonymousStateChanged(switchState: UISwitch) {
+    func anonymousStateChanged(_ switchState: UISwitch) {
         // TODO: implement notifications
-        if switchState.on {
+        if switchState.isOn {
             print("Anonymous Enabled")
         } else {
             print("Anonymous Disabled")

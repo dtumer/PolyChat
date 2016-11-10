@@ -14,14 +14,14 @@ class FirebaseDatabaseService {
     var handles: [UInt] = []
     
     /* Gets the next ID in the given firebase table */ 
-    func getAutoId(tableKey: String) -> String {
+    func getAutoId(_ tableKey: String) -> String {
         return dbRef.child(tableKey).childByAutoId().key
     }
     
     //Closes all handles that are open
     func closeAllHandles() {
         for handle in handles {
-            dbRef.removeObserverWithHandle(handle)
+            dbRef.removeObserver(withHandle: handle)
         }
     }
 }

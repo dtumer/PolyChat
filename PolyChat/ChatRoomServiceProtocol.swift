@@ -15,7 +15,7 @@ protocol ChatRoomServiceProtocol {
      *
      * @param callback  - Callback function. Called with the list of all chat rooms or an error if there is one.
      */
-    func getAllChatRooms(callback: ([ChatRoom?], NSError?) -> ())
+    func getAllChatRooms(_ callback: @escaping ([ChatRoom?], NSError?) -> ())
     
     /*
      * Get a specific chat room
@@ -23,7 +23,7 @@ protocol ChatRoomServiceProtocol {
      * @param chatRoomId    - The ID of the chat room to get
      * @param callback      - Callback function. Called with the chat room in the database or an error if there is one.
      */
-    func getChatRoom(chatRoomId: String, callback: (ChatRoom?, NSError?) -> ())
+    func getChatRoom(_ chatRoomId: String, callback: @escaping (ChatRoom?, NSError?) -> ())
     
     /*
      * Add a chat room to the CHAT_ROOMS table
@@ -31,7 +31,7 @@ protocol ChatRoomServiceProtocol {
      * @param chatRoom  - The chat room to add to the DB
      * @param callback  - The callback function. Called with the ID of the chatroom in the DB or an error if there is one.
      */
-    func addChatRoom(chatRoom: ChatRoom, callback: (String?, NSError?) -> ())
+    func addChatRoom(_ chatRoom: ChatRoom, callback: @escaping (String?, NSError?) -> ())
 
     
     /* 
@@ -47,7 +47,7 @@ protocol ChatRoomServiceProtocol {
      * @param userId    - The user ID of the user we are finding chat rooms for
      * @param callback  - The callback function. Called with the list of chat rooms from the DB or an error if there is one
      */
-    func getChatRoomsInCourseWithUser(courseId: String, userId: String, callback: ([ChatRoom]?, NSError?) -> ())
+    func getChatRoomsInCourseWithUser(_ courseId: String, userId: String, callback: @escaping ([ChatRoom]?, NSError?) -> ())
     
     /*
      * Creates a chat room and adds it to the appropriate tables
@@ -57,5 +57,5 @@ protocol ChatRoomServiceProtocol {
      * @param chatRoom  - The chat room object to be added to the CHATROOMS table
      * @param callback  - The callback function. Called with an error if there is one.
      */
-    func createChatRoom(courseId: String, users: [User], chatRoom: ChatRoom, callback: (NSError?) -> ())
+    func createChatRoom(_ courseId: String, users: [User], chatRoom: ChatRoom, callback: @escaping (NSError?) -> ())
 }

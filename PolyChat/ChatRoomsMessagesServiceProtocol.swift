@@ -15,5 +15,5 @@ protocol ChatRoomsMessagesServiceProtocol {
      * @param chatRoomId    - The ID of the chat room to add the reference to
      * @param messageId     - The ID of the message to be added
      */
-    func addChatRoomsMessagesReference(chatRoomId: String, messageId: String, callback: (NSError?) -> ())
+    func addChatRoomsMessagesReference(chatRoomId: String, messageId: String, callback: @escaping (NSError?) -> ())
 }

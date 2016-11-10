@@ -16,5 +16,5 @@ protocol CoursesChatRoomsServiceProtocol {
      * @param chatRoom  - The chat room object to be added as a reference to the table
      * @param callback  - The callback function. Called with an error if there is one.
      */
-    func addChatRoomReference(courseId: String, chatRoom: ChatRoom, callback: (NSError?) -> ())
+    func addChatRoomReference(_ courseId: String, chatRoom: ChatRoom, callback: @escaping (NSError?) -> ())
 }

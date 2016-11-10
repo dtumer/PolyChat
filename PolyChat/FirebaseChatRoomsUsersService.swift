@@ -12,7 +12,7 @@ class FirebaseChatRoomsUsersService: FirebaseDatabaseService, ChatRoomsUsersServ
     let DOMAIN = "FirebaseChatRoomsUsersService::"
     
     //adds references to the users in the CHATROOMS_USERS table
-    func addChatRoomsUsersReference(chatRoomId: String, users: [User], callback: (NSError?) -> ()) {
+    func addChatRoomsUsersReference(_ chatRoomId: String, users: [User], callback: @escaping (NSError?) -> ()) {
         self.getUserIdsInChatRoom(chatRoomId, callback: { (userIds, error) in
             var ids: [String] = []
             
@@ -36,7 +36,7 @@ class FirebaseChatRoomsUsersService: FirebaseDatabaseService, ChatRoomsUsersServ
             
             self.dbRef.updateChildValues(childUpdates, withCompletionBlock: { (error, ref) in
                 if let error = error {
-                    callback(error)
+                    callback(error as NSError?)
                 }
                 else {
                     callback(nil)
@@ -46,8 +46,8 @@ class FirebaseChatRoomsUsersService: FirebaseDatabaseService, ChatRoomsUsersServ
     }
     
     //gets all user ids in a specified chat room
-    func getUserIdsInChatRoom(chatRoomId: String, callback: ([String]?, NSError?) -> ()) {
-        dbRef.child(Constants.chatRoomsUsersDBKey).child(chatRoomId).observeSingleEventOfType(.Value, withBlock: { snapshot in
+    func getUserIdsInChatRoom(_ chatRoomId: String, callback: @escaping ([String]?, NSError?) -> ()) {
+        dbRef.child(Constants.chatRoomsUsersDBKey).child(chatRoomId).observeSingleEvent(of: .value, with: { snapshot in
             if let val = snapshot.value as? [String] {
                 callback(val, nil)
             }

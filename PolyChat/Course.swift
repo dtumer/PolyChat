@@ -40,6 +40,6 @@ class Course {
             return false
         }
         
-        return !(self.name.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()) == "")
+        return !(self.name.trimmingCharacters(in: CharacterSet.whitespaces) == "")
     }
 }

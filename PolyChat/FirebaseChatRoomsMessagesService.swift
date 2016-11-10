@@ -12,8 +12,8 @@ class FirebaseChatRoomsMessagesService: FirebaseDatabaseService, ChatRoomsMessag
     let DOMAIN = "FirebaseChatRoomsMessagesService::"
     
     //helper function to get message ids as a list
-    private func getMessageIds(chatRoomId: String, callback: ([String]?, NSError?) -> ()) {
-        dbRef.child(Constants.chatRoomsMessagesDBKey).child(chatRoomId).observeSingleEventOfType(.Value, withBlock: { snapshot in
+    fileprivate func getMessageIds(chatRoomId: String, callback: @escaping ([String]?, NSError?) -> ()) {
+        dbRef.child(Constants.chatRoomsMessagesDBKey).child(chatRoomId).observeSingleEvent(of: .value, with: { snapshot in
             if let val = snapshot.value as? [String] {
                 callback(val, nil)
             }
@@ -27,8 +27,8 @@ class FirebaseChatRoomsMessagesService: FirebaseDatabaseService, ChatRoomsMessag
 /* COMPOSITE DATABASE FUNCTIONS */
 extension FirebaseChatRoomsMessagesService {
     //adds a message reference to a chat room
-    func addChatRoomsMessagesReference(chatRoomId: String, messageId: String, callback: (NSError?) -> ()) {
-        self.getMessageIds(chatRoomId, callback: {(messages, error) in
+    func addChatRoomsMessagesReference(chatRoomId: String, messageId: String, callback: @escaping (NSError?) -> ()) {
+        self.getMessageIds(chatRoomId: chatRoomId, callback: {(messages, error) in
             var ids: [String] = []
             
             //if there are messages already in the table
@@ -49,7 +49,7 @@ extension FirebaseChatRoomsMessagesService {
             
             self.dbRef.updateChildValues(childUpdates, withCompletionBlock: { (error, ref) in
                 if let error = error {
-                    callback(error)
+                    callback(error as NSError?)
                 }
                 else {
                     callback(nil)

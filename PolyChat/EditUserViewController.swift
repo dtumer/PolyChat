@@ -32,7 +32,7 @@ class EditUserViewController: UIViewController, UITextFieldDelegate {
         self.userCoursesEditTableView.setEditing(true, animated: true)
     }
     
-    private func setUserTextFields() {
+    fileprivate func setUserTextFields() {
         emailLabel.text = user.email
         nameTextField.text = user.name
         roleTextField.text = user.role.description
@@ -41,7 +41,7 @@ class EditUserViewController: UIViewController, UITextFieldDelegate {
     }
     
     // Update the user from the text fields when save button is pressed
-    @IBAction func savePressed(sender: UIBarButtonItem) {
+    @IBAction func savePressed(_ sender: UIBarButtonItem) {
         user.name = nameTextField.text!
         if let role = Int(roleTextField.text!) {
             user.role = role
@@ -60,16 +60,16 @@ class EditUserViewController: UIViewController, UITextFieldDelegate {
             }
         })
         
-        navigationController?.popViewControllerAnimated(false)
+        navigationController?.popViewController(animated: false)
     }
     
-    @IBAction func cancelPressed(sender: UIBarButtonItem) {
-        navigationController?.popViewControllerAnimated(false)
+    @IBAction func cancelPressed(_ sender: UIBarButtonItem) {
+        navigationController?.popViewController(animated: false)
     }
     
     // UITextFieldDelegate Methods
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
@@ -78,54 +78,54 @@ class EditUserViewController: UIViewController, UITextFieldDelegate {
 
 extension EditUserViewController: UITableViewDelegate, UITableViewDataSource {
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Add one to account for add course cell
         return userCourses.count + 1
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Cell is a course if row is within the count of courses
         if indexPath.row < userCourses.count {
-            let cell = tableView.dequeueReusableCellWithIdentifier(Constants.userCourseAdminEditReuseId) as! CoursesAdminTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: Constants.userCourseAdminEditReuseId) as! CoursesAdminTableViewCell
             cell.course = userCourses[indexPath.row]
             return cell
         } else { // Otherwise, cell is an add course cell
-            let cell = tableView.dequeueReusableCellWithIdentifier(Constants.userCourseAdminAddReuseId)!
+            let cell = tableView.dequeueReusableCell(withIdentifier: Constants.userCourseAdminAddReuseId)!
             return cell
         }
     }
     
     // Support conditional editing of the table view.
-    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Both types of cells can be edited (.Insert and .Delete editing styles)
         return true
     }
     
-    func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
         // If row is a course, set style to delete
         if indexPath.row < userCourses.count {
-            return .Delete
+            return .delete
         } else { // Row is add row cell, set style to insert
-            return .Insert
+            return .insert
         }
     }
     
     // Support editing the table view.
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
             // Delete the row from the data source
-            userCourses.removeAtIndex(indexPath.row)
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
+            userCourses.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        } else if editingStyle == .insert {
             
         }
     }
     
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return Constants.userCoursesAdminSectionHeader
     }
     

@@ -13,8 +13,8 @@ class FirebaseCourseService: FirebaseDatabaseService, CourseServiceProtocol {
     let DOMAIN = "FirebaseCourseService::"
     
     //gets a course from the database
-    func getCourse(courseId: String, callback: (Course?, NSError?) -> ()) {
-        dbRef.child(Constants.coursesDBKey).child(courseId).observeSingleEventOfType(.Value, withBlock: { snapshot in
+    func getCourse(_ courseId: String, callback: @escaping (Course?, NSError?) -> ()) {
+        dbRef.child(Constants.coursesDBKey).child(courseId).observeSingleEvent(of: .value, with: { snapshot in
             if let courseDict = snapshot.value as? NSMutableDictionary {
                 courseDict["id"] = courseId
                 callback(Course(dictionary: courseDict), nil)
@@ -29,8 +29,8 @@ class FirebaseCourseService: FirebaseDatabaseService, CourseServiceProtocol {
     }
     
     //gets all the courses from the database
-    func getAllCourses(callback: ([Course]?, NSError?) -> ()) {
-        dbRef.child(Constants.coursesDBKey).observeSingleEventOfType(.Value, withBlock: { snapshot in
+    func getAllCourses(_ callback: @escaping ([Course]?, NSError?) -> ()) {
+        dbRef.child(Constants.coursesDBKey).observeSingleEvent(of: .value, with: { snapshot in
             var courses: [Course] = []
             
             if let coursesDict = snapshot.value as? NSDictionary {
@@ -55,13 +55,13 @@ class FirebaseCourseService: FirebaseDatabaseService, CourseServiceProtocol {
     }
     
     //puts a course in the database
-    func addCourse(course: Course, callback: (String?, NSError?) -> ()) {
+    func addCourse(_ course: Course, callback: @escaping (String?, NSError?) -> ()) {
         let key = getAutoId(Constants.coursesDBKey)
         let childUpdates = ["/\(Constants.coursesDBKey)/\(key)": course.toDictionary()]
         
         dbRef.updateChildValues(childUpdates, withCompletionBlock: { (error, ref) in
             if let error = error {
-                callback(nil, error)
+                callback(nil, error as NSError?)
             }
             else {
                 callback(key, nil)
@@ -70,10 +70,10 @@ class FirebaseCourseService: FirebaseDatabaseService, CourseServiceProtocol {
     }
     
     //removes a course from the database
-    func removeCourse(course: Course, callback: (NSError?) -> ()) {
-        dbRef.child(Constants.coursesDBKey).child(course.id).removeValueWithCompletionBlock({ (error, ref) in
+    func removeCourse(_ course: Course, callback: @escaping (NSError?) -> ()) {
+        dbRef.child(Constants.coursesDBKey).child(course.id).removeValue(completionBlock: { (error, ref) in
             if let error = error {
-                callback(error)
+                callback(error as NSError?)
                 return
             }
             
@@ -86,11 +86,11 @@ class FirebaseCourseService: FirebaseDatabaseService, CourseServiceProtocol {
 /* COMPOSITE DATABASE TABLE FUNCTIONS */
 extension FirebaseCourseService {
     //gets all courses a user is enrolled in
-    func getCoursesUserIsEnrolledIn(userId: String, callback: ([Course]?, NSError?) -> ()) {
+    func getCoursesUserIsEnrolledIn(_ userId: String, callback: @escaping ([Course]?, NSError?) -> ()) {
         var courses: [Course] = []
         var numCourses = 0
         
-        dbRef.child(Constants.usersCoursesDBKey).child(userId).observeSingleEventOfType(.Value, withBlock: { snapshot in
+        dbRef.child(Constants.usersCoursesDBKey).child(userId).observeSingleEvent(of: .value, with: { snapshot in
             if let coursesArr = snapshot.value as? NSArray {
                 for cId in coursesArr {
                     if let courseId = cId as? String {
@@ -126,7 +126,7 @@ extension FirebaseCourseService {
     }
     
     //enrolls a student in a course
-    func enrollStudentInCourse(userId: String, courseId: String, callback: (NSError?) -> ()) {
+    func enrollStudentInCourse(_ userId: String, courseId: String, callback: @escaping (NSError?) -> ()) {
         //TODO finish this
     }
 }

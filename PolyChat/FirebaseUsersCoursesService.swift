@@ -13,12 +13,12 @@ class FirebaseUsersCoursesService: FirebaseDatabaseService, UsersCoursesServiceP
     let DOMAIN = "FirebaseUsersCoursesService::"
         
     //adds a reference to the USERS_COURSES table
-    func addUserCourseReference(userId: String, courseId: String, callback: (NSError?) -> ()) {
+    func addUserCourseReference(_ userId: String, courseId: String, callback: @escaping (NSError?) -> ()) {
         
     }
     
     //removes a reference from the USERS_COURSES table
-    func removeUserCourseReference(userId: String, courseId: String, callback: (NSError?) -> ()) {
+    func removeUserCourseReference(_ userId: String, courseId: String, callback: @escaping (NSError?) -> ()) {
         
     }
 }

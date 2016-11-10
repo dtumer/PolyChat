@@ -9,15 +9,15 @@
 import Foundation
 
 class FirebaseGroupService: FirebaseDatabaseService, GroupServiceProtocol {
-    func getGroup(groupId: String, callback: (Group?, NSError?) -> ()) {
+    func getGroup(_ groupId: String, callback: @escaping (Group?, NSError?) -> ()) {
         
     }
     
-    func getAllGroups(callback: ([Group]?, NSError?) -> ()) {
+    func getAllGroups(_ callback: @escaping ([Group]?, NSError?) -> ()) {
         
     }
     
-    func addGroup(group: Group, callback: (NSError?) -> ()) {
+    func addGroup(_ group: Group, callback: @escaping (NSError?) -> ()) {
         
     }
 }

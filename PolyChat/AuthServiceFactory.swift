@@ -15,7 +15,7 @@ class AuthServiceFactory {
         return Singleton.instance
     }
     
-    private class func getAuthService(serviceKey: String) -> AuthServiceProtocol? {
+    fileprivate class func getAuthService(_ serviceKey: String) -> AuthServiceProtocol? {
         switch serviceKey {
             case Constants.FIREBASE_SERVICE_KEY:
                 return FirebaseAuthService()

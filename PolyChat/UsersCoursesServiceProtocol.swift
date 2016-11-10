@@ -16,7 +16,7 @@ protocol UsersCoursesServiceProtocol {
      * @param courseId  - The ID of the course to add to the user in the DB
      * @param callback  - The callback function. Called with an error if there is one
      */
-    func addUserCourseReference(userId: String, courseId: String, callback: (NSError?) -> ())
+    func addUserCourseReference(_ userId: String, courseId: String, callback: @escaping (NSError?) -> ())
     
     /*
      * Removed a reference of a course from the USERS_COURSES table
@@ -25,5 +25,5 @@ protocol UsersCoursesServiceProtocol {
      * @param courseId  - The ID of the course to remove from the DB
      * @param callback  - The callback function. Called with an error if there is one
      */
-    func removeUserCourseReference(userId: String, courseId: String, callback: (NSError?) -> ())
+    func removeUserCourseReference(_ userId: String, courseId: String, callback: @escaping (NSError?) -> ())
 }

@@ -16,7 +16,7 @@ protocol ChatRoomsUsersServiceProtocol {
      * @param users         - The list of users to add references to in the chat room
      * @param callback      - The callback function. Called with an error if there is one
      */
-    func addChatRoomsUsersReference(chatRoomId: String, users: [User], callback: (NSError?) ->())
+    func addChatRoomsUsersReference(_ chatRoomId: String, users: [User], callback: @escaping (NSError?) ->())
     
     /*
      * Removes reference to users in the chat room

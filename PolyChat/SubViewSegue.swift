@@ -10,7 +10,7 @@ import UIKit
 
 class SubViewSegue: UIStoryboardSegue {
     override func perform() {
-        let _ = sourceViewController
-        let _ = destinationViewController
+        let _ = source
+        let _ = destination
     }
 }

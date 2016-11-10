@@ -15,7 +15,7 @@ class Message {
     var senderName: String = ""
     var numLikes: Int = 0
     var numDislikes: Int = 0
-    var messageSent: Double = NSDate().timeIntervalSince1970
+    var messageSent: Double = Date().timeIntervalSince1970
     var stamp: String = ""
     
     init(dictionary: NSDictionary) {

@@ -6,18 +6,11 @@
 //  Copyright © 2016 DenFan. All rights reserved.
 //
 
-import XCGLogger
-
 /*
  * This struct contains constants that are to be used in other areas of the application.
 */
 struct Constants {
     /* App Constants */
-    //app mode
-    static let APP_MODE = Constants.APP_DEV
-    private static let APP_DEV = XCGLogger.LogLevel.Debug
-    private static let APP_PROD = XCGLogger.LogLevel.None
-    
     //keychain constants
     static let APP_CERT = "FE313B23BE54C7843CFB944788B01EBF"
     static let APP_CERT_KEY = "app_cert"

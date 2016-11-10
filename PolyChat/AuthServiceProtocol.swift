@@ -9,10 +9,10 @@ import Foundation
 
 protocol AuthServiceProtocol {
     // function for signing up a user for the PolyChat service
-    func signUpUser(email: String, passHash: String, callback: (NSError?) -> ())
+    func signUpUser(_ email: String, passHash: String, callback: @escaping (NSError?) -> ())
     
     // function for logging in a user to the PolyChat service
-    func loginUser(email: String, passHash: String, callback: (NSError?) -> ())
+    func loginUser(_ email: String, passHash: String, callback: @escaping (NSError?) -> ())
     
     // function for logging in an anonymous user to the PolyChat service
     func loginAnonymousUser()
@@ -21,7 +21,7 @@ protocol AuthServiceProtocol {
     func hasOpenSession() -> Bool
     
     // gets the currently logged in User
-    func getCurrentUser(callback: (User?, NSError?) -> ())
+    func getCurrentUser(_ callback: @escaping (User?, NSError?) -> ())
     
     //grabs user data of the user that is logged in
     func getUserData() -> NSDictionary?

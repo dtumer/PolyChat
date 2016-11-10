@@ -15,7 +15,7 @@ class MessageServiceFactory {
         return Singleton.instance
     }
     
-    private class func getMessageService(serviceKey: String) -> MessageServiceProtocol {
+    fileprivate class func getMessageService(_ serviceKey: String) -> MessageServiceProtocol {
         switch serviceKey {
         case Constants.FIREBASE_SERVICE_KEY:
             return FirebaseMessageService()

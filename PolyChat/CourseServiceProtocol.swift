@@ -16,14 +16,14 @@ protocol CourseServiceProtocol {
      * @param courseId  - ID of the course to get
      * @param callback  - Callback function. Called with the specified course from the database or an error if there is one. 
      */
-    func getCourse(courseId: String, callback: (Course?, NSError?) -> ())
+    func getCourse(_ courseId: String, callback: @escaping (Course?, NSError?) -> ())
     
     /*
      * Gets all courses from the COURSE table
      *
      * @param callback  - The callback function. Called with the list of courses in the database or an error if there is one.
      */
-    func getAllCourses(callback: ([Course]?, NSError?) -> ())
+    func getAllCourses(_ callback: @escaping ([Course]?, NSError?) -> ())
     
     /*
      * Adds a course to the COURSE table
@@ -31,7 +31,7 @@ protocol CourseServiceProtocol {
      * @param course    - The course to be stored
      * @param callback  - The callback function. The callback function is called with the ID of the new database object or an error if there is one
      */
-    func addCourse(course: Course, callback: (String?, NSError?) -> ())
+    func addCourse(_ course: Course, callback: @escaping (String?, NSError?) -> ())
     
     /*
      * Removes a course from the COURSE table
@@ -39,7 +39,7 @@ protocol CourseServiceProtocol {
      * @param course    - The course to be removed
      * @param callback  - The callback function. Called with an error if there is one.
      */
-    func removeCourse(course: Course, callback: (NSError?) -> ())
+    func removeCourse(_ course: Course, callback: @escaping (NSError?) -> ())
     
     
     /*
@@ -55,7 +55,7 @@ protocol CourseServiceProtocol {
      * @param userId    - The ID of the user to get enrolled courses for
      * @param callback  - The callback function. Called with the list of courses or an error if there was one
      */
-    func getCoursesUserIsEnrolledIn(userId: String, callback: ([Course]?, NSError?) -> ())
+    func getCoursesUserIsEnrolledIn(_ userId: String, callback: @escaping ([Course]?, NSError?) -> ())
     
     /*
      * Enrolls a user in a course
@@ -64,5 +64,5 @@ protocol CourseServiceProtocol {
      * @param courseId  - The ID of the course to enroll the student in
      * @param callback  - The callback function. Called with an error if there is one
      */
-    func enrollStudentInCourse(userId: String, courseId: String, callback: (NSError?) -> ())
+    func enrollStudentInCourse(_ userId: String, courseId: String, callback: @escaping (NSError?) -> ())
 }

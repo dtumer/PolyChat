@@ -17,13 +17,13 @@ class FirebaseChatRoomService: FirebaseDatabaseService, ChatRoomServiceProtocol 
     let chatRoomsUsersService = ChatRoomsUsersServiceFactory.sharedInstance
     
     //get all chat rooms
-    func getAllChatRooms(callback: ([ChatRoom?], NSError?) -> ()) {
+    func getAllChatRooms(_ callback: @escaping ([ChatRoom?], NSError?) -> ()) {
         //TODO finish this eventually
     }
     
     //get a chat room
-    func getChatRoom(chatRoomId: String, callback: (ChatRoom?, NSError?) -> ()) {
-        dbRef.child(Constants.chatRoomsDBKey).child(chatRoomId).observeSingleEventOfType(.Value, withBlock: { snapshot in
+    func getChatRoom(_ chatRoomId: String, callback: @escaping (ChatRoom?, NSError?) -> ()) {
+        dbRef.child(Constants.chatRoomsDBKey).child(chatRoomId).observeSingleEvent(of: .value, with: { snapshot in
             if let value = snapshot.value as? NSMutableDictionary {
                 value["id"] = chatRoomId
                 
@@ -36,7 +36,7 @@ class FirebaseChatRoomService: FirebaseDatabaseService, ChatRoomServiceProtocol 
     }
     
     //add a chat room
-    func addChatRoom(chatRoom: ChatRoom, callback: (String?, NSError?) -> ()) {
+    func addChatRoom(_ chatRoom: ChatRoom, callback: @escaping (String?, NSError?) -> ()) {
         let key = getAutoId(Constants.chatRoomsDBKey)
         let childUpdates = [
             "/\(Constants.chatRoomsDBKey)/\(key)": chatRoom.toDictionary()
@@ -44,7 +44,7 @@ class FirebaseChatRoomService: FirebaseDatabaseService, ChatRoomServiceProtocol 
         
         dbRef.updateChildValues(childUpdates, withCompletionBlock: { (error, ref) in
             if let error = error {
-                callback(nil, error)
+                callback(nil, error as NSError?)
             }
             else {
                 callback(key, nil)
@@ -56,21 +56,21 @@ class FirebaseChatRoomService: FirebaseDatabaseService, ChatRoomServiceProtocol 
 /* COMPOSITE FUNCTIONS */
 extension FirebaseChatRoomService {
     //gets all chat rooms in a course that a user is a part of
-    func getChatRoomsInCourseWithUser(courseId: String, userId: String, callback: ([ChatRoom]?, NSError?) -> ()) {
+    func getChatRoomsInCourseWithUser(_ courseId: String, userId: String, callback: @escaping ([ChatRoom]?, NSError?) -> ()) {
         var chatRooms: [ChatRoom] = []
         var numChatRooms = 0
         
         //1: Get all chat rooms a user is in
-        dbRef.child(Constants.usersChatRoomsDBKey).child(userId).observeSingleEventOfType(.Value, withBlock: { snapshot in
+        dbRef.child(Constants.usersChatRoomsDBKey).child(userId).observeSingleEvent(of: .value, with: { snapshot in
             if let chatRoomArr = snapshot.value as? NSArray {
                 //Get all chat rooms in a course
-                self.dbRef.child(Constants.coursesChatRoomsDBKey).child(courseId).observeSingleEventOfType(.Value, withBlock: { snapshot in
+                self.dbRef.child(Constants.coursesChatRoomsDBKey).child(courseId).observeSingleEvent(of: .value, with: { snapshot in
                     //check if the course has any chat rooms
                     if let chatRoomCourseArr = snapshot.value as? NSArray {
                         //go through each chat room id and check if it's in the course
                         for crId in chatRoomArr {
                             //if the chat room is in the course return it, or an error if there was one
-                            if chatRoomCourseArr.indexOfObject(crId) >= 0 {
+                            if chatRoomCourseArr.index(of: crId) >= 0 {
                                 self.getChatRoom(crId as! String, callback: { (chatRoom, error) in
                                     if let error = error {
                                         callback(nil, error)
@@ -103,7 +103,7 @@ extension FirebaseChatRoomService {
     }
     
     //creates a chat room
-    func createChatRoom(courseId: String, users: [User], chatRoom: ChatRoom, callback: (NSError?) -> ()) {
+    func createChatRoom(_ courseId: String, users: [User], chatRoom: ChatRoom, callback: @escaping (NSError?) -> ()) {
         //1: Create chat room
         self.addChatRoom(chatRoom, callback: { (string, error) in
             if let error = error {
@@ -113,21 +113,21 @@ extension FirebaseChatRoomService {
                 chatRoom.id = chatRoomId
                 
                 //2: add chat room to COURSES_CHATROOMS
-                self.coursesChatRoomsService.addChatRoomReference(courseId, chatRoom: chatRoom, callback: { error in
+                self.coursesChatRoomsService?.addChatRoomReference(courseId, chatRoom: chatRoom, callback: { error in
                     if let error = error {
                         callback(error)
                     }
                     else {
                         //3: Add all users to CHATROOMS_USERS table
                         //TODO change this to new reference function
-                        self.chatRoomsUsersService.addChatRoomsUsersReference(chatRoom.id, users: users, callback: { error in
+                        self.chatRoomsUsersService?.addChatRoomsUsersReference(chatRoom.id, users: users, callback: { error in
                             if let error = error {
                                 callback(error)
                             }
                             else {
                                 //4: For each user add their reference in the USERS_CHATROOMS table
                                 for user in users {
-                                    self.usersChatRoomsService.addUserChatRoomReference(user.id, chatRoomId: chatRoom.id, callback: { error in
+                                    self.usersChatRoomsService?.addUserChatRoomReference(user.id, chatRoomId: chatRoom.id, callback: { error in
                                         if let error = error {
                                             callback(error)
                                         }

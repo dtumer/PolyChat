@@ -909,9 +909,11 @@
 				TargetAttributes = {
 					0F4159C11D1A492700EE4E58 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0810;
 					};
 					0F4159D81D1A492700EE4E58 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0810;
 						TestTargetID = 0F4159C11D1A492700EE4E58;
 					};
 					0F4159E31D1A492700EE4E58 = {
@@ -1539,6 +1541,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "PolyChat/PolyChat-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -1554,6 +1557,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.denfan.PolyChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "PolyChat/PolyChat-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -1569,6 +1573,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PolyChat.app/PolyChat";
 			};
 			name = Debug;
@@ -1584,6 +1589,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.denfan.PolyChatTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PolyChat.app/PolyChat";
 			};
 			name = Release;
