@@ -92,8 +92,7 @@ class ChatTableViewController: UITableViewController {
                 self.refreshControl?.endRefreshing()
             }
             else {
-                //TODO change this to log instead of print. Maybe also alert something out
-                print(error?.description)
+                //TODO alert out
             }
         })
     }

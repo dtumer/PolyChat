@@ -31,7 +31,7 @@ class UsersAdminTableViewController: UITableViewController {
                 self.users = users
                 self.tableView.reloadData()
             } else {
-                print(error)
+                //TODO report error
             }
         })
     }

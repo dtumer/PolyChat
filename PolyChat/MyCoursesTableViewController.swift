@@ -96,7 +96,6 @@ class MyCoursesTableViewController: UITableViewController, SWRevealViewControlle
             }
             else {
                 //TODO change this to log errors instead of printing them
-                print(error?.description)
             }
         })
     }

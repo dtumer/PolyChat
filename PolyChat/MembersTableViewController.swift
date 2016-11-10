@@ -71,7 +71,6 @@ class MembersTableViewController: UITableViewController {
             }
             else {
                 //TODO change this to log instead of print
-                print(error?.description)
             }
         })
     }

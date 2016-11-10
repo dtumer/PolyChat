@@ -83,11 +83,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    //dismisses sign up view controller
-    @IBAction func cancelSignUp(_ sender: AnyObject) {
-        self.navigationController?.popViewController(animated: true)
-    }
-    
     // MARK: UITextFieldDelegate Methods
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()

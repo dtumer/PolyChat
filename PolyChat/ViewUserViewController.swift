@@ -48,8 +48,7 @@ class ViewUserViewController: UIViewController {
                 self.userCoursesTableView.reloadData()
             }
             else {
-                //TODO change this to a logger
-                print(error)
+                //TODO report error
             }
         })
     }

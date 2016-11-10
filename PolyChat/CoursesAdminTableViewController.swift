@@ -50,7 +50,7 @@ class CoursesAdminTableViewController: UITableViewController {
                 self.tableView.reloadData()
             }
             else {
-                print(error)
+                //TODO show an error
             }
         })
     }

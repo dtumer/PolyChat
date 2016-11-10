@@ -113,8 +113,7 @@ class ChatRoomViewController: JSQMessagesViewController {
                 }
             }
             else {
-                //TODO: change this to log instead of print
-                print(error?.description)
+                //TODO report error
             }
         })
     }
@@ -187,7 +186,7 @@ extension ChatRoomViewController {
     }
     
     // For the display name of messages
-    override func collectionView(_ collectionView: JSQMessagesCollectionView?, attributedTextForMessageBubbleTopLabelAt indexPath: IndexPath!) -> NSAttributedString! {
+    override func collectionView(_ collectionView: JSQMessagesCollectionView?, attributedTextForMessageBubbleTopLabelAt indexPath: IndexPath!) -> NSAttributedString? {
         let message = messages[indexPath.item]
         
         guard let senderDisplayName = message.senderDisplayName else {
