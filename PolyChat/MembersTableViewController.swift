@@ -88,7 +88,14 @@ extension MembersTableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.users.count
+        if users.count > 0 {
+            TableViewHelper.removeEmptyMessage(viewController: self)
+            return self.users.count
+        }
+        else {
+            TableViewHelper.EmptyMessage(message: "There are no Users to show", viewController: self)
+            return 0
+        }
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

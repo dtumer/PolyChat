@@ -113,7 +113,14 @@ extension ChatTableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return chatRooms.count
+        if chatRooms.count > 0 {
+            TableViewHelper.removeEmptyMessage(viewController: self)
+            return chatRooms.count
+        }
+        else {
+            TableViewHelper.EmptyMessage(message: "There are no Chats to show", viewController: self)
+            return 0
+        }
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
