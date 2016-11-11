@@ -193,6 +193,8 @@
 		0F971FD51D387A3A00560B93 /* ChatRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F971FD41D387A3A00560B93 /* ChatRoom.swift */; };
 		0F971FD61D387A3A00560B93 /* ChatRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F971FD41D387A3A00560B93 /* ChatRoom.swift */; };
 		0F971FD71D387A3A00560B93 /* ChatRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F971FD41D387A3A00560B93 /* ChatRoom.swift */; };
+		0FB5AA421DD67E830040108D /* TableViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB5AA411DD67E830040108D /* TableViewHelper.swift */; };
+		0FB5AA431DD67E830040108D /* TableViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB5AA411DD67E830040108D /* TableViewHelper.swift */; };
 		0FE0E52A1D47244B00E6E64F /* CoursesAdminTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE0E5291D47244B00E6E64F /* CoursesAdminTableViewCell.swift */; };
 		0FE0E52B1D47244B00E6E64F /* CoursesAdminTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE0E5291D47244B00E6E64F /* CoursesAdminTableViewCell.swift */; };
 		0FE0E52C1D47244B00E6E64F /* CoursesAdminTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE0E5291D47244B00E6E64F /* CoursesAdminTableViewCell.swift */; };
@@ -387,6 +389,7 @@
 		0F971FBA1D3745B200560B93 /* GlobalUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalUtilities.swift; sourceTree = "<group>"; };
 		0F971FD01D387A0300560B93 /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		0F971FD41D387A3A00560B93 /* ChatRoom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatRoom.swift; sourceTree = "<group>"; };
+		0FB5AA411DD67E830040108D /* TableViewHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewHelper.swift; sourceTree = "<group>"; };
 		0FE0E5291D47244B00E6E64F /* CoursesAdminTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoursesAdminTableViewCell.swift; sourceTree = "<group>"; };
 		0FE23DE11D66C2F1001DDF54 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		0FFBEA211D64E93F002E80C4 /* ChatRoomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatRoomViewController.swift; sourceTree = "<group>"; };
@@ -563,6 +566,7 @@
 			children = (
 				0F4AFF751D1E04610030C3BD /* ValidationService.swift */,
 				0F971FBA1D3745B200560B93 /* GlobalUtilities.swift */,
+				0FB5AA411DD67E830040108D /* TableViewHelper.swift */,
 			);
 			name = Client;
 			sourceTree = "<group>";
@@ -1155,6 +1159,7 @@
 				0F34D8751D274444002584FB /* ChatRoomServiceProtocol.swift in Sources */,
 				0F55EA141D4D78ED00A0D2B4 /* CoursesChatRoomsServiceProtocol.swift in Sources */,
 				0FFBEA261D6576B3002E80C4 /* MembersTableViewController.swift in Sources */,
+				0FB5AA421DD67E830040108D /* TableViewHelper.swift in Sources */,
 				0F064EFB1D2586CF008B7DA1 /* MyCoursesTableViewController.swift in Sources */,
 				0F65FC6F1D22031400470498 /* NSErrorExtension.swift in Sources */,
 				0F2B565E1D3DF34A008BF1F6 /* FirebaseGroupService.swift in Sources */,
@@ -1277,6 +1282,7 @@
 				0F55EA451D4EA23000A0D2B4 /* FirebaseChatRoomsUsersService.swift in Sources */,
 				0F34D8511D2615C4002584FB /* SubViewSegue.swift in Sources */,
 				0F55EA151D4D78ED00A0D2B4 /* CoursesChatRoomsServiceProtocol.swift in Sources */,
+				0FB5AA431DD67E830040108D /* TableViewHelper.swift in Sources */,
 				0F65FC491D1E270E00470498 /* User.swift in Sources */,
 				0F971FD21D387A0300560B93 /* Group.swift in Sources */,
 				0F55EA291D4E977F00A0D2B4 /* UsersSelectTableViewCell.swift in Sources */,

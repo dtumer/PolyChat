@@ -78,11 +78,19 @@ class MyCoursesTableViewController: UITableViewController, SWRevealViewControlle
                 }
                 else {
                     self.user = user!
+                    self.setAdminButton()
                     self.loadCourses(self.user.id)
                     // Menu needs user information since it varies based on user (username, role, etc.)
                     self.initMenu()
                 }
             })
+        }
+    }
+    
+    fileprivate func setAdminButton() {
+        if self.user.role == Constants.USER_ADMIN {
+            let barButton = UIBarButtonItem(barButtonSystemItem: .organize, target: self, action: #selector(adminSegue))
+            self.navigationController?.navigationItem.setRightBarButton(barButton, animated: true)
         }
     }
     
@@ -105,11 +113,9 @@ class MyCoursesTableViewController: UITableViewController, SWRevealViewControlle
         loadCourses(self.user.id)
     }
     
-    //used to initialize mock data in database
-    fileprivate func initMockData() {
-        //let mockInit = FirebaseInitMockDatabase()
-    
-        //mockInit.initMockDB()
+    //segues to admin
+    func adminSegue(sender: AnyObject) {
+        self.performSegue(withIdentifier: "adminSegue", sender: self)
     }
     
     @IBAction func signOutPressed(_ sender: AnyObject) {
