@@ -127,7 +127,7 @@ class ChatRoomViewController: JSQMessagesViewController {
         do {
             let iv = AES.randomIV(AES.blockSize)
             let stamp = Data(iv).toHexString()
-            let body = try Data(AES(key: appCert, iv: iv, blockMode: .CBC, padding: PKCS7()).encrypt(text.utf8.map({$0}))).toHexString()
+            let body = try Data(AES(key: self.appCert, iv: iv, blockMode: .CBC, padding: PKCS7()).encrypt(text.utf8.map({$0}))).toHexString()
             let message = Message(dictionary:[
                 "body": body,
                 "sender_id": senderId,
