@@ -27,9 +27,7 @@ class SettingsViewController: UIViewController, SWRevealViewControllerDelegate {
         notificationsSwitch.addTarget(self,
                                       action: #selector(SettingsViewController.notificationsStateChanged(_:)),
                                       for: UIControlEvents.valueChanged)
-        anonymousSwitch.addTarget(self,
-                                      action: #selector(SettingsViewController.anonymousStateChanged(_:)),
-                                      for: UIControlEvents.valueChanged)
+        
         //makes sure there's no weird grayness happening in the nav bar
         self.navigationController?.navigationBar.isTranslucent = false
     }
@@ -103,14 +101,4 @@ class SettingsViewController: UIViewController, SWRevealViewControllerDelegate {
             print("Notifications Disabled")
         }
     }
-    
-    func anonymousStateChanged(_ switchState: UISwitch) {
-        // TODO: implement notifications
-        if switchState.isOn {
-            print("Anonymous Enabled")
-        } else {
-            print("Anonymous Disabled")
-        }
-    }
-    
 }
