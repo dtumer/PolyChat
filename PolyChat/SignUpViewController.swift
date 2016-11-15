@@ -31,18 +31,25 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func cancel(_ sender: AnyObject) {
-        self.navigationController?.popViewController(animated: true)
+        _ = self.navigationController?.popViewController(animated: true)
     }
     
     // MARK: Actions
     @IBAction func signUp(_ sender: UIButton) {
         let authService = AuthServiceFactory.sharedInstance
         
-        // Validate Email
-        if (ValidationService.isValidEmail(emailTextField.text!) && isValidPassword(passwordTextField.text!)) {
+        //reset the errors before we check again
+        setCorrectEmail()
+        setCorrectPassword()
+        
+        //check for valid email and password
+        if (ValidationService.isValidEmail(emailTextField.text!) &&
+            isValidPassword(passwordTextField.text!) &&
+            isPasswordsEqual(passwordTextField.text!, confirmPass: confirmTextField.text!)) {
+            
             setCorrectEmail()
             setCorrectPassword()
-            
+                
             authService?.signUpUser(emailTextField.text! + "@calpoly.edu", passHash: passwordTextField.text!, callback: { error in
                 if error != nil {
                     self.emailErrorLabel.isHidden = false
@@ -60,29 +67,19 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             })
         }
         else {
+            //set invalid email
             if !ValidationService.isValidEmail(emailTextField.text!) {
                 setIncorrectEmail()
             }
-            else {
-                setCorrectEmail()
-            }
-            
-            let validPassword = isValidPassword(passwordTextField.text!)
-            let passEqual = isPasswordsEqual(passwordTextField.text!, confirmPass: confirmTextField.text!)
-            let isValid = validPassword && passEqual
-            
-            print(passEqual)
-            
-            if !validPassword {
+        
+            //set invalid passwords
+            if !isValidPassword(passwordTextField.text!) {
                 setIncorrectPassword()
             }
             
-            if !passEqual {
+            //set password mismatch
+            if !isPasswordsEqual(passwordTextField.text!, confirmPass: confirmTextField.text!) {
                 setPasswordMismatch()
-            }
-            
-            if isValid {
-                setCorrectPassword()
             }
         }
     }
@@ -100,7 +97,15 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     
     //checks for equal passwords
     func isPasswordsEqual(_ password: String, confirmPass: String) -> Bool {
-        return password == confirmPass
+        if (password.isEmpty || confirmPass.isEmpty) {
+            return false
+        }
+        else if password == confirmPass {
+            return true
+        }
+        else {
+            return false
+        }
     }
     
     //sets correct email address

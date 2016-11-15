@@ -225,7 +225,6 @@
                                 </state>
                                 <connections>
                                     <action selector="cancel:" destination="1YP-XI-sKl" eventType="touchUpInside" id="0Fn-a5-WgX"/>
-                                    <action selector="cancelSignUp:" destination="1YP-XI-sKl" eventType="touchUpInside" id="tvn-Ec-LRt"/>
                                 </connections>
                             </button>
                         </subviews>
