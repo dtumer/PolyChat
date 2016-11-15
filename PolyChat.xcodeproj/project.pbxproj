@@ -406,6 +406,7 @@
 		6D2660A61D8CAC4900F14442 /* MainMenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuTableViewController.swift; sourceTree = "<group>"; };
 		6D26A2C61D9CC9AB004216D9 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		6D26A2CA1D9CD3F3004216D9 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		6D8895381DDA9382001CAD61 /* PolyChat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PolyChat.entitlements; sourceTree = "<group>"; };
 		B1F78191A67A36E6E62E6352 /* Pods_PolyChatUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PolyChatUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2D4FD39431F2C7B2E5BA8ED /* Pods-PolyChatTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PolyChatTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PolyChatTests/Pods-PolyChatTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D83FC3A31D24C82F00DDCF25 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
@@ -518,6 +519,7 @@
 		0F4159C41D1A492700EE4E58 /* PolyChat */ = {
 			isa = PBXGroup;
 			children = (
+				6D8895381DDA9382001CAD61 /* PolyChat.entitlements */,
 				0F960B0D1D1CF29600E0D902 /* App */,
 				0F960B011D1CD67E00E0D902 /* Config */,
 				0F960B001D1CD66C00E0D902 /* Services */,
@@ -913,7 +915,13 @@
 				TargetAttributes = {
 					0F4159C11D1A492700EE4E58 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 26A66RDRRC;
 						LastSwiftMigration = 0810;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					0F4159D81D1A492700EE4E58 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -1545,6 +1553,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = PolyChat/PolyChat.entitlements;
+				DEVELOPMENT_TEAM = 26A66RDRRC;
 				INFOPLIST_FILE = PolyChat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
@@ -1562,6 +1572,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = PolyChat/PolyChat.entitlements;
+				DEVELOPMENT_TEAM = 26A66RDRRC;
 				INFOPLIST_FILE = PolyChat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
