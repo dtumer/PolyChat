@@ -15,5 +15,8 @@ class ValidationService {
         return NSPredicate(format: "SELF MATCHES %@", emailRegex).evaluate(with: email)
     }
     
-    
+    //returns whether or not a password is valid
+    class func isValidPassword(_ password: String) -> Bool {
+        return !password.isEmpty && password.characters.count >= 8
+    }
 }

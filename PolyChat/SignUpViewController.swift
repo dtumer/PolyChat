@@ -44,7 +44,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         
         //check for valid email and password
         if (ValidationService.isValidEmail(emailTextField.text!) &&
-            isValidPassword(passwordTextField.text!) &&
+            ValidationService.isValidPassword(passwordTextField.text!) &&
             isPasswordsEqual(passwordTextField.text!, confirmPass: confirmTextField.text!)) {
             
             setCorrectEmail()
@@ -73,7 +73,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             }
         
             //set invalid passwords
-            if !isValidPassword(passwordTextField.text!) {
+            if !ValidationService.isValidPassword(passwordTextField.text!) {
                 setIncorrectPassword()
             }
             
@@ -88,11 +88,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
-    }
-    
-    //checks for valid password
-    func isValidPassword(_ password: String) -> Bool {
-        return !password.isEmpty && password.characters.count >= 8
     }
     
     //checks for equal passwords

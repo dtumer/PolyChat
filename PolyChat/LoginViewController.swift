@@ -30,7 +30,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func loginPressed(_ sender: UIButton) {
-        if (isValidEmail(emailTextField.text!) && isValidPassword(passwordTextField.text!)) {
+        correctInput()
+        
+        if (ValidationService.isValidEmail(emailTextField.text!) &&
+            ValidationService.isValidPassword(passwordTextField.text!)) {
+            correctInput()
+            
             authService?.loginUser("\(emailTextField.text!)@calpoly.edu", passHash: passwordTextField.text!, callback: { (error) in
                 if error != nil { //error when logging in user
                     self.incorrectInput()
@@ -53,20 +58,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
-    }
-
-    //checks for valid email
-    func isValidEmail(_ email: String) -> Bool {
-        if (!email.isEmpty && ValidationService.isValidEmail(email)) {
-            return true
-        }
-        
-        return false
-    }
-    
-    //checks for valid password
-    func isValidPassword(_ password: String) -> Bool {
-        return password.characters.count >= 8
     }
     
     //sets ui for incorrect input
