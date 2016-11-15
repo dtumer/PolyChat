@@ -30,6 +30,10 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         confirmErrorLabel.isHidden = true
     }
     
+    @IBAction func cancel(_ sender: AnyObject) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     // MARK: Actions
     @IBAction func signUp(_ sender: UIButton) {
         let authService = AuthServiceFactory.sharedInstance
