@@ -13,6 +13,7 @@ import Firebase
 import FirebaseInstanceID
 import FirebaseMessaging
 import SwiftKeychainWrapper
+import OneSignal
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -43,6 +44,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application.registerForRemoteNotifications()
         
         // [END register_for_notifications]
+        
+        // Configure OneSignal
+        //Add this line. Replace '5eb5a37e-b458-11e3-ac11-000c2940e62c' with your OneSignal App ID.
+        OneSignal.initWithLaunchOptions(launchOptions, appId: "e2bd3438-c80f-42cf-b597-d4b032335872")
+        
+        // Sync hashed email if you have a login system or collect it.
+        //   Will be used to reach the user at the most optimal time of day.
+        // OneSignal.syncHashedEmail(userEmail)
         
         //configure firebase
         if Constants.CURRENT_SERVICE_KEY == Constants.FIREBASE_SERVICE_KEY {
