@@ -28,6 +28,9 @@ class MembersTableViewController: UITableViewController {
         
         initServices()
         
+        //init loading screen
+        ProgressHUD.shared.showOverlay(view: self.view)
+        
         //sets up refresh control
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
@@ -68,6 +71,7 @@ class MembersTableViewController: UITableViewController {
                 self.users = users
                 self.tableView.reloadData()
                 self.refreshControl?.endRefreshing()
+                ProgressHUD.shared.hideOverlayView()
             }
             else {
                 //TODO change this to log instead of print

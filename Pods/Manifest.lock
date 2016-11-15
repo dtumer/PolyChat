@@ -90,6 +90,7 @@ PODS:
     - GoogleToolboxForMac/NSString+URLArguments (= 2.1.0)
   - GoogleToolboxForMac/NSString+URLArguments (2.1.0)
   - GTMSessionFetcher/Core (1.1.7)
+  - JGProgressHUD (1.4)
   - JSQMessagesViewController (7.3.4):
     - JSQSystemSoundPlayer (~> 2.0.1)
   - JSQSystemSoundPlayer (2.0.1)
@@ -110,6 +111,7 @@ DEPENDENCIES:
   - Firebase/Messaging
   - Firebase/RemoteConfig
   - Firebase/Storage
+  - JGProgressHUD
   - JSQMessagesViewController
   - KTCenterFlowLayout
   - OneSignal
@@ -134,12 +136,13 @@ SPEC CHECKSUMS:
   GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
   GoogleToolboxForMac: 2b2596cbb7186865e98cadf2b1e262d851c2b168
   GTMSessionFetcher: a1f8ed39e4fe21c68957daed472c7afbcdf29166
+  JGProgressHUD: 1617b0940cf80bb53e8f7d6f0fd69252ea45d6d4
   JSQMessagesViewController: 39fed975e3c9f8eba7292071e29eeb541d105e66
   JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
   KTCenterFlowLayout: 6e02b50ab2bd865025ae82fe266ed13b6d9eaf97
   OneSignal: 4fdee33a5c3108c92747be1be8b9b7dfe13f86c5
   SwiftKeychainWrapper: 38952a3636320ae61bad3513cadd870929de7a4a
 
-PODFILE CHECKSUM: 929eadf56347b9002e78a327f11b9de434472553
+PODFILE CHECKSUM: caa504fc10329f73425b9b6e6adb7c1c3691325b
 
 COCOAPODS: 1.2.0.beta.1

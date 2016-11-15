@@ -193,6 +193,7 @@
 		0F971FD51D387A3A00560B93 /* ChatRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F971FD41D387A3A00560B93 /* ChatRoom.swift */; };
 		0F971FD61D387A3A00560B93 /* ChatRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F971FD41D387A3A00560B93 /* ChatRoom.swift */; };
 		0F971FD71D387A3A00560B93 /* ChatRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F971FD41D387A3A00560B93 /* ChatRoom.swift */; };
+		0FB347C11DDAF6D7009E4AC7 /* ProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB347C01DDAF6D7009E4AC7 /* ProgressHUD.swift */; };
 		0FB5AA421DD67E830040108D /* TableViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB5AA411DD67E830040108D /* TableViewHelper.swift */; };
 		0FB5AA431DD67E830040108D /* TableViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB5AA411DD67E830040108D /* TableViewHelper.swift */; };
 		0FE0E52A1D47244B00E6E64F /* CoursesAdminTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE0E5291D47244B00E6E64F /* CoursesAdminTableViewCell.swift */; };
@@ -389,6 +390,7 @@
 		0F971FBA1D3745B200560B93 /* GlobalUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalUtilities.swift; sourceTree = "<group>"; };
 		0F971FD01D387A0300560B93 /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		0F971FD41D387A3A00560B93 /* ChatRoom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatRoom.swift; sourceTree = "<group>"; };
+		0FB347C01DDAF6D7009E4AC7 /* ProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressHUD.swift; sourceTree = "<group>"; };
 		0FB5AA411DD67E830040108D /* TableViewHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewHelper.swift; sourceTree = "<group>"; };
 		0FB5AA441DDAD0750040108D /* PolyChat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PolyChat.entitlements; sourceTree = "<group>"; };
 		0FE0E5291D47244B00E6E64F /* CoursesAdminTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoursesAdminTableViewCell.swift; sourceTree = "<group>"; };
@@ -569,6 +571,7 @@
 				0F4AFF751D1E04610030C3BD /* ValidationService.swift */,
 				0F971FBA1D3745B200560B93 /* GlobalUtilities.swift */,
 				0FB5AA411DD67E830040108D /* TableViewHelper.swift */,
+				0FB347C01DDAF6D7009E4AC7 /* ProgressHUD.swift */,
 			);
 			name = Client;
 			sourceTree = "<group>";
@@ -1179,6 +1182,7 @@
 				0F2B56291D3DEB03008BF1F6 /* FirebaseChatRoomsMessagesService.swift in Sources */,
 				D89D27C11D375F27006542DF /* CoursesAdminTableViewController.swift in Sources */,
 				0F4AFF7E1D1E0D3D0030C3BD /* Course.swift in Sources */,
+				0FB347C11DDAF6D7009E4AC7 /* ProgressHUD.swift in Sources */,
 				D89D27AC1D375503006542DF /* CourseServiceFactory.swift in Sources */,
 				0F55EA301D4E9F6B00A0D2B4 /* CoursesUsersServiceProtocol.swift in Sources */,
 				0F55EA341D4E9F8700A0D2B4 /* FirebaseCoursesUsersService.swift in Sources */,

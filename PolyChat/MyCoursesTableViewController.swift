@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import JGProgressHUD
 
 class MyCoursesTableViewController: UITableViewController, SWRevealViewControllerDelegate {
     
@@ -27,6 +28,9 @@ class MyCoursesTableViewController: UITableViewController, SWRevealViewControlle
     override func viewDidLoad() {
         super.viewDidLoad()
         initServices()
+        
+        //init splash screen overlay
+        ProgressHUD.shared.showOverlay(view: self.view)
         
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
@@ -101,6 +105,7 @@ class MyCoursesTableViewController: UITableViewController, SWRevealViewControlle
                 self.courses = courses
                 self.tableView.reloadData()
                 self.refreshControl?.endRefreshing()
+                ProgressHUD.shared.hideOverlayView()
             }
             else {
                 //TODO change this to log errors instead of printing them

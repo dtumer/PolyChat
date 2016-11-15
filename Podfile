@@ -11,6 +11,7 @@ def pods
     pod 'SwiftKeychainWrapper'
     pod 'CryptoSwift'
     pod 'OneSignal'
+    pod 'JGProgressHUD'
 end
 #loads all firebase pods
 def firebase

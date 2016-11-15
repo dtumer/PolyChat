@@ -34,6 +34,9 @@ class ChatTableViewController: UITableViewController {
         
         initServices()
         
+        //init loading screen
+        ProgressHUD.shared.showOverlay(view: self.view)
+        
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
         self.tableView.addSubview(refreshControl!)
@@ -90,6 +93,7 @@ class ChatTableViewController: UITableViewController {
                 self.chatRooms += chatRooms
                 self.tableView.reloadData()
                 self.refreshControl?.endRefreshing()
+                ProgressHUD.shared.hideOverlayView()
             }
             else {
                 //TODO alert out

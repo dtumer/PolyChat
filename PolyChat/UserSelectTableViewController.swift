@@ -34,6 +34,9 @@ class UserSelectTableViewController: UITableViewController {
         super.viewDidLoad()
         
         initServices()
+        
+        //init loading screen
+        ProgressHUD.shared.showOverlay(view: self.view)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -75,6 +78,7 @@ class UserSelectTableViewController: UITableViewController {
             else {
                 self.users += users!
                 self.tableView.reloadData()
+                ProgressHUD.shared.hideOverlayView()
             }
         })
     }

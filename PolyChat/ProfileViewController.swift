@@ -24,7 +24,11 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, SWRevealView
     //on view did load
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         initServices()
+        
+        //init loading screen
+        ProgressHUD.shared.showOverlay(view: self.view)
         
         //makes sure there's no weird grayness happening in the nav bar
         self.navigationController?.navigationBar.isTranslucent = false
@@ -51,6 +55,9 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, SWRevealView
                     self.emailTextField.text = self.user.email
                     // Menu needs user information since it varies based on user (username, role, etc.)
                     self.initMenu()
+                    
+                    //stop loading screen
+                    ProgressHUD.shared.hideOverlayView()
                 }
             })
         }
