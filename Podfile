@@ -10,6 +10,7 @@ def pods
     pod 'KTCenterFlowLayout'
     pod 'SwiftKeychainWrapper'
     pod 'CryptoSwift'
+    pod 'OneSignal'
 end
 #loads all firebase pods
 def firebase

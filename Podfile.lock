@@ -94,6 +94,7 @@ PODS:
     - JSQSystemSoundPlayer (~> 2.0.1)
   - JSQSystemSoundPlayer (2.0.1)
   - KTCenterFlowLayout (1.3.1)
+  - OneSignal (2.2.1)
   - SwiftKeychainWrapper (3.0.1)
 
 DEPENDENCIES:
@@ -111,6 +112,7 @@ DEPENDENCIES:
   - Firebase/Storage
   - JSQMessagesViewController
   - KTCenterFlowLayout
+  - OneSignal
   - SwiftKeychainWrapper
 
 SPEC CHECKSUMS:
@@ -135,8 +137,9 @@ SPEC CHECKSUMS:
   JSQMessagesViewController: 39fed975e3c9f8eba7292071e29eeb541d105e66
   JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
   KTCenterFlowLayout: 6e02b50ab2bd865025ae82fe266ed13b6d9eaf97
+  OneSignal: 4fdee33a5c3108c92747be1be8b9b7dfe13f86c5
   SwiftKeychainWrapper: 38952a3636320ae61bad3513cadd870929de7a4a
 
-PODFILE CHECKSUM: 8dcee367eb0770b8d3c8a502376c688553efffd3
+PODFILE CHECKSUM: 929eadf56347b9002e78a327f11b9de434472553
 
 COCOAPODS: 1.2.0.beta.1
