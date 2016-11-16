@@ -57,7 +57,7 @@ class SettingsViewController: UIViewController, SWRevealViewControllerDelegate {
     }
     
     @IBAction func logoutUser(_ sender: AnyObject) {
-        self.authService.logout()
+        _ = self.authService.logout()
         
         self.performSegue(withIdentifier: Constants.loginSegueId, sender: self)
     }

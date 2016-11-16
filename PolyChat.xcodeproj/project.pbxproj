@@ -98,7 +98,6 @@
 		0F34D87A1D274456002584FB /* FirebaseChatRoomService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F34D8781D274456002584FB /* FirebaseChatRoomService.swift */; };
 		0F34D87B1D274456002584FB /* FirebaseChatRoomService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F34D8781D274456002584FB /* FirebaseChatRoomService.swift */; };
 		0F4159C61D1A492700EE4E58 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4159C51D1A492700EE4E58 /* AppDelegate.swift */; };
-		0F4159CB1D1A492700EE4E58 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F4159C91D1A492700EE4E58 /* Main.storyboard */; };
 		0F4159CE1D1A492700EE4E58 /* PolyChat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0F4159CC1D1A492700EE4E58 /* PolyChat.xcdatamodeld */; };
 		0F4159D01D1A492700EE4E58 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F4159CF1D1A492700EE4E58 /* Assets.xcassets */; };
 		0F4159D31D1A492700EE4E58 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F4159D11D1A492700EE4E58 /* LaunchScreen.storyboard */; };
@@ -349,7 +348,6 @@
 		0F34D8781D274456002584FB /* FirebaseChatRoomService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseChatRoomService.swift; sourceTree = "<group>"; };
 		0F4159C21D1A492700EE4E58 /* PolyChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PolyChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F4159C51D1A492700EE4E58 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0F4159CA1D1A492700EE4E58 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0F4159CD1D1A492700EE4E58 /* PolyChat.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PolyChat.xcdatamodel; sourceTree = "<group>"; };
 		0F4159CF1D1A492700EE4E58 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0F4159D21D1A492700EE4E58 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -526,7 +524,6 @@
 				0F960B011D1CD67E00E0D902 /* Config */,
 				0F960B001D1CD66C00E0D902 /* Services */,
 				0F4159C51D1A492700EE4E58 /* AppDelegate.swift */,
-				0F4159C91D1A492700EE4E58 /* Main.storyboard */,
 				0F4159CF1D1A492700EE4E58 /* Assets.xcassets */,
 				0F4159D11D1A492700EE4E58 /* LaunchScreen.storyboard */,
 				0F4159D41D1A492700EE4E58 /* Info.plist */,
@@ -981,7 +978,6 @@
 				0F20AD8E1D1D100700F0E223 /* GoogleService-Info.plist in Resources */,
 				0F4159D01D1A492700EE4E58 /* Assets.xcassets in Resources */,
 				0F34D85D1D262D67002584FB /* Groups.storyboard in Resources */,
-				0F4159CB1D1A492700EE4E58 /* Main.storyboard in Resources */,
 				D8EAFB0E1D1CF675000638CF /* SignUp.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1444,14 +1440,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		0F4159C91D1A492700EE4E58 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0F4159CA1D1A492700EE4E58 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		0F4159D11D1A492700EE4E58 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
