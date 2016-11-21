@@ -193,6 +193,15 @@
 		0F971FD61D387A3A00560B93 /* ChatRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F971FD41D387A3A00560B93 /* ChatRoom.swift */; };
 		0F971FD71D387A3A00560B93 /* ChatRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F971FD41D387A3A00560B93 /* ChatRoom.swift */; };
 		0FB347C11DDAF6D7009E4AC7 /* ProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB347C01DDAF6D7009E4AC7 /* ProgressHUD.swift */; };
+		0FB347C61DE2BCE9009E4AC7 /* CreateGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB347C51DE2BCE9009E4AC7 /* CreateGroupViewController.swift */; };
+		0FB347C71DE2BCE9009E4AC7 /* CreateGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB347C51DE2BCE9009E4AC7 /* CreateGroupViewController.swift */; };
+		0FB347C81DE2BCE9009E4AC7 /* CreateGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB347C51DE2BCE9009E4AC7 /* CreateGroupViewController.swift */; };
+		0FB347CA1DE2C14C009E4AC7 /* GroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB347C91DE2C14C009E4AC7 /* GroupTableViewController.swift */; };
+		0FB347CB1DE2C14C009E4AC7 /* GroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB347C91DE2C14C009E4AC7 /* GroupTableViewController.swift */; };
+		0FB347CC1DE2C14C009E4AC7 /* GroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB347C91DE2C14C009E4AC7 /* GroupTableViewController.swift */; };
+		0FB347CE1DE2C15F009E4AC7 /* GroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB347CD1DE2C15F009E4AC7 /* GroupTableViewCell.swift */; };
+		0FB347CF1DE2C15F009E4AC7 /* GroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB347CD1DE2C15F009E4AC7 /* GroupTableViewCell.swift */; };
+		0FB347D01DE2C15F009E4AC7 /* GroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB347CD1DE2C15F009E4AC7 /* GroupTableViewCell.swift */; };
 		0FB5AA421DD67E830040108D /* TableViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB5AA411DD67E830040108D /* TableViewHelper.swift */; };
 		0FB5AA431DD67E830040108D /* TableViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB5AA411DD67E830040108D /* TableViewHelper.swift */; };
 		0FE0E52A1D47244B00E6E64F /* CoursesAdminTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE0E5291D47244B00E6E64F /* CoursesAdminTableViewCell.swift */; };
@@ -389,6 +398,9 @@
 		0F971FD01D387A0300560B93 /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		0F971FD41D387A3A00560B93 /* ChatRoom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatRoom.swift; sourceTree = "<group>"; };
 		0FB347C01DDAF6D7009E4AC7 /* ProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressHUD.swift; sourceTree = "<group>"; };
+		0FB347C51DE2BCE9009E4AC7 /* CreateGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateGroupViewController.swift; sourceTree = "<group>"; };
+		0FB347C91DE2C14C009E4AC7 /* GroupTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTableViewController.swift; sourceTree = "<group>"; };
+		0FB347CD1DE2C15F009E4AC7 /* GroupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTableViewCell.swift; sourceTree = "<group>"; };
 		0FB5AA411DD67E830040108D /* TableViewHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewHelper.swift; sourceTree = "<group>"; };
 		0FB5AA441DDAD0750040108D /* PolyChat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PolyChat.entitlements; sourceTree = "<group>"; };
 		0FE0E5291D47244B00E6E64F /* CoursesAdminTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoursesAdminTableViewCell.swift; sourceTree = "<group>"; };
@@ -688,6 +700,7 @@
 				0F65FC661D1F965D00470498 /* Course.storyboard */,
 				0F65FC6A1D1F967600470498 /* CourseViewController.swift */,
 				0F34D84B1D26148B002584FB /* SubViewController.swift */,
+				0FB347C51DE2BCE9009E4AC7 /* CreateGroupViewController.swift */,
 				0F55EA1F1D4E812100A0D2B4 /* CreateChatRoomViewController.swift */,
 				0F55EA231D4E870800A0D2B4 /* UserSelectTableViewController.swift */,
 				0F55EA271D4E977F00A0D2B4 /* UsersSelectTableViewCell.swift */,
@@ -709,6 +722,8 @@
 			isa = PBXGroup;
 			children = (
 				0F34D85C1D262D67002584FB /* Groups.storyboard */,
+				0FB347C91DE2C14C009E4AC7 /* GroupTableViewController.swift */,
+				0FB347CD1DE2C15F009E4AC7 /* GroupTableViewCell.swift */,
 			);
 			name = Groups;
 			sourceTree = "<group>";
@@ -1223,6 +1238,7 @@
 				0F2B563A1D3DEC46008BF1F6 /* UsersChatRoomsServiceFactory.swift in Sources */,
 				D8F24D281D4860E6009FBFD1 /* UsersAdminTableViewController.swift in Sources */,
 				0F55EA3C1D4EA1D200A0D2B4 /* ChatRoomsUsersServiceFactory.swift in Sources */,
+				0FB347C61DE2BCE9009E4AC7 /* CreateGroupViewController.swift in Sources */,
 				0F55EA0C1D4D4DC300A0D2B4 /* ChatTableViewController.swift in Sources */,
 				6D2660A51D8C930000F14442 /* SWRevealViewController.m in Sources */,
 				D83FC3A81D24C85300DDCF25 /* LoginViewController.swift in Sources */,
@@ -1243,12 +1259,14 @@
 				0F55EA441D4EA23000A0D2B4 /* FirebaseChatRoomsUsersService.swift in Sources */,
 				0F55EA181D4D791400A0D2B4 /* FirebaseCoursesChatRoomsService.swift in Sources */,
 				0F34D84C1D26148B002584FB /* SubViewController.swift in Sources */,
+				0FB347CE1DE2C15F009E4AC7 /* GroupTableViewCell.swift in Sources */,
 				0F2B56111D3DEA1C008BF1F6 /* UsersCoursesServiceProtocol.swift in Sources */,
 				0F2B56251D3DEAEC008BF1F6 /* FirebaseUsersChatRoomsService.swift in Sources */,
 				0F65FC4C1D1E27B000470498 /* FirebaseUserService.swift in Sources */,
 				D89D27B41D3755B4006542DF /* FirebaseCourseService.swift in Sources */,
 				0FFBEA221D64E93F002E80C4 /* ChatRoomViewController.swift in Sources */,
 				0FFBEA2A1D6576E3002E80C4 /* MembersTableViewCell.swift in Sources */,
+				0FB347CA1DE2C14C009E4AC7 /* GroupTableViewController.swift in Sources */,
 				0F2B560D1D3DE9B1008BF1F6 /* UsersCoursesServiceFactory.swift in Sources */,
 				D8EAFB1C1D1D01FC000638CF /* AuthServiceFactory.swift in Sources */,
 				D8F24D391D486162009FBFD1 /* EditUserViewController.swift in Sources */,
@@ -1338,6 +1356,7 @@
 				D8F24D291D4860E6009FBFD1 /* UsersAdminTableViewController.swift in Sources */,
 				0F65FC421D1E26AE00470498 /* UserServiceProtocol.swift in Sources */,
 				0F34D84D1D26148B002584FB /* SubViewController.swift in Sources */,
+				0FB347CF1DE2C15F009E4AC7 /* GroupTableViewCell.swift in Sources */,
 				0F4AFF561D1DD8EA0030C3BD /* UserServiceFactory.swift in Sources */,
 				0F2B563B1D3DEC46008BF1F6 /* UsersChatRoomsServiceFactory.swift in Sources */,
 				0F65FC701D22031400470498 /* NSErrorExtension.swift in Sources */,
@@ -1346,11 +1365,13 @@
 				0F55EA251D4E870800A0D2B4 /* UserSelectTableViewController.swift in Sources */,
 				0F4AFF831D1E10090030C3BD /* MyCoursesTableViewCell.swift in Sources */,
 				0F2B56531D3DF1FE008BF1F6 /* GroupServiceFactory.swift in Sources */,
+				0FB347CB1DE2C14C009E4AC7 /* GroupTableViewController.swift in Sources */,
 				0F2B560B1D3DC3A7008BF1F6 /* MockDatabase.swift in Sources */,
 				0F960B041D1CD69500E0D902 /* Constants.swift in Sources */,
 				D8F24D2D1D4860FB009FBFD1 /* UsersAdminTableViewCell.swift in Sources */,
 				0F2B56731D40861F008BF1F6 /* FirebaseDatabaseService.swift in Sources */,
 				0F2A1CE01D5C43860093C888 /* ChatTableViewCell.swift in Sources */,
+				0FB347C71DE2BCE9009E4AC7 /* CreateGroupViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1366,6 +1387,7 @@
 				0F971FBD1D3745B200560B93 /* GlobalUtilities.swift in Sources */,
 				0F2B56541D3DF1FE008BF1F6 /* GroupServiceFactory.swift in Sources */,
 				0F971FD31D387A0300560B93 /* Group.swift in Sources */,
+				0FB347C81DE2BCE9009E4AC7 /* CreateGroupViewController.swift in Sources */,
 				D8EAFB181D1CFC03000638CF /* SignUpViewController.swift in Sources */,
 				0F55EA261D4E870800A0D2B4 /* UserSelectTableViewController.swift in Sources */,
 				0F2B56741D40861F008BF1F6 /* FirebaseDatabaseService.swift in Sources */,
@@ -1376,6 +1398,7 @@
 				0F971FD71D387A3A00560B93 /* ChatRoom.swift in Sources */,
 				0FFBEA2C1D6576E3002E80C4 /* MembersTableViewCell.swift in Sources */,
 				0F2B56271D3DEAEC008BF1F6 /* FirebaseUsersChatRoomsService.swift in Sources */,
+				0FB347D01DE2C15F009E4AC7 /* GroupTableViewCell.swift in Sources */,
 				0F2B56641D3DF368008BF1F6 /* FirebaseMessageService.swift in Sources */,
 				0F65FC6D1D1F967600470498 /* CourseViewController.swift in Sources */,
 				D89D27B21D375570006542DF /* CourseServiceProtocol.swift in Sources */,
@@ -1416,6 +1439,7 @@
 				0F65FC431D1E26AE00470498 /* UserServiceProtocol.swift in Sources */,
 				0FFBEA241D64E93F002E80C4 /* ChatRoomViewController.swift in Sources */,
 				0F4AFF571D1DD8EA0030C3BD /* UserServiceFactory.swift in Sources */,
+				0FB347CC1DE2C14C009E4AC7 /* GroupTableViewController.swift in Sources */,
 				D89D27AE1D375503006542DF /* CourseServiceFactory.swift in Sources */,
 				D8F24D3B1D486162009FBFD1 /* EditUserViewController.swift in Sources */,
 				0F55EA121D4D789300A0D2B4 /* CoursesChatRoomsServiceFactory.swift in Sources */,

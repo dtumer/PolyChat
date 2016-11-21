@@ -9,12 +9,60 @@
 import Foundation
 
 protocol GroupServiceProtocol {
-    //get group by id
+    /*
+     * Gets a specific group based on the ID
+     * 
+     * @param groupId  - ID of the group to get
+     * @param callback - Callback function. Called with group if there is one, error otherwise
+     */
     func getGroup(_ groupId: String, callback: @escaping (Group?, NSError?) -> ())
     
-    //get all groups
+    /*
+     * Gets all groups from the GROUP table
+     *
+     * @param callback - Callback function. Called with list of groups, or error otherwise
+     */
     func getAllGroups(_ callback: @escaping ([Group]?, NSError?) -> ())
     
-    //add group to database
-    func addGroup(_ group: Group, callback: @escaping (NSError?) -> ())
+    /*
+     * Adds a group to the GROUP table
+     *
+     * @param group - The group to be stored
+     * @param callback - The callback function. Called with the ID of the new db object or error otherwise
+     */
+    func addGroup(_ group: Group, callback: @escaping (String?, NSError?) -> ())
+    
+    /*
+     * Removes a group from the GROUP table
+     *
+     * @param group - The group to be removed
+     * @param callback - The callback function. Called with error if there is one
+     */
+    func removeGroup(_ group: Group, callback: @escaping (NSError?) -> ())
+
+
+    /*
+     * -----------------------------------
+     * COMPOSITE DATABASE ACCESS FUNCTIONS
+     * -----------------------------------
+     */
+    
+    /*
+     * Gets all groups in a course
+     *
+     * @param courseId  - The course ID of the specific course we are looking in
+     * @param userId    - The user ID of the user we are finding groups for
+     * @param callback  - The callback function. Called with list of groups that user is in
+     */
+    func getGroupsInCourseWithUser(_ courseId: String, userId: String, callback: @escaping ([Group]?, NSError?) -> ())
+    
+    /*
+     * Creates a group and adds it to the appropriate tables
+     *
+     * @param courseId  - The course this chat room is being added to
+     * @param users     - The list of users being added to the group
+     * @param group  - The group object to be added to the GROUPS table
+     * @param callback  - The callback function. Called with an error if there is one.
+     */
+    func createGroup(_ courseId: String, users: [User], group: Group, callback: @escaping (NSError?) -> ())
 }

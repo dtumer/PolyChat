@@ -55,7 +55,9 @@ class SubViewController: UIViewController {
             vc.course = self.course
         }
         //if on group tab
-        //if on settings tab
+        if let vc = segue.destination as? GroupTableViewController {
+            vc.course = self.course
+        }
     }
     
     fileprivate func presentChildViewController(_ fromVC: UIViewController?, toVC: UIViewController, isSwap: Bool) {
