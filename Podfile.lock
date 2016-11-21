@@ -1,5 +1,8 @@
 PODS:
+  - Crashlytics (3.8.3):
+    - Fabric (~> 1.6.3)
   - CryptoSwift (0.6.6)
+  - Fabric (1.6.11)
   - Firebase (3.9.0):
     - Firebase/Core (= 3.9.0)
   - Firebase/AdMob (3.9.0):
@@ -99,7 +102,9 @@ PODS:
   - SwiftKeychainWrapper (3.0.1)
 
 DEPENDENCIES:
+  - Crashlytics
   - CryptoSwift
+  - Fabric
   - Firebase
   - Firebase/AdMob
   - Firebase/AppIndexing
@@ -118,7 +123,9 @@ DEPENDENCIES:
   - SwiftKeychainWrapper
 
 SPEC CHECKSUMS:
+  Crashlytics: 2b6dbe138a42395577cfa73dfa1aa7248cadf39e
   CryptoSwift: 88592381b73f36e192124539390a7c9bacda76af
+  Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
   Firebase: ff77ffb77b317c3720fef57a60e9335cebf962e6
   FirebaseAnalytics: 6e58fc9b397664369ac7617fb0ba93fab6ba7b5b
   FirebaseAppIndexing: d0fa52ce0ad13f4b5b2f09e4b47fb0dc2213f4e9
@@ -143,6 +150,6 @@ SPEC CHECKSUMS:
   OneSignal: 4fdee33a5c3108c92747be1be8b9b7dfe13f86c5
   SwiftKeychainWrapper: 38952a3636320ae61bad3513cadd870929de7a4a
 
-PODFILE CHECKSUM: caa504fc10329f73425b9b6e6adb7c1c3691325b
+PODFILE CHECKSUM: bf08564ffe094d26d49f126228528d577856c3ed
 
 COCOAPODS: 1.2.0.beta.1

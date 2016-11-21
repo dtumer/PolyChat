@@ -851,6 +851,7 @@
 				0F4159C01D1A492700EE4E58 /* Resources */,
 				0ACE26C4C020B4A7E589998A /* [CP] Embed Pods Frameworks */,
 				25944FCCED58F23D9261615E /* [CP] Copy Pods Resources */,
+				0FB347C41DE2B7EE009E4AC7 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1039,6 +1040,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PolyChat/Pods-PolyChat-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		0FB347C41DE2B7EE009E4AC7 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 94c72ac8650e5786ab596ead24f002d24465643e 8c7ea3b66c8f94005d34df43ddf9659c9ad76c5b88dc3cb81b152d77a101d69a";
 		};
 		1C88F6B3AB4A5B8DA82C3F0B /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;

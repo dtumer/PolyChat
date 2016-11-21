@@ -5,6 +5,7 @@ use_frameworks!
 #pod definitions
 def pods
     firebase
+    crashlytics
     
     pod 'JSQMessagesViewController'
     pod 'KTCenterFlowLayout'
@@ -27,6 +28,11 @@ def firebase
     pod 'Firebase/Auth'
     pod 'Firebase/AppIndexing'
     pod 'Firebase/Storage'
+end
+
+def crashlytics
+    pod 'Fabric'
+    pod 'Crashlytics'
 end
 
 target 'PolyChat' do
