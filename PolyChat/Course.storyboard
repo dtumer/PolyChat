@@ -126,6 +126,7 @@
                         <outlet property="menuCollectionView" destination="4Fw-Se-VOW" id="nsG-xw-O3I"/>
                         <segue destination="49g-LF-o0r" kind="show" identifier="CreateChatSegue" id="qv6-dO-9Oe"/>
                         <segue destination="8PY-Nv-apG" kind="show" identifier="LoginSegue" id="aPP-Am-uED"/>
+                        <segue destination="ErB-ID-YdK" kind="show" identifier="CreateGroupSegue" id="3y9-z3-tg1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BpT-bK-28A" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -138,7 +139,7 @@
                 <viewControllerPlaceholder storyboardName="Login" id="8PY-Nv-apG" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WOl-dA-p0o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5255.5" y="-570"/>
+            <point key="canvasLocation" x="7793" y="384"/>
         </scene>
         <!--Create Chat Room View Controller-->
         <scene sceneID="Ybo-BD-wfN">
@@ -218,7 +219,53 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PD8-H9-Lmj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5758" y="10"/>
+            <point key="canvasLocation" x="5801" y="-259"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="fGg-At-gKI">
+            <objects>
+                <navigationController id="ErB-ID-YdK" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Khl-gc-PoV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.01176470588" green="0.33725490200000002" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Ygj-wG-xAI" kind="relationship" relationship="rootViewController" id="4PD-qq-sX1"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xwl-wO-yr8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5062" y="421"/>
+        </scene>
+        <!--Create Group View Controller-->
+        <scene sceneID="6ap-qe-KYt">
+            <objects>
+                <viewController id="Ygj-wG-xAI" customClass="CreateGroupViewController" customModule="PolyChat" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="g3Q-bJ-1ag"/>
+                        <viewControllerLayoutGuide type="bottom" id="5MS-ca-hB6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TFU-Oz-R2x">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="keQ-uB-9Bt">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="hBH-4y-xZg">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="cancelPressed:" destination="Ygj-wG-xAI" id="bww-dQ-eDU"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="1lp-09-qEW">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bfl-dv-g9o" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5801" y="421"/>
         </scene>
         <!--Select Members-->
         <scene sceneID="Rwa-b9-729">
@@ -270,7 +317,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="316-x2-HZ2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6487" y="10"/>
+            <point key="canvasLocation" x="6572" y="-260"/>
         </scene>
         <!--Sub View Controller-->
         <scene sceneID="1ib-Z7-aYx">
@@ -342,7 +389,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jvo-YC-wsc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5068" y="10"/>
+            <point key="canvasLocation" x="5062" y="-258"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

@@ -51,15 +51,30 @@ class CourseViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     //sets up the navigation bar
     fileprivate func setupNavBar() {
-        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(CourseViewController.createMessagePressed))
+        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(CourseViewController.createPressed))
         self.navigationItem.rightBarButtonItem = addButton
         self.navigationItem.rightBarButtonItem?.tintColor = UIColor.white
         self.navigationController?.navigationBar.tintColor = UIColor.white
     }
     
-    //action for when the create message button is pressed
-    func createMessagePressed(_ sender: AnyObject?) {
+    //action for when the create button is pressed
+    func createPressed(_ sender: AnyObject?) {
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        alertController.addAction(UIAlertAction(title: "Create Chat Room", style: .default, handler: createChatRoom))
+        alertController.addAction(UIAlertAction(title: "Create Group", style: .default, handler: createGroup))
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    //creates a chat room chat
+    func createChatRoom(_ sender: UIAlertAction) {
         self.performSegue(withIdentifier: Constants.createChatSegueId, sender: self)
+    }
+    
+    //creates a group
+    func createGroup(_ sender: UIAlertAction) {
+        self.performSegue(withIdentifier: Constants.createGroupSegueId, sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -125,21 +140,3 @@ class MenuCollectionViewCell: UICollectionViewCell {
         }
     }
 }
-
-//extension CourseViewController {
-//    //change this to number of sections (3 max)
-//    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-//        return 1
-//    }
-//    
-//    //returns number of rows in section
-//    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return 1
-//    }
-//    
-//    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCellWithIdentifier(Constants.coursesReuseId)!
-//        
-//        return cell
-//    }
-//}
