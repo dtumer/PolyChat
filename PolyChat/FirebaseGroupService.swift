@@ -11,6 +11,10 @@ import Foundation
 class FirebaseGroupService: FirebaseDatabaseService, GroupServiceProtocol {
     let DOMAIN = "FirebaseGroupService::"
     
+    let coursesGroupsService = CoursesGroupsServiceFactory.sharedInstance
+    let usersGroupsService = UsersGroupsServiceFactory.sharedInstance
+    let groupsUsersService = GroupsUsersServiceFactory.sharedInstance
+    
     func getGroup(_ groupId: String, callback: @escaping (Group?, NSError?) -> ()) {
         dbRef.child(Constants.groupsDBKey).child(groupId).observeSingleEvent(of: .value, with: { snapshot in
             if let value = snapshot.value as? NSMutableDictionary {
@@ -29,7 +33,19 @@ class FirebaseGroupService: FirebaseDatabaseService, GroupServiceProtocol {
     }
     
     func addGroup(_ group: Group, callback: @escaping (String?, NSError?) -> ()) {
+        let key = getAutoId(Constants.groupsDBKey)
+        let childUpdates = [
+            "/\(Constants.groupsDBKey)/\(key)": group.toDictionary()
+        ]
         
+        dbRef.updateChildValues(childUpdates, withCompletionBlock: { (error, ref) in
+            if let error = error {
+                callback(nil, error as NSError?)
+            }
+            else {
+                callback(key, nil)
+            }
+        })
     }
     
     func removeGroup(_ group: Group, callback: @escaping (NSError?) -> ()) {
@@ -85,7 +101,44 @@ extension FirebaseGroupService {
         })
     }
     
+    //creates a group
     func createGroup(_ courseId: String, users: [User], group: Group, callback: @escaping (NSError?) -> ()) {
-        
+        //1: Create group
+        self.addGroup(group, callback: { (string, error) in
+            if let error = error {
+                callback(error)
+            }
+            else if let groupId = string {
+                group.id = groupId
+                
+                //2: add group to COURSES_GROUPS
+                self.coursesGroupsService?.addGroupReference(courseId, group: group, callback: { error in
+                    if let error = error {
+                        callback(error)
+                    }
+                    else {
+                        //3: Add all users to GROUPS_USERS table
+                        self.groupsUsersService?.addGroupsUsersReference(group.id, users: users, callback: { error in
+                            if let error = error {
+                                callback(error)
+                            }
+                            else {
+                                //4: For each user add their reference in the USERS_GROUPS table
+                                for user in users {
+                                    self.usersGroupsService?.addUsersGroupsReference(user.id, groupId: group.id, callback: { error in
+                                        if let error = error {
+                                            callback(error)
+                                        }
+                                        else {
+                                            callback(nil)
+                                        }
+                                    })
+                                }
+                            }
+                        })
+                    }
+                })
+            }
+        })
     }
 }

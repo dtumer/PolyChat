@@ -17,7 +17,7 @@ class Group {
             self.id = id
         }
         else if let id = dictionary["id"] as? Int {
-           self.id = String(id)
+            self.id = String(id)
         }
         
         if let name = dictionary["name"] as? String {

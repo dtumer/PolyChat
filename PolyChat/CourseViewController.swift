@@ -93,6 +93,17 @@ class CourseViewController: UIViewController, UICollectionViewDelegate, UICollec
                 }
             }
         }
+        else if segue.identifier == Constants.createGroupSegueId {
+            if let vc = segue.destination as? UINavigationController {
+                let subVCS = vc.viewControllers
+                
+                if subVCS.count > 0 {
+                    if let subVC = subVCS[0] as? CreateGroupViewController {
+                        subVC.course = self.course
+                    }
+                }
+            }
+        }
     }
 }
 

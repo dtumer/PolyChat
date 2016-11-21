@@ -86,6 +86,7 @@ class CreateChatRoomViewController: UIViewController {
                 ])
                 
                 vc.course = self.course
+                vc.creationMode = Constants.createChat
             }
         }
     }

@@ -48,50 +48,6 @@ class FirebaseUsersChatRoomsService: FirebaseDatabaseService, UsersChatRoomsServ
         
     }
     
-//    //TODO remove this
-//    func createChatRoom(courseId: String, users: [User], chatRoom: ChatRoom, callback: (NSError?) -> ()) {
-//        //1: Add chat room to CHATROOMS table
-//        let key = getAutoId(Constants.chatRoomsDBKey)
-//        let childUpdates = ["/\(Constants.chatRoomsDBKey)/\(key)": chatRoom.toDictionary()]
-//        
-//        //set the id of the chat room
-//        chatRoom.id = key
-//        
-//        dbRef.updateChildValues(childUpdates, withCompletionBlock: { (error, ref) in
-//            if let error = error {
-//                callback(error)
-//            }
-//            else {
-//                //2: Add chat room id to COURSES_CHATROOMS table
-//                self.coursesChatRoomsService.addChatRoomReference(courseId, chatRoom: chatRoom, callback: { error in
-//                    if let error = error {
-//                        callback(error)
-//                    }
-//                    else {
-//                        //3: Add chat room id to USERS_CHATROOMS table for each user in the chat room
-//                        for user in users {
-//                            self.addUserToChatRoom(user.id, chatRoomId: chatRoom.id, callback: { error in
-//                                if let error = error {
-//                                    callback(error)
-//                                }
-//                            })
-//                        }
-//                        
-//                        //4: Add all users to CHATROOMS_USERS table
-//                        self.chatRoomsUsersService.addUsersToChatRoom(chatRoom.id, users: users, callback: { error in
-//                            if let error = error {
-//                                callback(error)
-//                            }
-//                            else {
-//                                callback(nil)
-//                            }
-//                        })
-//                    }
-//                })
-//            }
-//        })
-//    }
-    
     //gets list of chat room ids
     func getChatRoomIds(_ userId: String, callback: @escaping ([String]?, NSError?) -> ()) {
         dbRef.child(Constants.usersChatRoomsDBKey).child(userId).observeSingleEvent(of: .value, with: { snapshot in

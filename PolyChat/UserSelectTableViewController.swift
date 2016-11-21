@@ -13,13 +13,18 @@ class UserSelectTableViewController: UITableViewController {
     //services
     var authService: AuthServiceProtocol!
     var chatRoomService: ChatRoomServiceProtocol!
+    var groupService: GroupServiceProtocol!
     var userService: UserServiceProtocol!
     
     //current course object
     var course: Course!
     
-    //chat room object of the chat room being created
-    var chatRoom: ChatRoom!
+    //objects to be created
+    var chatRoom: ChatRoom?
+    var group: Group?
+    
+    //creation mode. 0 is chatroom, 1 is group
+    var creationMode: Int!
     
     //the user that is creating the chat room
     var user: User!
@@ -65,6 +70,7 @@ class UserSelectTableViewController: UITableViewController {
     fileprivate func initServices() {
         self.authService = AuthServiceFactory.sharedInstance
         self.chatRoomService = ChatRoomServiceFactory.sharedInstance
+        self.groupService = GroupServiceFactory.sharedInstance
         self.userService = UserServiceFactory.sharedInstance
     }
     
@@ -84,24 +90,37 @@ class UserSelectTableViewController: UITableViewController {
     }
     
     //finishes creating the chat room
-    @IBAction func createChatRoomPressed(_ sender: AnyObject) {
+    @IBAction func savePressed(_ sender: AnyObject) {
         //check if there were users selected
         if selectedUsers.count <= 1 {
-            let alert = UIAlertController(title: "Error", message: "Please choose at least one other user to chat with!", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Error", message: "You must choose at least one other user", preferredStyle: .alert)
             
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
         else {
-            self.chatRoomService.createChatRoom(self.course.id, users: self.selectedUsers, chatRoom: self.chatRoom, callback: { error in
-                if let error = error {
-                    //TODO log error better
-                    print(error.description)
-                }
-                else {
-                    self.dismiss(animated: true, completion: nil)
-                }
-            })
+            if self.creationMode == Constants.createChat {
+                self.chatRoomService.createChatRoom(self.course.id, users: self.selectedUsers, chatRoom: self.chatRoom!, callback: { error in
+                    if let error = error {
+                        //TODO log error better
+                        print(error.description)
+                    }
+                    else {
+                        self.dismiss(animated: true, completion: nil)
+                    }
+                })
+            }
+            else {
+                self.groupService.createGroup(self.course.id, users: self.selectedUsers, group: self.group!, callback: { error in
+                    if let error = error {
+                        //TODO something about printing error
+                        print(error.description)
+                    }
+                    else {
+                        self.dismiss(animated: true, completion: nil)
+                    }
+                })
+            }
         }
     }
 }
