@@ -91,10 +91,31 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
+                    <connections>
+                        <segue destination="gGB-TP-ojF" kind="showDetail" identifier="ChatDetailSegue" action="showViewController:sender:" id="Ccy-06-sIR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="omq-7I-39h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="982" y="243"/>
+        </scene>
+        <!--Details-->
+        <scene sceneID="Jgq-16-j9D">
+            <objects>
+                <viewController title="Details" id="gGB-TP-ojF" customClass="ChatDetailsViewController" customModule="PolyChat" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="W1a-XS-ctS"/>
+                        <viewControllerLayoutGuide type="bottom" id="M1x-5l-Eaf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Srh-vC-p73">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NQg-oc-DhT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1806" y="242"/>
         </scene>
     </scenes>
 </document>

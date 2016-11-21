@@ -77,6 +77,13 @@ class ChatRoomViewController: JSQMessagesViewController {
     fileprivate func initNavigation() {
         //sets title to chat room name
         self.navigationItem.title = chatRoom.name
+        
+        //sets right bar button item
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "InfoIcon"), style: .plain, target: self, action: #selector(ChatRoomViewController.chatInfo))
+    }
+    
+    func chatInfo() {
+        self.performSegue(withIdentifier: Constants.chatDetailSegueId, sender: self)
     }
     
     // Sets up the message bubbles
@@ -147,6 +154,16 @@ class ChatRoomViewController: JSQMessagesViewController {
         }
         catch {
             print(error)
+        }
+    }
+    
+    //prepare for segue override for chat details
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //if we're looking at the chat details
+        if segue.identifier == Constants.chatDetailSegueId {
+            if let vc = segue.destination as? ChatDetailsViewController {
+                vc.chatRoom = self.chatRoom
+            }
         }
     }
 }
