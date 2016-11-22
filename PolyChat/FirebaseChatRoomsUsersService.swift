@@ -13,7 +13,7 @@ class FirebaseChatRoomsUsersService: FirebaseDatabaseService, ChatRoomsUsersServ
     
     //adds references to the users in the CHATROOMS_USERS table
     func addChatRoomsUsersReference(_ chatRoomId: String, users: [User], callback: @escaping (NSError?) -> ()) {
-        self.getUserIdsInChatRoom(chatRoomId, callback: { (userIds, error) in
+        self.getAllReferences(chatRoomId, callback: { (userIds, error) in
             var ids: [String] = []
             
             //check if there are userIds
@@ -45,8 +45,13 @@ class FirebaseChatRoomsUsersService: FirebaseDatabaseService, ChatRoomsUsersServ
         })
     }
     
-    //gets all user ids in a specified chat room
-    func getUserIdsInChatRoom(_ chatRoomId: String, callback: @escaping ([String]?, NSError?) -> ()) {
+    //removes a chat room reference
+    func removeChatRoomsUsersReference(_ chatRoomId: String, callback: @escaping (NSError?) -> ()) {
+        //TODO finish this
+    }
+    
+    //gets all references given the chat room id
+    func getAllReferences(_ chatRoomId: String, callback: @escaping ([String]?, NSError?) -> ()) {
         dbRef.child(Constants.chatRoomsUsersDBKey).child(chatRoomId).observeSingleEvent(of: .value, with: { snapshot in
             if let val = snapshot.value as? [String] {
                 callback(val, nil)

@@ -15,6 +15,7 @@ class FirebaseChatRoomService: FirebaseDatabaseService, ChatRoomServiceProtocol 
     let coursesChatRoomsService = CoursesChatRoomsServiceFactory.sharedInstance
     let usersChatRoomsService = UsersChatRoomsServiceFactory.sharedInstance
     let chatRoomsUsersService = ChatRoomsUsersServiceFactory.sharedInstance
+    let userService = UserServiceFactory.sharedInstance
     
     //get all chat rooms
     func getAllChatRooms(_ callback: @escaping ([ChatRoom?], NSError?) -> ()) {
@@ -48,6 +49,22 @@ class FirebaseChatRoomService: FirebaseDatabaseService, ChatRoomServiceProtocol 
             }
             else {
                 callback(key, nil)
+            }
+        })
+    }
+    
+    //updates a chat room
+    func updateChatRoom(chatRoomId: String, chatRoom: ChatRoom, callback: @escaping (NSError?) -> ()) {
+        let childUpdates = [
+            "/\(Constants.chatRoomsDBKey)/\(chatRoomId)": chatRoom.toDictionary()
+        ]
+        
+        dbRef.updateChildValues(childUpdates, withCompletionBlock: { (error, ref) in
+            if let error = error {
+                callback(error as NSError?)
+            }
+            else {
+                callback(nil)
             }
         })
     }
@@ -140,6 +157,38 @@ extension FirebaseChatRoomService {
                         })
                     }
                 })
+            }
+        })
+    }
+    
+    //gets all users in a chatroom
+    func getAllUsersInAChatRoom(_ chatRoomId: String, callback: @escaping ([User]?, NSError?) -> ()) {
+        var users: [User] = []
+        var numUsers = 0
+        
+        self.chatRoomsUsersService?.getAllReferences(chatRoomId, callback: { (userIds, error) in
+            if let error = error {
+                callback(nil, error)
+            }
+            else {
+                if let userIds = userIds {
+                    for uid in userIds {
+                        self.userService?.getUser(uid, callback: { (user, error) in
+                            if let error = error {
+                                callback(nil, error)
+                            }
+                            else {
+                                users.append(user!)
+                                numUsers += 1
+                            }
+                            
+                            //only callback if we've gone through all of them
+                            if numUsers == userIds.count {
+                                callback(users, nil)
+                            }
+                        })
+                    }
+                }
             }
         })
     }

@@ -8,10 +8,13 @@
 
 import UIKit
 
-class ChatDetailsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ChatDetailsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
 
     //reference to the tableView
     @IBOutlet weak var tableView: UITableView!
+    
+    //reference to text field
+    @IBOutlet weak var chatRoomNameTextField: UITextField!
     
     //services
     var authService: AuthServiceProtocol!
@@ -30,6 +33,10 @@ class ChatDetailsViewController: UIViewController, UITableViewDelegate, UITableV
         
         initServices()
         initNavigation()
+        initView()
+        
+        //start progress hud
+        ProgressHUD.shared.showOverlay(view: self.view)
     }
     
     //view did appear
@@ -59,17 +66,64 @@ class ChatDetailsViewController: UIViewController, UITableViewDelegate, UITableV
     //initializes the nav bar
     func initNavigation() {
         self.navigationItem.title = "Details"
+    }
+    
+    //inits view elements
+    func initView() {
+        if self.chatRoom.name.isEmpty {
+            self.chatRoomNameTextField.text = ""
+        }
+        else {
+            self.chatRoomNameTextField.text = self.chatRoom.name
+        }
+    }
+    
+    //Delegate function
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        guard textField.text != nil && !GlobalUtilities.isBlankString(textField.text!) && textField.text != self.chatRoom.name else {
+            return
+        }
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(ChatDetailsViewController.editMembers))
+        let alert = UIAlertController(title: "Warning", message: "Are you sure you would like to change the Chat Room name?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "No", style: .destructive, handler: nil))
+        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { sender in
+            ProgressHUD.shared.showOverlay(view: self.view)
+            self.chatRoom.name = textField.text!
+            self.chatRoomService.updateChatRoom(chatRoomId: self.chatRoom.id, chatRoom: self.chatRoom, callback: { error in
+                ProgressHUD.shared.hideOverlayView()
+                
+                if let error = error {
+                    // TODO: Handle this error
+                    print(error)
+                }
+                else {
+                    ConnectivityAlertUtility.alert(viewController: self, title: "Congratulations!", message: "The Chat Room name has been updated")
+                }
+            })
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
     }
     
     //loads the users in the chat room
     func loadUsers() {
-        //TODO finish this
-    }
-    
-    func editMembers() {
-        performSegue(withIdentifier: Constants.editMembersSegueId, sender: self)
+        self.users = []
+        
+        self.chatRoomService.getAllUsersInAChatRoom(self.chatRoom.id, callback: { (users, error) in
+            if let error = error {
+                ConnectivityAlertUtility.alert(viewController: self)
+            }
+            else {
+                self.users += users!
+                self.tableView.reloadData()
+                ProgressHUD.shared.hideOverlayView()
+            }
+        })
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -80,6 +134,20 @@ class ChatDetailsViewController: UIViewController, UITableViewDelegate, UITableV
                 vc.creationMode = Constants.editChat
             }
         }
+    }
+    
+    @IBAction func editMembers(_ sender: Any) {
+        performSegue(withIdentifier: Constants.editMembersSegueId, sender: self)
+    }
+    
+    @IBAction func leaveChatRoomPressed(_ sender: Any) {
+        let alert = UIAlertController(title: "Warning", message: "Are you sure you would like to leave \"\(self.chatRoom.name)\"?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "No", style: .destructive, handler: nil))
+        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { sender in
+            print("HERE")
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
     }
 }
 

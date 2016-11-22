@@ -32,7 +32,14 @@ protocol ChatRoomServiceProtocol {
      * @param callback  - The callback function. Called with the ID of the chatroom in the DB or an error if there is one.
      */
     func addChatRoom(_ chatRoom: ChatRoom, callback: @escaping (String?, NSError?) -> ())
-
+    
+    /*
+     * Updates a chat room
+     *
+     * @param chatRoomId    - The chat room id of the room to update
+     * @param chatRoom      - The chat room obj to put there
+     */
+    func updateChatRoom(chatRoomId: String, chatRoom: ChatRoom, callback: @escaping (NSError?) -> ())
     
     /* 
      * -----------------------------------
@@ -58,4 +65,11 @@ protocol ChatRoomServiceProtocol {
      * @param callback  - The callback function. Called with an error if there is one.
      */
     func createChatRoom(_ courseId: String, users: [User], chatRoom: ChatRoom, callback: @escaping (NSError?) -> ())
+    
+    /*
+     * Gets all the users that are in the specified chat room
+     *
+     * @param chatRoomId    - The id of the chat room to get the users for
+     */
+    func getAllUsersInAChatRoom(_ chatRoomId: String, callback: @escaping ([User]?, NSError?) -> ())
 }

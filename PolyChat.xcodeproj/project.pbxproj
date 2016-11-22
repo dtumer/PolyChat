@@ -232,6 +232,9 @@
 		0FB347F81DE3A043009E4AC7 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB347F71DE3A043009E4AC7 /* UserDetailViewController.swift */; };
 		0FB347F91DE3A043009E4AC7 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB347F71DE3A043009E4AC7 /* UserDetailViewController.swift */; };
 		0FB347FA1DE3A043009E4AC7 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB347F71DE3A043009E4AC7 /* UserDetailViewController.swift */; };
+		0FB347FC1DE3DE90009E4AC7 /* ConnectivityAlertUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB347FB1DE3DE90009E4AC7 /* ConnectivityAlertUtility.swift */; };
+		0FB347FD1DE3DE90009E4AC7 /* ConnectivityAlertUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB347FB1DE3DE90009E4AC7 /* ConnectivityAlertUtility.swift */; };
+		0FB347FE1DE3DE90009E4AC7 /* ConnectivityAlertUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB347FB1DE3DE90009E4AC7 /* ConnectivityAlertUtility.swift */; };
 		0FB5AA421DD67E830040108D /* TableViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB5AA411DD67E830040108D /* TableViewHelper.swift */; };
 		0FB5AA431DD67E830040108D /* TableViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB5AA411DD67E830040108D /* TableViewHelper.swift */; };
 		0FE0E52A1D47244B00E6E64F /* CoursesAdminTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE0E5291D47244B00E6E64F /* CoursesAdminTableViewCell.swift */; };
@@ -441,6 +444,7 @@
 		0FB347EE1DE39FBF009E4AC7 /* ChatRoomDetailsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatRoomDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		0FB347F31DE3A02F009E4AC7 /* UserDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserDetail.storyboard; sourceTree = "<group>"; };
 		0FB347F71DE3A043009E4AC7 /* UserDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
+		0FB347FB1DE3DE90009E4AC7 /* ConnectivityAlertUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectivityAlertUtility.swift; sourceTree = "<group>"; };
 		0FB5AA411DD67E830040108D /* TableViewHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewHelper.swift; sourceTree = "<group>"; };
 		0FB5AA441DDAD0750040108D /* PolyChat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PolyChat.entitlements; sourceTree = "<group>"; };
 		0FE0E5291D47244B00E6E64F /* CoursesAdminTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoursesAdminTableViewCell.swift; sourceTree = "<group>"; };
@@ -625,6 +629,7 @@
 				0F971FBA1D3745B200560B93 /* GlobalUtilities.swift */,
 				0FB5AA411DD67E830040108D /* TableViewHelper.swift */,
 				0FB347C01DDAF6D7009E4AC7 /* ProgressHUD.swift */,
+				0FB347FB1DE3DE90009E4AC7 /* ConnectivityAlertUtility.swift */,
 			);
 			name = Client;
 			sourceTree = "<group>";
@@ -1345,6 +1350,7 @@
 				0F65FC481D1E270E00470498 /* User.swift in Sources */,
 				0F2B561D1D3DEA95008BF1F6 /* FirebaseUsersCoursesService.swift in Sources */,
 				0F2B563E1D3DECA7008BF1F6 /* ChatRoomsMessagesServiceFactory.swift in Sources */,
+				0FB347FC1DE3DE90009E4AC7 /* ConnectivityAlertUtility.swift in Sources */,
 				0F2B564E1D3DF163008BF1F6 /* MessageServiceFactory.swift in Sources */,
 				0F2B56621D3DF368008BF1F6 /* FirebaseMessageService.swift in Sources */,
 				0F2A1CDF1D5C43860093C888 /* ChatTableViewCell.swift in Sources */,
@@ -1439,6 +1445,7 @@
 				0F4AFF561D1DD8EA0030C3BD /* UserServiceFactory.swift in Sources */,
 				0F2B563B1D3DEC46008BF1F6 /* UsersChatRoomsServiceFactory.swift in Sources */,
 				0F65FC701D22031400470498 /* NSErrorExtension.swift in Sources */,
+				0FB347FD1DE3DE90009E4AC7 /* ConnectivityAlertUtility.swift in Sources */,
 				0F55EA0D1D4D4DC300A0D2B4 /* ChatTableViewController.swift in Sources */,
 				0FFBEA2B1D6576E3002E80C4 /* MembersTableViewCell.swift in Sources */,
 				0F55EA251D4E870800A0D2B4 /* UserSelectTableViewController.swift in Sources */,
@@ -1490,6 +1497,7 @@
 				0F2B562F1D3DEB2C008BF1F6 /* ChatRoomsMessagesServiceProtocol.swift in Sources */,
 				0F65FC4A1D1E270E00470498 /* User.swift in Sources */,
 				0FB347F11DE39FBF009E4AC7 /* ChatRoomDetailsTableViewCell.swift in Sources */,
+				0FB347FE1DE3DE90009E4AC7 /* ConnectivityAlertUtility.swift in Sources */,
 				0F2B560F1D3DE9B1008BF1F6 /* UsersCoursesServiceFactory.swift in Sources */,
 				0F2B56401D3DECA7008BF1F6 /* ChatRoomsMessagesServiceFactory.swift in Sources */,
 				0F4AFF801D1E0D3D0030C3BD /* Course.swift in Sources */,

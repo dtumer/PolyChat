@@ -85,10 +85,7 @@ class GroupTableViewController: UITableViewController {
             }
             else {
                 //TODO check for error type
-                let alert = UIAlertController(title: "Uh Oh!", message: "Oops it looks like there was a problem processing your request. Please try again later.", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                
-                self.present(alert, animated: true, completion: nil)
+                ConnectivityAlertUtility.alert(viewController: self)
             }
             
             self.tableView.reloadData()
