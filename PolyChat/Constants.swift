@@ -65,10 +65,13 @@ struct Constants {
     static let createGroupNextSegueId = "CreateGroupNextSegue"
     static let chatRoomDetailsSegueId = "ChatRoomDetailsSegue"
     static let chatDetailSegueId = "ChatDetailSegue"
+    static let editMembersSegueId = "EditMembersSegue"
     
     //Users addition mode
     static let createChat = 0
     static let createGroup = 1
+    static let editChat = 2
+    static let editGroup = 3
     
     /* Model Constants */
     //User

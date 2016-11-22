@@ -111,11 +111,11 @@ extension GroupTableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if groups.count > 0 {
-            TableViewHelper.removeEmptyMessage(viewController: self)
+            TableViewHelper.removeEmptyMessage(tableView: self.tableView)
             return groups.count
         }
         else {
-            TableViewHelper.EmptyMessage(message: "There are no Groups to show", viewController: self)
+            TableViewHelper.EmptyMessage(message: "There are no Groups to show", viewController: self, tableView: self.tableView)
             return 0
         }
     }

@@ -23,7 +23,12 @@ class UserSelectTableViewController: UITableViewController {
     var chatRoom: ChatRoom?
     var group: Group?
     
-    //creation mode. 0 is chatroom, 1 is group
+    /* Creation Mode:
+     * 0: Chat Room Creation
+     * 1: Group Creation
+     * 2: Edit ChatRoom
+     * 3: Edit Group
+     */
     var creationMode: Int!
     
     //the user that is creating the chat room
@@ -110,7 +115,7 @@ class UserSelectTableViewController: UITableViewController {
                     }
                 })
             }
-            else {
+            else if self.creationMode == Constants.createGroup {
                 self.groupService.createGroup(self.course.id, users: self.selectedUsers, group: self.group!, callback: { error in
                     if let error = error {
                         //TODO something about printing error
@@ -120,6 +125,12 @@ class UserSelectTableViewController: UITableViewController {
                         self.dismiss(animated: true, completion: nil)
                     }
                 })
+            }
+            else if self.creationMode == Constants.editChat {
+                //TODO edit chat members
+            }
+            else if self.creationMode == Constants.editGroup {
+                //TODO edit group members
             }
         }
     }
@@ -132,11 +143,11 @@ extension UserSelectTableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if users.count > 0 {
-            TableViewHelper.removeEmptyMessage(viewController: self)
+            TableViewHelper.removeEmptyMessage(tableView: self.tableView)
             return users.count
         }
         else {
-            TableViewHelper.EmptyMessage(message: "There are no Users to show", viewController: self)
+            TableViewHelper.EmptyMessage(message: "There are no Users to show", viewController: self, tableView: self.tableView)
             return 0
         }
     }

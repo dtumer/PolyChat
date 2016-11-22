@@ -225,7 +225,7 @@
         <scene sceneID="fGg-At-gKI">
             <objects>
                 <navigationController id="ErB-ID-YdK" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Khl-gc-PoV">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Khl-gc-PoV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -326,7 +326,7 @@
         <!--Select Members-->
         <scene sceneID="Rwa-b9-729">
             <objects>
-                <tableViewController id="ZMm-05-3oI" customClass="UserSelectTableViewController" customModule="PolyChat" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="selectMembers" id="ZMm-05-3oI" customClass="UserSelectTableViewController" customModule="PolyChat" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="59" sectionHeaderHeight="28" sectionFooterHeight="28" id="6aI-FV-WUq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

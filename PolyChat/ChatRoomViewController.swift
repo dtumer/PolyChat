@@ -24,6 +24,9 @@ class ChatRoomViewController: JSQMessagesViewController {
     // Chat room object
     var chatRoom: ChatRoom!
     
+    //course reference
+    var course: Course!
+    
     // Messages in the chat room
     var messages = [JSQMessage]()
     
@@ -163,6 +166,13 @@ class ChatRoomViewController: JSQMessagesViewController {
         if segue.identifier == Constants.chatDetailSegueId {
             if let vc = segue.destination as? ChatDetailsViewController {
                 vc.chatRoom = self.chatRoom
+                vc.course = self.course
+                
+                //setup back button
+                let back = UIBarButtonItem()
+                back.title = "Back"
+                
+                self.navigationItem.backBarButtonItem = back
             }
         }
     }

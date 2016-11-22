@@ -59,7 +59,6 @@ class ChatTableViewController: UITableViewController {
                 }
             })
         }
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -105,6 +104,7 @@ class ChatTableViewController: UITableViewController {
         if segue.identifier == Constants.chatRoomDetailsSegueId {
             let vc = segue.destination as! ChatRoomViewController
             vc.chatRoom = selectedChatRoom
+            vc.course = self.course
             vc.senderId = user.id as String
             vc.senderDisplayName = user.name
         }
@@ -118,11 +118,11 @@ extension ChatTableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if chatRooms.count > 0 {
-            TableViewHelper.removeEmptyMessage(viewController: self)
+            TableViewHelper.removeEmptyMessage(tableView: self.tableView)
             return chatRooms.count
         }
         else {
-            TableViewHelper.EmptyMessage(message: "There are no Chats to show", viewController: self)
+            TableViewHelper.EmptyMessage(message: "There are no Chats to show", viewController: self, tableView: self.tableView)
             return 0
         }
     }

@@ -158,11 +158,11 @@ extension MyCoursesTableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if courses.count > 0 {
-            TableViewHelper.removeEmptyMessage(viewController: self)
+            TableViewHelper.removeEmptyMessage(tableView: self.tableView)
             return courses.count
         }
         else {
-            TableViewHelper.EmptyMessage(message: "You are not enrolled in any courses", viewController: self)
+            TableViewHelper.EmptyMessage(message: "You are not enrolled in any courses", viewController: self, tableView: self.tableView)
             return 0
         }
     }

@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -13,7 +14,7 @@
             <objects>
                 <tableViewController id="EW9-cQ-adS" customClass="ChatTableViewController" customModule="PolyChat" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="58" sectionHeaderHeight="28" sectionFooterHeight="28" id="0j5-vK-dJ4">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
@@ -70,6 +71,7 @@
                             <outlet property="delegate" destination="EW9-cQ-adS" id="B4z-Za-oXe"/>
                         </connections>
                     </tableView>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
                         <segue destination="yj7-Qz-s98" kind="show" identifier="ChatRoomDetailsSegue" id="uDI-sG-juq"/>
                     </connections>
@@ -87,35 +89,113 @@
                         <viewControllerLayoutGuide type="bottom" id="uBz-T0-H9T"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="GX5-Ro-7Tb">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <connections>
-                        <segue destination="gGB-TP-ojF" kind="showDetail" identifier="ChatDetailSegue" action="showViewController:sender:" id="Ccy-06-sIR"/>
+                        <segue destination="7Wu-GY-055" kind="show" identifier="ChatDetailSegue" id="OoV-Dr-HZa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="omq-7I-39h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="982" y="243"/>
+            <point key="canvasLocation" x="1025" y="242"/>
         </scene>
-        <!--Details-->
-        <scene sceneID="Jgq-16-j9D">
+        <!--Chat Details View Controller-->
+        <scene sceneID="OEY-sq-0xh">
             <objects>
-                <viewController title="Details" id="gGB-TP-ojF" customClass="ChatDetailsViewController" customModule="PolyChat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="7Wu-GY-055" customClass="ChatDetailsViewController" customModule="PolyChat" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="W1a-XS-ctS"/>
-                        <viewControllerLayoutGuide type="bottom" id="M1x-5l-Eaf"/>
+                        <viewControllerLayoutGuide type="top" id="wKg-0H-JSB"/>
+                        <viewControllerLayoutGuide type="bottom" id="aVS-XV-jgC"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Srh-vC-p73">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <view key="view" contentMode="scaleToFill" id="wBf-Cg-eca">
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="59" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eRW-ew-s5R">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <color key="backgroundColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="UserCell" id="vUI-gL-CJo" customClass="ChatRoomDetailsTableViewCell" customModule="PolyChat" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="59"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vUI-gL-CJo" id="qe9-7O-XHA">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="58"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KkY-LY-wXz">
+                                                    <rect key="frame" x="0.0" y="8" width="375" height="55"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6XE-hP-yNy">
+                                                            <rect key="frame" x="12" y="17" width="351" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstItem="6XE-hP-yNy" firstAttribute="centerY" secondItem="KkY-LY-wXz" secondAttribute="centerY" id="D1S-Oi-vRW"/>
+                                                        <constraint firstItem="6XE-hP-yNy" firstAttribute="leading" secondItem="KkY-LY-wXz" secondAttribute="leading" constant="12" id="siP-Fm-azO"/>
+                                                        <constraint firstAttribute="height" constant="55" id="uMo-5u-KJH"/>
+                                                        <constraint firstAttribute="trailing" secondItem="6XE-hP-yNy" secondAttribute="trailing" constant="12" id="xPQ-T5-SjE"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="KkY-LY-wXz" firstAttribute="width" secondItem="qe9-7O-XHA" secondAttribute="width" id="LUo-op-ic2"/>
+                                                <constraint firstItem="KkY-LY-wXz" firstAttribute="centerX" secondItem="qe9-7O-XHA" secondAttribute="centerX" id="aSu-Wh-60y"/>
+                                                <constraint firstItem="KkY-LY-wXz" firstAttribute="top" secondItem="qe9-7O-XHA" secondAttribute="topMargin" id="y91-pf-5A5"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="usernameLabel" destination="6XE-hP-yNy" id="6aF-FU-apn"/>
+                                            <segue destination="5fm-2H-XNE" kind="show" id="LfP-0o-3ga"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="7Wu-GY-055" id="XMT-EG-nTs"/>
+                                    <outlet property="delegate" destination="7Wu-GY-055" id="mCk-s8-GkH"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="eRW-ew-s5R" firstAttribute="centerY" secondItem="wBf-Cg-eca" secondAttribute="centerY" id="YUq-ca-XPI"/>
+                            <constraint firstItem="eRW-ew-s5R" firstAttribute="width" secondItem="wBf-Cg-eca" secondAttribute="width" id="ZpA-EW-oa5"/>
+                            <constraint firstItem="eRW-ew-s5R" firstAttribute="centerX" secondItem="wBf-Cg-eca" secondAttribute="centerX" id="aiq-VD-IE6"/>
+                            <constraint firstItem="eRW-ew-s5R" firstAttribute="height" secondItem="wBf-Cg-eca" secondAttribute="height" id="rHt-eT-OoO"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="eRW-ew-s5R" id="G1U-yP-NT1"/>
+                        <segue destination="wSN-0U-gI5" kind="show" identifier="EditMembersSegue" id="Xwn-V3-gMu"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="NQg-oc-DhT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bh6-wN-rLn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1806" y="242"/>
+            <point key="canvasLocation" x="1836" y="242"/>
+        </scene>
+        <!--UserDetail-->
+        <scene sceneID="vjx-bX-0Ec">
+            <objects>
+                <viewControllerPlaceholder storyboardName="UserDetail" id="5fm-2H-XNE" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rGp-A3-G0a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2493" y="220"/>
+        </scene>
+        <!--selectMembers-->
+        <scene sceneID="0QB-at-CXJ">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="selectMembers" storyboardName="Course" referencedIdentifier="selectMembers" id="wSN-0U-gI5" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xhk-ak-dA4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2517" y="264"/>
         </scene>
     </scenes>
 </document>

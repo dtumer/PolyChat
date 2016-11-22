@@ -9,7 +9,7 @@
 import Foundation
 
 class TableViewHelper {
-    class func EmptyMessage(message:String, viewController:UITableViewController) {
+    class func EmptyMessage(message:String, viewController: UIViewController, tableView: UITableView) {
         let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: viewController.view.bounds.size.width, height: viewController.view.bounds.size.height))
         messageLabel.text = message
         messageLabel.textColor = UIColor.black
@@ -18,11 +18,11 @@ class TableViewHelper {
         messageLabel.font = UIFont(name: "TrebuchetMS", size: 17)
         messageLabel.sizeToFit()
         
-        viewController.tableView.backgroundView = messageLabel;
-        viewController.tableView.separatorStyle = .none;
+        tableView.backgroundView = messageLabel;
+        tableView.separatorStyle = .none;
     }
     
-    class func removeEmptyMessage(viewController: UITableViewController) {
-        viewController.tableView.backgroundView = nil
+    class func removeEmptyMessage(tableView: UITableView) {
+        tableView.backgroundView = nil
     }
 }
