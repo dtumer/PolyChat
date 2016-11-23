@@ -135,6 +135,7 @@ class ChatDetailsViewController: UIViewController, UITableViewDelegate, UITableV
                 vc.chatRoom = self.chatRoom
                 vc.course = self.course
                 vc.creationMode = Constants.editChat
+                vc.usersIn = self.users
             }
         }
     }
@@ -168,7 +169,7 @@ extension ChatDetailsViewController {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if users.count > 0 {
             TableViewHelper.removeEmptyMessage(tableView: self.tableView)
-            return users.count
+            return users.count + 1
         }
         else {
             TableViewHelper.EmptyMessage(message: "There are no Users to show", viewController: self, tableView: self.tableView)
@@ -177,11 +178,27 @@ extension ChatDetailsViewController {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.usersReuseId, for: indexPath) as! ChatRoomDetailsTableViewCell
-        
-        cell.user = self.users[indexPath.row]
-        
-        return cell
+        if indexPath.row == self.users.count {
+            let cell = tableView.dequeueReusableCell(withIdentifier: Constants.addUserReuseId, for: indexPath)
+            
+            return cell
+        }
+        else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: Constants.usersReuseId, for: indexPath) as! ChatRoomDetailsTableViewCell
+            
+            cell.user = self.users[indexPath.row]
+            
+            return cell
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        if indexPath.row == self.users.count {
+            return .none
+        }
+        else {
+            return .delete
+        }
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {

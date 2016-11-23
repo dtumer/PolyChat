@@ -56,4 +56,18 @@ class GlobalUtilities {
         
         return uids
     }
+    
+    //calculates set difference A\B
+    static func setDifference(A: [String], B: [String]) -> [String] {
+        var diff: [String] = []
+        
+        //b will always be a subset of A
+        for elem in A {
+            if !B.contains(elem) {
+                diff.append(elem)
+            }
+        }
+        
+        return diff
+    }
 }

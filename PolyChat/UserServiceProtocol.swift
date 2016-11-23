@@ -47,4 +47,14 @@ protocol UserServiceProtocol {
      * @param callback  - The callback function. Called with the list of users or an error if there is one
      */
     func getAllUsersInACourse(_ courseId: String, userId: String, callback: @escaping ([User]?, NSError?) -> ())
+    
+    /*
+     * gets all users in a course that are not also in the chat room
+     *
+     * @param courseId  - ID of the course
+     * @param userId    - ID of loggin in user
+     * @param users     - users in the chat room
+     * @param callback  - callback function
+     */
+    func getAllUsersInACourseNotInChatRoom(courseId: String, users: [String], callback: @escaping ([User]?, NSError?) -> ())
 }

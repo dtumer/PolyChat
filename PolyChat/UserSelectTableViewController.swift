@@ -26,16 +26,19 @@ class UserSelectTableViewController: UITableViewController {
     /* Creation Mode:
      * 0: Chat Room Creation
      * 1: Group Creation
-     * 2: Edit ChatRoom
-     * 3: Edit Group
+     * 2: Edit ChatRoom (adding users)
+     * 3: Edit Group (adding users)
      */
     var creationMode: Int!
     
     //the user that is creating the chat room
     var user: User!
     
-    //all users encrolled in the course
+    //all users enrolled in the course
     var users: [User] = []
+    
+    //reference to all the users already in the chat or group
+    var usersIn: [User]?
     
     //all selected users
     var selectedUsers: [User] = []
@@ -64,7 +67,12 @@ class UserSelectTableViewController: UITableViewController {
                 }
                 else {
                     self.user = user!
-                    self.selectedUsers.append(self.user)
+                    
+                    //if we're creating something add the user in
+                    if self.creationMode == Constants.createChat || self.creationMode == Constants.createGroup {
+                        self.selectedUsers.append(self.user)
+                    }
+                    
                     self.loadUsers(self.course.id)
                 }
             })
@@ -81,23 +89,40 @@ class UserSelectTableViewController: UITableViewController {
     
     //loads all users in a course
     fileprivate func loadUsers(_ courseId: String) {
-        self.userService.getAllUsersInACourse(courseId, userId: self.user.id, callback: { (users, error) in
-            if let error = error {
-                //TODO log error better
-                print(error.description)
-            }
-            else {
-                self.users += users!
-                self.tableView.reloadData()
+        if self.creationMode == Constants.createChat || self.creationMode == Constants.createGroup {
+            self.userService.getAllUsersInACourse(courseId, userId: self.user.id, callback: { (users, error) in
                 ProgressHUD.shared.hideOverlayView()
-            }
-        })
+                
+                if let error = error {
+                    //TODO log error better
+                    print(error.description)
+                }
+                else {
+                    self.users += users!
+                    self.tableView.reloadData()
+                }
+            })
+        }
+        else if self.creationMode == Constants.editChat {
+            self.userService.getAllUsersInACourseNotInChatRoom(courseId: courseId, users: GlobalUtilities.usersToIds(users: self.usersIn!), callback: { (users, error) in
+                ProgressHUD.shared.hideOverlayView()
+                
+                if let error = error {
+                    //TODO something else
+                    print("ERROR")
+                }
+                else {
+                    self.users += users!
+                    self.tableView.reloadData()
+                }
+            })
+        }
     }
     
     //finishes creating the chat room
     @IBAction func savePressed(_ sender: AnyObject) {
         //check if there were users selected
-        if selectedUsers.count <= 1 {
+        if selectedUsers.count < 1 || selectedUsers[0].id == self.user.id {
             let alert = UIAlertController(title: "Error", message: "You must choose at least one other user", preferredStyle: .alert)
             
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -127,7 +152,15 @@ class UserSelectTableViewController: UITableViewController {
                 })
             }
             else if self.creationMode == Constants.editChat {
-                //TODO edit chat members
+                self.chatRoomService.addUsersToChatRoom(chatRoomId: self.chatRoom!.id, users: self.selectedUsers, callback: { error in
+                    if let error = error {
+                        //TODO change this
+                        print("ERROR")
+                    }
+                    else {
+                        self.dismiss(animated: true, completion: nil)
+                    }
+                })
             }
             else if self.creationMode == Constants.editGroup {
                 //TODO edit group members

@@ -82,4 +82,13 @@ protocol ChatRoomServiceProtocol {
      * @param callback      - callback function
      */
     func removeUserFromChatRoom(_ chatRoomId: String, uid: String, users: [String], callback: @escaping (NSError?) -> ())
+    
+    /*
+     * adds a user to a chat room
+     *
+     * @param chatRoomId    - Id of the chat room
+     * @param uid           - Id of the user to add
+     * @param callback      - callback function
+     */
+    func addUsersToChatRoom(chatRoomId: String, users: [User], callback: @escaping (NSError?) -> ())
 }

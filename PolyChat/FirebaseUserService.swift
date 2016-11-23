@@ -118,4 +118,38 @@ extension FirebaseUserService {
         
         self.handles.append(handle)
     }
+    
+    //gets all users not in a chat room
+    func getAllUsersInACourseNotInChatRoom(courseId: String, users: [String], callback: @escaping ([User]?, NSError?) -> ()) {
+        var retUsers: [User] = []
+        var numUsers = 0
+        
+        dbRef.child(Constants.coursesUsersDBKey).child(courseId).observe(.value, with: { snapshot in
+            if let userIds = snapshot.value as? NSArray {
+                let newUsers = GlobalUtilities.setDifference(A: userIds as! [String], B: users)
+                
+                for uid in newUsers {
+                    self.getUser(uid, callback: { (user, error) in
+                        if let error = error {
+                            callback(nil, error)
+                            return
+                        }
+                        else {
+                            retUsers.append(user!)
+                            numUsers += 1
+                        }
+                        
+                        if numUsers == newUsers.count {
+                            callback(retUsers, nil)
+                        }
+                    })
+                }
+            }
+            else {
+                let error = NSError(domain: self.DOMAIN, code: 0, description: "Value in DB is not NSArray")
+                callback(nil, error)
+                return
+            }
+        })
+    }
 }

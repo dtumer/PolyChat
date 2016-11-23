@@ -122,7 +122,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="&lt;chatname&gt;" placeholder="name" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EUb-Mq-tmE">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="&lt;chatname&gt;" placeholder="name" textAlignment="right" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="EUb-Mq-tmE">
                                         <rect key="frame" x="106" y="16.5" width="251" height="21"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -154,7 +154,7 @@
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="UserCell" id="vUI-gL-CJo" customClass="ChatRoomDetailsTableViewCell" customModule="PolyChat" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="UserCell" id="vUI-gL-CJo" customClass="ChatRoomDetailsTableViewCell" customModule="PolyChat" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="59"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vUI-gL-CJo" id="qe9-7O-XHA">
@@ -190,6 +190,38 @@
                                         <connections>
                                             <outlet property="usernameLabel" destination="6XE-hP-yNy" id="6aF-FU-apn"/>
                                             <segue destination="5fm-2H-XNE" kind="show" id="LfP-0o-3ga"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AddUserCell" id="cEi-MG-x57">
+                                        <rect key="frame" x="0.0" y="87" width="375" height="59"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cEi-MG-x57" id="big-1q-eH3">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="58"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Add User" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eRz-Ux-Wht">
+                                                    <rect key="frame" x="283" y="19" width="76" height="21"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" red="0.01176470588" green="0.33725490200000002" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="highlightedColor" red="0.01176470588" green="0.33725490200000002" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9vS-cF-LAf">
+                                                    <rect key="frame" x="256" y="10" width="19" height="36"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                    <color key="textColor" red="0.01176470588" green="0.33725490200000002" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="highlightedColor" red="0.01176470588" green="0.33725490200000002" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="eRz-Ux-Wht" firstAttribute="leading" secondItem="9vS-cF-LAf" secondAttribute="trailing" constant="8" id="AeQ-te-V1A"/>
+                                                <constraint firstItem="eRz-Ux-Wht" firstAttribute="centerY" secondItem="big-1q-eH3" secondAttribute="centerY" id="Ddu-OJ-hZn"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="eRz-Ux-Wht" secondAttribute="trailing" constant="8" id="TyJ-27-aFc"/>
+                                                <constraint firstItem="9vS-cF-LAf" firstAttribute="top" secondItem="big-1q-eH3" secondAttribute="topMargin" constant="2" id="lQv-S4-H57"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <segue destination="wSN-0U-gI5" kind="show" identifier="EditMembersSegue" id="wJd-nF-TNL"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -246,7 +278,6 @@
                         <outlet property="chatRoomNameTextField" destination="EUb-Mq-tmE" id="5ZI-HA-KKT"/>
                         <outlet property="membersTableEditButton" destination="pa4-pc-dZ9" id="hSO-Dg-f8C"/>
                         <outlet property="tableView" destination="eRW-ew-s5R" id="G1U-yP-NT1"/>
-                        <segue destination="wSN-0U-gI5" kind="show" identifier="EditMembersSegue" id="Xwn-V3-gMu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bh6-wN-rLn" userLabel="First Responder" sceneMemberID="firstResponder"/>

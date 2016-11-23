@@ -228,4 +228,26 @@ extension FirebaseChatRoomService {
             }
         })
     }
+    
+    //adds users to a chat room
+    func addUsersToChatRoom(chatRoomId: String, users: [User], callback: @escaping (NSError?) -> ()) {
+        self.chatRoomsUsersService?.addChatRoomsUsersReference(chatRoomId, users: users, callback: { error in
+            if let error = error {
+                callback(error)
+            }
+            else {
+                //4: For each user add their reference in the USERS_CHATROOMS table
+                for user in users {
+                    self.usersChatRoomsService?.addUserChatRoomReference(user.id, chatRoomId: chatRoomId, callback: { error in
+                        if let error = error {
+                            callback(error)
+                        }
+                        else {
+                            callback(nil)
+                        }
+                    })
+                }
+            }
+        })
+    }
 }
