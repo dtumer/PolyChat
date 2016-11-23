@@ -61,4 +61,20 @@ class FirebaseChatRoomsUsersService: FirebaseDatabaseService, ChatRoomsUsersServ
             }
         })
     }
+    
+    //updates a reference given string of users
+    func updateReference(_ chatRoomId: String, users: [String], callback: @escaping (NSError?) -> ()) {
+        let childUpdates = [
+            "\(Constants.chatRoomsUsersDBKey)/\(chatRoomId)": users
+        ]
+        
+        self.dbRef.updateChildValues(childUpdates, withCompletionBlock: { (error, ref) in
+            if let error = error {
+                callback(error as NSError?)
+            }
+            else {
+                callback(nil)
+            }
+        })
+    }
 }

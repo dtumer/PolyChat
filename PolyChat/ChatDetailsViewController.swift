@@ -16,6 +16,9 @@ class ChatDetailsViewController: UIViewController, UITableViewDelegate, UITableV
     //reference to text field
     @IBOutlet weak var chatRoomNameTextField: UITextField!
     
+    //reference to edit button
+    @IBOutlet weak var membersTableEditButton: UIButton!
+    
     //services
     var authService: AuthServiceProtocol!
     var chatRoomService: ChatRoomServiceProtocol!
@@ -137,7 +140,15 @@ class ChatDetailsViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     @IBAction func editMembers(_ sender: Any) {
-        performSegue(withIdentifier: Constants.editMembersSegueId, sender: self)
+        if self.tableView.isEditing {
+            self.tableView.isEditing = false
+            self.membersTableEditButton.setTitle("Edit", for: .normal)
+        }
+        else {
+            self.tableView.isEditing = true
+            self.membersTableEditButton.setTitle("Done", for: .normal)
+        }
+        //performSegue(withIdentifier: Constants.editMembersSegueId, sender: self)
     }
     
     @IBAction func leaveChatRoomPressed(_ sender: Any) {
@@ -145,6 +156,7 @@ class ChatDetailsViewController: UIViewController, UITableViewDelegate, UITableV
         alert.addAction(UIAlertAction(title: "No", style: .destructive, handler: nil))
         alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { sender in
             print("HERE")
+            //TODO finish this
         }))
         
         self.present(alert, animated: true, completion: nil)
@@ -170,5 +182,28 @@ extension ChatDetailsViewController {
         cell.user = self.users[indexPath.row]
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let user = self.users[indexPath.row]
+            
+            if user.id == self.user.id {
+                leaveChatRoomPressed(self)
+            }
+            else {
+                self.users.remove(at: indexPath.row)
+                
+                self.chatRoomService.removeUserFromChatRoom(self.chatRoom.id, uid: user.id, users: GlobalUtilities.usersToIds(users: self.users), callback: { error in
+                    if let error = error {
+                        //TODO catch error
+                        print("ERROR")
+                    }
+                    else {
+                        tableView.deleteRows(at: [indexPath], with: .automatic)
+                    }
+                })
+            }
+        }
     }
 }

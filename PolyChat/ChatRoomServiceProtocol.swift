@@ -72,4 +72,14 @@ protocol ChatRoomServiceProtocol {
      * @param chatRoomId    - The id of the chat room to get the users for
      */
     func getAllUsersInAChatRoom(_ chatRoomId: String, callback: @escaping ([User]?, NSError?) -> ())
+    
+    /*
+     * Remove user from chat room
+     *
+     * @param chatRoomId    - Id of the chat room to remove the user from
+     * @param uId           - Id of the user to remove
+     * @param users         - user ids of all the users in the room
+     * @param callback      - callback function
+     */
+    func removeUserFromChatRoom(_ chatRoomId: String, uid: String, users: [String], callback: @escaping (NSError?) -> ())
 }

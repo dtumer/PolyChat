@@ -45,4 +45,15 @@ class GlobalUtilities {
         
         return byteArr
     }
+    
+    //converts list of users to list of ids
+    static func usersToIds(users: [User]) -> [String] {
+        var uids: [String] = []
+        
+        for user in users {
+            uids.append(user.id)
+        }
+        
+        return uids
+    }
 }

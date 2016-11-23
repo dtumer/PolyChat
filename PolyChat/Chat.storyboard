@@ -244,6 +244,7 @@
                     </view>
                     <connections>
                         <outlet property="chatRoomNameTextField" destination="EUb-Mq-tmE" id="5ZI-HA-KKT"/>
+                        <outlet property="membersTableEditButton" destination="pa4-pc-dZ9" id="hSO-Dg-f8C"/>
                         <outlet property="tableView" destination="eRW-ew-s5R" id="G1U-yP-NT1"/>
                         <segue destination="wSN-0U-gI5" kind="show" identifier="EditMembersSegue" id="Xwn-V3-gMu"/>
                     </connections>

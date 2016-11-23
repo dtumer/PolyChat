@@ -33,4 +33,13 @@ protocol ChatRoomsUsersServiceProtocol {
      * @param chatRoomId    - The id of the chat room to look for user references
      */
     func getAllReferences(_ chatRoomId: String, callback: @escaping ([String]?, NSError?) -> ())
+    
+    /*
+     * updates a reference given list of user ids
+     *
+     * @param chatRoomId    - Id of chat room
+     * @param users         - List of users in chat room
+     * @param callback      - callback funciton
+     */
+    func updateReference(_ chatRoomId: String, users: [String], callback: @escaping (NSError?) -> ())
 }

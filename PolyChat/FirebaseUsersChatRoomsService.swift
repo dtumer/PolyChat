@@ -13,7 +13,7 @@ class FirebaseUsersChatRoomsService: FirebaseDatabaseService, UsersChatRoomsServ
     
     //add chat room reference in the USERS_CHATROOMS table
     func addUserChatRoomReference(_ userId: String, chatRoomId: String, callback: @escaping (NSError?) -> ()) {
-        self.getChatRoomIds(userId, callback: { (chatrooms, error) in
+        self.getChatRoomReferences(userId, callback: { (chatrooms, error) in
             var ids: [String] = []
             
             //if there are chatrooms already in the table
@@ -49,13 +49,27 @@ class FirebaseUsersChatRoomsService: FirebaseDatabaseService, UsersChatRoomsServ
     }
     
     //gets list of chat room ids
-    func getChatRoomIds(_ userId: String, callback: @escaping ([String]?, NSError?) -> ()) {
+    func getChatRoomReferences(_ userId: String, callback: @escaping ([String]?, NSError?) -> ()) {
         dbRef.child(Constants.usersChatRoomsDBKey).child(userId).observeSingleEvent(of: .value, with: { snapshot in
             if let val = snapshot.value as? [String] {
                 callback(val, nil)
             }
             else if let _ = snapshot.value as? NSNull {
                 callback(nil, NSError(domain: "\(self.DOMAIN)getChatRoomIds", code: 0, description: "error there is no values in the db"))
+            }
+        })
+    }
+    
+    //updates chat room references
+    func updateChatRoomReferences(_ userId: String, chatRooms: [String], callback: @escaping (NSError?) -> ()) {
+        let childUpdates = ["\(Constants.usersChatRoomsDBKey)/\(userId)": chatRooms]
+        
+        self.dbRef.updateChildValues(childUpdates, withCompletionBlock: { (error, ref) in
+            if let error = error {
+                callback(error as NSError?)
+            }
+            else {
+                callback(nil)
             }
         })
     }

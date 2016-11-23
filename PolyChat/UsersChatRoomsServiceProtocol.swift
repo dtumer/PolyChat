@@ -29,4 +29,20 @@ protocol UsersChatRoomsServiceProtocol {
      * NOTE: MAKE SURE TO CALL SUBSEQUENT FUNCTION IN ChatRoomsUsersService AS WELL
      */
     func removeUserChatRoomReference(_ userId: String, chatRoomId: String, callback: @escaping (NSError?) -> ())
+    
+    /*
+     * gets all references for chat rooms for a user
+     *
+     * @param userId    - Id of the user
+     * @param callback  - callback function
+     */
+    func getChatRoomReferences(_ userId: String, callback: @escaping ([String]?, NSError?) -> ())
+    
+    /*
+     * Updates chat room references
+     *
+     * @param userId    - Id of the user
+     * @param chatRooms - chat room ids
+     */
+    func updateChatRoomReferences(_ userId: String, chatRooms: [String], callback: @escaping (NSError?) -> ())
 }

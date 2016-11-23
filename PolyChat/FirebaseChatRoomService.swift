@@ -192,4 +192,40 @@ extension FirebaseChatRoomService {
             }
         })
     }
+    
+    //removes a user from a chat room
+    func removeUserFromChatRoom(_ chatRoomId: String, uid: String, users: [String], callback: @escaping (NSError?) -> ()) {
+        var newChatRooms: [String] = []
+        
+        //updates list of users
+        self.chatRoomsUsersService?.updateReference(chatRoomId, users: users, callback: { error in
+            if let error = error {
+                callback(error)
+            }
+            else {
+                //updates user object with new list of chat rooms
+                self.usersChatRoomsService?.getChatRoomReferences(uid, callback: { (chatRooms, error) in
+                    if let error = error {
+                        callback(error)
+                    }
+                    else {
+                        for cId in chatRooms! {
+                            if cId != chatRoomId {
+                                newChatRooms.append(cId)
+                            }
+                        }
+                        
+                        self.usersChatRoomsService?.updateChatRoomReferences(uid, chatRooms: newChatRooms, callback: { error in
+                            if let error = error {
+                                callback(error)
+                            }
+                            else {
+                                callback(nil)
+                            }
+                        })
+                    }
+                })
+            }
+        })
+    }
 }
