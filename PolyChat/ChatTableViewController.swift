@@ -90,13 +90,14 @@ class ChatTableViewController: UITableViewController {
         self.chatRoomService.getChatRoomsInCourseWithUser(self.course.id, userId: user.id, callback: { (chatRooms, error) in
             if let chatRooms = chatRooms {
                 self.chatRooms += chatRooms
-                self.tableView.reloadData()
-                self.refreshControl?.endRefreshing()
-                ProgressHUD.shared.hideOverlayView()
             }
             else {
                 //TODO alert out
             }
+            
+            self.tableView.reloadData()
+            self.refreshControl?.endRefreshing()
+            ProgressHUD.shared.hideOverlayView()
         })
     }
     

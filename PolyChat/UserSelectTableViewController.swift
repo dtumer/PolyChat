@@ -121,8 +121,18 @@ class UserSelectTableViewController: UITableViewController {
     
     //finishes creating the chat room
     @IBAction func savePressed(_ sender: AnyObject) {
+        var isError = false
+        
+        //set errors
+        if self.creationMode == Constants.createChat && selectedUsers.count <= 1 {
+            isError = true
+        }
+        else if self.creationMode == Constants.editChat && selectedUsers.count < 1 {
+            isError = true
+        }
+        
         //check if there were users selected
-        if selectedUsers.count < 1 || selectedUsers[0].id == self.user.id {
+        if isError {
             let alert = UIAlertController(title: "Error", message: "You must choose at least one other user", preferredStyle: .alert)
             
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
