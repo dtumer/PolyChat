@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                 //Try to fetch the action selected
                 if let additionalData = payload?.additionalData, let actionSelected = additionalData["actionSelected"] as? String {
-                    fullMessage =  fullMessage! + "\nPressed ButtonId:\(actionSelected)"
+                    fullMessage =  fullMessage ?? "FULL MESSAGE NIL" + "\nPressed ButtonId:\(actionSelected)"
                 }
                 print(fullMessage ?? "FULL MESSAGE NIL")
             }
