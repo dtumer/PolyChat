@@ -10,6 +10,7 @@ import UIKit
 import JSQMessagesViewController
 import SwiftKeychainWrapper
 import CryptoSwift
+import OneSignal
 
 class ChatRoomViewController: JSQMessagesViewController {
 
@@ -17,6 +18,7 @@ class ChatRoomViewController: JSQMessagesViewController {
     var authService: AuthServiceProtocol!
     var userService: UserServiceProtocol!
     var messageService: MessageServiceProtocol!
+    var chatroomsUsersService: ChatRoomsUsersServiceProtocol!
     
     // Current user
     var user: User!
@@ -74,6 +76,7 @@ class ChatRoomViewController: JSQMessagesViewController {
         self.authService = AuthServiceFactory.sharedInstance
         self.userService = UserServiceFactory.sharedInstance
         self.messageService = MessageServiceFactory.sharedInstance
+        self.chatroomsUsersService = ChatRoomsUsersServiceFactory.sharedInstance
     }
 
     //initializes navigation bar
@@ -158,6 +161,24 @@ class ChatRoomViewController: JSQMessagesViewController {
         catch {
             print(error)
         }
+        sendNotification()
+    }
+    
+    fileprivate func sendNotification() {
+        var notifyIds = [String]() // Array to hold all notifyIds we will need
+        /* Get all users in chatroom and grab all of their notifyIds, if available */
+        chatroomsUsersService.getUserReferences(chatRoomId: self.chatRoom.id, callback: { (users, error) in
+            if error != nil {
+                print(error!)
+            } else if users != nil {
+                for user in users! {
+                    if (!user.notifyId.isEmpty) {
+                        notifyIds.append(user.notifyId)
+                    }
+                }
+                print("OHSHIT!! \(notifyIds)")
+            }
+        })
     }
     
     //prepare for segue override for chat details

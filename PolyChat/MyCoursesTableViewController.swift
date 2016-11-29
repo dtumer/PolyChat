@@ -8,6 +8,7 @@
 
 import UIKit
 import JGProgressHUD
+import OneSignal
 
 class MyCoursesTableViewController: UITableViewController, SWRevealViewControllerDelegate {
     
@@ -17,6 +18,7 @@ class MyCoursesTableViewController: UITableViewController, SWRevealViewControlle
     var authService: AuthServiceProtocol!
     var usersCoursesService: UsersCoursesServiceProtocol!
     var courseService: CourseServiceProtocol!
+    var userService: UserServiceProtocol!
     
     //logged in user
     var user: User!
@@ -48,6 +50,22 @@ class MyCoursesTableViewController: UITableViewController, SWRevealViewControlle
         self.authService = AuthServiceFactory.sharedInstance
         self.usersCoursesService = UsersCoursesServiceFactory.sharedInstance
         self.courseService = CourseServiceFactory.sharedInstance
+        self.userService = UserServiceFactory.sharedInstance
+    }
+    
+    //checks that the user has enabled notifications and updates the db with the current notifyId for the logged in user
+    fileprivate func initNotifications() {
+        OneSignal.idsAvailable({ (userId, pushToken) in
+            if (userId != nil && pushToken != nil) {
+                /* Notifications are enabled, so place userId in DB as notifyId */
+                self.user.notifyId = userId!
+                self.userService.putUser(self.user.id, user: self.user, callback: { error in
+                    if (error != nil) {
+                        print(error!)
+                    }
+                })
+            }
+        })
     }
     
     //initializes the slide out menu
@@ -86,6 +104,7 @@ class MyCoursesTableViewController: UITableViewController, SWRevealViewControlle
                     self.loadCourses(self.user.id)
                     // Menu needs user information since it varies based on user (username, role, etc.)
                     self.initMenu()
+                    self.initNotifications()
                 }
             })
         }

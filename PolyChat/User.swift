@@ -15,6 +15,7 @@ class User {
     var notifications: Bool = Constants.NOTIFICATIONS_DEFAULT
     var is_anonymous: Bool = Constants.IS_ANONYMOUS_DEFAULT
     var userImageLink: String = "" //change this to default later
+    var notifyId: String = "" // for OneSignal notifications
     
     //constructor given a user dictionary
     init(dictionary: NSDictionary) {
@@ -41,6 +42,9 @@ class User {
         if let is_anonymous = dictionary["is_anonymous"] as? Bool {
             self.is_anonymous = is_anonymous
         }
+        if let notifyId = dictionary["notifyId"] as? String {
+            self.notifyId = notifyId
+        }
     }
     
     //turns instance of User into a JSON object
@@ -53,7 +57,8 @@ class User {
             "role": self.role,
             "notifications": self.notifications,
             "is_anonymous": self.is_anonymous,
-            "user_image_link": self.userImageLink
+            "user_image_link": self.userImageLink,
+            "notifyId": self.notifyId
         ]
     }
 }
