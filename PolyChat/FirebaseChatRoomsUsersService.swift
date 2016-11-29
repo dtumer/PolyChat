@@ -11,6 +11,8 @@ import Foundation
 class FirebaseChatRoomsUsersService: FirebaseDatabaseService, ChatRoomsUsersServiceProtocol {
     let DOMAIN = "FirebaseChatRoomsUsersService::"
     
+    let userService = UserServiceFactory.sharedInstance
+    
     //adds references to the users in the CHATROOMS_USERS table
     func addChatRoomsUsersReference(_ chatRoomId: String, users: [User], callback: @escaping (NSError?) -> ()) {
         self.getAllReferences(chatRoomId, callback: { (userIds, error) in
@@ -74,6 +76,46 @@ class FirebaseChatRoomsUsersService: FirebaseDatabaseService, ChatRoomsUsersServ
             }
             else {
                 callback(nil)
+            }
+        })
+    }
+    
+    //gets uers references
+    func getUserReferences(chatRoomId: String, callback: @escaping ([User]?, NSError?) -> ()) {
+        var users: [User] = []
+        var numUsers = 0
+        
+        dbRef.child(Constants.chatRoomsUsersDBKey).child(chatRoomId).observe(.value, with: { snapshot in
+            if let userIds = snapshot.value as? NSArray {
+                for uid in userIds {
+                    if let uid = uid as? String {
+                        self.userService?.getUser(uid, callback: { (user, error) in
+                            if let error = error {
+                                callback(nil, error)
+                                return
+                            }
+                            else {
+                                users.append(user!)
+                                numUsers += 1
+                            }
+                                
+                            //only do the success callback when we have all the objects processed
+                            if numUsers == userIds.count {
+                                callback(users, nil)
+                            }
+                        })
+                    }
+                    else {
+                        let error = NSError(domain: self.DOMAIN, code: 0, description: "Course id for some reason is not a String")
+                        callback(nil, error)
+                        return
+                    }
+                }
+            }
+            else {
+                let error = NSError(domain: self.DOMAIN, code: 0, description: "Value in DB is not NSArray")
+                callback(nil, error)
+                return
             }
         })
     }
