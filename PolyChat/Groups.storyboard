@@ -52,6 +52,7 @@
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="groupTitleLabel" destination="2xI-5X-b0y" id="q8c-1j-m8Y"/>
+                                    <segue destination="R21-Iu-Z7w" kind="show" identifier="GroupDetailsSegue" id="AiF-bc-mDM"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -65,6 +66,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zpf-hB-h17" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="328" y="295"/>
+        </scene>
+        <!--Group Details View Controller-->
+        <scene sceneID="1Vt-gQ-ffF">
+            <objects>
+                <viewController id="R21-Iu-Z7w" customClass="GroupDetailsViewController" customModule="PolyChat" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Pgf-Ey-J5w"/>
+                        <viewControllerLayoutGuide type="bottom" id="fLd-Sa-0iY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="KQ7-1s-3p9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M3T-Gj-Q4l" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1146" y="295"/>
         </scene>
     </scenes>
 </document>

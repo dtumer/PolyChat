@@ -97,6 +97,8 @@
 		0F34D8791D274456002584FB /* FirebaseChatRoomService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F34D8781D274456002584FB /* FirebaseChatRoomService.swift */; };
 		0F34D87A1D274456002584FB /* FirebaseChatRoomService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F34D8781D274456002584FB /* FirebaseChatRoomService.swift */; };
 		0F34D87B1D274456002584FB /* FirebaseChatRoomService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F34D8781D274456002584FB /* FirebaseChatRoomService.swift */; };
+		0F3A44691DED66C600B5E005 /* GroupDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3A44681DED66C600B5E005 /* GroupDetailsViewController.swift */; };
+		0F3A446B1DED66D800B5E005 /* GroupDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3A446A1DED66D800B5E005 /* GroupDetailsTableViewCell.swift */; };
 		0F4159C61D1A492700EE4E58 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4159C51D1A492700EE4E58 /* AppDelegate.swift */; };
 		0F4159CE1D1A492700EE4E58 /* PolyChat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0F4159CC1D1A492700EE4E58 /* PolyChat.xcdatamodeld */; };
 		0F4159D01D1A492700EE4E58 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F4159CF1D1A492700EE4E58 /* Assets.xcassets */; };
@@ -388,6 +390,8 @@
 		0F34D8641D274348002584FB /* ChatRoomServiceFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatRoomServiceFactory.swift; sourceTree = "<group>"; };
 		0F34D8741D274444002584FB /* ChatRoomServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatRoomServiceProtocol.swift; sourceTree = "<group>"; };
 		0F34D8781D274456002584FB /* FirebaseChatRoomService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseChatRoomService.swift; sourceTree = "<group>"; };
+		0F3A44681DED66C600B5E005 /* GroupDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupDetailsViewController.swift; sourceTree = "<group>"; };
+		0F3A446A1DED66D800B5E005 /* GroupDetailsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		0F4159C21D1A492700EE4E58 /* PolyChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PolyChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F4159C51D1A492700EE4E58 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0F4159CD1D1A492700EE4E58 /* PolyChat.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PolyChat.xcdatamodel; sourceTree = "<group>"; };
@@ -774,6 +778,8 @@
 				0F34D85C1D262D67002584FB /* Groups.storyboard */,
 				0FB347C91DE2C14C009E4AC7 /* GroupTableViewController.swift */,
 				0FB347CD1DE2C15F009E4AC7 /* GroupTableViewCell.swift */,
+				0F3A44681DED66C600B5E005 /* GroupDetailsViewController.swift */,
+				0F3A446A1DED66D800B5E005 /* GroupDetailsTableViewCell.swift */,
 			);
 			name = Groups;
 			sourceTree = "<group>";
@@ -1327,6 +1333,7 @@
 				0FB347E21DE2D281009E4AC7 /* CoursesGroupsServiceProtocol.swift in Sources */,
 				0F65FC411D1E26AE00470498 /* UserServiceProtocol.swift in Sources */,
 				0F4AFF551D1DD8E60030C3BD /* UserServiceFactory.swift in Sources */,
+				0F3A44691DED66C600B5E005 /* GroupDetailsViewController.swift in Sources */,
 				6D26A2C71D9CC9AB004216D9 /* ProfileViewController.swift in Sources */,
 				0FE23DE21D66C2F1001DDF54 /* Message.swift in Sources */,
 				0FB347EF1DE39FBF009E4AC7 /* ChatRoomDetailsTableViewCell.swift in Sources */,
@@ -1341,6 +1348,7 @@
 				D89D27B41D3755B4006542DF /* FirebaseCourseService.swift in Sources */,
 				0FFBEA221D64E93F002E80C4 /* ChatRoomViewController.swift in Sources */,
 				0FFBEA2A1D6576E3002E80C4 /* MembersTableViewCell.swift in Sources */,
+				0F3A446B1DED66D800B5E005 /* GroupDetailsTableViewCell.swift in Sources */,
 				0FB347CA1DE2C14C009E4AC7 /* GroupTableViewController.swift in Sources */,
 				0F2B560D1D3DE9B1008BF1F6 /* UsersCoursesServiceFactory.swift in Sources */,
 				D8EAFB1C1D1D01FC000638CF /* AuthServiceFactory.swift in Sources */,
