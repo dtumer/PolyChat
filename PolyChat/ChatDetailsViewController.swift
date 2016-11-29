@@ -30,6 +30,8 @@ class ChatDetailsViewController: UIViewController, UITableViewDelegate, UITableV
     
     var users: [User] = []      //all users in Chat Room
     
+    var selectedUser: User!
+    
     //view Did load
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -138,6 +140,11 @@ class ChatDetailsViewController: UIViewController, UITableViewDelegate, UITableV
                 vc.usersIn = self.users
             }
         }
+        else if segue.identifier == Constants.userDetailSegueId {
+            if let vc = segue.destination as? UserDetailViewController {
+                vc.selectedUser = self.selectedUser
+            }
+        }
     }
     
     @IBAction func editMembers(_ sender: Any) {
@@ -231,5 +238,11 @@ extension ChatDetailsViewController {
                 })
             }
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.selectedUser = self.users[indexPath.row]
+        
+        performSegue(withIdentifier: Constants.userDetailSegueId, sender: self)
     }
 }

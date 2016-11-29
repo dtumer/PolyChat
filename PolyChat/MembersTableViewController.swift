@@ -19,6 +19,7 @@ class MembersTableViewController: UITableViewController {
     
     //user that is logged in
     var user: User!
+    var selectedUser: User!
     
     //course object
     var course: Course!
@@ -69,19 +70,28 @@ class MembersTableViewController: UITableViewController {
         userService.getAllUsersInACourse(courseId, userId: "", callback: { (users, error) in
             if let users = users {
                 self.users = users
-                self.tableView.reloadData()
-                self.refreshControl?.endRefreshing()
-                ProgressHUD.shared.hideOverlayView()
             }
             else {
-                //TODO change this to log instead of print
+                ConnectivityAlertUtility.alert(viewController: self)
             }
+            
+            self.tableView.reloadData()
+            self.refreshControl?.endRefreshing()
+            ProgressHUD.shared.hideOverlayView()
         })
     }
     
     //function for refreshing
     func refresh() {
         loadUsers(self.course.id)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Constants.userDetailSegueId {
+            if let vc = segue.destination as? UserDetailViewController {
+                vc.selectedUser = self.selectedUser
+            }
+        }
     }
 }
 
@@ -108,5 +118,11 @@ extension MembersTableViewController {
         cell.user = users[indexPath.row]
 
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.selectedUser = self.users[indexPath.row]
+        
+        performSegue(withIdentifier: Constants.userDetailSegueId, sender: self)
     }
 }

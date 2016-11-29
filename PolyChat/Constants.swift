@@ -67,6 +67,7 @@ struct Constants {
     static let chatRoomDetailsSegueId = "ChatRoomDetailsSegue"
     static let chatDetailSegueId = "ChatDetailSegue"
     static let editMembersSegueId = "EditMembersSegue"
+    static let userDetailSegueId = "UserDetailsSegue"
     
     //Users addition mode
     static let createChat = 0

@@ -189,7 +189,6 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="usernameLabel" destination="6XE-hP-yNy" id="6aF-FU-apn"/>
-                                            <segue destination="5fm-2H-XNE" kind="show" id="LfP-0o-3ga"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AddUserCell" id="cEi-MG-x57">
@@ -278,6 +277,7 @@
                         <outlet property="chatRoomNameTextField" destination="EUb-Mq-tmE" id="5ZI-HA-KKT"/>
                         <outlet property="membersTableEditButton" destination="pa4-pc-dZ9" id="hSO-Dg-f8C"/>
                         <outlet property="tableView" destination="eRW-ew-s5R" id="G1U-yP-NT1"/>
+                        <segue destination="5fm-2H-XNE" kind="show" identifier="UserDetailsSegue" id="PhP-OR-hBE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bh6-wN-rLn" userLabel="First Responder" sceneMemberID="firstResponder"/>
