@@ -156,8 +156,17 @@ class ChatDetailsViewController: UIViewController, UITableViewDelegate, UITableV
         let alert = UIAlertController(title: "Warning", message: "Are you sure you would like to leave \"\(self.chatRoom.name)\"?", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "No", style: .destructive, handler: nil))
         alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { sender in
-            print("HERE")
-            //TODO finish this
+            var ids = GlobalUtilities.usersToIds(users: self.users)
+            ids.remove(at: ids.index(of: self.user.id)!)
+            
+            self.chatRoomService.removeUserFromChatRoom(self.chatRoom.id, uid: self.user.id, users: ids, callback: { error in
+                if let _ = error {
+                    ConnectivityAlertUtility.alert(viewController: self)
+                }
+                else {
+                    _ = self.navigationController?.popToRootViewController(animated: true)
+                }
+            })
         }))
         
         self.present(alert, animated: true, completion: nil)
