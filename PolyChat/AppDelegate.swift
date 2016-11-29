@@ -22,8 +22,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Configure OneSignal
-        //Add this line. Replace '5eb5a37e-b458-11e3-ac11-000c2940e62c' with your OneSignal App ID.
-        OneSignal.initWithLaunchOptions(launchOptions, appId: "e2bd3438-c80f-42cf-b597-d4b032335872")
+        OneSignal.initWithLaunchOptions(launchOptions, appId: "e2bd3438-c80f-42cf-b597-d4b032335872", handleNotificationReceived: { notification in
+            if (notification != nil) {
+                print("Received Notification - \(notification!.payload.notificationID) - \(notification!.payload.title)")
+            }
+        }, handleNotificationAction: { result in
+            // This block gets called when the user reacts to a notification received
+            if result != nil {
+                let payload = result!.notification.payload
+                var fullMessage = payload?.title
+                
+                //Try to fetch the action selected
+                if let additionalData = payload?.additionalData, let actionSelected = additionalData["actionSelected"] as? String {
+                    fullMessage =  fullMessage! + "\nPressed ButtonId:\(actionSelected)"
+                }
+                print(fullMessage ?? "FULL MESSAGE NIL")
+            }
+        }, settings: [kOSSettingsKeyAutoPrompt : true, kOSSettingsKeyInFocusDisplayOption : OSNotificationDisplayType.notification.rawValue])
         
         // Sync hashed email if you have a login system or collect it.
         //   Will be used to reach the user at the most optimal time of day.
