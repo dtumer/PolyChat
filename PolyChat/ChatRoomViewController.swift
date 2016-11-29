@@ -161,10 +161,10 @@ class ChatRoomViewController: JSQMessagesViewController {
         catch {
             print(error)
         }
-        sendNotification()
+        sendNotification(text)
     }
     
-    fileprivate func sendNotification() {
+    fileprivate func sendNotification(_ message: String) {
         var notifyIds = [String]() // Array to hold all notifyIds we will need
         /* Get all users in chatroom and grab all of their notifyIds, if available */
         chatroomsUsersService.getUserReferences(chatRoomId: self.chatRoom.id, callback: { (users, error) in
@@ -176,7 +176,11 @@ class ChatRoomViewController: JSQMessagesViewController {
                         notifyIds.append(user.notifyId)
                     }
                 }
-                print("OHSHIT!! \(notifyIds)")
+                OneSignal.postNotification(["contents": ["en": message], "include_player_ids": notifyIds], onSuccess: { result in
+                    print("SUCCESS!")
+                }, onFailure: { error in
+                    print("FAILURE!")
+                })
             }
         })
     }
