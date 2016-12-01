@@ -257,9 +257,9 @@ extension ChatRoomViewController {
             return JSQMessagesTimestampFormatter.shared().attributedTimestamp(for: message.date)
         }
         
-        if (indexPath.item - 1 > 0) {
+        else if (indexPath.item - 1 > 0) {
             let prevMessage = messages[indexPath.item - 1]
-            if message.date.timeIntervalSince(prevMessage.date) / Constants.TIMESTAMP_INTERVAL > 1 {
+            if message.date.timeIntervalSince(prevMessage.date) - Constants.TIMESTAMP_INTERVAL > 0 {
                 return JSQMessagesTimestampFormatter.shared().attributedTimestamp(for: message.date)
             }
             
@@ -273,10 +273,10 @@ extension ChatRoomViewController {
             return kJSQMessagesCollectionViewCellLabelHeightDefault
         }
         
-        if indexPath.item - 1 > 0 {
+        else if indexPath.item - 1 > 0 {
             let message = messages[indexPath.item]
             let prevMessage = messages[indexPath.item - 1]
-            if message.date.timeIntervalSince(prevMessage.date) / Constants.TIMESTAMP_INTERVAL > 1 {
+            if message.date.timeIntervalSince(prevMessage.date) - Constants.TIMESTAMP_INTERVAL > 0 {
                 return kJSQMessagesCollectionViewCellLabelHeightDefault
             }
         }
@@ -293,9 +293,9 @@ extension ChatRoomViewController {
         
         // Display name if the previous message wasn't sent by the same person
         // Also display name no matter what if it has been more that TIMESTAMP_INTERVAL since the last message was sent in the chat
-        if (indexPath.item - 1 > 0) {
+        else if (indexPath.item - 1 > 0) {
             let prevMessage = messages[indexPath.item - 1]
-            if message.senderId != prevMessage.senderId || message.date.timeIntervalSince(prevMessage.date) / Constants.TIMESTAMP_INTERVAL > 1 {
+            if message.senderId != prevMessage.senderId || message.date.timeIntervalSince(prevMessage.date) - Constants.TIMESTAMP_INTERVAL > 0 {
                 return NSAttributedString(string: message.senderDisplayName)
             }
         }
@@ -309,10 +309,10 @@ extension ChatRoomViewController {
             return kJSQMessagesCollectionViewCellLabelHeightDefault
         }
         
-        if (indexPath.item - 1 > 0) {
+        else if (indexPath.item - 1 > 0) {
             let message = messages[indexPath.item]
             let prevMessage = messages[indexPath.item - 1]
-            if message.senderId != prevMessage.senderId || message.date.timeIntervalSince(prevMessage.date) / Constants.TIMESTAMP_INTERVAL > 1 {
+            if message.senderId != prevMessage.senderId || message.date.timeIntervalSince(prevMessage.date) - Constants.TIMESTAMP_INTERVAL > 0 {
                 return kJSQMessagesCollectionViewCellLabelHeightDefault
             }
         }

@@ -94,5 +94,5 @@ struct Constants {
     
     /* Chatroom logic constants */
     // Minimum interval between displyed timestamps for messages (in seconds)
-    static let TIMESTAMP_INTERVAL: Double = 300
+    static let TIMESTAMP_INTERVAL = 300.0
 }
