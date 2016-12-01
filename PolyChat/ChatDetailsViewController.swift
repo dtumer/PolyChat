@@ -230,7 +230,7 @@ extension ChatDetailsViewController {
                 self.chatRoomService.removeUserFromChatRoom(self.chatRoom.id, uid: user.id, users: GlobalUtilities.usersToIds(users: self.users), callback: { error in
                     if let error = error {
                         //TODO catch error
-                        print("ERROR")
+                        print(error)
                     }
                     else {
                         tableView.deleteRows(at: [indexPath], with: .automatic)

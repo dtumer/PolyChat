@@ -249,20 +249,77 @@ extension ChatRoomViewController {
         return cell
     }
     
+    // For displaying timestamp
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, attributedTextForCellTopLabelAt indexPath: IndexPath!) -> NSAttributedString! {
+        let message = messages[indexPath.item]
+        
+        if (indexPath.item == 0) {
+            return JSQMessagesTimestampFormatter.shared().attributedTimestamp(for: message.date)
+        }
+        
+        if (indexPath.item - 1 > 0) {
+            let prevMessage = messages[indexPath.item - 1]
+            if message.date.timeIntervalSince(prevMessage.date) / Constants.TIMESTAMP_INTERVAL > 1 {
+                return JSQMessagesTimestampFormatter.shared().attributedTimestamp(for: message.date)
+            }
+            
+        }
+        return nil
+    }
+    
+    // height of timestamp
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout!, heightForCellTopLabelAt indexPath: IndexPath!) -> CGFloat {
+        if indexPath.item == 0 {
+            return kJSQMessagesCollectionViewCellLabelHeightDefault
+        }
+        
+        if indexPath.item - 1 > 0 {
+            let message = messages[indexPath.item]
+            let prevMessage = messages[indexPath.item - 1]
+            if message.date.timeIntervalSince(prevMessage.date) / Constants.TIMESTAMP_INTERVAL > 1 {
+                return kJSQMessagesCollectionViewCellLabelHeightDefault
+            }
+        }
+        return 0
+    }
+
     // For the display name of messages
     override func collectionView(_ collectionView: JSQMessagesCollectionView?, attributedTextForMessageBubbleTopLabelAt indexPath: IndexPath!) -> NSAttributedString? {
         let message = messages[indexPath.item]
         
-        guard let senderDisplayName = message.senderDisplayName else {
-            assertionFailure()
-            return nil
+        if (indexPath.item == 0) {
+            return NSAttributedString(string: message.senderDisplayName)
         }
-        return NSAttributedString(string: senderDisplayName)
+        
+        // Display name if the previous message wasn't sent by the same person
+        // Also display name no matter what if it has been more that TIMESTAMP_INTERVAL since the last message was sent in the chat
+        if (indexPath.item - 1 > 0) {
+            let prevMessage = messages[indexPath.item - 1]
+            if message.senderId != prevMessage.senderId || message.date.timeIntervalSince(prevMessage.date) / Constants.TIMESTAMP_INTERVAL > 1 {
+                return NSAttributedString(string: message.senderDisplayName)
+            }
+        }
+        
+        return nil
     }
     
+    // height of display names for messages
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout!, heightForMessageBubbleTopLabelAt indexPath: IndexPath!) -> CGFloat {
-        return 13 //or what ever height you want to give
+        if (indexPath.item == 0) {
+            return kJSQMessagesCollectionViewCellLabelHeightDefault
+        }
+        
+        if (indexPath.item - 1 > 0) {
+            let message = messages[indexPath.item]
+            let prevMessage = messages[indexPath.item - 1]
+            if message.senderId != prevMessage.senderId || message.date.timeIntervalSince(prevMessage.date) / Constants.TIMESTAMP_INTERVAL > 1 {
+                return kJSQMessagesCollectionViewCellLabelHeightDefault
+            }
+        }
+        
+        return 0
     }
+    
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAt indexPath: IndexPath!) -> JSQMessageAvatarImageDataSource! {
         // TODO: Add support for avatars here

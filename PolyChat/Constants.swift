@@ -91,4 +91,8 @@ struct Constants {
     
     // Section headers
     static let userCoursesAdminSectionHeader = "Courses"
+    
+    /* Chatroom logic constants */
+    // Minimum interval between displyed timestamps for messages (in seconds)
+    static let TIMESTAMP_INTERVAL: Double = 300
 }
