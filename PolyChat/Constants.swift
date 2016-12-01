@@ -95,4 +95,6 @@ struct Constants {
     /* Chatroom logic constants */
     // Minimum interval between displyed timestamps for messages (in seconds)
     static let TIMESTAMP_INTERVAL = 300.0
+    // Number of most recent messages to load at start of chatroom
+    static let LOAD_MESSAGES_DEFAULT = 25
 }

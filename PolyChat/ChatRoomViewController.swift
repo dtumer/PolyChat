@@ -39,6 +39,9 @@ class ChatRoomViewController: JSQMessagesViewController {
     //app cert
     let appCert: [UInt8] = GlobalUtilities.hexToByteArray(KeychainWrapper.standard.string(forKey: Constants.APP_CERT_KEY)!)
     
+    //keep track of the total amount of messages loaded in the chat
+    var totalMessages: Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -63,7 +66,7 @@ class ChatRoomViewController: JSQMessagesViewController {
                     self.user = user
                     self.senderId = user.id
                     self.senderDisplayName = user.name
-                    self.loadMessages()
+                    self.loadMessages(last: Constants.LOAD_MESSAGES_DEFAULT)
                 } else if let error = error {
                     print(error)
                 }
@@ -111,11 +114,12 @@ class ChatRoomViewController: JSQMessagesViewController {
         self.inputToolbar.contentView.leftBarButtonItem = nil
     }
     
-    func loadMessages() {
+    func loadMessages(last n: Int) {
         //init chat rooms
         self.messages = []
+        self.showLoadEarlierMessagesHeader = true
         
-        messageService.getMessagesInChatRoom(chatRoom.id, callback: { (messages, error) in
+        messageService.getMessagesInChatRoom(chatRoom.id, last: n, callback: { (messages, error) in
             if let messages = messages {
                 for message in messages {
                     do {
@@ -130,6 +134,8 @@ class ChatRoomViewController: JSQMessagesViewController {
                         print(error)
                     }
                 }
+                self.totalMessages = self.messages.count
+                print("TOTAL MESSAGES: \(self.totalMessages)")
             }
             else {
                 //TODO report error
@@ -217,6 +223,11 @@ class ChatRoomViewController: JSQMessagesViewController {
 
 // Delegate/DataSource Methods
 extension ChatRoomViewController {
+    
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, header headerView: JSQMessagesLoadEarlierHeaderView!, didTapLoadEarlierMessagesButton sender: UIButton!) {
+        self.automaticallyScrollsToMostRecentMessage = false
+        loadMessages(last: totalMessages + Constants.LOAD_MESSAGES_DEFAULT)
+    }
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageDataForItemAt indexPath: IndexPath!) -> JSQMessageData! {
         return messages[indexPath.item]
@@ -322,7 +333,6 @@ extension ChatRoomViewController {
     
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAt indexPath: IndexPath!) -> JSQMessageAvatarImageDataSource! {
-        // TODO: Add support for avatars here
         return nil
     }
     

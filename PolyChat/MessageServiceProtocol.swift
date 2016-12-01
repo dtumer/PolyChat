@@ -38,7 +38,7 @@ protocol MessageServiceProtocol {
      * @param chatRoomId    - The ID of the chat room to get messages from
      * @param callback      - The callback function. Called with the messages or an error if there is one
      */
-    func getMessagesInChatRoom(_ chatRoomId: String, callback: @escaping ([Message]?, NSError?) -> ())
+    func getMessagesInChatRoom(_ chatRoomId: String, last n: Int, callback: @escaping ([Message]?, NSError?) -> ())
     
     /*
      * Adds a message to the chat room
