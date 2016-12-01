@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import OneSignal
 
 class SettingsViewController: UIViewController, SWRevealViewControllerDelegate {
 
@@ -16,6 +17,7 @@ class SettingsViewController: UIViewController, SWRevealViewControllerDelegate {
     
     //services variables
     var authService: AuthServiceProtocol!
+    var userService: UserServiceProtocol!
     
     //logged in user
     var user: User!
@@ -24,9 +26,6 @@ class SettingsViewController: UIViewController, SWRevealViewControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         initServices()
-        notificationsSwitch.addTarget(self,
-                                      action: #selector(SettingsViewController.notificationsStateChanged(_:)),
-                                      for: UIControlEvents.valueChanged)
         
         //makes sure there's no weird grayness happening in the nav bar
         self.navigationController?.navigationBar.isTranslucent = false
@@ -51,6 +50,7 @@ class SettingsViewController: UIViewController, SWRevealViewControllerDelegate {
                     self.user = user!
                     // Menu needs user information since it varies based on user (username, role, etc.)
                     self.initMenu()
+                    self.initNotificationsSwitch()
                 }
             })
         }
@@ -65,6 +65,7 @@ class SettingsViewController: UIViewController, SWRevealViewControllerDelegate {
     //initializes all services needed by this controller
     fileprivate func initServices() {
         self.authService = AuthServiceFactory.sharedInstance
+        self.userService = UserServiceFactory.sharedInstance
     }
     
     //initializes the slide out menu
@@ -77,6 +78,13 @@ class SettingsViewController: UIViewController, SWRevealViewControllerDelegate {
             menuVC.user = self.user
             self.revealViewController().delegate = self
         }
+    }
+    
+    fileprivate func initNotificationsSwitch() {
+        notificationsSwitch.setOn(user.notifications, animated: false)
+        notificationsSwitch.addTarget(self,
+                                      action: #selector(SettingsViewController.notificationsStateChanged(_:)),
+                                      for: UIControlEvents.valueChanged)
     }
     
     // For disabling interaction with the front view while the slide out menu is visible
@@ -94,11 +102,52 @@ class SettingsViewController: UIViewController, SWRevealViewControllerDelegate {
     }
 
     func notificationsStateChanged(_ switchState: UISwitch) {
-        // TODO: implement notifications
         if switchState.isOn {
-            print("Notifications Enabled")
+            OneSignal.setSubscription(true) // need to set this on first to test for APN token
+            OneSignal.idsAvailable({ (userId, pushToken) in
+                if (userId != nil && pushToken != nil) {
+                    self.user.notifyId = userId!
+                    self.user.notifications = true
+                } else {
+                    OneSignal.setSubscription(false)
+                    self.user.notifications = false
+                    self.showNotificationsAlert()
+                    self.notificationsSwitch.setOn(false, animated: true)
+                }
+            })
         } else {
-            print("Notifications Disabled")
+            OneSignal.setSubscription(false)
+            user.notifications = false
         }
+        userService.putUser(user.id, user: user, callback: { error in
+            if let error = error {
+                print(error)
+            }
+        })
+    }
+    
+    fileprivate func showNotificationsAlert() {
+        let alertController = UIAlertController(title: "Enable PolyChat Notifications", message: "Notifications for PolyChat are disabled. Go to the Settings app to reenable.", preferredStyle: .alert)
+        
+        let settingsAction = UIAlertAction(title: "Settings", style: .default) { (_) -> Void in
+            guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else {
+                return
+            }
+            
+            if UIApplication.shared.canOpenURL(settingsUrl) {
+                if #available(iOS 10.0, *) {
+                    UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                        print("Settings opened: \(success)") // Prints true
+                    })
+                } else {
+                    UIApplication.shared.openURL(settingsUrl)
+                }
+            }
+        }
+        alertController.addAction(settingsAction)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+        alertController.addAction(cancelAction)
+        
+        present(alertController, animated: true, completion: nil)
     }
 }

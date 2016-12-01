@@ -109,7 +109,7 @@ class UserSelectTableViewController: UITableViewController {
                 
                 if let error = error {
                     //TODO something else
-                    print("ERROR")
+                    print(error)
                 }
                 else {
                     self.users += users!
@@ -165,7 +165,7 @@ class UserSelectTableViewController: UITableViewController {
                 self.chatRoomService.addUsersToChatRoom(chatRoomId: self.chatRoom!.id, users: self.selectedUsers, callback: { error in
                     if let error = error {
                         //TODO change this
-                        print("ERROR")
+                        print(error)
                     }
                     else {
                         self.dismiss(animated: true, completion: nil)

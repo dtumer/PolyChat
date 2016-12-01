@@ -59,12 +59,17 @@ class MyCoursesTableViewController: UITableViewController, SWRevealViewControlle
             if (userId != nil && pushToken != nil) {
                 /* Notifications are enabled, so place userId in DB as notifyId */
                 self.user.notifyId = userId!
-                self.userService.putUser(self.user.id, user: self.user, callback: { error in
-                    if (error != nil) {
-                        print(error!)
-                    }
-                })
+                self.user.notifications = true
+            } else {
+                // Notifications are disabled
+                self.user.notifications = false
+                
             }
+            self.userService.putUser(self.user.id, user: self.user, callback: { error in
+                if (error != nil) {
+                    print(error!)
+                }
+            })
         })
     }
     

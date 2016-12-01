@@ -179,7 +179,7 @@ class ChatRoomViewController: JSQMessagesViewController {
                 print(error!)
             } else if users != nil {
                 for user in users! {
-                    if (!user.notifyId.isEmpty) {
+                    if (!user.notifyId.isEmpty && user.notifications) {
                         notifyIds.append(user.notifyId)
                     }
                 }

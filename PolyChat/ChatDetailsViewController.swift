@@ -122,6 +122,7 @@ class ChatDetailsViewController: UIViewController, UITableViewDelegate, UITableV
         self.chatRoomService.getAllUsersInAChatRoom(self.chatRoom.id, callback: { (users, error) in
             if let error = error {
                 ConnectivityAlertUtility.alert(viewController: self)
+                print(error)
             }
             else {
                 self.users += users!

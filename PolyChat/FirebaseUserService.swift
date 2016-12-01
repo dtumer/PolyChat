@@ -67,10 +67,10 @@ class FirebaseUserService: FirebaseDatabaseService, UserServiceProtocol {
                 callback(nil)
                 return
             })
+        } else {
+            callback(NSError(domain: "FirebaseUserService", code: 1, description: "No UID provided"))
+            return
         }
-        
-        callback(NSError(domain: "FirebaseUserService", code: 1, description: "No UID provided"))
-        return
     }
 }
 
