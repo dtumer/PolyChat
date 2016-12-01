@@ -160,6 +160,7 @@ class ChatRoomViewController: JSQMessagesViewController {
                     JSQSystemSoundPlayer.jsq_playMessageSentSound()
                     self.finishSendingMessage()
                     self.collectionView.reloadData()
+                    self.sendNotification(text)
                 }
             })
 
@@ -167,7 +168,6 @@ class ChatRoomViewController: JSQMessagesViewController {
         catch {
             print(error)
         }
-        sendNotification(text)
     }
     
     fileprivate func sendNotification(_ message: String) {
