@@ -46,6 +46,7 @@ class ChatRoomViewController: JSQMessagesViewController {
         initNavigation()
         setupBubbles()
         setupAvatarViewSize()
+        setupInputToolbar()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -103,6 +104,11 @@ class ChatRoomViewController: JSQMessagesViewController {
         // TODO: add support for avatars
         collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
         collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
+    }
+    
+    fileprivate func setupInputToolbar() {
+        // Remove the attachment button
+        self.inputToolbar.contentView.leftBarButtonItem = nil
     }
     
     func loadMessages() {
