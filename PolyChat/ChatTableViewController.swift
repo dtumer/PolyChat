@@ -37,10 +37,6 @@ class ChatTableViewController: UITableViewController {
         //init loading screen
         ProgressHUD.shared.showOverlay(view: self.view)
         
-        refreshControl = UIRefreshControl()
-        refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
-        self.tableView.addSubview(refreshControl!)
-        
         //check if a user is logged in
         if !authService.hasOpenSession() {
             loggedInFlag = false
@@ -52,7 +48,7 @@ class ChatTableViewController: UITableViewController {
             authService.getCurrentUser({ user, error in
                 if let user = user {
                     self.user = user
-                    self.loadChatRooms(user.id)
+                    self.loadChatRooms(user.id, isRefresh: false)
                 } else if let error = error {
                     //TODO alert out something and log error
                     print(error)
@@ -78,26 +74,34 @@ class ChatTableViewController: UITableViewController {
     
     //refreshes the view
     func refresh() {
-        loadChatRooms(self.user.id)
+        loadChatRooms(self.user.id, isRefresh: true)
     }
     
     //loads all the chat rooms that a user is in
-    func loadChatRooms(_ userId: String) {
+    func loadChatRooms(_ userId: String, isRefresh: Bool) {
         //init chat rooms
         self.chatRooms = []
-        self.tableView.reloadData()
         
         self.chatRoomService.getChatRoomsInCourseWithUser(self.course.id, userId: user.id, callback: { (chatRooms, error) in
             if let chatRooms = chatRooms {
                 self.chatRooms += chatRooms
             }
             else {
-                //TODO alert out
+                ConnectivityAlertUtility.alert(viewController: self)
             }
             
             self.tableView.reloadData()
-            self.refreshControl?.endRefreshing()
-            ProgressHUD.shared.hideOverlayView()
+            
+            if isRefresh {
+                self.refreshControl?.endRefreshing()
+            }
+            else {
+                self.refreshControl = UIRefreshControl()
+                self.refreshControl?.addTarget(self, action: #selector(self.refresh), for: .valueChanged)
+                self.tableView.addSubview(self.refreshControl!)
+                
+                ProgressHUD.shared.hideOverlayView()
+            }
         })
     }
     

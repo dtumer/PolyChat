@@ -34,10 +34,6 @@ class GroupTableViewController: UITableViewController {
         //init loading screen
         ProgressHUD.shared.showOverlay(view: self.view)
         
-        refreshControl = UIRefreshControl()
-        refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
-        self.tableView.addSubview(refreshControl!)
-        
         //check if a user is logged in
         if !authService.hasOpenSession() {
             loggedInFlag = false
@@ -49,7 +45,7 @@ class GroupTableViewController: UITableViewController {
             authService.getCurrentUser({ user, error in
                 if let user = user {
                     self.user = user
-                    self.loadGroups(user.id)
+                    self.loadGroups(user.id, isRefresh: false)
                 } else if let error = error {
                     //TODO alert out something and log error
                     print(error)
@@ -74,29 +70,36 @@ class GroupTableViewController: UITableViewController {
     }
     
     //loads all the groups that a user is in
-    func loadGroups(_ userId: String) {
+    func loadGroups(_ userId: String, isRefresh: Bool) {
         //init groups
         self.groups = []
-        self.tableView.reloadData()
         
         self.groupService.getGroupsInCourseWithUser(self.course.id, userId: userId, callback: { (groups, error) in
             if let groups = groups {
                 self.groups += groups
             }
             else {
-                //TODO check for error type
                 ConnectivityAlertUtility.alert(viewController: self)
             }
             
             self.tableView.reloadData()
-            self.refreshControl?.endRefreshing()
-            ProgressHUD.shared.hideOverlayView()
+            
+            if isRefresh {
+                self.refreshControl?.endRefreshing()
+            }
+            else {
+                self.refreshControl = UIRefreshControl()
+                self.refreshControl?.addTarget(self, action: #selector(self.refresh), for: .valueChanged)
+                self.tableView.addSubview(self.refreshControl!)
+                
+                ProgressHUD.shared.hideOverlayView()
+            }
         })
     }
     
     //refresh function
     func refresh() {
-        loadGroups(self.user.id)
+        loadGroups(self.user.id, isRefresh: true)
     }
 }
 

@@ -31,11 +31,6 @@ class MembersTableViewController: UITableViewController {
         
         //init loading screen
         ProgressHUD.shared.showOverlay(view: self.view)
-        
-        //sets up refresh control
-        refreshControl = UIRefreshControl()
-        refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
-        self.tableView.addSubview(refreshControl!)
     }
     
     //initializes service that will be needed by this controller
@@ -57,7 +52,7 @@ class MembersTableViewController: UITableViewController {
             authService.getCurrentUser({ user, error in
                 if let user = user {
                     self.user = user
-                    self.loadUsers(self.course.id)
+                    self.loadUsers(self.course.id, isRefresh: false)
                 } else if let error = error {
                     print(error)
                 }
@@ -66,8 +61,10 @@ class MembersTableViewController: UITableViewController {
     }
     
     //loads all the users in this course
-    func loadUsers(_ courseId: String) {        
-        userService.getAllUsersInACourse(courseId, userId: "", callback: { (users, error) in
+    func loadUsers(_ courseId: String, isRefresh: Bool) {
+        self.users = []
+        
+        userService.getAllUsersInACourse(courseId, userId: self.user.id, callback: { (users, error) in
             if let users = users {
                 self.users = users
             }
@@ -76,14 +73,23 @@ class MembersTableViewController: UITableViewController {
             }
             
             self.tableView.reloadData()
-            self.refreshControl?.endRefreshing()
-            ProgressHUD.shared.hideOverlayView()
+            
+            if isRefresh {
+                self.refreshControl?.endRefreshing()
+            }
+            else {
+                self.refreshControl = UIRefreshControl()
+                self.refreshControl?.addTarget(self, action: #selector(self.refresh), for: .valueChanged)
+                self.tableView.addSubview(self.refreshControl!)
+                
+                ProgressHUD.shared.hideOverlayView()
+            }
         })
     }
     
     //function for refreshing
     func refresh() {
-        loadUsers(self.course.id)
+        loadUsers(self.course.id, isRefresh: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

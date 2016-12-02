@@ -34,10 +34,6 @@ class MyCoursesTableViewController: UITableViewController, SWRevealViewControlle
         //init splash screen overlay
         ProgressHUD.shared.showOverlay(view: self.view)
         
-        refreshControl = UIRefreshControl()
-        refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
-        self.tableView.addSubview(refreshControl!)
-        
         //makes sure there's no weird grayness happening in the nav bar
         self.navigationController?.navigationBar.isTranslucent = false
         
@@ -106,7 +102,7 @@ class MyCoursesTableViewController: UITableViewController, SWRevealViewControlle
                 else {
                     self.user = user!
                     self.setAdminButton()
-                    self.loadCourses(self.user.id)
+                    self.loadCourses(self.user.id, isRefresh: false)
                     // Menu needs user information since it varies based on user (username, role, etc.)
                     self.initMenu()
                     self.initNotifications()
@@ -123,23 +119,34 @@ class MyCoursesTableViewController: UITableViewController, SWRevealViewControlle
     }
     
     //loads the courses from the database
-    func loadCourses(_ uid: String) {
+    func loadCourses(_ uid: String, isRefresh: Bool) {
         self.courseService.getCoursesUserIsEnrolledIn(uid, callback: { (courses, error) in
             if let courses = courses {
                 self.courses = courses
-                self.tableView.reloadData()
-                self.refreshControl?.endRefreshing()
-                ProgressHUD.shared.hideOverlayView()
             }
             else {
-                //TODO change this to log errors instead of printing them
+                ConnectivityAlertUtility.alert(viewController: self)
+            }
+            
+            self.tableView.reloadData()
+            
+            //if we're refreshing
+            if isRefresh {
+                self.refreshControl?.endRefreshing()
+            }
+            else {
+                self.refreshControl = UIRefreshControl()
+                self.refreshControl?.addTarget(self, action: #selector(self.refresh), for: .valueChanged)
+                self.tableView.addSubview(self.refreshControl!)
+                
+                ProgressHUD.shared.hideOverlayView()
             }
         })
     }
     
     //refresh handler
     func refresh() {
-        loadCourses(self.user.id)
+        loadCourses(self.user.id, isRefresh: true)
     }
     
     //segues to admin
