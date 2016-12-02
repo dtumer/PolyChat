@@ -54,9 +54,8 @@ class ChatDetailsViewController: UIViewController, UITableViewDelegate, UITableV
                 if let user = user {
                     self.user = user
                     self.loadUsers()
-                } else if let error = error {
-                    //TODO alert out something and log error
-                    print(error)
+                } else if let _ = error {
+                    ConnectivityAlertUtility.alert(viewController: self)
                 }
             })
         }
@@ -122,7 +121,6 @@ class ChatDetailsViewController: UIViewController, UITableViewDelegate, UITableV
         self.chatRoomService.getAllUsersInAChatRoom(self.chatRoom.id, callback: { (users, error) in
             if let error = error {
                 ConnectivityAlertUtility.alert(viewController: self)
-                print(error)
             }
             else {
                 self.users += users!
@@ -202,7 +200,6 @@ extension ChatDetailsViewController {
         }
         else {
             let cell = tableView.dequeueReusableCell(withIdentifier: Constants.usersReuseId, for: indexPath) as! ChatRoomDetailsTableViewCell
-            
             cell.user = self.users[indexPath.row]
             
             return cell
@@ -229,9 +226,8 @@ extension ChatDetailsViewController {
                 self.users.remove(at: indexPath.row)
                 
                 self.chatRoomService.removeUserFromChatRoom(self.chatRoom.id, uid: user.id, users: GlobalUtilities.usersToIds(users: self.users), callback: { error in
-                    if let error = error {
-                        //TODO catch error
-                        print(error)
+                    if let _ = error {
+                        ConnectivityAlertUtility.alert(viewController: self)
                     }
                     else {
                         tableView.deleteRows(at: [indexPath], with: .automatic)
@@ -242,8 +238,10 @@ extension ChatDetailsViewController {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.selectedUser = self.users[indexPath.row]
-        
-        performSegue(withIdentifier: Constants.userDetailSegueId, sender: self)
+        if indexPath.row < self.users.count {
+            self.selectedUser = self.users[indexPath.row]
+            
+            performSegue(withIdentifier: Constants.userDetailSegueId, sender: self)
+        }
     }
 }
