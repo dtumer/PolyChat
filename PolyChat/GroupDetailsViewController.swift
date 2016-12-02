@@ -8,28 +8,50 @@
 
 import UIKit
 
-class GroupDetailsViewController: UIViewController {
+class GroupDetailsViewController: UIViewController, UITableViewDelegate {
 
+    @IBOutlet weak var groupNameLabel: UITextField!
+    @IBOutlet weak var editTableButton: UIButton!
+    
+    var authService: AuthServiceProtocol!
+    
+    var course: Course!     //course reference
+    var group: Group!       //group reference
+    var user: User!         //logged in user object
+    
+    var members: [User] = [] //members in the group
+    
+    //view did load
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        initServices()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    //view did appear
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
     }
-    */
+    
+    //initializes services
+    func initServices() {
+        self.authService = AuthServiceFactory.sharedInstance
+    }
+}
+
+extension GroupDetailsViewController {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.members.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.usersReuseId, for: indexPath)
+        
+        return cell
+    }
 
 }
