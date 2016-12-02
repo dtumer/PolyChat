@@ -48,45 +48,45 @@ class FirebaseMessageService: FirebaseDatabaseService, MessageServiceProtocol {
 /* COMPOSITE DATABASE FUNCTIONS */
 extension FirebaseMessageService {
     //gets all messages in a chat room
-    func getMessagesInChatRoom(_ chatRoomId: String, last n: Int, callback: @escaping ([Message]?, NSError?) -> ()) {
-        var messages: [Message] = []
-        var numMessages = 0
+    func getMessagesInChatRoom(_ chatRoomId: String, last n: Int, callback: @escaping (Message?, NSError?) -> ()) {
+//        var messages: [Message] = []
+//        var numMessages = 0
         
         let handle = dbRef.child(Constants.chatRoomsMessagesDBKey).child(chatRoomId).queryLimited(toLast: UInt(n)).observe(.childAdded, with: { snapshot in
-            if let msgArr = snapshot.value as? NSArray {
-                for msgId in msgArr {
-                    if let msgId = msgId as? String {
-                        self.getMessage(msgId, callback: { (msg, error) in
-                            if let error = error {
-                                callback(nil, error)
-                                return
-                            }
-                            else {
-                                messages.append(msg!)
-                                numMessages += 1
-                            }
-                            
-                            //callback when all messages are loaded
-                            if numMessages == msgArr.count {
-                                callback(messages, nil)
-                            }
-                        })
-                    }
-                    else {
-                        let error = NSError(domain: "\(self.DOMAIN)getMessagesInChatRoom", code: 0, description: "Message ID is not a string in the DB")
-                        callback(nil, error)
-                        return
-                    }
-                }
-            }
-            else if let msgId = snapshot.value as? String {
+//            if let msgArr = snapshot.value as? NSArray {
+//                for msgId in msgArr {
+//                    if let msgId = msgId as? String {
+//                        self.getMessage(msgId, callback: { (msg, error) in
+//                            if let error = error {
+//                                callback(nil, error)
+//                                return
+//                            }
+//                            else {
+//                                messages.append(msg!)
+//                                numMessages += 1
+//                            }
+//                            
+//                            //callback when all messages are loaded
+//                            if numMessages == msgArr.count {
+//                                callback(messages, nil)
+//                            }
+//                        })
+//                    }
+//                    else {
+//                        let error = NSError(domain: "\(self.DOMAIN)getMessagesInChatRoom", code: 0, description: "Message ID is not a string in the DB")
+//                        callback(nil, error)
+//                        return
+//                    }
+//                }
+//            }
+            if let msgId = snapshot.value as? String {
                 self.getMessage(msgId, callback: { (msg, error) in
                     if let error = error {
                         callback(nil, error)
                         return
                     }
                     else {
-                        callback([msg!], nil)
+                        callback(msg!, nil)
                     }
                 })
             }

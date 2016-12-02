@@ -119,33 +119,25 @@ class ChatRoomViewController: JSQMessagesViewController {
         self.messages = []
         self.showLoadEarlierMessagesHeader = true
         
-        messageService.getMessagesInChatRoom(chatRoom.id, last: n, callback: { (messages, error) in
-            if let messages = messages {
-                for message in messages {
-                    do {
-                        let iv = GlobalUtilities.hexToByteArray(message.stamp)
-                        let body = try String(data: Data(AES(key: self.appCert, iv: iv, blockMode: .CBC, padding: PKCS7()).decrypt(GlobalUtilities.hexToByteArray(message.body))), encoding: String.Encoding.utf8)
-                        let msg = JSQMessage(senderId: message.senderId, senderDisplayName: message.senderName,
-                            date: Date(timeIntervalSince1970: message.messageSent), text: body)
-                        self.messages.append(msg!)
-                        self.finishReceivingMessage()
-                    }
-                    catch {
-                        print(error)
-                    }
+        messageService.getMessagesInChatRoom(chatRoom.id, last: n, callback: { (message, error) in
+            if let msg = message {
+                do {
+                    let iv = GlobalUtilities.hexToByteArray(msg.stamp)
+                    let body = try String(data: Data(AES(key: self.appCert, iv: iv, blockMode: .CBC, padding: PKCS7()).decrypt(GlobalUtilities.hexToByteArray(msg.body))), encoding: String.Encoding.utf8)
+                    let msg = JSQMessage(senderId: msg.senderId, senderDisplayName: msg.senderName,
+                        date: Date(timeIntervalSince1970: msg.messageSent), text: body)
+                    self.messages.append(msg!)
+                    self.finishReceivingMessage()
+                }
+                catch {
+                    print(error)
                 }
                 self.totalMessages = self.messages.count
-                print("TOTAL MESSAGES: \(self.totalMessages)")
             }
-            else {
-                //TODO report error
+            else if let error = error {
+                print(error)
             }
         })
-    }
-    
-    func addMessage(_ text: String) {
-        let message = JSQMessage(senderId: senderId, displayName: senderDisplayName, text: text)
-        messages.append(message!)
     }
     
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
