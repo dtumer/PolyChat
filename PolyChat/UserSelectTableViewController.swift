@@ -73,7 +73,7 @@ class UserSelectTableViewController: UITableViewController {
                         self.selectedUsers.append(self.user)
                     }
                     
-                    self.loadUsers(self.course.id)
+                    self.loadUsers(self.course.id, isRefresh: false)
                 }
             })
         }
@@ -88,32 +88,41 @@ class UserSelectTableViewController: UITableViewController {
     }
     
     //loads all users in a course
-    fileprivate func loadUsers(_ courseId: String) {
+    fileprivate func loadUsers(_ courseId: String, isRefresh: Bool) {
         if self.creationMode == Constants.createChat || self.creationMode == Constants.createGroup {
             self.userService.getAllUsersInACourse(courseId, userId: self.user.id, callback: { (users, error) in
-                ProgressHUD.shared.hideOverlayView()
-                
-                if let error = error {
-                    //TODO log error better
-                    print(error.description)
+                if let _ = error {
+                    ConnectivityAlertUtility.alert(viewController: self)
                 }
                 else {
                     self.users += users!
                     self.tableView.reloadData()
+                }
+                
+                if isRefresh {
+                    //Do refresh end
+                }
+                else {
+                    ProgressHUD.shared.hideOverlayView()
                 }
             })
         }
         else if self.creationMode == Constants.editChat {
             self.userService.getAllUsersInACourseNotInChatRoom(courseId: courseId, users: GlobalUtilities.usersToIds(users: self.usersIn!), callback: { (users, error) in
-                ProgressHUD.shared.hideOverlayView()
-                
-                if let error = error {
-                    //TODO something else
-                    print(error)
+                if let _ = error {
+                    ConnectivityAlertUtility.alert(viewController: self)
                 }
                 else {
                     self.users += users!
-                    self.tableView.reloadData()
+                }
+                
+                self.tableView.reloadData()
+                
+                if isRefresh {
+                    //Do refresh end
+                }
+                else {
+                    ProgressHUD.shared.hideOverlayView()
                 }
             })
         }
@@ -122,6 +131,7 @@ class UserSelectTableViewController: UITableViewController {
     //finishes creating the chat room
     @IBAction func savePressed(_ sender: AnyObject) {
         var isError = false
+        ProgressHUD.shared.showOverlay(view: self.view)
         
         //set errors
         if self.creationMode == Constants.createChat && selectedUsers.count <= 1 {
@@ -163,19 +173,24 @@ class UserSelectTableViewController: UITableViewController {
             }
             else if self.creationMode == Constants.editChat {
                 self.chatRoomService.addUsersToChatRoom(chatRoomId: self.chatRoom!.id, users: self.selectedUsers, callback: { error in
-                    if let error = error {
-                        //TODO change this
-                        print(error)
+                    if let _ = error {
+                        ConnectivityAlertUtility.alert(viewController: self)
                     }
                     else {
-                        self.dismiss(animated: true, completion: nil)
+                        _ = self.navigationController?.popViewController(animated: true)
                     }
+                    
+                    ProgressHUD.shared.hideOverlayView()
                 })
             }
             else if self.creationMode == Constants.editGroup {
                 //TODO edit group members
             }
         }
+    }
+    
+    func refresh() {
+        self.loadUsers(self.course.id, isRefresh: true)
     }
 }
 
@@ -206,15 +221,15 @@ extension UserSelectTableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! UsersSelectTableViewCell
         
-        //if it's selected
         if cell.accessoryType == .checkmark {
             cell.accessoryType = .none
+            
             let ndx = selectedUsers.index(where: {$0.id == cell.user.id})
             selectedUsers.remove(at: ndx!)
         }
-        //if we're adding for first time
         else {
             cell.accessoryType = .checkmark
+            
             selectedUsers.append(users[indexPath.row])
         }
     }

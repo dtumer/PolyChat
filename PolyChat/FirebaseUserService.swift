@@ -144,6 +144,11 @@ extension FirebaseUserService {
                         }
                     })
                 }
+                
+                //only callback if there are no new users
+                if newUsers.count == 0 {
+                    callback([], nil)
+                }
             }
             else {
                 let error = NSError(domain: self.DOMAIN, code: 0, description: "Value in DB is not NSArray")
