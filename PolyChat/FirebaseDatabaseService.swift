@@ -12,6 +12,7 @@ import Firebase
 class FirebaseDatabaseService {
     let dbRef = FIRDatabase.database().reference()
     var handles: [UInt] = []
+    var messageObserverHandles: [UInt] = []
     
     /* Gets the next ID in the given firebase table */ 
     func getAutoId(_ tableKey: String) -> String {
@@ -21,6 +22,9 @@ class FirebaseDatabaseService {
     //Closes all handles that are open
     func closeAllHandles() {
         for handle in handles {
+            dbRef.removeObserver(withHandle: handle)
+        }
+        for handle in messageObserverHandles {
             dbRef.removeObserver(withHandle: handle)
         }
     }

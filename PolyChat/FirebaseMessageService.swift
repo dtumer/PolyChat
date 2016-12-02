@@ -48,7 +48,7 @@ class FirebaseMessageService: FirebaseDatabaseService, MessageServiceProtocol {
 /* COMPOSITE DATABASE FUNCTIONS */
 extension FirebaseMessageService {
     //gets all messages in a chat room
-    func getMessagesInChatRoom(_ chatRoomId: String, last n: Int, callback: @escaping (Message?, NSError?) -> ()) {
+    func getMessagesInChatRoom(_ chatRoomId: String, last n: Int, addObserver observe: Bool, callback: @escaping (Message?, NSError?) -> ()) {
 //        var messages: [Message] = []
 //        var numMessages = 0
         
@@ -97,7 +97,14 @@ extension FirebaseMessageService {
             }
         })
         
-        self.handles.append(handle)
+        if observe {
+            self.messageObserverHandles.append(handle)
+        } else {
+            if let lastOpenHandle = messageObserverHandles.last {
+                dbRef.child(Constants.chatRoomsMessagesDBKey).child(chatRoomId).removeObserver(withHandle: lastOpenHandle)
+                self.messageObserverHandles.append(handle)
+            }
+        }
     }
     
     //adds a message to the chat room

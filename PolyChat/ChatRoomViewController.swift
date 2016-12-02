@@ -66,7 +66,7 @@ class ChatRoomViewController: JSQMessagesViewController {
                     self.user = user
                     self.senderId = user.id
                     self.senderDisplayName = user.name
-                    self.loadMessages(last: Constants.LOAD_MESSAGES_DEFAULT)
+                    self.loadMessages(last: Constants.LOAD_MESSAGES_DEFAULT, andObserve: true)
                 } else if let error = error {
                     print(error)
                 }
@@ -114,12 +114,12 @@ class ChatRoomViewController: JSQMessagesViewController {
         self.inputToolbar.contentView.leftBarButtonItem = nil
     }
     
-    func loadMessages(last n: Int) {
+    func loadMessages(last n: Int, andObserve observe: Bool) {
         //init chat rooms
         self.messages = []
         self.showLoadEarlierMessagesHeader = true
         
-        messageService.getMessagesInChatRoom(chatRoom.id, last: n, callback: { (message, error) in
+        messageService.getMessagesInChatRoom(chatRoom.id, last: n, addObserver: observe, callback: { (message, error) in
             if let msg = message {
                 do {
                     let iv = GlobalUtilities.hexToByteArray(msg.stamp)
@@ -141,6 +141,7 @@ class ChatRoomViewController: JSQMessagesViewController {
     }
     
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
+        self.automaticallyScrollsToMostRecentMessage = true
         do {
             let iv = AES.randomIV(AES.blockSize)
             let stamp = Data(iv).toHexString()
@@ -218,7 +219,7 @@ extension ChatRoomViewController {
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, header headerView: JSQMessagesLoadEarlierHeaderView!, didTapLoadEarlierMessagesButton sender: UIButton!) {
         self.automaticallyScrollsToMostRecentMessage = false
-        loadMessages(last: totalMessages + Constants.LOAD_MESSAGES_DEFAULT)
+        loadMessages(last: totalMessages + Constants.LOAD_MESSAGES_DEFAULT, andObserve: false)
     }
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageDataForItemAt indexPath: IndexPath!) -> JSQMessageData! {
