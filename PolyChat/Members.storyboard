@@ -49,6 +49,7 @@
                                         <constraint firstItem="iV8-TQ-4H9" firstAttribute="centerX" secondItem="eT5-6o-tkg" secondAttribute="centerX" id="HJm-kR-OdI"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="userNameLabel" destination="0Je-76-kJq" id="WFP-lF-BGQ"/>
                                 </connections>
