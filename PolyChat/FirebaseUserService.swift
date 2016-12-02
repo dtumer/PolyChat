@@ -119,8 +119,8 @@ extension FirebaseUserService {
         self.handles.append(handle)
     }
     
-    //gets all users not in a chat room
-    func getAllUsersInACourseNotInChatRoom(courseId: String, users: [String], callback: @escaping ([User]?, NSError?) -> ()) {
+    //gets all users not in a chat room or group
+    func getAllUsersInACourseNotInUsers(courseId: String, users: [String], callback: @escaping ([User]?, NSError?) -> ()) {
         var retUsers: [User] = []
         var numUsers = 0
         

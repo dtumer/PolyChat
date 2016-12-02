@@ -49,12 +49,12 @@ protocol UserServiceProtocol {
     func getAllUsersInACourse(_ courseId: String, userId: String, callback: @escaping ([User]?, NSError?) -> ())
     
     /*
-     * gets all users in a course that are not also in the chat room
+     * gets all users in a course that are not also in the chat room or group
      *
      * @param courseId  - ID of the course
      * @param userId    - ID of loggin in user
-     * @param users     - users in the chat room
+     * @param users     - users in the room or group
      * @param callback  - callback function
      */
-    func getAllUsersInACourseNotInChatRoom(courseId: String, users: [String], callback: @escaping ([User]?, NSError?) -> ())
+    func getAllUsersInACourseNotInUsers(courseId: String, users: [String], callback: @escaping ([User]?, NSError?) -> ())
 }

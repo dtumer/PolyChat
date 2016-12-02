@@ -107,8 +107,8 @@ class UserSelectTableViewController: UITableViewController {
                 }
             })
         }
-        else if self.creationMode == Constants.editChat {
-            self.userService.getAllUsersInACourseNotInChatRoom(courseId: courseId, users: GlobalUtilities.usersToIds(users: self.usersIn!), callback: { (users, error) in
+        else if self.creationMode == Constants.editChat || self.creationMode == Constants.editGroup {
+            self.userService.getAllUsersInACourseNotInUsers(courseId: courseId, users: GlobalUtilities.usersToIds(users: self.usersIn!), callback: { (users, error) in
                 if let _ = error {
                     ConnectivityAlertUtility.alert(viewController: self)
                 }
@@ -184,7 +184,16 @@ class UserSelectTableViewController: UITableViewController {
                 })
             }
             else if self.creationMode == Constants.editGroup {
-                //TODO edit group members
+                self.groupService.addUsersToGroup(groupId: self.group!.id, users: self.selectedUsers, callback: { error in
+                    if let _ = error {
+                        ConnectivityAlertUtility.alert(viewController: self)
+                    }
+                    else {
+                        _ = self.navigationController?.popViewController(animated: true)
+                    }
+                    
+                    ProgressHUD.shared.hideOverlayView()
+                })
             }
         }
     }

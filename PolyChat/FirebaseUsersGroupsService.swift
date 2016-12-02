@@ -12,7 +12,7 @@ class FirebaseUsersGroupsService: FirebaseDatabaseService, UsersGroupsServicePro
     let DOMAIN = "FirebaseUsersGroupsService::"
     
     func addUsersGroupsReference(_ userId: String, groupId: String, callback: @escaping (NSError?) -> ()) {
-        self.getGroupIds(userId, callback: { (groups, error) in
+        self.getGroupReferences(userId, callback: { (groups, error) in
             var ids: [String] = []
             
             //if there are groups already in the table
@@ -47,13 +47,27 @@ class FirebaseUsersGroupsService: FirebaseDatabaseService, UsersGroupsServicePro
     }
     
     //gets list of group ids
-    func getGroupIds(_ userId: String, callback: @escaping ([String]?, NSError?) -> ()) {
+    func getGroupReferences(_ userId: String, callback: @escaping ([String]?, NSError?) -> ()) {
         dbRef.child(Constants.usersGroupsDBKey).child(userId).observeSingleEvent(of: .value, with: { snapshot in
             if let val = snapshot.value as? [String] {
                 callback(val, nil)
             }
             else if let _ = snapshot.value as? NSNull {
                 callback(nil, NSError(domain: "\(self.DOMAIN)getGroupIds", code: 0, description: "error there is no values in the db"))
+            }
+        })
+    }
+    
+    //updates group references
+    func updateGroupReferences(_ userId: String, groups: [String], callback: @escaping (NSError?) -> ()) {
+        let childUpdates = ["\(Constants.usersGroupsDBKey)/\(userId)": groups]
+        
+        self.dbRef.updateChildValues(childUpdates, withCompletionBlock: { (error, ref) in
+            if let error = error {
+                callback(error as NSError?)
+            }
+            else {
+                callback(nil)
             }
         })
     }

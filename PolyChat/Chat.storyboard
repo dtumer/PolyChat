@@ -101,10 +101,10 @@
             </objects>
             <point key="canvasLocation" x="1025" y="242"/>
         </scene>
-        <!--Chat Details View Controller-->
+        <!--Details-->
         <scene sceneID="OEY-sq-0xh">
             <objects>
-                <viewController id="7Wu-GY-055" customClass="ChatDetailsViewController" customModule="PolyChat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Details" id="7Wu-GY-055" customClass="ChatDetailsViewController" customModule="PolyChat" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wKg-0H-JSB"/>
                         <viewControllerLayoutGuide type="bottom" id="aVS-XV-jgC"/>
@@ -158,7 +158,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="59"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vUI-gL-CJo" id="qe9-7O-XHA">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="58"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="58.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KkY-LY-wXz">
@@ -195,7 +195,7 @@
                                         <rect key="frame" x="0.0" y="87" width="375" height="59"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cEi-MG-x57" id="big-1q-eH3">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="58"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="58.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Add User" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eRz-Ux-Wht">

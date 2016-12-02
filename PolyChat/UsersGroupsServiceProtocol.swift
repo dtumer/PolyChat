@@ -26,4 +26,20 @@ protocol UsersGroupsServiceProtocol {
      * NOTE: MAKE SURE TO CALL SUBSEQUENT FUNCTION IN GroupsUsersService AS WELL
      */
     func removeUsersGroupsReference(_ userId: String, groupId: String, callback: @escaping (NSError?) -> ())
+    
+    /*
+     * gets all references for groups for a user
+     *
+     * @param userId    - Id of the user
+     * @param callback  - callback function
+     */
+    func getGroupReferences(_ userId: String, callback: @escaping ([String]?, NSError?) -> ())
+    
+    /*
+     * Updates chat room references
+     *
+     * @param userId    - Id of the user
+     * @param chatRooms - chat room ids
+     */
+    func updateGroupReferences(_ userId: String, groups: [String], callback: @escaping (NSError?) -> ())
 }

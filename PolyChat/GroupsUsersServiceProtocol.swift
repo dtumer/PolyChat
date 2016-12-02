@@ -26,4 +26,27 @@ protocol GroupsUsersServiceProtocol {
      * @param callback      - The callback function. Called with an error if there is one
      */
     func removeGroupsUsersReference(_ groupId: String, users: [User], callback: @escaping (NSError?) -> ())
+    
+    /*
+     * Gets all references given a chat room id
+     *
+     * @param chatRoomId    - The id of the chat room to look for user references
+     */
+    func getAllReferences(_ groupId: String, callback: @escaping ([String]?, NSError?) -> ())
+    
+    /*
+     * Gets all user reference objects
+     *
+     *
+     */
+    func getUserReferences(groupId: String, callback: @escaping ([User]?, NSError?) -> ())
+    
+    /*
+     * updates a reference given list of user ids
+     *
+     * @param chatRoomId    - Id of chat room
+     * @param users         - List of users in chat room
+     * @param callback      - callback funciton
+     */
+    func updateReference(_ groupId: String, users: [String], callback: @escaping (NSError?) -> ())
 }

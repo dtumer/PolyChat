@@ -65,4 +65,30 @@ protocol GroupServiceProtocol {
      * @param callback  - The callback function. Called with an error if there is one.
      */
     func createGroup(_ courseId: String, users: [User], group: Group, callback: @escaping (NSError?) -> ())
+    
+    /*
+     * Gets all the users that are in the specified group
+     *
+     * @param groupId    - The id of the group to get the users for
+     */
+    func getAllUsersInAGroup(_ groupId: String, callback: @escaping ([User]?, NSError?) -> ())
+    
+    /*
+     * Remove user from group
+     *
+     * @param groupId    - Id of the chat room to remove the user from
+     * @param uId           - Id of the user to remove
+     * @param users         - user ids of all the users in the room
+     * @param callback      - callback function
+     */
+    func removeUserFromGroup(_ groupId: String, uid: String, users: [String], callback: @escaping (NSError?) -> ())
+    
+    /*
+     * adds a user to a group
+     *
+     * @param groupId    - Id of the chat room
+     * @param uid           - Id of the user to add
+     * @param callback      - callback function
+     */
+    func addUsersToGroup(groupId: String, users: [User], callback: @escaping (NSError?) -> ())
 }

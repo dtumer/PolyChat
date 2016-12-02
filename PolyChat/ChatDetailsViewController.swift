@@ -155,7 +155,6 @@ class ChatDetailsViewController: UIViewController, UITableViewDelegate, UITableV
             self.tableView.isEditing = true
             self.membersTableEditButton.setTitle("Done", for: .normal)
         }
-        //performSegue(withIdentifier: Constants.editMembersSegueId, sender: self)
     }
     
     @IBAction func leaveChatRoomPressed(_ sender: Any) {

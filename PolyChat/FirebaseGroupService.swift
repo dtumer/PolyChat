@@ -14,6 +14,7 @@ class FirebaseGroupService: FirebaseDatabaseService, GroupServiceProtocol {
     let coursesGroupsService = CoursesGroupsServiceFactory.sharedInstance
     let usersGroupsService = UsersGroupsServiceFactory.sharedInstance
     let groupsUsersService = GroupsUsersServiceFactory.sharedInstance
+    let userService = UserServiceFactory.sharedInstance
     
     func getGroup(_ groupId: String, callback: @escaping (Group?, NSError?) -> ()) {
         dbRef.child(Constants.groupsDBKey).child(groupId).observeSingleEvent(of: .value, with: { snapshot in
@@ -138,6 +139,96 @@ extension FirebaseGroupService {
                         })
                     }
                 })
+            }
+        })
+    }
+    
+    //gets all users in a group
+    func getAllUsersInAGroup(_ groupId: String, callback: @escaping ([User]?, NSError?) -> ()) {
+        var users: [User] = []
+        var numUsers = 0
+        
+        self.groupsUsersService?.getAllReferences(groupId, callback: { (userIds, error) in
+            if let error = error {
+                callback(nil, error)
+            }
+            else {
+                if let userIds = userIds {
+                    for uid in userIds {
+                        self.userService?.getUser(uid, callback: { (user, error) in
+                            if let error = error {
+                                callback(nil, error)
+                            }
+                            else {
+                                users.append(user!)
+                                numUsers += 1
+                            }
+                            
+                            //only callback if we've gone through all of them
+                            if numUsers == userIds.count {
+                                callback(users, nil)
+                            }
+                        })
+                    }
+                }
+            }
+        })
+    }
+    
+    //removes a user from a chat room
+    func removeUserFromGroup(_ groupId: String, uid: String, users: [String], callback: @escaping (NSError?) -> ()) {
+        var newGroups: [String] = []
+        
+        //updates list of users
+        self.groupsUsersService?.updateReference(groupId, users: users, callback: { error in
+            if let error = error {
+                callback(error)
+            }
+            else {
+                //updates user object with new list of chat rooms
+                self.usersGroupsService?.getGroupReferences(uid, callback: { (groups, error) in
+                    if let error = error {
+                        callback(error)
+                    }
+                    else {
+                        for gId in groups! {
+                            if gId != groupId {
+                                newGroups.append(gId)
+                            }
+                        }
+                        
+                        self.usersGroupsService?.updateGroupReferences(uid, groups: newGroups, callback: { error in
+                            if let error = error {
+                                callback(error)
+                            }
+                            else {
+                                callback(nil)
+                            }
+                        })
+                    }
+                })
+            }
+        })
+    }
+    
+    //adds users to a chat room
+    func addUsersToGroup(groupId: String, users: [User], callback: @escaping (NSError?) -> ()) {
+        self.groupsUsersService?.addGroupsUsersReference(groupId, users: users, callback: { error in
+            if let error = error {
+                callback(error)
+            }
+            else {
+                //4: For each user add their reference in the USERS_CHATROOMS table
+                for user in users {
+                    self.usersGroupsService?.addUsersGroupsReference(user.id, groupId: groupId, callback: { error in
+                        if let error = error {
+                            callback(error)
+                        }
+                        else {
+                            callback(nil)
+                        }
+                    })
+                }
             }
         })
     }

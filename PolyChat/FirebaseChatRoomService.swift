@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Firebase
 
 class FirebaseChatRoomService: FirebaseDatabaseService, ChatRoomServiceProtocol {
     let DOMAIN = "FirebaseChatRoomService::"

@@ -23,6 +23,8 @@ class GroupTableViewController: UITableViewController {
     //groups in the specified course
     var groups: [Group] = []
     
+    var selectedGroup: Group!   //selected group
+    
     //logged in flag
     var loggedInFlag = false
 
@@ -101,6 +103,14 @@ class GroupTableViewController: UITableViewController {
     func refresh() {
         loadGroups(self.user.id, isRefresh: true)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Constants.groupDetailSegueId {
+            let vc = segue.destination as! GroupDetailsViewController
+            vc.group = selectedGroup
+            vc.course = self.course
+        }
+    }
 }
 
 /* TABLE VIEW EXTENSION */
@@ -125,5 +135,10 @@ extension GroupTableViewController {
         cell.group = self.groups[indexPath.row]
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.selectedGroup = groups[indexPath.row]
+        performSegue(withIdentifier: Constants.groupDetailSegueId, sender: self)
     }
 }
