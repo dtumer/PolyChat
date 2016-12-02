@@ -49,36 +49,8 @@ class FirebaseMessageService: FirebaseDatabaseService, MessageServiceProtocol {
 extension FirebaseMessageService {
     //gets all messages in a chat room
     func getMessagesInChatRoom(_ chatRoomId: String, last n: Int, addObserver observe: Bool, callback: @escaping (Message?, NSError?) -> ()) {
-//        var messages: [Message] = []
-//        var numMessages = 0
         
         let handle = dbRef.child(Constants.chatRoomsMessagesDBKey).child(chatRoomId).queryLimited(toLast: UInt(n)).observe(.childAdded, with: { snapshot in
-//            if let msgArr = snapshot.value as? NSArray {
-//                for msgId in msgArr {
-//                    if let msgId = msgId as? String {
-//                        self.getMessage(msgId, callback: { (msg, error) in
-//                            if let error = error {
-//                                callback(nil, error)
-//                                return
-//                            }
-//                            else {
-//                                messages.append(msg!)
-//                                numMessages += 1
-//                            }
-//                            
-//                            //callback when all messages are loaded
-//                            if numMessages == msgArr.count {
-//                                callback(messages, nil)
-//                            }
-//                        })
-//                    }
-//                    else {
-//                        let error = NSError(domain: "\(self.DOMAIN)getMessagesInChatRoom", code: 0, description: "Message ID is not a string in the DB")
-//                        callback(nil, error)
-//                        return
-//                    }
-//                }
-//            }
             if let msgId = snapshot.value as? String {
                 self.getMessage(msgId, callback: { (msg, error) in
                     if let error = error {
@@ -105,6 +77,19 @@ extension FirebaseMessageService {
                 self.messageObserverHandles.append(handle)
             }
         }
+    }
+    
+    //get the total number of messages in a chat room
+    func getNumMessagesInChatRoom(_ chatRoomId: String, callback: @escaping (Int?, NSError?) -> ()) {
+        dbRef.child(Constants.chatRoomsMessagesDBKey).child(chatRoomId).observeSingleEvent(of: .value, with: { snapshot in
+            if let messageIds = snapshot.value as? NSArray {
+                print("COUNT: \(messageIds.count)")
+                callback(messageIds.count, nil)
+            } else {
+                let error = NSError(domain: "\(self.DOMAIN)getNumMessagesIinChatRoom", code: 1, description: "Value in DB is not of type NSArray")
+                callback(nil, error)
+            }
+        })
     }
     
     //adds a message to the chat room

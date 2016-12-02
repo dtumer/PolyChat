@@ -40,6 +40,15 @@ protocol MessageServiceProtocol {
      */
     func getMessagesInChatRoom(_ chatRoomId: String, last n: Int, addObserver observe: Bool, callback: @escaping (Message?, NSError?) -> ())
     
+    
+    /*
+     * Gets the total number of messages in a chat room
+     *
+     * @param chatRoomId    - The ID of the chat room to get messages from
+     * @param callback      - The callback function. Called with the message count or an error if there is one
+     */
+    func getNumMessagesInChatRoom(_ chatRoomId: String, callback: @escaping (Int?, NSError?) -> ())
+    
     /*
      * Adds a message to the chat room
      *
