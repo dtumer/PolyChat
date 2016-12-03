@@ -63,10 +63,12 @@ class ChatRoomViewController: JSQMessagesViewController {
             //get logged in user information
             authService.getCurrentUser({ user, error in
                 if let user = user {
+                    ProgressHUD.shared.showOverlay(view: self.view)
                     self.user = user
                     self.senderId = user.id
                     self.senderDisplayName = user.name
-                    self.loadMessages(last: Constants.LOAD_MESSAGES_DEFAULT, andObserve: true)
+                    self.automaticallyScrollsToMostRecentMessage = true
+                    self.loadMessages(last: Constants.LOAD_MESSAGES_DEFAULT, isFirstCall: true)
                 } else if let error = error {
                     print(error)
                 }
@@ -114,11 +116,11 @@ class ChatRoomViewController: JSQMessagesViewController {
         self.inputToolbar.contentView.leftBarButtonItem = nil
     }
     
-    func loadMessages(last n: Int, andObserve observe: Bool) {
+    func loadMessages(last n: Int, isFirstCall firstCall: Bool) {
         //init chat rooms
         self.messages = []
         
-        messageService.getMessagesInChatRoom(chatRoom.id, last: n, addObserver: observe, callback: { (message, error) in
+        messageService.getMessagesInChatRoom(chatRoom.id, last: n, callback: { (message, error) in
             if let msg = message {
                 do {
                     let iv = GlobalUtilities.hexToByteArray(msg.stamp)
@@ -140,6 +142,11 @@ class ChatRoomViewController: JSQMessagesViewController {
                         } else {
                             self.showLoadEarlierMessagesHeader = false
                         }
+                        // For hiding the loading screen on first call
+                        if (firstCall && (self.totalMessagesDisplayed == Constants.LOAD_MESSAGES_DEFAULT || self.totalMessagesDisplayed == msgTotal)) {
+                            ProgressHUD.shared.hideOverlayView()
+                            self.scrollToBottom(animated: false)
+                        }
                     } else if let error = error {
                         print(error)
                     }
@@ -147,6 +154,9 @@ class ChatRoomViewController: JSQMessagesViewController {
             }
             else if let error = error {
                 print(error)
+            }
+            else { // called when there are no messages in the chatroom
+                ProgressHUD.shared.hideOverlayView()
             }
         })
     }
@@ -232,7 +242,7 @@ extension ChatRoomViewController {
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, header headerView: JSQMessagesLoadEarlierHeaderView!, didTapLoadEarlierMessagesButton sender: UIButton!) {
         self.automaticallyScrollsToMostRecentMessage = false
-        loadMessages(last: totalMessagesDisplayed + Constants.LOAD_MESSAGES_DEFAULT, andObserve: false)
+        loadMessages(last: totalMessagesDisplayed + Constants.LOAD_MESSAGES_DEFAULT, isFirstCall: false)
     }
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageDataForItemAt indexPath: IndexPath!) -> JSQMessageData! {

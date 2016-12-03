@@ -48,8 +48,7 @@ class FirebaseMessageService: FirebaseDatabaseService, MessageServiceProtocol {
 /* COMPOSITE DATABASE FUNCTIONS */
 extension FirebaseMessageService {
     //gets all messages in a chat room
-    func getMessagesInChatRoom(_ chatRoomId: String, last n: Int, addObserver observe: Bool, callback: @escaping (Message?, NSError?) -> ()) {
-        
+    func getMessagesInChatRoom(_ chatRoomId: String, last n: Int, callback: @escaping (Message?, NSError?) -> ()) {
         let handle = dbRef.child(Constants.chatRoomsMessagesDBKey).child(chatRoomId).queryLimited(toLast: UInt(n)).observe(.childAdded, with: { snapshot in
             if let msgId = snapshot.value as? String {
                 self.getMessage(msgId, callback: { (msg, error) in
@@ -69,21 +68,16 @@ extension FirebaseMessageService {
             }
         })
         
-        if observe {
-            self.messageObserverHandles.append(handle)
-        } else {
-            if let lastOpenHandle = messageObserverHandles.last {
-                dbRef.child(Constants.chatRoomsMessagesDBKey).child(chatRoomId).removeObserver(withHandle: lastOpenHandle)
-                self.messageObserverHandles.append(handle)
-            }
+        if let lastOpenHandle = messageObserverHandles.last {
+            dbRef.child(Constants.chatRoomsMessagesDBKey).child(chatRoomId).removeObserver(withHandle: lastOpenHandle)
         }
+        messageObserverHandles.append(handle)
     }
     
     //get the total number of messages in a chat room
     func getNumMessagesInChatRoom(_ chatRoomId: String, callback: @escaping (Int?, NSError?) -> ()) {
         dbRef.child(Constants.chatRoomsMessagesDBKey).child(chatRoomId).observeSingleEvent(of: .value, with: { snapshot in
             if let messageIds = snapshot.value as? NSArray {
-                print("COUNT: \(messageIds.count)")
                 callback(messageIds.count, nil)
             } else {
                 let error = NSError(domain: "\(self.DOMAIN)getNumMessagesIinChatRoom", code: 1, description: "Value in DB is not of type NSArray")
