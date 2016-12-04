@@ -49,29 +49,36 @@ class FirebaseMessageService: FirebaseDatabaseService, MessageServiceProtocol {
 extension FirebaseMessageService {
     //gets all messages in a chat room
     func getMessagesInChatRoom(_ chatRoomId: String, last n: Int, callback: @escaping (Message?, NSError?) -> ()) {
-        let handle = dbRef.child(Constants.chatRoomsMessagesDBKey).child(chatRoomId).queryLimited(toLast: UInt(n)).observe(.childAdded, with: { snapshot in
-            if let msgId = snapshot.value as? String {
-                self.getMessage(msgId, callback: { (msg, error) in
-                    if let error = error {
-                        callback(nil, error)
-                        return
-                    }
-                    else {
-                        callback(msg!, nil)
-                    }
-                })
+        dbRef.child(Constants.chatRoomsMessagesDBKey).observeSingleEvent(of: .value, with: { snapshot in
+            // 1: Check if the chatroom exists in the chatroom_messages table
+            if !snapshot.hasChild(chatRoomId) {
+                // do this callback when there are no messages in the chatroom
+                callback(nil, nil)
             }
-            else {
-                let error = NSError(domain: "\(self.DOMAIN)getMessagesInChatRoom", code: 1, description: "Value in DB is not of type NSArray")
-                callback(nil, error)
-                return
+            let handle = self.dbRef.child(Constants.chatRoomsMessagesDBKey).child(chatRoomId).queryLimited(toLast: UInt(n)).observe(.childAdded, with: { snapshot in
+                if let msgId = snapshot.value as? String {
+                    self.getMessage(msgId, callback: { (msg, error) in
+                        if let error = error {
+                            callback(nil, error)
+                            return
+                        }
+                        else {
+                            callback(msg!, nil)
+                        }
+                    })
+                }
+                else {
+                    let error = NSError(domain: "\(self.DOMAIN)getMessagesInChatRoom", code: 1, description: "Value in DB is not of type NSArray")
+                    callback(nil, error)
+                    return
+                }
+            })
+            // close the last observer
+            if let lastOpenHandle = self.messageObserverHandles.last {
+                self.dbRef.child(Constants.chatRoomsMessagesDBKey).child(chatRoomId).removeObserver(withHandle: lastOpenHandle)
             }
+            self.messageObserverHandles.append(handle)
         })
-        
-        if let lastOpenHandle = messageObserverHandles.last {
-            dbRef.child(Constants.chatRoomsMessagesDBKey).child(chatRoomId).removeObserver(withHandle: lastOpenHandle)
-        }
-        messageObserverHandles.append(handle)
     }
     
     //get the total number of messages in a chat room
