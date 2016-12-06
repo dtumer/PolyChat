@@ -142,6 +142,7 @@ class ChatDetailsViewController: UIViewController, UITableViewDelegate, UITableV
         else if segue.identifier == Constants.userDetailSegueId {
             if let vc = segue.destination as? UserDetailViewController {
                 vc.selectedUser = self.selectedUser
+                vc.course = self.course
             }
         }
     }

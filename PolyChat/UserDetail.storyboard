@@ -72,11 +72,28 @@
                                     <constraint firstAttribute="height" constant="55" id="v2d-Dv-cDK"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k6e-U1-Me4">
+                                <rect key="frame" x="0.0" y="131" width="375" height="55"/>
+                                <color key="backgroundColor" red="0.01176470588" green="0.33725490200000002" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="2ti-vJ-Kdb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Send Direct Message">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="sendDirectMsgPressed:" destination="3ut-wX-GD9" eventType="touchUpInside" id="354-rW-tOf"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="k6e-U1-Me4" firstAttribute="top" secondItem="qfD-Jk-Xfc" secondAttribute="bottom" constant="20" id="1rz-LS-lPO"/>
+                            <constraint firstItem="k6e-U1-Me4" firstAttribute="centerX" secondItem="MlM-8d-Cg2" secondAttribute="centerX" id="GjJ-og-V3o"/>
                             <constraint firstItem="qfD-Jk-Xfc" firstAttribute="width" secondItem="MlM-8d-Cg2" secondAttribute="width" id="Kdm-Vs-lvF"/>
                             <constraint firstItem="bzR-Bm-y1Z" firstAttribute="width" secondItem="MlM-8d-Cg2" secondAttribute="width" id="ciz-nY-oyV"/>
+                            <constraint firstItem="k6e-U1-Me4" firstAttribute="width" secondItem="MlM-8d-Cg2" secondAttribute="width" id="ey5-wv-hrg"/>
                             <constraint firstItem="qfD-Jk-Xfc" firstAttribute="top" secondItem="bzR-Bm-y1Z" secondAttribute="bottom" constant="1" id="ovF-vc-VpH"/>
                             <constraint firstItem="bzR-Bm-y1Z" firstAttribute="top" secondItem="6N6-ys-dda" secondAttribute="bottom" id="pcR-N1-6R4"/>
                             <constraint firstItem="qfD-Jk-Xfc" firstAttribute="centerX" secondItem="MlM-8d-Cg2" secondAttribute="centerX" id="tx9-mV-nE4"/>
@@ -87,11 +104,20 @@
                     <connections>
                         <outlet property="emailLabel" destination="hzb-SM-gnB" id="WMb-QX-wRT"/>
                         <outlet property="usernameLabel" destination="nMi-6U-ojx" id="7Xg-lL-3md"/>
+                        <segue destination="tpd-5L-w2i" kind="show" identifier="LoginSegue" id="JLU-jl-Nyb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QWa-di-Ygr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="312.80000000000001" y="-224.4377811094453"/>
+        </scene>
+        <!--Login-->
+        <scene sceneID="6co-h5-ZNO">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Login" id="tpd-5L-w2i" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0lA-0E-RUi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="966" y="-224"/>
         </scene>
     </scenes>
 </document>

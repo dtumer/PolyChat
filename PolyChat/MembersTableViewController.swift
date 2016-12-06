@@ -96,6 +96,7 @@ class MembersTableViewController: UITableViewController {
         if segue.identifier == Constants.userDetailSegueId {
             if let vc = segue.destination as? UserDetailViewController {
                 vc.selectedUser = self.selectedUser
+                vc.course = self.course
             }
         }
     }
