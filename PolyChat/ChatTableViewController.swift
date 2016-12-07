@@ -79,12 +79,11 @@ class ChatTableViewController: UITableViewController {
     
     //loads all the chat rooms that a user is in
     func loadChatRooms(_ userId: String, isRefresh: Bool) {
-        //init chat rooms
-        self.chatRooms = []
+        self.tableView.reloadData()
         
         self.chatRoomService.getChatRoomsInCourseWithUser(self.course.id, userId: user.id, callback: { (chatRooms, error) in
             if let chatRooms = chatRooms {
-                self.chatRooms += chatRooms
+                self.chatRooms = chatRooms
             }
             else {
                 ConnectivityAlertUtility.alert(viewController: self)
@@ -135,6 +134,7 @@ extension ChatTableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.chatCellReuseId, for: indexPath) as! ChatTableViewCell
         cell.chatRoom = self.chatRooms[indexPath.row]
+        
         return cell
     }
 

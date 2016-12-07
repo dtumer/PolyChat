@@ -103,7 +103,6 @@ class MyCoursesTableViewController: UITableViewController, SWRevealViewControlle
                     self.user = user!
                     self.setAdminButton()
                     self.loadCourses(self.user.id, isRefresh: false)
-                    // Menu needs user information since it varies based on user (username, role, etc.)
                     self.initMenu()
                     self.initNotifications()
                 }

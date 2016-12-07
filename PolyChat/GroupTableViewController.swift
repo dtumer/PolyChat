@@ -73,12 +73,9 @@ class GroupTableViewController: UITableViewController {
     
     //loads all the groups that a user is in
     func loadGroups(_ userId: String, isRefresh: Bool) {
-        //init groups
-        self.groups = []
-        
         self.groupService.getGroupsInCourseWithUser(self.course.id, userId: userId, callback: { (groups, error) in
             if let groups = groups {
-                self.groups += groups
+                self.groups = groups
             }
             else {
                 ConnectivityAlertUtility.alert(viewController: self)

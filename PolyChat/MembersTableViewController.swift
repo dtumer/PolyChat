@@ -62,8 +62,6 @@ class MembersTableViewController: UITableViewController {
     
     //loads all the users in this course
     func loadUsers(_ courseId: String, isRefresh: Bool) {
-        self.users = []
-        
         userService.getAllUsersInACourse(courseId, userId: self.user.id, callback: { (users, error) in
             if let users = users {
                 self.users = users
