@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import OneSignal
 
 class UserSelectTableViewController: UITableViewController {
     
@@ -42,6 +43,9 @@ class UserSelectTableViewController: UITableViewController {
     
     //all selected users
     var selectedUsers: [User] = []
+    
+    // keep track if notification has been sent
+    var notificationSent = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -128,6 +132,38 @@ class UserSelectTableViewController: UITableViewController {
         }
     }
     
+    /* Notify users that they have been added to something */
+    fileprivate func notifyUsers(_ users: [User], course: Course!, chatRoom: ChatRoom?, group: Group?) {
+        var notifyIds = [String]()
+        for user in users {
+            if (user.notifications && !user.notifyId.isEmpty) { //add this when done dev testing: && self.user.notifyId != user.notifyId) {
+                notifyIds.append(user.notifyId)
+            }
+        }
+        if !notificationSent {
+            var message: String = "You have been added to \(course.name!) "
+            if let chatRoom = chatRoom {
+                message += "chatroom: \(chatRoom.name!)"
+            } else if let group = group {
+                message += "group: \(group.name!)"
+            }
+            OneSignal.postNotification([
+                "contents": ["en": message],
+                //"headings": ["en": "*Title*"],
+                //"subtitle": ["en": "*Subtitle*"],
+                "include_player_ids": notifyIds
+                ], onSuccess: { result in
+                    print("Successfully sent Notification")
+                    print(result ?? "Result")
+                    
+            }, onFailure: { error in
+                print("Error on sending Notification")
+                print(error ?? "Error")
+            })
+            self.notificationSent = true
+        }
+    }
+    
     //finishes creating the chat room
     @IBAction func savePressed(_ sender: AnyObject) {
         var isError = false
@@ -155,7 +191,8 @@ class UserSelectTableViewController: UITableViewController {
                         //TODO log error better
                         print(error.description)
                     }
-                    else {
+                    else if let chatRoom = chatRoom {
+                        self.notifyUsers(self.selectedUsers, course: self.course, chatRoom: chatRoom, group: nil)
                         self.dismiss(animated: true, completion: nil)
                     }
                 })
@@ -167,6 +204,7 @@ class UserSelectTableViewController: UITableViewController {
                         print(error.description)
                     }
                     else {
+                        self.notifyUsers(self.selectedUsers, course: self.course, chatRoom: nil, group: self.group!)
                         self.dismiss(animated: true, completion: nil)
                     }
                 })
@@ -177,6 +215,7 @@ class UserSelectTableViewController: UITableViewController {
                         ConnectivityAlertUtility.alert(viewController: self)
                     }
                     else {
+                        self.notifyUsers(self.selectedUsers, course: self.course, chatRoom: self.chatRoom!, group: nil)
                         _ = self.navigationController?.popViewController(animated: true)
                     }
                     
@@ -189,6 +228,7 @@ class UserSelectTableViewController: UITableViewController {
                         ConnectivityAlertUtility.alert(viewController: self)
                     }
                     else {
+                        self.notifyUsers(self.selectedUsers, course: self.course!, chatRoom: nil, group: self.group!)
                         _ = self.navigationController?.popViewController(animated: true)
                     }
                     
