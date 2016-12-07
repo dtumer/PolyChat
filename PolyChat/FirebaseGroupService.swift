@@ -50,7 +50,23 @@ class FirebaseGroupService: FirebaseDatabaseService, GroupServiceProtocol {
     }
     
     func removeGroup(_ group: Group, callback: @escaping (NSError?) -> ()) {
+        //nothing
+    }
+    
+    //updates a chat room
+    func updateGroup(groupId: String, group: Group, callback: @escaping (NSError?) -> ()) {
+        let childUpdates = [
+            "/\(Constants.groupsDBKey)/\(groupId)": group.toDictionary()
+        ]
         
+        dbRef.updateChildValues(childUpdates, withCompletionBlock: { (error, ref) in
+            if let error = error {
+                callback(error as NSError?)
+            }
+            else {
+                callback(nil)
+            }
+        })
     }
 }
 

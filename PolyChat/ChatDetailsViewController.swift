@@ -119,7 +119,7 @@ class ChatDetailsViewController: UIViewController, UITableViewDelegate, UITableV
         self.users = []
         
         self.chatRoomService.getAllUsersInAChatRoom(self.chatRoom.id, callback: { (users, error) in
-            if let error = error {
+            if let _ = error {
                 ConnectivityAlertUtility.alert(viewController: self)
             }
             else {
@@ -159,7 +159,7 @@ class ChatDetailsViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     @IBAction func leaveChatRoomPressed(_ sender: Any) {
-        let alert = UIAlertController(title: "Warning", message: "Are you sure you would like to leave \"\(self.chatRoom.name)\"?", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Warning", message: "Are you sure you would like to leave \"\(self.chatRoom.name!)\"?", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "No", style: .destructive, handler: nil))
         alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { sender in
             var ids = GlobalUtilities.usersToIds(users: self.users)

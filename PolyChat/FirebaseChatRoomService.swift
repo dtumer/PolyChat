@@ -119,11 +119,11 @@ extension FirebaseChatRoomService {
     }
     
     //creates a chat room
-    func createChatRoom(_ courseId: String, users: [User], chatRoom: ChatRoom, callback: @escaping (NSError?) -> ()) {
+    func createChatRoom(_ courseId: String, users: [User], chatRoom: ChatRoom, callback: @escaping (ChatRoom?, NSError?) -> ()) {
         //1: Create chat room
         self.addChatRoom(chatRoom, callback: { (string, error) in
             if let error = error {
-                callback(error)
+                callback(nil, error)
             }
             else if let chatRoomId = string {
                 chatRoom.id = chatRoomId
@@ -131,24 +131,24 @@ extension FirebaseChatRoomService {
                 //2: add chat room to COURSES_CHATROOMS
                 self.coursesChatRoomsService?.addChatRoomReference(courseId, chatRoom: chatRoom, callback: { error in
                     if let error = error {
-                        callback(error)
+                        callback(nil, error)
                     }
                     else {
                         //3: Add all users to CHATROOMS_USERS table
                         //TODO change this to new reference function
                         self.chatRoomsUsersService?.addChatRoomsUsersReference(chatRoom.id, users: users, callback: { error in
                             if let error = error {
-                                callback(error)
+                                callback(nil, error)
                             }
                             else {
                                 //4: For each user add their reference in the USERS_CHATROOMS table
                                 for user in users {
                                     self.usersChatRoomsService?.addUserChatRoomReference(user.id, chatRoomId: chatRoom.id, callback: { error in
                                         if let error = error {
-                                            callback(error)
+                                            callback(nil, error)
                                         }
                                         else {
-                                            callback(nil)
+                                            callback(chatRoom, nil)
                                         }
                                     })
                                 }

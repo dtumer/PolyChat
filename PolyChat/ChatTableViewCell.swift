@@ -14,7 +14,7 @@ class ChatTableViewCell: UITableViewCell {
     
     var chatRoom: ChatRoom! {
         didSet {
-            self.chatRoomTitleLabel.text = chatRoom.name
+            self.chatRoomTitleLabel.text = chatRoom.name as String
         }
     }
 }

@@ -39,6 +39,14 @@ protocol GroupServiceProtocol {
      * @param callback - The callback function. Called with error if there is one
      */
     func removeGroup(_ group: Group, callback: @escaping (NSError?) -> ())
+    
+    /*
+     * Updates a group
+     *
+     * @param groupId    - The chat room id of the room to update
+     * @param group      - The chat room obj to put there
+     */
+    func updateGroup(groupId: String, group: Group, callback: @escaping (NSError?) -> ())
 
 
     /*

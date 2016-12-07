@@ -30,7 +30,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func loginPressed(_ sender: UIButton) {
+        ProgressHUD.shared.showOverlay(view: self.view)
         correctInput()
+        self.view.endEditing(true)
         
         if (ValidationService.isValidEmail(emailTextField.text!) &&
             ValidationService.isValidPassword(passwordTextField.text!)) {
@@ -39,24 +41,26 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             authService?.loginUser("\(emailTextField.text!)@calpoly.edu", passHash: passwordTextField.text!, callback: { (error) in
                 if error != nil { //error when logging in user
                     self.incorrectInput()
-                    return
                 }
                 else {
                     self.correctInput()
                     self.dismiss(animated: true, completion: nil)
-                    
-                    return
                 }
+                
+                ProgressHUD.shared.hideOverlayView()
+                return
             })
         }
         else {
             self.incorrectInput()
+            ProgressHUD.shared.hideOverlayView()
         }
     }
     
     // MARK: UITextFieldDelegate Methods
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+        
         return true
     }
     

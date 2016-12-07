@@ -83,7 +83,7 @@
         <!--Chat Room View Controller-->
         <scene sceneID="pr4-Gd-cjN">
             <objects>
-                <viewController id="yj7-Qz-s98" customClass="ChatRoomViewController" customModule="PolyChat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChatRoom" id="yj7-Qz-s98" customClass="ChatRoomViewController" customModule="PolyChat" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="SD5-YO-b7X"/>
                         <viewControllerLayoutGuide type="bottom" id="uBz-T0-H9T"/>

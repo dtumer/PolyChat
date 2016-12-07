@@ -9,8 +9,8 @@
 import Foundation
 
 class Group {
-    var id: String = ""
-    var name: String = ""
+    var id: String! = ""
+    var name: String! = ""
     
     init(dictionary: NSDictionary) {
         if let id = dictionary["id"] as? String {

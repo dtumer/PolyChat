@@ -20,6 +20,8 @@ class UserDetailViewController: UIViewController {
     var selectedUser: User!
     var course: Course!
     
+    var createdChatRoom: ChatRoom!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -55,15 +57,20 @@ class UserDetailViewController: UIViewController {
     
     @IBAction func sendDirectMsgPressed(_ sender: Any) {
         let chatRoom = ChatRoom(dictionary: [
-            "name": "\(self.selectedUser.name)"
+            "name": "\(self.selectedUser.name!) & \(self.user.name!)"
             ])
         
-        self.chatRoomService.createChatRoom(self.course.id, users: [self.user, self.selectedUser], chatRoom: chatRoom, callback: { error in
+        self.chatRoomService.createChatRoom(self.course.id, users: [self.user, self.selectedUser], chatRoom: chatRoom, callback: { (chatRoom, error) in
             if let _ = error {
                 ConnectivityAlertUtility.alert(viewController: self)
             }
             else {
-                //do something
+                let alert = UIAlertController(title: "Success", message: "Direct message with \(self.selectedUser.name!) created", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+                    _ = self.navigationController?.popViewController(animated: true)
+                }))
+                
+                self.present(alert, animated: true, completion: nil)
             }
         })
     }

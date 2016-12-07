@@ -9,14 +9,14 @@
 import Foundation
 
 class Message {
-    var id: String = ""
-    var body: String = ""
-    var senderId: String = ""
-    var senderName: String = ""
-    var numLikes: Int = 0
-    var numDislikes: Int = 0
-    var messageSent: Double = Date().timeIntervalSince1970
-    var stamp: String = ""
+    var id: String! = ""
+    var body: String! = ""
+    var senderId: String! = ""
+    var senderName: String! = ""
+    var numLikes: Int! = 0
+    var numDislikes: Int! = 0
+    var messageSent: Double! = Date().timeIntervalSince1970
+    var stamp: String! = ""
     
     init(dictionary: NSDictionary) {
         if let id = dictionary["id"] as? String {

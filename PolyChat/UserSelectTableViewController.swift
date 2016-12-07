@@ -150,7 +150,7 @@ class UserSelectTableViewController: UITableViewController {
         }
         else {
             if self.creationMode == Constants.createChat {
-                self.chatRoomService.createChatRoom(self.course.id, users: self.selectedUsers, chatRoom: self.chatRoom!, callback: { error in
+                self.chatRoomService.createChatRoom(self.course.id, users: self.selectedUsers, chatRoom: self.chatRoom!, callback: { (chatRoom, error) in
                     if let error = error {
                         //TODO log error better
                         print(error.description)

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GroupDetailsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class GroupDetailsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
 
     @IBOutlet weak var groupNameLabel: UITextField!
     @IBOutlet weak var editTableButton: UIButton!
@@ -94,8 +94,34 @@ class GroupDetailsViewController: UIViewController, UITableViewDelegate, UITable
         }
     }
     
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        guard textField.text != nil && !GlobalUtilities.isBlankString(textField.text!) && textField.text != self.group.name else {
+            return
+        }
+        
+        let alert = UIAlertController(title: "Warning", message: "Are you sure you would like to change the Group name?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "No", style: .destructive, handler: nil))
+        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { sender in
+            ProgressHUD.shared.showOverlay(view: self.view)
+            self.group.name = textField.text!
+            self.groupService.updateGroup(groupId: self.group.id, group: self.group, callback: { error in
+                ProgressHUD.shared.hideOverlayView()
+                
+                if let error = error {
+                    // TODO: Handle this error
+                    print(error)
+                }
+                else {
+                    ConnectivityAlertUtility.alert(viewController: self, title: "Congratulations!", message: "The Chat Room name has been updated")
+                }
+            })
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     @IBAction func leaveGroupPressed(_ sender: Any) {
-        let alert = UIAlertController(title: "Warning", message: "Are you sure you would like to leave \"\(self.group.name)\"?", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Warning", message: "Are you sure you would like to leave \"\(self.group.name!)\"?", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "No", style: .destructive, handler: nil))
         alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { sender in
             var ids = GlobalUtilities.usersToIds(users: self.users)

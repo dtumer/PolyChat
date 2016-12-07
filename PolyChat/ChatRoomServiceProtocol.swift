@@ -64,7 +64,7 @@ protocol ChatRoomServiceProtocol {
      * @param chatRoom  - The chat room object to be added to the CHATROOMS table
      * @param callback  - The callback function. Called with an error if there is one.
      */
-    func createChatRoom(_ courseId: String, users: [User], chatRoom: ChatRoom, callback: @escaping (NSError?) -> ())
+    func createChatRoom(_ courseId: String, users: [User], chatRoom: ChatRoom, callback: @escaping (ChatRoom?, NSError?) -> ())
     
     /*
      * Gets all the users that are in the specified chat room

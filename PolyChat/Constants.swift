@@ -70,6 +70,9 @@ struct Constants {
     static let userDetailSegueId = "UserDetailsSegue"
     static let groupDetailSegueId = "GroupDetailsSegue"
     
+    //View ids
+    static let chatRoomStoryId = "ChatRoom"
+    
     //Users addition mode
     static let createChat = 0
     static let createGroup = 1
