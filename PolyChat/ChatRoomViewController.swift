@@ -63,7 +63,6 @@ class ChatRoomViewController: JSQMessagesViewController {
             //get logged in user information
             authService.getCurrentUser({ user, error in
                 if let user = user {
-                    ProgressHUD.shared.showOverlay(view: self.view)
                     self.user = user
                     self.senderId = user.id
                     self.senderDisplayName = user.name
@@ -75,6 +74,11 @@ class ChatRoomViewController: JSQMessagesViewController {
             })
         }
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        ProgressHUD.shared.showOverlay(view: self.view)
     }
     
     //initializes services needed
