@@ -67,7 +67,9 @@ class MembersTableViewController: UITableViewController {
                 self.users = users
             }
             else {
-                ConnectivityAlertUtility.alert(viewController: self)
+                if error?.code != 0 {
+                    ConnectivityAlertUtility.alert(viewController: self)
+                }
             }
             
             self.tableView.reloadData()
