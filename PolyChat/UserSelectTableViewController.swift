@@ -136,7 +136,7 @@ class UserSelectTableViewController: UITableViewController {
     fileprivate func notifyUsers(_ users: [User], course: Course!, chatRoom: ChatRoom?, group: Group?) {
         var notifyIds = [String]()
         for user in users {
-            if (user.notifications && !user.notifyId.isEmpty) { //add this when done dev testing: && self.user.notifyId != user.notifyId) {
+            if (user.notifications && !user.notifyId.isEmpty && self.user.notifyId != user.notifyId) {
                 notifyIds.append(user.notifyId)
             }
         }
