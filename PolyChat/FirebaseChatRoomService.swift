@@ -106,13 +106,13 @@ extension FirebaseChatRoomService {
                         }
                     }
                     else {
-                        let error = NSError(domain: "\(self.DOMAIN)getChatRoomsInCourseWithUser", code: 0, description: "Value in COURSES_CHATROOMS is not of type NSArray")
+                        let error = NSError(domain: "\(self.DOMAIN)getChatRoomsInCourseWithUser", code: 1, description: "Value in COURSES_CHATROOMS is not of type NSArray")
                         callback(nil, error)
                     }
                 })
             }
             else {
-                let error = NSError(domain: "\(self.DOMAIN)getChatRoomsInCourseWithUser", code: 0, description: "Value in USERS_CHATROOMS is not of type NSArray")
+                let error = NSError(domain: "\(self.DOMAIN)getChatRoomsInCourseWithUser", code: 1, description: "Value in USERS_CHATROOMS is not of type NSArray")
                 callback(nil, error)
             }
         })

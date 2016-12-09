@@ -106,13 +106,13 @@ extension FirebaseGroupService {
                         }
                     }
                     else {
-                        let error = NSError(domain: "\(self.DOMAIN)getGroupsInCourseWithUser", code: 0, description: "Value in COURSES_GROUPS is not of type NSArray")
+                        let error = NSError(domain: "\(self.DOMAIN)getGroupsInCourseWithUser", code: 1, description: "Value in COURSES_GROUPS is not of type NSArray")
                         callback(nil, error)
                     }
                 })
             }
             else {
-                let error = NSError(domain: "\(self.DOMAIN)getGroupsInCourseWithUser", code: 0, description: "Value in USERS_GROUPS is not of type NSArray")
+                let error = NSError(domain: "\(self.DOMAIN)getGroupsInCourseWithUser", code: 1, description: "Value in USERS_GROUPS is not of type NSArray")
                 callback(nil, error)
             }
         })

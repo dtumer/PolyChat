@@ -86,7 +86,9 @@ class ChatTableViewController: UITableViewController {
                 self.chatRooms = chatRooms
             }
             else {
-                ConnectivityAlertUtility.alert(viewController: self)
+                if error?.code != 1 {
+                    ConnectivityAlertUtility.alert(viewController: self)
+                }
             }
             
             self.tableView.reloadData()

@@ -78,7 +78,9 @@ class GroupTableViewController: UITableViewController {
                 self.groups = groups
             }
             else {
-                ConnectivityAlertUtility.alert(viewController: self)
+                if error?.code != 1 {
+                    ConnectivityAlertUtility.alert(viewController: self)
+                }
             }
             
             self.tableView.reloadData()
